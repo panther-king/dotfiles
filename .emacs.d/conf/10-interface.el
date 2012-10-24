@@ -7,16 +7,19 @@
 (set-face-foreground 'modeline "blue")
 (global-linum-mode t)
 (column-number-mode t)
+
+;; paren-mode settings
+(setq show-paren-delay 0)
+(show-paren-mode t)
 (defface hlline-face
-  '((((class color)
-      (background dark))
-     (:background "gray15"))
-    (((class color)
-      (background light))
-     (:background "ForestGreen"))
+  '((((class color) (background dark))
+     (:background "gray15" t))
+    (((class color) (background light))
+     (:background "ForestGreen" t))
     (t
      ()))
   "*Face used by hl-line.")
+(global-hl-line-mode t)
 
 ;; color-theme settings
 (require 'color-theme)
