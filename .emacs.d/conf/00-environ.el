@@ -9,12 +9,13 @@
 (define-key global-map (kbd "C-h") 'delete-backward-char)
 
 ;; smartchr settings
-(require 'smartchr)
-(global-set-key (kbd "\'") (smartchr '("'`!!''" "'")))
-(global-set-key (kbd "\"") (smartchr '("\"`!!'\"" "\"")))
-(global-set-key (kbd "(") (smartchr '("(`!!')" "(")))
-(global-set-key (kbd "[") (smartchr '("[`!!']" "[")))
-(global-set-key (kbd "{") (smartchr '("{`!!'}" "{")))
+(when (require 'smartchr nil t)
+  (require 'smartchr)
+  (global-set-key (kbd "\'") (smartchr '("'`!!''" "'")))
+  (global-set-key (kbd "\"") (smartchr '("\"`!!'\"" "\"")))
+  (global-set-key (kbd "(") (smartchr '("(`!!')" "(")))
+  (global-set-key (kbd "[") (smartchr '("[`!!']" "[")))
+  (global-set-key (kbd "{") (smartchr '("{`!!'}" "{"))))
 
 ;; File name settings
 (when (eq window-system 'w32)

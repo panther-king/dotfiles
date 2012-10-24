@@ -22,11 +22,11 @@
 (global-hl-line-mode t)
 
 ;; color-theme settings
-(require 'color-theme)
-(color-theme-initialize)
-(when (require 'color-theme-solarized)
-  (color-theme-solarized-dark))
-;(color-theme-dark-laptop)
+(when (require 'color-theme nil t)
+  (color-theme-initialize)
+  ;(color-theme-dark-laptop)
+  (when (require 'color-theme-solarized nil t)
+    (color-theme-solarized-dark)))
 
 ;; elscreen settings
 (load "elscreen")
