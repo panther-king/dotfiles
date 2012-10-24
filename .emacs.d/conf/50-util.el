@@ -11,6 +11,10 @@
 (when (require 'undo-tree)
   (global-undo-tree-mode))
 
+;; redo+ settings
+(when (require 'redo+)
+  (global-set-key (kbd "C-'") 'redo))
+
 ;; wdired settings
 (when (require 'wdired)
   (define-key dired-mode-map (kbd "r") 'wdired-change-to-wdired-mode))
