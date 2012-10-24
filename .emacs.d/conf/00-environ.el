@@ -40,13 +40,4 @@
 
 ;; Add permittion "Execute" to shell script
 (add-hook 'after-save-hook
-          '(lambda ()
-             (save-restriction
-               (widen)
-               (if (string= "#!" (buffer-substring 1 (min 3 (point-max))))
-                   (let ((name (buffer-file-name)))
-                     (or (char-equal ?. (string-to-char (file-name-nondirectory name)))
-                         (let ((mode (file-modes name)))
-                           (set-file-modes name (logior mode (logand (/ mode 4) 73)))
-                           (message (concat "Wrote " name " (+x)"))))
-                     )))))
+          'executable-make-buffer-file-executable-if-script-p)
