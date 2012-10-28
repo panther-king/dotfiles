@@ -1,17 +1,3 @@
-;; anything settings
-(when (require 'anything nil t)
-  (require 'anything)
-  (require 'anything-config)
-  (require 'anything-match-plugin)
-  (setq anything-sources
-        '(anything-c-source-buffers+
-          anything-c-source-file-name-history
-          anything-c-source-buffer-not-found
-          anything-c-source-imenu
-          ))
-  (setq imenu-auto-rescan t)
-  (global-set-key (kbd "C-;") 'anything))
-
 ;; auto-install settings
 (when (require 'auto-install nil t)
   (setq auto-install-directory "~/.emacs.d/elisp/")
@@ -20,6 +6,11 @@
 
 ;; grep-edit settings
 (require 'grep-edit)
+
+;; undohist settings
+;; http://cx4a.org/pub/undohist.el
+(when (require 'undohist nil t)
+  (undohist-initialize))
 
 ;; undo-tree settings
 (when (require 'undo-tree nil t)
@@ -35,7 +26,7 @@
 
 ;; multi-term settings
 (when (require 'multi-term nil t)
-  (setq multi-term-program "/usr/bin/zsh"))
+  (setq multi-term-program "/bin/zsh"))
 
 ;; open-junk-file settings
 (when (require 'open-junk-file nil t)
@@ -55,6 +46,15 @@
   (setq auto-mode-alist
         (append '(("\\.rst$" . rst-mode)
                   ("\\.rest$" . rst-mode)) auto-mode-alist))
-  (setq frame-background-mode 'dark)
-  (add-hook 'rst-mode-hook '(lambda ()
-                              (setq tab-width 3))))
+  (setq frame-background-mode 'dark))
+
+;; git settings
+(when (executable-find "git")
+  (require 'egg nil t))
+
+;; ctags settings
+(require 'ctags nil t)
+(setq tags-revert-without-query t)
+(setq ctags-command "ctags -e -R ")
+;(setq ctags-command "ctags -R --fields=\"+afikKlmnsSzt\" ")
+(global-set-key (kbd "<f5>") 'ctags-create-or-update-tags-table)
