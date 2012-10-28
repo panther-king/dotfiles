@@ -7,6 +7,7 @@
 
 ;; Key binds settings
 (define-key global-map (kbd "C-h") 'delete-backward-char)
+(define-key global-map (kbd "C-t") 'other-window)
 
 ;; smartchr settings
 (when (require 'smartchr nil t)
