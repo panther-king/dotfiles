@@ -1,11 +1,10 @@
 ;; Python settings
 (setq py-indent-offset 4)
 (add-to-list 'auto-mode-alist '("\\.\\(py\\|wsgi\\)$" . python-mode))
-(add-hook 'python-mode-hook
-          (function (lambda ()
-                      (setq tab-width py-indent-offset)
-                      (setq indent-tabs-mode nil)
-                      (define-key python-mode-map (kbd "\"") (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")))
-                      (define-key python-mode-map (kbd "\'") (smartchr '("'`!!'" "'''`!!''''")))
-                      (define-key python-mode-map (kbd "=") (smartchr '(" = " " == "))))))
-
+(defun python-mode-style-hook ()
+  (setq py-indent-offset 4)
+  (setq tab-width py-indent-offset)
+  (define-key python-mode-map (kbd "\"") (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")))
+  (define-key python-mode-map (kbd "\'") (smartchr '("'`!!'" "'''`!!''''")))
+  (define-key python-mode-map (kbd "=") (smartchr '(" = " " == "))))
+(add-hook 'python-mode-hook 'python-mode-style-hook)

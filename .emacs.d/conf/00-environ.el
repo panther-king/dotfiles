@@ -44,10 +44,10 @@
 (setq-default auto-fill-mode t)
 
 ;; Indent settings
-(add-hook 'c-mode-common-hook
-          '(lambda ()
-             (c-toggle-auto-hungry-state 1)
-             (define-key c-mode-base-map (kbd "C-m") 'newline-and-indent)))
+(defun c-mode-indent-hook ()
+  (c-toggle-auto-hungry-state 1)
+  (define-key c-mode-base-map (kbd "C-m") 'newline-and-indent))
+(add-hook 'c-mode-common-hook 'c-mode-indent-hook)
 
 ;; Add permittion "Execute" to shell script
 (add-hook 'after-save-hook
