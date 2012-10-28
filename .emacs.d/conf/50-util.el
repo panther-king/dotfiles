@@ -53,8 +53,8 @@
   (require 'egg nil t))
 
 ;; ctags settings
-(require 'ctags nil t)
-(setq tags-revert-without-query t)
-(setq ctags-command "ctags -e -R ")
+(when (require 'ctags nil t)
+  (setq tags-revert-without-query t)
+  (setq ctags-command "ctags -e -R ")
 ;(setq ctags-command "ctags -R --fields=\"+afikKlmnsSzt\" ")
-(global-set-key (kbd "<f5>") 'ctags-create-or-update-tags-table)
+  (global-set-key (kbd "<f5>") 'ctags-create-or-update-tags-table))
