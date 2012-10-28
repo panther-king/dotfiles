@@ -1,9 +1,18 @@
+;; ELPA settings
+(when (require 'package nil t)
+  (add-to-list 'package-archives
+               '("marmalade" . "http://marmalade-repo.org/packages/"))
+  (add-to-list 'package-archives
+               '("ELPA" . "http://tromey.com/elpa/"))
+  (package-initialize))
+
 ;; Backup settings
 (setq backup-inhibited t)
 (setq delete-auto-save-files t)
 
 ;; Don't use tab indent
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 
 ;; Key binds settings
 (define-key global-map (kbd "C-h") 'delete-backward-char)
