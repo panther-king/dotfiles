@@ -1,4 +1,5 @@
 ;; PHP settings
+;; git clone git://github.com/ejmr/php-mode.git
 (when (require 'php-mode nil t)
   (setq php-mode-force-pear nil)
   (setq php-search-url "http://jp.php.net/ja/")
@@ -21,6 +22,7 @@
     (define-key php-mode-map (kbd "!") (smartchr '("!" " !== " " != "))))
 
   (defun php-completion-hook ()
+    ;; git clone git://github.com/imakado/php-completion.git
     (when (require 'php-completion nil t)
       (php-completion-mode t)
       (define-key php-mode-map (kbd "C-o") 'phpcmp-complete)

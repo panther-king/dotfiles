@@ -22,6 +22,7 @@
 (global-hl-line-mode t)
 
 ;; color-theme settings
+;; git clone git://github.com/sellout/emacs-color-theme-solarized.git
 (when (require 'color-theme nil t)
   (color-theme-initialize)
   ;(color-theme-dark-laptop)

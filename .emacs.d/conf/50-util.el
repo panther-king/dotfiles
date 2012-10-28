@@ -48,7 +48,8 @@
                   ("\\.rest$" . rst-mode)) auto-mode-alist))
   (setq frame-background-mode 'dark))
 
-;; git settings
+;; egg settings
+;; git clone git://github.com/byplayer/egg.git
 (when (executable-find "git")
   (require 'egg nil t))
 
