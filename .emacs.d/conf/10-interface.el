@@ -59,3 +59,11 @@
 (set-face-background 'whitespace-space 'nil)
 (set-face-foreground 'whitespace-tab "LightSlateGray")
 (set-face-background 'whitespace-tab 'nil)
+
+;; Echo area settings
+(add-hook 'emacs-lisp-mode-hook
+          '(lambda ()
+             (when (require 'eldoc nil t)
+               (setq eldoc-idle-delay 0.2)
+               (setq eldoc-echo-area-use-multiline-p t)
+               (turn-on-eldoc-mode))))
