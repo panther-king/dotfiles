@@ -1,27 +1,31 @@
 ;; PHP settings
 ;; git clone git://github.com/ejmr/php-mode.git
 (when (require 'php-mode nil t)
-  (setq php-mode-force-pear nil)
-  (setq php-search-url "http://jp.php.net/ja/")
-  (setq php-manual-url "http://jp.php.net/manual/ja/")
+  (defun my-php-mode-hook ()
+    ;; manual settings
+    (setq php-search-url "http://jp.php.net/ja/")
+    (setq php-manual-url "http://jp.php.net/manual/ja/")
 
-  (defun php-indent-hook ()
+    ;; indent settings
+    (setq php-mode-force-pear nil)
     (setq indent-tabs-mode nil)
     (setq c-basic-offset 4)
     (c-set-offset 'case-label '+)
     (c-set-offset 'arglist-intro '+)
-    (c-set-offset 'arglist-close 0))
+    (c-set-offset 'arglist-close 0)
 ;               (c-set-offset 'case-label 4)
 ;               (c-set-offset 'arglist-intro 4)
 ;               (c-set-offset 'arglist-con-nonempty 4)
 ;               (c-set-offset 'arglist-close 0)
 
-  (defun php-kbd-hook ()
+    ;; keyboard settings
     (define-key php-mode-map (kbd "=") (smartchr '(" = " " === " "=" " == ")))
     (define-key php-mode-map (kbd ">") (smartchr '(">" "->" "=>" " >>> ")))
-    (define-key php-mode-map (kbd "!") (smartchr '("!" " !== " " != "))))
+    (define-key php-mode-map (kbd "!") (smartchr '("!" " !== " " != ")))
+    (define-key php-mode-map (kbd "(") (smartchr '("(`!!')" "(")))
+    (define-key php-mode-map (kbd "[") (smartchr '("[`!!']" "[")))
 
-  (defun php-completion-hook ()
+    ;; completion settings
     ;; git clone git://github.com/imakado/php-completion.git
     (when (require 'php-completion nil t)
       (php-completion-mode t)
@@ -31,9 +35,7 @@
         (add-to-list 'ac-sources 'ac-source-php-completion)
         (auto-complete-mode t))))
 
-  (add-hook 'php-mode-hook 'php-indent-hook)
-  (add-hook 'php-mode-hook 'php-completion-hook)
-  (add-hook 'php-mode-hook 'php-kbd-hook))
+  (add-hook 'php-mode-hook 'my-php-mode-hook))
 
 ;; nxhtml settings
 (load "~/.emacs.d/elisp/nxhtml/autostart.el")
