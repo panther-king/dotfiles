@@ -13,10 +13,12 @@
   (undohist-initialize))
 
 ;; undo-tree settings
+;; Install from ELPA
 (when (require 'undo-tree nil t)
   (global-undo-tree-mode))
 
 ;; redo+ settings
+;; Install from ELPA
 (when (require 'redo+ nil t)
   (global-set-key (kbd "C-'") 'redo))
 
@@ -25,6 +27,7 @@
   (define-key dired-mode-map (kbd "r") 'wdired-change-to-wdired-mode))
 
 ;; multi-term settings
+;; Install from ELPA
 (when (require 'multi-term nil t)
   (setq multi-term-program "/bin/zsh"))
 
@@ -38,6 +41,7 @@
   (yas/load-directory "~/.emacs.d/elisp/yasnippet-0.6.1c/snippets"))
 
 ;; yaml-mode settings
+;; Install from ELPA
 (when (require 'yaml-mode nil t)
   (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode)))
 
