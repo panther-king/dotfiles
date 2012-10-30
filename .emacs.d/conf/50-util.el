@@ -59,3 +59,10 @@
   (setq ctags-command "ctags -e -R ")
 ;(setq ctags-command "ctags -R --fields=\"+afikKlmnsSzt\" ")
   (global-set-key (kbd "<f5>") 'ctags-create-or-update-tags-table))
+
+;; sql-mode settings
+(defun my-sql-mode-hook ()
+  (load-library "sql-indent")
+  (setq sql-indent-offset 4)
+  (setq sql-indent-maybe-tab nil))
+(add-hook 'sql-mode-hook 'my-sql-mode-hook)

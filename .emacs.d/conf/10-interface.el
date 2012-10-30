@@ -25,7 +25,6 @@
 ;; git clone git://github.com/sellout/emacs-color-theme-solarized.git
 (when (require 'color-theme nil t)
   (color-theme-initialize)
-  ;(color-theme-dark-laptop)
   (when (require 'color-theme-solarized nil t)
     (color-theme-solarized-dark)))
 

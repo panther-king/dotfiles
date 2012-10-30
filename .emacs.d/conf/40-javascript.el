@@ -1,5 +1,5 @@
 ;; JavaScript settings
-(defun js-indent-hook ()
+(defun my-js-mode-hook ()
   (setq js-indent-level 2
         js-expr-indent-offset 2
         indent-tabs-mode nil)
@@ -14,4 +14,4 @@
         (js-indent-line))
       (when (> offset 0) (forward-char offset))))
   (set (make-local-variable 'indent-line-function) 'my-js-indent-line))
-(add-hook 'js-mode-hook 'js-indent-hook)
+(add-hook 'js-mode-hook 'my-js-mode-hook)
