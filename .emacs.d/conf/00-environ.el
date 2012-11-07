@@ -4,7 +4,10 @@
                '("marmalade" . "http://marmalade-repo.org/packages/"))
   (add-to-list 'package-archives
                '("ELPA" . "http://tromey.com/elpa/"))
-  (package-initialize))
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (package-initialize)
+  (require 'melpa))
 
 ;; Backup settings
 (setq backup-inhibited t)
