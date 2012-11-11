@@ -1,49 +1,55 @@
-;; auto-install settings
+;;
+;; Install from emacswiki
+;; http://www.emacswiki.org/
+;;
+
+;; install-elisp-from-emacswiki auto-install.el
 (when (require 'auto-install nil t)
   (setq auto-install-directory "~/.emacs.d/elisp/")
   (auto-install-update-emacswiki-package-name t)
   (auto-install-compatibility-setup))
 
-;; grep-edit settings
-(require 'grep-edit)
+;; install-elisp-from-emacs-wiki open-junk-file.el
+(when (require 'open-junk-file nil t)
+  (setq open-junk-file-format "~/.emacs.d/.junk/%Y%m%d%H%M%S."))
 
-;; undohist settings
-;; http://cx4a.org/pub/undohist.el
-(when (require 'undohist nil t)
-  (undohist-initialize))
+;;
+;; Install from ELPA
+;; list-packages
+;;
+
+;; multi-term settings
+(when (require 'multi-term nil t)
+  (setq multi-term-program "/bin/zsh"))
+
+;; yasnippet settings
+(when (require 'yasnippet nil t)
+  (yas-global-mode 1))
+
+;; yaml-mode settings
+(when (require 'yaml-mode nil t)
+  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode)))
 
 ;; undo-tree settings
-;; Install from ELPA
 (when (require 'undo-tree nil t)
   (global-undo-tree-mode))
 
 ;; redo+ settings
-;; Install from ELPA
 (when (require 'redo+ nil t)
   (global-set-key (kbd "C-'") 'redo))
+
+;;
+;; Install from other site
+;;
+
+ ;; undohist settings
+;; install-elisp http://cx4a.org/pub/undohist.el
+(when (require 'undohist nil t)
+  (undohist-initialize))
 
 ;; wdired settings
 (when (require 'wdired nil t)
   (define-key dired-mode-map (kbd "r") 'wdired-change-to-wdired-mode))
-
-;; multi-term settings
-;; Install from ELPA
-(when (require 'multi-term nil t)
-  (setq multi-term-program "/bin/zsh"))
-
-;; open-junk-file settings
-(when (require 'open-junk-file nil t)
-  (setq open-junk-file-format "~/.emacs.d/.junk/%Y%m%d%H%M%S."))
-
-;; yasnippet settings
-(when (require 'yasnippet nil t)
-  (yas/initialize)
-  (yas/load-directory "~/.emacs.d/elisp/yasnippet-0.6.1c/snippets"))
-
-;; yaml-mode settings
-;; Install from ELPA
-(when (require 'yaml-mode nil t)
-  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode)))
 
 ;; rst settings
 (when (require 'rst nil t)

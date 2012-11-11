@@ -20,7 +20,7 @@
 
     ;; keyboard settings
     (define-key php-mode-map (kbd "=") (smartchr '(" = " " === " "=" " == ")))
-    (define-key php-mode-map (kbd ">") (smartchr '(">" "->" "=>" " >>> ")))
+    (define-key php-mode-map (kbd ">") (smartchr '(">" "->" " => " " >>> ")))
     (define-key php-mode-map (kbd "!") (smartchr '("!" " !== " " != ")))
     (define-key php-mode-map (kbd "(") (smartchr '("(`!!')" "(")))
     (define-key php-mode-map (kbd "[") (smartchr '("[`!!']" "[")))
@@ -36,6 +36,10 @@
         (auto-complete-mode t))))
 
   (add-hook 'php-mode-hook 'my-php-mode-hook))
+
+;; (when (require 'mmm-auto)
+;;   (setq mmm-global-mode 'maybe)
+;;   (mmm-add-mode-ext-class 'html-mode "\\.php\\'" 'html-php))
 
 ;; nxhtml settings
 (load "~/.emacs.d/elisp/nxhtml/autostart.el")

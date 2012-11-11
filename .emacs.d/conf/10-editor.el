@@ -6,15 +6,6 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 
-;; smartchr settings
-(when (require 'smartchr nil t)
-  (require 'smartchr)
-  (global-set-key (kbd "\'") (smartchr '("'`!!''" "'")))
-  (global-set-key (kbd "\"") (smartchr '("\"`!!'\"" "\"")))
-  (global-set-key (kbd "(") (smartchr '("(`!!')" "(")))
-  (global-set-key (kbd "[") (smartchr '("[`!!']" "[")))
-  (global-set-key (kbd "{") (smartchr '("{`!!'}" "{"))))
-
 ;; Lines settings
 (setq kill-whole-line t)
 (setq next-line-add-newlines nil)
@@ -39,3 +30,12 @@
   (setq c-basic-offset tab-width)
   (setq indent-tabs-mode nil))
 (add-hook 'c-mode-hook 'my-c-mode-hook)
+
+;; smartchr settings
+;; git clone git://gihub.com/imakado/emacs-smartchr.git
+(when (require 'smartchr nil t)
+  (global-set-key (kbd "\'") (smartchr '("'`!!''" "'")))
+  (global-set-key (kbd "\"") (smartchr '("\"`!!'\"" "\"")))
+  (global-set-key (kbd "(") (smartchr '("(`!!')" "(")))
+  (global-set-key (kbd "[") (smartchr '("[`!!']" "[")))
+  (global-set-key (kbd "{") (smartchr '("{`!!'}" "{"))))
