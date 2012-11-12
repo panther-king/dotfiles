@@ -35,10 +35,10 @@
 (when (require 'open-junk-file nil t)
   (setq open-junk-file-format "~/.emacs.d/.junk/%Y%m%d%H%M%S."))
 
-;; yasnippet settings
-(when (require 'yasnippet nil t)
-  (yas/initialize)
-  (yas/load-directory "~/.emacs.d/elisp/yasnippet-0.6.1c/snippets"))
+;; yanippet settings
+;; (when (require 'yasnippet nil t)
+;;   (yas/initialize)
+;;   (yas/load-directory "~/.emacs.d/elisp/yasnippet-0.6.1c/snippets"))
 
 ;; yaml-mode settings
 ;; Install from ELPA

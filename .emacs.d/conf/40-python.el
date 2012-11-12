@@ -4,6 +4,6 @@
   (setq py-indent-offset 4)
   (setq tab-width py-indent-offset)
   (define-key python-mode-map (kbd "\"") (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")))
-  (define-key python-mode-map (kbd "\'") (smartchr '("'`!!'" "'''`!!''''")))
-  (define-key python-mode-map (kbd "=") (smartchr '(" = " " == "))))
+  (define-key python-mode-map (kbd "\'") (smartchr '("'`!!''" "'''`!!''''")))
+  (define-key python-mode-map (kbd "=") (smartchr '(" = " " == " "="))))
 (add-hook 'python-mode-hook 'my-python-mode-hook)
