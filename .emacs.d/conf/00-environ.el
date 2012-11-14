@@ -13,6 +13,20 @@
 (setq backup-inhibited t)
 (setq delete-auto-save-files t)
 
+;; Frame settings
+(setq frame-title-format (format"emacs@%s : %%f" (system-name)))
+(auto-compression-mode t)
+(auto-image-file-mode t)
+(recentf-mode)
+(when (eq window-system 'w32)
+  (setq initial-frame-alist
+        (append (list
+                 '(width . 196)
+                 '(height . 51)
+                 '(top . 0)
+                 '(left . 0)
+                 )
+                initial-frame-alist)))
 
 ;; File name settings
 (when (eq window-system 'w32)
