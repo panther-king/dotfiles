@@ -51,7 +51,8 @@
 (when (require 'wdired nil t)
   (define-key dired-mode-map (kbd "r") 'wdired-change-to-wdired-mode))
 
-;; rst settings(when (require 'rst nil t)
+;; rst settings
+(when (require 'rst nil t)
   (setq auto-mode-alist
         (append '(("\\.rst$" . rst-mode)
                   ("\\.rest$" . rst-mode)) auto-mode-alist))
