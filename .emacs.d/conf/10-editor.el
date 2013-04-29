@@ -34,8 +34,9 @@
 ;; smartchr settings
 ;; git clone git://gihub.com/imakado/emacs-smartchr.git
 (when (require 'smartchr nil t)
+  (require 'smartchr)
   (global-set-key (kbd "\'") (smartchr '("'`!!''" "'")))
   (global-set-key (kbd "\"") (smartchr '("\"`!!'\"" "\"")))
   (global-set-key (kbd "(") (smartchr '("(`!!')" "(")))
   (global-set-key (kbd "[") (smartchr '("[`!!']" "[")))
-  (global-set-key (kbd "{") (smartchr '("{`!!'}" "{"))))
+  (global-set-key (kbd "{") (smartchr '("{`!!'}" "{{ `!!' }}" "{"))))
