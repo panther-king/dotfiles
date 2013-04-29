@@ -6,7 +6,7 @@
                '("ELPA" . "http://tromey.com/elpa/"))
   (add-to-list 'package-archives
                '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (package-initialize))
+  (package-initialize)
   (require 'melpa))
 
 ;; Backup settings
