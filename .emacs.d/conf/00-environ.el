@@ -16,6 +16,9 @@
 
 ;; File name settings
 (when (eq window-system 'w32)
+  (set-language-environment 'utf-8)
+  (prefer-coding-system 'utf-8)
+  (set-default-coding-systems 'utf-8)
   (set-file-name-coding-system 'cp932)
   (setq locale-coding-system 'cp932))
 

@@ -32,10 +32,16 @@
 (load "elscreen")
 
 ;; Default font settings
-(progn
-  (set-default-font "Inconsolata-12")
-  (set-fontset-font (frame-parameter nil 'font)
-                    'japanese-jisx0208 '("Migu-1M-regular" . "unicode-bmp")))
+(when (eq window-system 'w32)
+  (progn
+    (set-default-font "Ricty-12")
+    (set-fontset-font (frame-parameter nil 'font)
+                      'japanese-jisx0208 '("Ricty" . "unicode-bmp"))))
+(when (eq window-system 'x)
+  (progn
+    (set-default-font "Inconsolata-12")
+    (set-fontset-font (frame-parameter nil 'font)
+                      'japanese-jisx0208 '("Migu-1M-regular" . "unicode-bmp"))))
 
 ;; Frame settings
 (setq frame-title-format (format"emacs@%s : %%f" (system-name)))

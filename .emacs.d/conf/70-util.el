@@ -26,6 +26,10 @@
 (when (require 'yasnippet nil t)
   (yas-global-mode 1))
 
+;; open-junk-file settings
+(when (require 'open-junk-file nil t)
+  (setq open-junk-file-format "~/.emacs.d/.junk/%Y%m%d%H%M%S."))
+
 ;; yaml-mode settings
 (when (require 'yaml-mode nil t)
   (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode)))
