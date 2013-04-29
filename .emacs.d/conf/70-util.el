@@ -38,6 +38,10 @@
 (when (require 'redo+ nil t)
   (global-set-key (kbd "C-'") 'redo))
 
+;; markdown settings
+(when (require 'markdown-mode nil t)
+  (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode)))
+
 ;;
 ;; Install from other site
 ;;
