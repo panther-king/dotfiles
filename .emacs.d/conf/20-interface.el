@@ -4,7 +4,7 @@
 (tool-bar-mode 0)
 (setq inhibit-startup-message t)
 (setq scroll-step 1)
-(set-face-foreground 'modeline "blue")
+(set-face-foreground 'mode-line "blue")
 (global-linum-mode t)
 (column-number-mode t)
 
