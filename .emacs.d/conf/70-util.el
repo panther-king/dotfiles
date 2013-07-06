@@ -46,11 +46,49 @@
 (when (require 'markdown-mode nil t)
   (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode)))
 
+;; zencoding settings
+(when (require 'zencoding-mode)
+  ; @see http://fukuyama.co/zencoding
+  (setq zencoding-block-tags
+        (append (list
+                 "article"
+                 "section"
+                 "aside"
+                 "nav"
+                 "figure"
+                 "address"
+                 "header"
+                 "footer")
+                zencoding-block-tags))
+  (setq zencoding-inline-tags
+        (append (list
+                 "textarea"
+                 "small"
+                 "time" "del" "ins"
+                 "sub"
+                 "sup"
+                 "i" "s" "b"
+                 "ruby" "rt" "rp"
+                 "bdo"
+                 "iframe" "canvas"
+                 "audio" "video"
+                 "object" "embed"
+                 "map")
+                zencoding-inline-tags))
+  (add-hook 'html-mode-hook 'zencoding-mode)
+  (add-hook 'php-mode-hook 'zencoding-mode)
+  (add-hook 'sgml-mode-hook 'zencoding-mode)
+  (add-hook 'nxhtml-mode-hook 'zencoding-mode)
+  (add-hook 'nxml-mode-hook 'zencoding-mode))
+
+;; JSON settings
+(require 'json-mode)
+
 ;;
 ;; Install from other site
 ;;
 
- ;; undohist settings
+;; undohist settings
 ;; install-elisp http://cx4a.org/pub/undohist.el
 (when (require 'undohist nil t)
   (undohist-initialize))

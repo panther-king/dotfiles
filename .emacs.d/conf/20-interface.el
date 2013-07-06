@@ -73,3 +73,13 @@
     (setq eldoc-echo-area-use-multiline-p t)
     (turn-on-eldoc-mode)))
 (add-hook 'emacs-lisp-mode-hook 'emacs-eldoc-hook)
+
+;; Directory tree settings
+;; git clone https://github.com/m2ym/direx-el.git
+(when (require 'direx nil t)
+  (global-set-key (kbd "C-x C-k") 'direx:jump-to-directory))
+
+;; popwin settings
+;; git clone git://github.com/m2ym/popwin-el.git
+(when (require 'popwin)
+  (setq special-display-function 'popwin:display-buffer))
