@@ -20,7 +20,7 @@
 
 ;; multi-term settings
 (when (require 'multi-term nil t)
-  (setq multi-term-program "/bin/zsh"))
+  (setq multi-term-program "/usr/bin/zsh"))
 
 ;; yasnippet settings
 (when (require 'yasnippet nil t)
