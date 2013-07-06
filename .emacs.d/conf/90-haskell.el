@@ -1,0 +1,11 @@
+;; Haskell settings
+(when (require 'haskell-mode-autoloads nil t)
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+  (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+  (defun my-haskell-mode-hook ()
+    (define-key haskell-mode-map (kbd "=") (smartchr '(" = " " == " "=")))
+    (define-key haskell-mode-map (kbd ">") (smartchr '(">" " -> " " => ")))
+    (define-key haskell-mode-map (kbd "<") (smartchr '("<" " <- " " <= ")))
+    (define-key haskell-mode-map (kbd "+") (smartchr '("+" " ++ ")))
+    (define-key haskell-mode-map (kbd ":") (smartchr '(":" " :: "))))
+  (add-hook 'haskell-mode-hook 'my-haskell-mode-hook))
