@@ -13,10 +13,6 @@
     (c-set-offset 'case-label '+)
     (c-set-offset 'arglist-intro '+)
     (c-set-offset 'arglist-close 0)
-;               (c-set-offset 'case-label 4)
-;               (c-set-offset 'arglist-intro 4)
-;               (c-set-offset 'arglist-con-nonempty 4)
-;               (c-set-offset 'arglist-close 0)
 
     ;; keyboard settings
     (define-key php-mode-map (kbd "=") (smartchr '(" = " " === " "=" " == ")))
