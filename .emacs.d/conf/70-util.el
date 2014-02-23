@@ -26,10 +26,6 @@
 (when (require 'yasnippet nil t)
   (yas-global-mode 1))
 
-;; open-junk-file settings
-(when (require 'open-junk-file nil t)
-  (setq open-junk-file-format "~/.emacs.d/.junk/%Y%m%d%H%M%S."))
-
 ;; yaml-mode settings
 (when (require 'yaml-mode nil t)
   (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode)))
@@ -84,6 +80,9 @@
 ;; JSON settings
 (require 'json-mode)
 
+;; git settings
+(require 'magit)
+
 ;;
 ;; Install from other site
 ;;
@@ -103,11 +102,6 @@
         (append '(("\\.rst$" . rst-mode)
                   ("\\.rest$" . rst-mode)) auto-mode-alist))
   (setq frame-background-mode 'dark))
-
-;; egg settings
-;; git clone git://github.com/byplayer/egg.git
-(when (executable-find "git")
-  (require 'egg nil t))
 
 ;; ctags settings
 (when (require 'ctags nil t)
