@@ -6,6 +6,7 @@
     (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
     (setq ruby-deep-indent-paren-style nil)
     (define-key ruby-mode-map (kbd "=") (smartchr '(" = " " == " "=")))
+    (define-key ruby-mode-map (kbd "!") (smartchr '("!" " != ")))
     (define-key ruby-mode-map (kbd "|") (smartchr '("|`!!'|" "|")))
     (define-key ruby-mode-map (kbd "{") (smartchr '("{`!!'}" "{")))
     (define-key ruby-mode-map (kbd ">") (smartchr '(" > " " => " " -> " ">")))
