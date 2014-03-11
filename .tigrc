@@ -1,0 +1,19 @@
+# tig settings
+# @see http://jonas.nitro.dk/tig/manual.html
+# @see http://qiita.com/yoshikazusawa/items/3eaa6db78fa348d38bfe
+
+# Jump the line like vim
+bind generic g move-first-line
+bind generic G move-last-line
+
+# `git commit --amend`
+bind generic + !git commit --amend
+
+# `git checkout -b`
+bind branch n !git checkout -b %(prompt) %(branch)
+
+# `git push`
+bind generic P !git push origin %(prompt)
+
+# Copy commit ID to clipboard
+bind generic 9 !@sh -c "echo -n %(commit) | xclip --selection c"
