@@ -3,6 +3,12 @@
   (setq js-indent-level 2
         js-expr-indent-offset 2
         indent-tabs-mode nil)
+
+  (define-key js-mode-map (kbd "=") (smartchr '(" = " " === " "=" " == ")))
+  (define-key js-mode-map (kbd ">") (smartchr '(" > " ">")))
+  (define-key js-mode-map (kbd "<") (smartchr '(" < " "<")))
+  (define-key js-mode-map (kbd "!") (smartchr '("!" " !== " " != ")))
+
   (defun my-js-indent-line ()
     (interactive)
     (let* ((parse-status (save-excursion (syntax-ppss (point-at-bol))))
