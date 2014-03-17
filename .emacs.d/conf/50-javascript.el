@@ -5,8 +5,6 @@
         indent-tabs-mode nil)
 
   (define-key js-mode-map (kbd "=") (smartchr '(" = " " === " "=" " == ")))
-  (define-key js-mode-map (kbd ">") (smartchr '(" > " ">")))
-  (define-key js-mode-map (kbd "<") (smartchr '(" < " "<")))
   (define-key js-mode-map (kbd "!") (smartchr '("!" " !== " " != ")))
 
   (defun my-js-indent-line ()
