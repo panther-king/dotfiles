@@ -60,7 +60,7 @@ alias diff="colordiff"
 alias reboot="sudo reboot"
 alias halt="sudo poweroff"
 alias irb="pry"
-alias h="cd ${HOME}"
+alias 1="cd ${HOME}"
 
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
