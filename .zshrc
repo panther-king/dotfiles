@@ -15,7 +15,7 @@ case ${UID} in # rootと一般ユーザーのIFを分ける
     RPROMPT="[%B%{[36m%}%/%{[m%}%b] "
     RPROMPT2="[%B%{[36m%}%_%{[m%}%b] "
     SPROMPT="%B%{[36m%}%r is correct? [n,y,a,e]:%{[m%}%b "
-    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
         PROMPT="%{37m%}${HOST%%.*} ${PROMPT}"
     ;;
 *)
@@ -23,7 +23,7 @@ case ${UID} in # rootと一般ユーザーのIFを分ける
     RPROMPT="[%{[36m%}%/%{[m%}] "
     RPROMPT2="%{[36m%}%_%{[m%} "
     SPROMPT="%{[36m%}%r is correct? [n,y,a,e]:%{[m%} "
-    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
         PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
     ;;
 esac
@@ -47,7 +47,7 @@ setopt hist_ignore_dups  # 直前と同じコマンドは.zsh_historyに追加�
 setopt list_packed       # 補完候補を詰めて表示
 setopt list_types        # 補完候補にファイル種類も表示
 setopt magic_equal_subst # オプションの"="以降も補完
-setopt nolistbeep 
+setopt nolistbeep
 setopt nonomatch
 setopt notify            # バックグラウンドジョブの状態変化を通知
 setopt share_history     # 他のシェルのヒストリを共有
@@ -87,7 +87,9 @@ synclient CircScrollTrigger=0
 source ~/.zsh/plugin/incr*.zsh
 case ${UID} in
 1000)
-    source ~/.zsh/options/*.zsh
+    for f in `find ~/.zsh/options -name "*.zsh" -type f`; do
+        source ${f}
+    done
     ;;
 *)
     ;;
