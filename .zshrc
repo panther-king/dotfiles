@@ -104,6 +104,9 @@ source `which virtualenvwrapper.sh`
 # ruby用環境変数
 export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
 
+# npm用環境変数
+export NODE_PATH=/usr/lib/node_modules/
+
 # golang用環境変数
 export GOROOT=/usr/lib/go
 export GOPATH=$HOME/go
