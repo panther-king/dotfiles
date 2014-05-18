@@ -97,6 +97,10 @@ esac
 
 CHROME_BIN=/usr/bin/chromium
 
+# virtualenvwrapper & pythonz
+source `which virtualenvwrapper.sh`
+[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
+
 # ruby用環境変数
 export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
 
