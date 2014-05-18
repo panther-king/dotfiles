@@ -5,5 +5,8 @@
   (define-key python-mode-map (kbd "\"") (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")))
   (define-key python-mode-map (kbd "\'") (smartchr '("'`!!''" "'" "'''`!!''''")))
   (define-key python-mode-map (kbd "=") (smartchr '(" = " " == " "=")))
+  (define-key python-mode-map (kbd "!") (smartchr '("!" " != ")))
+  (define-key python-mode-map (kbd "-") (smartchr '("-" " -= ")))
+  (define-key python-mode-map (kbd "+") (smartchr '("+" " += ")))
   (add-to-list 'auto-mode-alist '("\\.pt$" . html-mode)))
 (add-hook 'python-mode-hook 'my-python-mode-hook)
