@@ -60,7 +60,12 @@ alias diff="colordiff"
 alias reboot="sudo reboot"
 alias halt="sudo poweroff"
 alias irb="pry"
-alias 1="cd ${HOME}"
+
+alias -s py=python
+alias -s php=php
+alias -s rb=ruby
+alias -s pl=perl
+alias -s {bmp,gif,jpg,png,BMP,GIF,JPG,PNG}=eog
 
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
