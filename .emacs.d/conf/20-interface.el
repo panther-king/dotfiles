@@ -58,7 +58,7 @@
       '(tabl tab-mark spaces space-mark))
 (setq whitespace-space-regexp "\\(\x3000+\\)")
 (setq whitespace-display-mappings
-      '((space-mark ?\x3000 [?\　])
+      '((space-mark ?\x3000 [?\□])
         (tab-mark ?\t [94 ?\t])))
 (global-whitespace-mode t)
 (set-face-foreground 'whitespace-space "LightSlateGray")
