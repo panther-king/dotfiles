@@ -74,6 +74,16 @@
     (turn-on-eldoc-mode)))
 (add-hook 'emacs-lisp-mode-hook 'emacs-eldoc-hook)
 
+(defun count-lines-and-chars ()
+  (if mark-active
+      (format "%d lines,%d chars "
+              (count-lines (region-beginning) (region-end))
+              (- (region-end) (region-beginning)))
+    ""))
+(add-to-list 'default-mode-line-format
+             '(:eval (count-lines-and-chars)))
+
+
 ;; Directory tree settings
 ;; git clone https://github.com/m2ym/direx-el.git
 (when (require 'direx nil t)
