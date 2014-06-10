@@ -22,11 +22,7 @@
 (global-hl-line-mode t)
 
 ;; color-theme settings
-;; git clone git://github.com/sellout/emacs-color-theme-solarized.git
-(when (require 'color-theme nil t)
-  (color-theme-initialize)
-  (when (require 'color-theme-solarized nil t)
-    (color-theme-solarized-dark)))
+(load-theme 'deeper-blue t)
 
 ;; elscreen settings
 (load "elscreen")
