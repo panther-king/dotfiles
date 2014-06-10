@@ -22,7 +22,9 @@
 (global-hl-line-mode t)
 
 ;; color-theme settings
-(load-theme 'deeper-blue t)
+(when (require 'color-theme nil t)
+  (color-theme-initialize)
+  (color-theme-deep-blue))
 
 ;; elscreen settings
 (load "elscreen")
