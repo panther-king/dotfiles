@@ -61,6 +61,7 @@
   (set-face-foreground 'whitespace-tab "#666666")
   (set-face-background 'whitespace-tab 'nil))
 
+;; http://homepage3.nifty.com/satomii/software/jaspace.el
 (when (require 'jaspace nil t)
   (setq jaspace-alternate-jaspace-string "□")
   (setq jaspace-highlight-tabs t))
