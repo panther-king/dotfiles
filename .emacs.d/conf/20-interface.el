@@ -52,17 +52,18 @@
 (which-function-mode 1)
 
 ;; Show tabs and multi-byte whitespace
-(setq whitespace-style
-      '(tabl tab-mark spaces space-mark))
-(setq whitespace-space-regexp "\\(\x3000+\\)")
-(setq whitespace-display-mappings
-      '((space-mark ?\x3000 [?\□])
-        (tab-mark ?\t [94 ?\t])))
-(global-whitespace-mode t)
-(set-face-foreground 'whitespace-space "LightSlateGray")
-(set-face-background 'whitespace-space 'nil)
-(set-face-foreground 'whitespace-tab "LightSlateGray")
-(set-face-background 'whitespace-tab 'nil)
+(when (require 'whitespace nil t)
+  (global-whitespace-mode t)
+  (setq whitespace-style
+        '(face tabs tab-mark spaces space-mark))
+  (set-face-foreground 'whitespace-space "#666666")
+  (set-face-background 'whitespace-space 'nil)
+  (set-face-foreground 'whitespace-tab "#666666")
+  (set-face-background 'whitespace-tab 'nil))
+
+(when (require 'jaspace nil t)
+  (setq jaspace-alternate-jaspace-string "□")
+  (setq jaspace-highlight-tabs t))
 
 ;; Echo area settings
 (defun emacs-eldoc-hook ()
