@@ -56,15 +56,14 @@
   (global-whitespace-mode t)
   (setq whitespace-style
         '(face tabs tab-mark spaces space-mark))
+  (setq whitespace-space-regexp "\\(\u0020+\\|\u3000+\\)")
+  (setq whitespace-display-mappings
+        '((space-mark ?\u0020 [?\uff65])
+          (space-mark ?\u3000 [?\u25a1])))
   (set-face-foreground 'whitespace-space "#666666")
   (set-face-background 'whitespace-space 'nil)
   (set-face-foreground 'whitespace-tab "#666666")
   (set-face-background 'whitespace-tab 'nil))
-
-;; http://homepage3.nifty.com/satomii/software/jaspace.el
-(when (require 'jaspace nil t)
-  (setq jaspace-alternate-jaspace-string "□")
-  (setq jaspace-highlight-tabs t))
 
 ;; Echo area settings
 (defun emacs-eldoc-hook ()
