@@ -37,9 +37,9 @@
                       'japanese-jisx0208 '("Ricty" . "unicode-bmp"))))
 (when (eq window-system 'x)
   (progn
-    (set-default-font "Inconsolata-12")
+    (set-default-font "yomogifont-12")
     (set-fontset-font (frame-parameter nil 'font)
-                      'japanese-jisx0208 '("Migu-1M-regular" . "unicode-bmp"))))
+                      'japanese-jisx0208 '("yomogifont" . "unicode-bmp"))))
 
 ;; Frame settings
 (setq frame-title-format (format"emacs@%s : %%f" (system-name)))
