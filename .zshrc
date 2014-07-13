@@ -11,7 +11,7 @@ eval $(dircolors /home/taro/github/dircolors-solarized/dircolors.ansi-dark)
 
 case ${UID} in # rootと一般ユーザーのIFを分ける
 0)
-    PROMPT="%m:%n%# "
+    PROMPT="(#^-^) "
     RPROMPT="[%B%{[36m%}%/%{[m%}%b] "
     RPROMPT2="[%B%{[36m%}%_%{[m%}%b] "
     SPROMPT="%B%{[36m%}%r is correct? [n,y,a,e]:%{[m%}%b "
@@ -19,7 +19,7 @@ case ${UID} in # rootと一般ユーザーのIFを分ける
         PROMPT="%{37m%}${HOST%%.*} ${PROMPT}"
     ;;
 *)
-    PROMPT="%m:%n%% "
+    PROMPT="(*^-^) "
     RPROMPT="[%{[36m%}%/%{[m%}] "
     RPROMPT2="%{[36m%}%_%{[m%} "
     SPROMPT="%{[36m%}%r is correct? [n,y,a,e]:%{[m%} "
