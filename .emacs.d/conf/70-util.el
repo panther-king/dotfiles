@@ -80,21 +80,6 @@
   (add-hook 'nxhtml-mode-hook 'zencoding-mode)
   (add-hook 'nxml-mode-hook 'zencoding-mode))
 
-;; JSON settings
-(require 'json-mode)
-
-;; git settings
-(require 'magit)
-
-;;
-;; Install from other site
-;;
-
-;; undohist settings
-;; install-elisp http://cx4a.org/pub/undohist.el
-(when (require 'undohist nil t)
-  (undohist-initialize))
-
 ;; wdired settings
 (when (require 'wdired nil t)
   (define-key dired-mode-map (kbd "r") 'wdired-change-to-wdired-mode))
@@ -110,7 +95,6 @@
 (when (require 'ctags nil t)
   (setq tags-revert-without-query t)
   (setq ctags-command "ctags -e -R ")
-;(setq ctags-command "ctags -R --fields=\"+afikKlmnsSzt\" ")
   (global-set-key (kbd "<f5>") 'ctags-create-or-update-tags-table))
 
 ;; sql-mode settings
@@ -119,3 +103,24 @@
   (setq sql-indent-offset 4)
   (setq sql-indent-maybe-tab nil))
 (add-hook 'sql-mode-hook 'my-sql-mode-hook)
+
+;; regexp settings
+(when (require 'foreign-regexp nil t)
+  (custom-set-variables
+   '(foreign-regexp/regexp-type 'ruby)
+   '(reb-re-syntax 'foreign-regexp)))
+
+;; JSON settings
+(require 'json-mode)
+
+;; git settings
+(require 'magit)
+
+;;
+;; Install from other site
+;;
+
+;; undohist settings
+;; install-elisp http://cx4a.org/pub/undohist.el
+(when (require 'undohist nil t)
+  (undohist-initialize))
