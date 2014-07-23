@@ -1,3 +1,6 @@
+;; Change answer from yes/no to y/n
+(fset 'yes-or-no-p 'y-or-n-p)
+
 ;;
 ;; Install from emacswiki
 ;; http://www.emacswiki.org/
