@@ -31,7 +31,7 @@
 
 ;; yaml-mode settings
 (when (require 'yaml-mode nil t)
-  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode)))
+  (add-to-list 'auto-mode-alist '("\\.\\(yml\\|raml\\)$" . yaml-mode)))
 
 ;; undo-tree settings
 (when (require 'undo-tree nil t)
