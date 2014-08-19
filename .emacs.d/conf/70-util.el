@@ -97,14 +97,10 @@
   (setq ctags-command "ctags -e -R ")
   (global-set-key (kbd "<f5>") 'ctags-create-or-update-tags-table))
 
-;; sql-mode settings
-(defun my-sql-mode-hook ()
-  (load-library "sql-indent")
-  (setq sql-indent-offset 4)
-  (setq sql-indent-maybe-tab nil))
-(add-hook 'sql-mode-hook 'my-sql-mode-hook)
-
 ;; regexp settings
+;; M-s M-s incremental search
+;; M-s M-r decremental search
+;; M-s M-% replacement
 (when (require 'foreign-regexp nil t)
   (custom-set-variables
    '(foreign-regexp/regexp-type 'ruby)
