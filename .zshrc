@@ -106,6 +106,9 @@ CHROME_BIN=/usr/bin/chromium
 source `which virtualenvwrapper.sh`
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
 
+# AWSコマンド補完
+source `which aws_zsh_completer.sh`
+
 # ruby用環境変数
 export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
 
