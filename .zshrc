@@ -52,6 +52,7 @@ setopt nonomatch
 setopt notify            # バックグラウンドジョブの状態変化を通知
 setopt share_history     # 他のシェルのヒストリを共有
 
+# コマンドエイリアス
 alias ls="ls --color"
 alias ll="ls -l"
 alias la="ls -la"
@@ -61,6 +62,7 @@ alias reboot="sudo reboot"
 alias halt="sudo poweroff"
 alias irb="pry"
 
+# スクリプトと画像ファイルを直接実行できるように
 alias -s py=python
 alias -s php=php
 alias -s rb=ruby
