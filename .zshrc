@@ -69,6 +69,13 @@ alias -s rb=ruby
 alias -s pl=perl
 alias -s {bmp,gif,jpg,png,BMP,GIF,JPG,PNG}=eog
 
+# gitのエイリアス
+alias gad="git add -p"
+alias gbr="git branch"
+alias gcm="git commit -v"
+alias gco="git checkout"
+alias gst="git status"
+
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end hitory-search-end
