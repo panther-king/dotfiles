@@ -9,7 +9,7 @@
 ;; (add-hook 'html-mode-hook 'my-html-mode-hook)
 
 (when (require 'web-mode nil t)
-  (add-to-list 'auto-mode-alist '("\\.\\(html\\|pt\\|mak\\)$" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.\\(\\(!scala\\.\\)html\\|pt\\|mak\\)$" . web-mode))
   (setq web-mode-engines-alist
         '(("blade" . "\\.blade\\.")))
   (defun my-web-mode-hook ()
