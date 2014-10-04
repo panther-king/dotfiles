@@ -26,6 +26,7 @@
   (define-key ruby-mode-map (kbd "|") (smartchr '("|`!!'|" "||" " ||= " "|")))
   (define-key ruby-mode-map (kbd ">") (smartchr '(" > " " => " " -> " ">")))
   (define-key ruby-mode-map (kbd "{") (smartchr '("{`!!'}" "{")))
+  (define-key ruby-mode-map [backtab] 'indent-region)
   (define-key ruby-mode-map [return] 'reindent-then-newline-and-indent))
 (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
 (add-hook 'ruby-mode-hook 'flycheck-mode)
