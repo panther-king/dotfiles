@@ -60,6 +60,7 @@ alias vi="vim"
 alias diff="colordiff"
 alias reboot="sudo reboot"
 alias halt="sudo poweroff"
+alias py="python"
 alias irb="pry"
 
 # スクリプトと画像ファイルを直接実行できるように
@@ -68,6 +69,7 @@ alias -s php=php
 alias -s rb=ruby
 alias -s pl=perl
 alias -s {bmp,gif,jpg,png,BMP,GIF,JPG,PNG}=eog
+alias -s pdf=evince
 
 # gitのエイリアス
 alias gad="git add -p"
