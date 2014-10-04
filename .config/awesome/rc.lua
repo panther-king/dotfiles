@@ -90,8 +90,8 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-    names = { "tile", "tile", "tile", "horizontal", "max" },
-    layout = { layouts[1], layouts[1], layouts[1], layouts[7], layouts[10]}
+    names = { "tile", "tile", "tile", "tile", "horizontal", "max" },
+    layout = { layouts[1], layouts[1], layouts[1], layouts[1], layouts[7], layouts[10]}
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
