@@ -1,7 +1,7 @@
 ;; Ruby settings
 (autoload 'ruby-mode "ruby-mode"
   "Ruby editing mode" t)
-(add-to-list 'auto-mode-alist '("\\.\\(rb\\|rabl\\|jbuilder\\)$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(rb\\|rake\\|rabl\\|jbuilder\\)$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\(Capfile\\|Gemfile\\|Guardfile\\)$" . ruby-mode))
 
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
