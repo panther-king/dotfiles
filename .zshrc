@@ -133,6 +133,7 @@ export NODE_PATH=/usr/lib/node_modules/
 
 # scala用環境変数
 export PATH=$PATH:$HOME/activator
+export PATH=$PATH:$HOME/bin
 
 # golang用環境変数
 export GOROOT=/usr/lib/go
