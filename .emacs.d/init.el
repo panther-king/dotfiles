@@ -9,6 +9,7 @@
             (normal-top-level-add-subdirs-to-load-path))))))
 
 (add-to-load-path "elisp" "conf" "elpa" "public_repos")
+(fset 'package-desc-vers 'package--ac-desc-version)
 
 ;; init-loader settings
 ;; http://coderepos.org/share/browser/lang/elisp/init-loader/init-loader.el
