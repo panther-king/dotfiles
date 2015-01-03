@@ -14,5 +14,5 @@
   (add-hook 'scala-mode-hook 'my-scala-mode-hook))
 
 ;; ensime settings
-(when (require 'ensime nil t)
-  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))
+;; (when (require 'ensime nil t)
+;;   (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))
