@@ -51,6 +51,7 @@ setopt nolistbeep
 setopt nonomatch
 setopt notify            # バックグラウンドジョブの状態変化を通知
 setopt share_history     # 他のシェルのヒストリを共有
+setopt extended_history  # コマンド実行日時も記録
 
 # コマンドエイリアス
 alias ls="ls --color"
@@ -62,13 +63,16 @@ alias reboot="sudo reboot"
 alias halt="sudo poweroff"
 alias py="python"
 alias irb="pry"
+alias sublime="/opt/sublime-text/sublime_text"
+alias pt="ptpython"
+alias top="htop"
 
 # スクリプトと画像ファイルを直接実行できるように
 alias -s py=python
 alias -s php=php
 alias -s rb=ruby
 alias -s pl=perl
-alias -s {bmp,gif,jpg,png,BMP,GIF,JPG,PNG}=eog
+alias -s {bmp,gif,jpg,jpeg,png,BMP,GIF,JPG,JPEG,PNG}=eog
 alias -s pdf=evince
 
 # gitのエイリアス
@@ -95,6 +99,7 @@ zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-separator '-->'
 zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*' use-cache yes
 
 synclient CircularScrolling=1
 synclient CircScrollTrigger=0
