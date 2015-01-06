@@ -125,8 +125,8 @@ source `which virtualenvwrapper.sh`
 # AWSコマンド補完
 source `which aws_zsh_completer.sh`
 
-# ruby用環境変数
-export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin
+# rbenv初期化設定
+eval "$(rbenv init -)"
 
 # npm用環境変数
 export NODE_PATH=/usr/lib/node_modules/
