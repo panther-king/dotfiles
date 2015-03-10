@@ -234,7 +234,7 @@ c = get_config()
 # c.TerminalInteractiveShell.logstart = False
 
 # The part of the banner to be printed before the profile
-# c.TerminalInteractiveShell.banner1 = 'Python 3.4.3 (default, Feb 26 2015, 23:01:07) \nType "copyright", "credits" or "license" for more information.\n\nIPython 3.0.0 -- An enhanced Interactive Python.\n?         -> Introduction and overview of IPython\'s features.\n%quickref -> Quick reference.\nhelp      -> Python\'s own help system.\nobject?   -> Details about \'object\', use \'object??\' for extra details.\n'
+c.TerminalInteractiveShell.banner1 = ''
 
 # 
 # c.TerminalInteractiveShell.object_info_string_level = 0
