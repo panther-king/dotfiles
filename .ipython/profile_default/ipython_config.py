@@ -300,7 +300,7 @@ c.TerminalInteractiveShell.banner1 = ''
 # c.TerminalInteractiveShell.screen_length = 0
 
 # Set the color scheme (NoColor, Linux, or LightBG).
-# c.TerminalInteractiveShell.colors = 'Linux'
+c.TerminalInteractiveShell.colors = 'LightBG'
 
 # 
 # c.TerminalInteractiveShell.readline_remove_delims = '-/~'
