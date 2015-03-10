@@ -62,7 +62,6 @@ alias diff="colordiff"
 alias reboot="sudo reboot"
 alias halt="sudo poweroff"
 alias py="python"
-alias irb="pry"
 alias sublime="/opt/sublime-text/sublime_text"
 alias pt="ptpython"
 alias top="htop"
@@ -80,6 +79,7 @@ alias gad="git add -p"
 alias gbr="git branch"
 alias gcm="git commit -v"
 alias gco="git checkout"
+alias gsl="git stash list"
 alias gst="git status"
 
 autoload history-search-end
@@ -116,20 +116,11 @@ case ${UID} in
     ;;
 esac
 
-CHROME_BIN=/usr/bin/chromium
-
-# virtualenvwrapper & pythonz
-source `which virtualenvwrapper.sh`
-[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
-
 # AWSコマンド補完
 source `which aws_zsh_completer.sh`
 
-# rbenv初期化設定
-eval "$(rbenv init -)"
-
-# npm用環境変数
-export NODE_PATH=/usr/lib/node_modules/
+# ruby(gem)用環境変数
+export PATH=$PATH:$HOME/.gem/ruby/2.2.0/bin
 
 # scala用環境変数
 export PATH=$PATH:$HOME/activator
@@ -139,3 +130,7 @@ export PATH=$PATH:$HOME/bin
 export GOROOT=/usr/lib/go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+# anyenv初期化
+export PATH=$HOME/.anyenv/bin:$PATH
+eval "$(anyenv init -)"
