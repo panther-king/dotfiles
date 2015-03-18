@@ -63,8 +63,8 @@ alias reboot="sudo reboot"
 alias halt="sudo poweroff"
 alias py="python"
 alias sublime="/opt/sublime-text/sublime_text"
-alias pt="ptpython"
 alias top="htop"
+alias bp="bpython"
 
 # スクリプトと画像ファイルを直接実行できるように
 alias -s py=python
