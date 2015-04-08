@@ -39,7 +39,7 @@
   (global-set-key (kbd "\"") (smartchr '("\"`!!'\"" "\"")))
   (global-set-key (kbd "(") (smartchr '("(`!!')" "(")))
   (global-set-key (kbd "[") (smartchr '("[`!!']" "[")))
-  (global-set-key (kbd "{") (smartchr '("{`!!'}" "{{`!!'}}" "{"))))
+  (global-set-key (kbd "{") (smartchr '("{`!!'}" "{"))))
 
 ;; Default buffer mode
 (setq default-major-mode 'lisp-interaction-mode)
