@@ -119,6 +119,9 @@ esac
 # AWSコマンド補完
 source `which aws_zsh_completer.sh`
 
+# php(composer)用環境変数
+export PATH=$PATH:$HOME/.composer/vendor/bin
+
 # ruby(gem)用環境変数
 export PATH=$PATH:$HOME/.gem/ruby/2.2.0/bin
 
