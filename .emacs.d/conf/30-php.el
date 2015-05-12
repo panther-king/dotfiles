@@ -29,6 +29,7 @@
     (define-key php-mode-map (kbd "!") (smartchr '("!" " !== " " != ")))
     (define-key php-mode-map (kbd "(") (smartchr '("(`!!')" "(")))
     (define-key php-mode-map (kbd "[") (smartchr '("[`!!']" "[")))
+    (define-key php-mode-map (kbd "{") (smartchr '("{`!!'}" "{")))
 
     ;; completion settings
     ;; git clone git://github.com/imakado/php-completion.git

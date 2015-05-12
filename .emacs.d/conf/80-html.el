@@ -1,20 +1,12 @@
 ;; HTML settings
-;; (defun my-html-mode-hook ()
-;;   (setq indent-tabs-mode nil)
-;;   (setq tab-width 2)
-;;   (define-key html-mode-map (kbd "=") (smartchr '("=")))
-;;   (define-key html-mode-map (kbd "{") (smartchr '("{}" "{" "{{`!!'}}")))
-;;   (add-to-list 'auto-mode-alist '("\\.\\(pt\\|mak\\)$" . html-mode)))
-
-;; (add-hook 'html-mode-hook 'my-html-mode-hook)
-
 (when (require 'web-mode nil t)
-  (add-to-list 'auto-mode-alist '("\\.\\(\\(!scala\\.\\)html\\|pt\\|mak\\)$" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.\\(\\(!scala\\.\\)html\\|pt\\|mak\\|blade\\.php\\)$" . web-mode))
   (setq web-mode-engines-alist
         '(("blade" . "\\.blade\\.")))
   (defun my-web-mode-hook ()
     (define-key web-mode-map (kbd "C-;") nil)
     (define-key web-mode-map (kbd "C-c C-;") 'web-mode-comment-or-uncomment)
+    (define-key web-mode-map (kbd "{") (smartchr '("{}" "{" "{{`!!'}}")))
     (setq web-mode-markup-indent-offset 2)
     (setq web-mode-code-indent-offset 2)
     (setq web-mode-css-indent-offset 2))
