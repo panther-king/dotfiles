@@ -1,6 +1,12 @@
 ;; Change answer from yes/no to y/n
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; Completion settings
+(icomplete-mode 1)
+(global-set-key (kbd "C-j") 'dabbrev-expand)
+(setq read-buffer-completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
+
 ;;
 ;; Install from emacswiki
 ;; http://www.emacswiki.org/
