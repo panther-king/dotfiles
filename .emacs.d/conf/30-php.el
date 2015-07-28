@@ -40,6 +40,24 @@
         (make-variable-buffer-local 'ac-sources)
         (add-to-list 'ac-sources 'ac-source-php-completion)
         (auto-complete-mode t))))
+
+  (defun unindent-closure ()
+    "Fix php-mode indent for closures"
+    (let ((syntax (mapcar 'car c-syntactic-context)))
+      (if (and (member 'arglist-cont-nonempty syntax)
+               (or
+                (member 'statement-block-intro syntax)
+                (member 'brace-list-intro syntax)
+                (member 'brace-list-close syntax)
+                (member 'block-close syntax)))
+          (save-excursion
+            (beginning-of-line)
+            (delete-char (* (count 'arglist-cont-nonempty syntax)
+                            c-basic-offset))) )))
+
+  (add-hook 'php-mode-hook
+            '(lambda ()
+              (add-hook 'c-special-indent-hook 'unindent-closure)))
   (add-hook 'php-mode-hook 'my-php-mode-hook))
 
 ;; (when (require 'mmm-auto)
