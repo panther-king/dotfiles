@@ -47,7 +47,8 @@ end
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "terminology"
+--terminal = "terminology"
+terminal = "terminator"
 editor = os.getenv("EDITOR") or "emacs"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -109,7 +110,6 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal },
                                     { "shutdown", function () awful.util.spawn_with_shell("gksu 'shutdown -h now'") end }
                                   }
                         })
