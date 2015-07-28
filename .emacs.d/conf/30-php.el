@@ -17,7 +17,7 @@
         (goto-char (cdr langelem))
         (vector (current-column))))
     (setq php-mode-force-pear nil)
-    (setq indent-tabs-mode t)
+    (setq indent-tabs-mode nil)
     (setq c-basic-offset 4)
     (c-set-offset 'case-label '+)
     (c-set-offset 'arglist-intro 'ywb-php-lineup-arglist-intro)
