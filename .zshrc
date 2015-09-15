@@ -8,21 +8,24 @@ colors
 # git clone https://github.com/seebi/dircolors-solarized.git
 eval $(dircolors /home/taro/github/dircolors-solarized/dircolors.ansi-dark)
 
+# シンタックスハイライト
+# yaourt -S zsh-syntax-highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 case ${UID} in # rootと一般ユーザーのIFを分ける
 0)
-    PROMPT="(#^-^) "
-    RPROMPT="[%B%{[36m%}%/%{[m%}%b] "
-    RPROMPT2="[%B%{[36m%}%_%{[m%}%b] "
-    SPROMPT="%B%{[36m%}%r is correct? [n,y,a,e]:%{[m%}%b "
+    PROMPT="(%#^-^) "
+    RPROMPT="[%F{green}%d%f] "
+    RPROMPT2="[%F{green}%_%f] "
+    SPROMPT="%F{yellow}%B%r is correct? [n,y,a,e]:%b%f "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
         PROMPT="%{37m%}${HOST%%.*} ${PROMPT}"
     ;;
 *)
-    PROMPT="(*^-^) "
-    RPROMPT="[%{[36m%}%/%{[m%}] "
-    RPROMPT2="%{[36m%}%_%{[m%} "
-    SPROMPT="%{[36m%}%r is correct? [n,y,a,e]:%{[m%} "
+    PROMPT="(%#^-^) "
+    RPROMPT="[%F{green}%~%f] "
+    RPROMPT2="[%F{green}%_%f] "
+    SPROMPT="%F{yellow}%B%r is correct? [n,y,a,e]:%b%f "
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
         PROMPT="%{[37m%}${HOST%%.*} ${PROMPT}"
     ;;
