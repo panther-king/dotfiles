@@ -23,9 +23,13 @@
 (global-hl-line-mode t)
 
 ;; color-theme settings
-(when (require 'color-theme nil t)
-  (color-theme-initialize)
-  (color-theme-deep-blue))
+;; (when (require 'color-theme nil t)
+;;   (color-theme-initialize)
+;;   (color-theme-deep-blue))
+;;(load-theme 'cyberpunk t)
+;;(load-theme 'obsidian t)
+(load-theme 'smyx t)
+;;(load-theme 'subatomic t)
 
 ;; elscreen settings
 (load "elscreen")
