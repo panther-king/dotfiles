@@ -113,7 +113,9 @@
    '(reb-re-syntax 'foreign-regexp)))
 
 ;; JSON settings
-(require 'json-mode)
+(when (require 'json-mode nil t)
+  (add-to-list 'auto-mode-alist '("//.json$" . json-mode))
+  (setq js-indent-level 2))
 
 ;; git settings
 (require 'magit)
