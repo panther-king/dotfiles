@@ -46,7 +46,6 @@
 
 ;; Mode line settings
 (display-time)
-(which-function-mode 1)
 
 ;; Show tabs and multi-byte whitespace
 (when (require 'whitespace nil t)
