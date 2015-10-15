@@ -8,32 +8,23 @@
 (setq read-file-name-completion-ignore-case t)
 
 ;;
-;; Install from emacswiki
-;; http://www.emacswiki.org/
+;; Install from ELPA
+;; list-packages
 ;;
 
-;; install-elisp-from-emacswiki auto-install.el
+;; auto-install settings
 (when (require 'auto-install nil t)
   (setq auto-install-directory "~/.emacs.d/elisp/")
   (auto-install-update-emacswiki-package-name t)
   (auto-install-compatibility-setup))
 
-;; install-elisp-from-emacs-wiki open-junk-file.el
+;; open-junk-file settings
 (when (require 'open-junk-file nil t)
   (setq open-junk-file-format "~/.emacs.d/.junk/%Y%m%d%H%M%S."))
-
-;;
-;; Install from ELPA
-;; list-packages
-;;
 
 ;; multi-term settings
 (when (require 'multi-term nil t)
   (setq multi-term-program "/usr/bin/zsh"))
-
-;; yasnippet settings
-(when (require 'yasnippet nil t)
-  (yas-global-mode 1))
 
 ;; yaml-mode settings
 (when (require 'yaml-mode nil t)
@@ -50,41 +41,6 @@
 ;; markdown settings
 (when (require 'markdown-mode nil t)
   (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode)))
-
-;; zencoding settings
-(when (require 'zencoding-mode)
-  ; @see http://fukuyama.co/zencoding
-  (setq zencoding-block-tags
-        (append (list
-                 "article"
-                 "section"
-                 "aside"
-                 "nav"
-                 "figure"
-                 "address"
-                 "header"
-                 "footer")
-                zencoding-block-tags))
-  (setq zencoding-inline-tags
-        (append (list
-                 "textarea"
-                 "small"
-                 "time" "del" "ins"
-                 "sub"
-                 "sup"
-                 "i" "s" "b"
-                 "ruby" "rt" "rp"
-                 "bdo"
-                 "iframe" "canvas"
-                 "audio" "video"
-                 "object" "embed"
-                 "map")
-                zencoding-inline-tags))
-  (add-hook 'html-mode-hook 'zencoding-mode)
-  (add-hook 'php-mode-hook 'zencoding-mode)
-  (add-hook 'sgml-mode-hook 'zencoding-mode)
-  (add-hook 'nxhtml-mode-hook 'zencoding-mode)
-  (add-hook 'nxml-mode-hook 'zencoding-mode))
 
 ;; wdired settings
 (when (require 'wdired nil t)

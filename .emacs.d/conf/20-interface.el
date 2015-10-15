@@ -82,11 +82,9 @@
              '(:eval (count-lines-and-chars)))
 
 ;; Directory tree settings
-;; git clone https://github.com/m2ym/direx-el.git
 (when (require 'direx nil t)
   (global-set-key (kbd "C-x C-k") 'direx:jump-to-directory))
 
 ;; popwin settings
-;; git clone git://github.com/m2ym/popwin-el.git
 (when (require 'popwin)
   (setq special-display-function 'popwin:display-buffer))

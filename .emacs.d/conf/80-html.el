@@ -31,11 +31,3 @@
    '(web-mode-css-at-rule-face
      ((t (:foreground "#FF7F00"))))
    ))
-
-;; sass(scss) settings
-(when (require 'scss-mode nil t)
-  (defun my-scss-mode-hook ()
-    (add-to-list 'auto-mode-alist '("\\.\\(scss\\|css\\)$" . scss-mode))
-    (setq css-indent-offset 2)
-    (setq scss-compile-at-save nil))
-  (add-hook 'scss-mode-hook 'my-scss-mode-hook))
