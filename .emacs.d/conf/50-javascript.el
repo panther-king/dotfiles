@@ -23,3 +23,14 @@
   (define-key coffee-mode-map (kbd ">") (smartchr '(" -> " " > " " => " ">")))
   (define-key coffee-mode-map (kbd "{") (smartchr '("{`!!'}" "{"))))
 (add-hook 'coffee-mode-hook 'my-coffee-mode-hook)
+
+;; TypeScript settings
+(when (require 'typescript-mode nil t)
+  (defun my-typescript-mode-hook ()
+    (define-key typescript-mode-map (kbd "=") (smartchr '(" = " " === " "=" " == ")))
+    (define-key typescript-mode-map (kbd "!") (smartchr '("!" " !== " " != ")))
+    (define-key typescript-mode-map (kbd "+") (smartchr '("+" "++" " += ")))
+    (define-key typescript-mode-map (kbd "-") (smartchr '("-" "--" " -= ")))
+    (define-key typescript-mode-map (kbd "<") (smartchr '("<" " < " " <= ")))
+    (define-key typescript-mode-map (kbd ">") (smartchr '(">" " => " " > " " >= "))))
+  (add-hook 'typescript-mode-hook 'my-typescript-mode-hook))
