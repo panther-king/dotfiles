@@ -15,4 +15,5 @@
 (require 'init-loader)
 (init-loader-load "~/.emacs.d/conf")
 
-(require 'cl)
+(require 'generic-x)
+(require 'cl-lib)
