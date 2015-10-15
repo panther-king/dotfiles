@@ -59,25 +59,3 @@
             '(lambda ()
               (add-hook 'c-special-indent-hook 'unindent-closure)))
   (add-hook 'php-mode-hook 'my-php-mode-hook))
-
-;; (when (require 'mmm-auto)
-;;   (setq mmm-global-mode 'maybe)
-;;   (mmm-add-mode-ext-class 'html-mode "\\.php\\'" 'html-php))
-
-;; nxhtml settings
-(load "~/.emacs.d/elisp/nxhtml/autostart.el")
-(custom-set-faces
- '(mumamo-background-chunk-major
-   ((((class color) (min-colors 88) (background dark)) (:background "dark1"))))
- '(mumamo-background-chunk-submode1
-   ((((class color) (min-colors 88) (background dark)) (:background "dark1")))))
-
-;; Workaround the annoying warnings:
-;; Warning (mumamo-per-buffer-local-vars):
-;; Already 'permanent-local t: buffer-file-name
-;; @see https://gist.github.com/tkf/3951163
-(when (and (equal emacs-major-version 24)
-           (equal emacs-minor-version 3))
-  (eval-after-load "mumamo"
-    '(setq mumamo-per-buffer-local-vars
-           (delq 'buffer-file-name mumamo-per-buffer-local-vars))))
