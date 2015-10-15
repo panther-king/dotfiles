@@ -76,11 +76,10 @@
 ;; git settings
 (require 'magit)
 
-;;
-;; Install from other site
-;;
+;; twitter settings
+(when (require 'twittering-mode nil t)
+  (setq twittering-use-master-password t))
 
 ;; undohist settings
-;; install-elisp http://cx4a.org/pub/undohist.el
 (when (require 'undohist nil t)
   (undohist-initialize))
