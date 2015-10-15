@@ -137,3 +137,6 @@ export PATH=$PATH:$GOPATH/bin
 # anyenv初期化
 export PATH=$HOME/.anyenv/bin:$PATH
 eval "$(anyenv init -)"
+
+# direnv初期化
+eval "$(direnv hook zsh)"
