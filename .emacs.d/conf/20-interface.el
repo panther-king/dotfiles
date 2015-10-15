@@ -23,28 +23,20 @@
 (global-hl-line-mode t)
 
 ;; color-theme settings
-;; (when (require 'color-theme nil t)
-;;   (color-theme-initialize)
-;;   (color-theme-deep-blue))
 ;;(load-theme 'cyberpunk t)
-;;(load-theme 'obsidian t)
-(load-theme 'smyx t)
+(load-theme 'obsidian t)
+;;(load-theme 'smyx t)
 ;;(load-theme 'subatomic t)
+;;(load-theme 'zen-and-art t)
 
 ;; elscreen settings
 (load "elscreen")
 
 ;; Default font settings
-(when (eq window-system 'w32)
-  (progn
-    (set-default-font "Ricty-12")
-    (set-fontset-font (frame-parameter nil 'font)
-                      'japanese-jisx0208 '("Ricty" . "unicode-bmp"))))
-(when (eq window-system 'x)
-  (progn
-    (set-default-font "yomogifont-12")
-    (set-fontset-font (frame-parameter nil 'font)
-                      'japanese-jisx0208 '("yomogifont" . "unicode-bmp"))))
+(progn
+  (set-default-font "yomogifont-12")
+  (set-fontset-font (frame-parameter nil 'font)
+                    'japanese-jisx0208 '("yomogifont" . "unicode-bmp")))
 
 ;; Frame settings
 (setq frame-title-format (format"emacs@%s : %%f" (system-name)))
