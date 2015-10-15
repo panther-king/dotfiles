@@ -43,3 +43,6 @@
 
 ;; Default buffer mode
 (setq default-major-mode 'lisp-interaction-mode)
+
+;; Init flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
