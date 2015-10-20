@@ -50,7 +50,8 @@
 (recentf-mode)
 
 ;; Mode line settings
-(display-time)
+(when (require 'powerline nil t)
+  (powerline-default-theme))
 
 ;; Show tabs and multi-byte whitespace
 (when (require 'whitespace nil t)
