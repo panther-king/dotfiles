@@ -58,5 +58,6 @@
   (load-library "migemo")
   (migemo-init))
 
-;; ag settings
+;; search settings
 (setq ag-highlight-search t)
+(global-ace-isearch-mode 1)
