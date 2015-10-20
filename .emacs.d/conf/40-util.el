@@ -74,7 +74,8 @@
   (setq js-indent-level 2))
 
 ;; git settings
-(require 'magit)
+(when (require 'magit nil t)
+  (global-set-key (kbd "C-M-g") 'magit-status))
 
 ;; twitter settings
 (when (require 'twittering-mode nil t)
