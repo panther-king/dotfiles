@@ -31,7 +31,11 @@
 ;;(load-theme 'zenburn t)
 
 ;; elscreen settings
-(load "elscreen")
+(when (require 'elscreen nil t)
+  (setq elscreen-prefix-key (kbd "C-z"))
+  (elscreen-start)
+  (setq elscreen-tab-display-kill-screen nil)
+  (setq elscreen-tab-display-control nil))
 
 ;; Default font settings
 (progn
