@@ -58,3 +58,5 @@
   (load-library "migemo")
   (migemo-init))
 
+;; ag settings
+(setq ag-highlight-search t)
