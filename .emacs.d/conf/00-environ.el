@@ -21,3 +21,6 @@
 ;; Add permission "Execute" to shell script
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
+
+;; Reload buffer settings
+(global-auto-revert-mode 1)
