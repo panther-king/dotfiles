@@ -83,3 +83,7 @@
 ;; undohist settings
 (when (require 'undohist nil t)
   (undohist-initialize))
+
+;; git-gutter settings
+(when (require 'git-gutter nil t)
+  (global-git-gutter-mode t))
