@@ -75,7 +75,9 @@
 
 ;; git settings
 (when (require 'magit nil t)
-  (global-set-key (kbd "C-M-g") 'magit-status))
+  (global-set-key (kbd "C-M-g") 'magit-status)
+  (when (require 'magit-gitflow nil t)
+    (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)))
 
 ;; twitter settings
 (when (require 'twittering-mode nil t)
