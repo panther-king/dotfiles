@@ -28,6 +28,7 @@
 ;;(load-theme 'smyx t)
 ;;(load-theme 'subatomic t)
 ;;(load-theme 'zen-and-art t)
+;;(load-theme 'zenburn t)
 
 ;; elscreen settings
 (load "elscreen")
