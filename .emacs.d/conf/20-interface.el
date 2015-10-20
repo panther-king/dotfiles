@@ -35,9 +35,9 @@
 
 ;; Default font settings
 (progn
-  (set-default-font "yomogifont-12")
+  (set-default-font "Ricty-13")
   (set-fontset-font (frame-parameter nil 'font)
-                    'japanese-jisx0208 '("yomogifont" . "unicode-bmp")))
+                    'japanese-jisx0208 '("Ricty" . "unicode-bmp")))
 
 ;; Frame settings
 (setq frame-title-format (format"emacs@%s : %%f" (system-name)))
