@@ -87,6 +87,19 @@
 (when (require 'undohist nil t)
   (undohist-initialize))
 
-;; git-gutter settings
-(when (require 'git-gutter nil t)
-  (global-git-gutter-mode t))
+;; git-gutter+ settings
+(when (require 'git-gutter-fringe+ nil t)
+  (global-git-gutter+-mode)
+  (setq-default left-fringe-width 20)
+  (fringe-helper-define 'git-gutter-fr+-modified nil
+    "...xx..."
+    "...xx..."
+    "...xx..."
+    "...xx..."
+    "...xx..."
+    "........"
+    "...xx..."
+    "...xx...")
+  (set-face-foreground 'git-gutter-fr+-modified "green")
+  (set-face-foreground 'git-gutter-fr+-added "yellow")
+  (set-face-foreground 'git-gutter-fr+-deleted "red"))
