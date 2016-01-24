@@ -73,7 +73,7 @@
 
 ;; JSON settings
 (when (require 'json-mode nil t)
-  (add-to-list 'auto-mode-alist '("//.json$" . json-mode))
+  (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
   (setq js-indent-level 2))
 
 ;; git settings
