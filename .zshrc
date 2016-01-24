@@ -44,7 +44,6 @@ setopt auto_pushd        # cd時にディレクトリスタックへpushd
 setopt auto_param_keys   # カッコの対応を自動補完
 setopt brace_ccl
 setopt correct           # コマンドのスペル補正
-setopt equals            # =commandで`which command`と同様の処理
 setopt extended_glob     # glob機能の拡張
 setopt hist_ignore_dups  # 直前と同じコマンドは.zsh_historyに追加しない
 setopt list_packed       # 補完候補を詰めて表示
@@ -53,6 +52,7 @@ setopt magic_equal_subst # オプションの"="以降も補完
 setopt nolistbeep
 setopt nonomatch
 setopt notify            # バックグラウンドジョブの状態変化を通知
+setopt print_eight_bit   # 日本語ファイル名等の8ビットを通す
 setopt share_history     # 他のシェルのヒストリを共有
 setopt extended_history  # コマンド実行日時も記録
 
