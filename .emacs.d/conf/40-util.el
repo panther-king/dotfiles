@@ -36,7 +36,10 @@
 
 ;; redo+ settings
 (when (require 'redo+ nil t)
-  (global-set-key (kbd "C-'") 'redo))
+  (global-set-key (kbd "C-M-/") 'redo)
+  (setq undo-no-redo t)
+  (setq undo-limit 600000)
+  (setq undo-strong-limit 900000))
 
 ;; markdown settings
 (when (require 'markdown-mode nil t)
