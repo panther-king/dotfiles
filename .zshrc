@@ -32,8 +32,8 @@ case ${UID} in # rootと一般ユーザーのIFを分ける
 esac
 
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=1000000
 
 bindkey -e # emacsキーバインド
 
