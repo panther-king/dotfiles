@@ -109,7 +109,6 @@ synclient CircularScrolling=1
 synclient CircScrollTrigger=0
 
 # 外部設定ファイルの読み込み
-source ~/.zsh/plugin/incr*.zsh
 case ${UID} in
 1000)
     for f in `find ~/.zsh/options -name "*.zsh" -type f`; do
