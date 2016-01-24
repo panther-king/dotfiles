@@ -97,3 +97,7 @@
 ;; rainbow-mode settings
 (when (require 'rainbow-mode nil t)
   (rainbow-mode t))
+
+;; neotree settings
+(when (require 'neotree)
+  (global-set-key [f8] 'neotree-toggle))
