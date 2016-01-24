@@ -93,3 +93,7 @@
 ;; popwin settings
 (when (require 'popwin)
   (setq special-display-function 'popwin:display-buffer))
+
+;; rainbow-mode settings
+(when (require 'rainbow-mode nil t)
+  (rainbow-mode t))
