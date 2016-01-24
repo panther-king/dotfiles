@@ -117,3 +117,8 @@
   (set-face-foreground 'git-gutter-fr+-modified "green")
   (set-face-foreground 'git-gutter-fr+-added "yellow")
   (set-face-foreground 'git-gutter-fr+-deleted "red"))
+
+;; sequential-command settings
+(when (require 'sequential-command-config nil t)
+  (global-set-key (kbd "C-a") 'seq-home)
+  (global-set-key (kbd "C-e") 'seq-end))
