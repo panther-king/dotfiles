@@ -1,6 +1,6 @@
 ;; HTML settings
 (when (require 'web-mode nil t)
-  (add-to-list 'auto-mode-alist '("\\.\\(\\(!scala\\.\\)html\\|pt\\|mak\\|blade\\.php\\)$" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.\\(html\\|pt\\|mak\\|blade\\.php\\)$" . web-mode))
   (setq web-mode-engines-alist
         '(("blade" . "\\.blade\\.")))
   (defun my-web-mode-hook ()
