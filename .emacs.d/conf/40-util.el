@@ -122,3 +122,7 @@
 (when (require 'sequential-command-config nil t)
   (global-set-key (kbd "C-a") 'seq-home)
   (global-set-key (kbd "C-e") 'seq-end))
+
+;; strict input settings
+(when (require 'drill-instructor nil t)
+  (setq drill-instructor-global t))
