@@ -134,6 +134,10 @@ export GOROOT=/usr/lib/go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+# rust用環境変数
+export RUST_SRC_PATH=/usr/local/src/rustc-nightly/src
+export PATH=$PATH:$HOME/.multirust/toolchains/nightly/cargo/bin
+
 # anyenv初期化
 export PATH=$HOME/.anyenv/bin:$PATH
 eval "$(anyenv init -)"
