@@ -8,6 +8,9 @@
 (set-face-foreground 'mode-line "blue")
 (global-linum-mode t)
 (column-number-mode t)
+(if window-system
+    (progn
+      (set-frame-parameter nil 'alpha 90)))
 
 ;; paren-mode settings
 (setq show-paren-delay 0)
