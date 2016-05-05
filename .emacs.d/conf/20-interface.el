@@ -23,12 +23,8 @@
 (global-hl-line-mode t)
 
 ;; color-theme settings
-;;(load-theme 'cyberpunk t)
 (load-theme 'obsidian t)
 ;;(load-theme 'smyx t)
-;;(load-theme 'subatomic t)
-;;(load-theme 'zen-and-art t)
-;;(load-theme 'zenburn t)
 
 ;; elscreen settings
 (when (require 'elscreen nil t)
