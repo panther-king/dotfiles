@@ -33,11 +33,14 @@ from libqtile import layout, bar, widget, hook
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser("~")
     subprocess.call(["fcitx"])
     subprocess.call(["feh",
                      "--bg-fill",
-                     home + "/Pictures/wallpapers/rust.png"])
+                     os.path.expanduser("~") + "/Pictures/wallpapers/rust.png"])
+    try:
+        subprocess.check_call(["pidof", "nm-applet"])
+    except subprocess.CalledProcessError:
+        subprocess.Popen(["nm-applet"])
 
 
 mod = "mod4"
@@ -127,14 +130,15 @@ screens = [
             [
                 widget.GroupBox(),
                 widget.WindowName(),
-                widget.Prompt(),
                 widget.Notify(),
+                widget.Prompt(prompt="what? "),
+                widget.TextBox('CPU:'),
                 widget.CPUGraph(width=50),
+                widget.TextBox('MEM:'),
                 widget.MemoryGraph(width=50),
+                widget.TextBox('NET:'),
                 widget.NetGraph(width=50),
                 widget.Battery(battery_name='BAT1'),
-                widget.BatteryIcon(battery_name='BAT1'),
-                widget.Wlan(),
                 widget.Systray(),
                 widget.Clock(format='%Y/%m/%d(%a) %H:%M:%S'),
             ],
