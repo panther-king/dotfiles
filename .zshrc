@@ -121,7 +121,7 @@ esac
 
 # rust用環境変数
 export RUST_SRC_PATH=/usr/local/src/rustc-nightly/src
-export PATH=$PATH:$HOME/.multirust/toolchains/nightly/cargo/bin
+export PATH=$PATH:$HOME/.multirust/toolchains/stable/cargo/bin
 
 # anyenv初期化
 export PATH=$HOME/.anyenv/bin:$PATH
