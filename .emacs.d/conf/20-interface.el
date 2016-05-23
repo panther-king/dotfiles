@@ -10,7 +10,7 @@
 (column-number-mode t)
 (if window-system
     (progn
-      (set-frame-parameter nil 'alpha 90)))
+      (set-frame-parameter nil 'alpha 95)))
 
 ;; paren-mode settings
 (setq show-paren-delay 0)
@@ -38,7 +38,7 @@
 
 ;; Default font settings
 (progn
-  (set-default-font "Ricty-13")
+  (set-default-font "Ricty-18")
   (set-fontset-font (frame-parameter nil 'font)
                     'japanese-jisx0208 '("Ricty" . "unicode-bmp")))
 

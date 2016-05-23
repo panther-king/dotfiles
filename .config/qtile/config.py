@@ -120,8 +120,8 @@ layouts = [
 
 widget_defaults = dict(
     font='Ubuntu',
-    fontsize=12,
-    padding=2,
+    fontsize=18,
+    padding=4,
 )
 
 screens = [
@@ -129,7 +129,9 @@ screens = [
         top=bar.Bar(
             [
                 widget.GroupBox(),
+                widget.Sep(padding=4,linewidth=2,foreground='555555',size_percent=70),
                 widget.WindowName(),
+                widget.Sep(padding=4,linewidth=2,foreground='555555',size_percent=70),
                 widget.Notify(),
                 widget.Prompt(prompt="what? "),
                 widget.TextBox('CPU:'),
@@ -138,11 +140,14 @@ screens = [
                 widget.MemoryGraph(width=50),
                 widget.TextBox('NET:'),
                 widget.NetGraph(width=50),
+                widget.TextBox('BAT:'),
                 widget.Battery(battery_name='BAT1'),
+                widget.Sep(padding=4,linewidth=2,foreground='555555',size_percent=70),
                 widget.Systray(),
+                widget.Sep(padding=4,linewidth=2,foreground='555555',size_percent=70),
                 widget.Clock(format='%Y/%m/%d(%a) %H:%M:%S'),
             ],
-            28,
+            36,
         ),
     ),
 ]
