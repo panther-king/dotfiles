@@ -119,21 +119,6 @@ case ${UID} in
     ;;
 esac
 
-# php(composer)用環境変数
-export PATH=$PATH:$HOME/.composer/vendor/bin
-
-# ruby(gem)用環境変数
-export PATH=$PATH:$HOME/.gem/ruby/2.2.0/bin
-
-# scala用環境変数
-export PATH=$PATH:$HOME/activator
-export PATH=$PATH:$HOME/bin
-
-# golang用環境変数
-export GOROOT=/usr/lib/go
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
 # rust用環境変数
 export RUST_SRC_PATH=/usr/local/src/rustc-nightly/src
 export PATH=$PATH:$HOME/.multirust/toolchains/nightly/cargo/bin
