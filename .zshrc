@@ -74,8 +74,8 @@ alias -s py=python
 alias -s php=php
 alias -s rb=ruby
 alias -s pl=perl
-alias -s {bmp,gif,jpg,jpeg,png,tiff,BMP,GIF,JPG,JPEG,PNG,TIFF}=eog
-alias -s pdf=evince
+alias -s {bmp,gif,jpg,jpeg,png,tiff,BMP,GIF,JPG,JPEG,PNG,TIFF}=geeqie
+alias -s pdf=mupdf
 
 # gitのエイリアス
 alias gad="git add -p"
