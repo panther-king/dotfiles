@@ -36,11 +36,7 @@ def autostart():
     subprocess.call(["fcitx"])
     subprocess.call(["feh",
                      "--bg-fill",
-                     os.path.expanduser("~") + "/Pictures/wallpapers/rust.png"])
-    try:
-        subprocess.check_call(["pidof", "nm-applet"])
-    except subprocess.CalledProcessError:
-        subprocess.Popen(["nm-applet"])
+                     os.path.expanduser("~") + "/Pictures/wallpaper-linux.jpg"])
 
 
 mod = "mod4"
