@@ -1,5 +1,5 @@
 (when (require 'rust-mode nil t)
-  (setq racer-cmd "/home/taro/.multirust/toolchains/nightly/cargo/bin/racer")
+  (setq racer-cmd "/home/taro/.multirust/toolchains/stable/cargo/bin/racer")
   (setq racer-rust-src-path "/usr/local/src/rustc-nightly/src")
   (define-key rust-mode-map (kbd "=") (smartchr '(" = " " == " "=")))
   (define-key rust-mode-map (kbd "+") (smartchr '(" + " "+" " += ")))
