@@ -37,4 +37,7 @@ export XMODIFIERS=@im=fcitx
 
 xcompmgr &
 
+synclient CircularScrolling=1
+synclient CircScrollTrigger=0
+
 exec qtile

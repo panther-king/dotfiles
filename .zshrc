@@ -105,9 +105,6 @@ zstyle ':completion:*:messages' format '%F{YELLOW}%d'$DEFAULT
 zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'$DEFAULT
 
-synclient CircularScrolling=1
-synclient CircScrollTrigger=0
-
 # 外部設定ファイルの読み込み
 case ${UID} in
 1000)
