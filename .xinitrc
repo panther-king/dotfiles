@@ -39,5 +39,6 @@ xcompmgr &
 
 synclient CircularScrolling=1
 synclient CircScrollTrigger=0
+synclient TapButton2=3
 
 exec qtile
