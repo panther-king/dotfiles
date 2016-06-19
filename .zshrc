@@ -118,7 +118,7 @@ esac
 
 # rust用環境変数
 export RUST_SRC_PATH=/usr/local/src/rustc-nightly/src
-export PATH=$PATH:$HOME/.multirust/toolchains/stable/cargo/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 # anyenv初期化
 export PATH=$PATH:$HOME/.anyenv/bin
@@ -126,6 +126,9 @@ eval "$(anyenv init -)"
 
 # direnv初期化
 eval "$(direnv hook zsh)"
+
+# 変数の重複を除去
+typeset -U path PATH fpath FPATH
 
 # pip zsh completion start
 function _pip_completion {
