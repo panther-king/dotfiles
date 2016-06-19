@@ -8,6 +8,9 @@
                '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (package-initialize))
 
+;; PATH settings
+(exec-path-from-shell-initialize)
+
 ;; Backup settings
 (setq backup-inhibited t)
 (setq delete-auto-save-files t)

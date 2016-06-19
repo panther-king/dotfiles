@@ -1,6 +1,5 @@
 (when (require 'rust-mode nil t)
-  (setq racer-cmd "/home/taro/.multirust/toolchains/stable/cargo/bin/racer")
-  (setq racer-rust-src-path "/usr/local/src/rustc-nightly/src")
+  (setq racer-rust-src-path "/usr/local/src/rustc-1.9.0/src")
   (define-key rust-mode-map (kbd "=") (smartchr '(" = " " == " "=")))
   (define-key rust-mode-map (kbd "+") (smartchr '(" + " "+" " += ")))
   (define-key rust-mode-map (kbd "-") (smartchr '(" - " "-" " -= ")))
@@ -10,6 +9,7 @@
   (define-key rust-mode-map (kbd "|") (smartchr '("|`!!'|" "||" "|")))
 
   (add-hook 'rust-mode-hook #'racer-mode)
+  (add-hook 'rust-mode-hook #'rustfmt-enable-on-save)
   (add-hook 'racer-mode-hook #'eldoc-mode)
   (add-hook 'racer-mode-hook #'company-mode)
   (local-set-key (kbd "C-i") #'company-indent-or-complete-common)
