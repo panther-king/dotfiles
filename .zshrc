@@ -65,7 +65,6 @@ alias diff="colordiff"
 alias reboot="sudo reboot"
 alias halt="sudo poweroff"
 alias py="python"
-alias sublime="/opt/sublime-text/sublime_text"
 alias top="htop"
 alias bp="bpython"
 
