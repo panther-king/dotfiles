@@ -26,8 +26,8 @@
 (global-hl-line-mode t)
 
 ;; color-theme settings
-(load-theme 'obsidian t)
-;;(load-theme 'smyx t)
+;;(load-theme 'obsidian t)
+(load-theme 'deeper-blue t)
 
 ;; elscreen settings
 (when (require 'elscreen nil t)
@@ -99,4 +99,9 @@
 
 ;; neotree settings
 (when (require 'neotree)
-  (global-set-key [f8] 'neotree-toggle))
+  (global-set-key [f8] 'neotree-toggle)
+  (setq neo-show-hidden-files t)
+  (setq neo-create-file-auto-open t)
+  (setq neo-smart-open t)
+  (setq neo-vc-integration '(face char))
+  (setq neo-window-position '(quote right)))
