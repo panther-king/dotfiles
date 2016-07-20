@@ -38,9 +38,9 @@
 
 ;; Default font settings
 (progn
-  (set-default-font "Ricty-18")
+  (set-default-font "RictyDiminishedDiscord-18")
   (set-fontset-font (frame-parameter nil 'font)
-                    'japanese-jisx0208 '("Ricty" . "unicode-bmp")))
+                    'japanese-jisx0208 '("RictyDiminishedDiscord" . "unicode-bmp")))
 
 ;; Frame settings
 (setq frame-title-format (format"emacs@%s : %%f" (system-name)))
