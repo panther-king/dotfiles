@@ -1,5 +1,5 @@
 (when (require 'rust-mode nil t)
-  (setq racer-rust-src-path "/usr/local/src/rustc-1.9.0/src")
+  (setq racer-rust-src-path "~/.racer-src/rustc-1.10.0/src")
   (define-key rust-mode-map (kbd "=") (smartchr '(" = " " == " "=")))
   (define-key rust-mode-map (kbd "+") (smartchr '(" + " "+" " += ")))
   (define-key rust-mode-map (kbd "-") (smartchr '(" - " "-" " -= ")))
