@@ -5,3 +5,5 @@
 
 /.zsh/plugin/*
 /.zsh/options/private/*
+
+/.config/qtile/__pycache__/
