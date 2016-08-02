@@ -8,6 +8,7 @@
   (define-key rust-mode-map (kbd "<") (smartchr '("<`!!'>" "<" " < " " <- " " <= ")))
   (define-key rust-mode-map (kbd "|") (smartchr '("|`!!'|" "||" "|")))
 
+  (add-hook 'rust-mode-hook 'cargo-minor-mode)
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'rust-mode-hook #'rustfmt-enable-on-save)
   (add-hook 'racer-mode-hook #'eldoc-mode)
