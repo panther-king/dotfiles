@@ -46,6 +46,11 @@
 
 ;; Init flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(when (require 'flycheck-pos-tip nil t)
+  (setq flycheck-pos-tip-timeout -1)
+  (eval-after-load 'flycheck
+    '(custom-set-variables
+      '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages))))
 
 ;; migemo settings
 (when (require 'migemo nil t)
