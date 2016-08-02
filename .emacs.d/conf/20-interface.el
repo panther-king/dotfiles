@@ -38,7 +38,7 @@
 
 ;; Default font settings
 (progn
-  (set-default-font "RictyDiminishedDiscord-18")
+  (set-default-font "RictyDiminishedDiscord-17")
   (set-fontset-font (frame-parameter nil 'font)
                     'japanese-jisx0208 '("RictyDiminishedDiscord" . "unicode-bmp")))
 
