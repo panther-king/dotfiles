@@ -129,6 +129,10 @@ eval "$(direnv hook zsh)"
 # 変数の重複を除去
 typeset -U path PATH fpath FPATH
 
+# lessをカラー表示
+export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
+export LESS=' -R '
+
 # pip zsh completion start
 function _pip_completion {
   local words cword
