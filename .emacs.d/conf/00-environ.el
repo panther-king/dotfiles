@@ -27,3 +27,6 @@
 
 ;; Reload buffer settings
 (global-auto-revert-mode 1)
+
+;; Ignore warning sound
+(setq ring-bell-function 'ignore)
