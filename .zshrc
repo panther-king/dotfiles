@@ -4,6 +4,9 @@ compinit
 autoload -U colors
 colors
 
+autoload -U promptinit
+promptinit
+
 # solarizedカラーテーマ
 # git clone https://github.com/seebi/dircolors-solarized.git
 eval $(dircolors /home/taro/github/dircolors-solarized/dircolors.ansi-dark)
@@ -31,12 +34,14 @@ case ${UID} in # rootと一般ユーザーのIFを分ける
     ;;
 esac
 
+# コマンド履歴
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=1000000
 
 bindkey -e # emacsキーバインド
 
+setopt HIST_IGNORE_DUPS  # 重複するコマンド履歴は無視
 setopt auto_cd           # cd不要でディレクトリ移動
 setopt auto_list         # 補完候補の一覧表示
 setopt auto_menu         # 補完候補のインクリメント表示
@@ -58,8 +63,8 @@ setopt extended_history  # コマンド実行日時も記録
 
 # コマンドエイリアス
 alias ls="ls --color"
-alias ll="ls -l"
-alias la="ls -la"
+alias ll="ls -lh"
+alias la="ll -A"
 alias vi="vim"
 alias diff="colordiff"
 alias reboot="sudo reboot"
@@ -116,7 +121,7 @@ case ${UID} in
 esac
 
 # rust用環境変数
-export RUST_SRC_PATH=$HOME/.racer-src/rustc-1.10.0.src
+export RUST_SRC_PATH=$HOME/.racer-src/rustc-1.10.0/src/
 export PATH=$PATH:$HOME/.cargo/bin
 
 # anyenv初期化
