@@ -1,6 +1,7 @@
 ;; Key bind settings
 (define-key global-map (kbd "C-h") 'delete-backward-char)
 (define-key global-map (kbd "C-t") 'other-window)
+(define-key global-map (kbd "C-'") 'set-mark-command)
 
 ;; Don't use tab indent
 (setq-default indent-tabs-mode nil)
