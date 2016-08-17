@@ -15,5 +15,20 @@
 (require 'init-loader)
 (init-loader-load "~/.emacs.d/conf")
 
+;; Ignore display minor-mode
+(setq my/hidden-minor-modes
+      '(ace-isearch-mode
+        eldoc-mode
+        git-gutter+-mode
+        global-whitespace-mode
+        helm-mode
+        helm-migemo-mode
+        projectile-mode
+        undo-tree-mode))
+(mapc (lambda (mode)
+        (setq minor-mode-alist
+              (cons (list mode "") (assq-delete-all mode minor-mode-alist))))
+      my/hidden-minor-modes)
+
 (require 'generic-x)
 (require 'cl-lib)
