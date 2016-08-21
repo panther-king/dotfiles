@@ -1,34 +1,25 @@
-;; Define function to add load-path
-(defun add-to-load-path (&rest paths)
-  (let (path)
-    (dolist (path paths paths)
-      (let ((default-directory
-              (expand-file-name (concat user-emacs-directory path))))
-        (add-to-list 'load-path default-directory)
-        (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-            (normal-top-level-add-subdirs-to-load-path))))))
+;; 設定をロード
+(when load-file-name
+  (setq user-emacs-directory (file-name-directory load-file-name)))
 
-(add-to-load-path "elisp" "conf" "elpa" "public_repos")
-(fset 'package-desc-vers 'package--ac-desc-version)
+;; el-get
+(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
 
-;; init-loader settings
-(require 'init-loader)
-(init-loader-load "~/.emacs.d/conf")
+;; el-get設定の拡張
+(el-get-bundle with-eval-after-load-feature-el
+  :type "github"
+  :pkgname "tarao/with-eval-after-load-feature-el"
+  :features with-eval-after-load-feature)
 
-;; Ignore display minor-mode
-(setq my/hidden-minor-modes
-      '(ace-isearch-mode
-        eldoc-mode
-        git-gutter+-mode
-        global-whitespace-mode
-        helm-mode
-        helm-migemo-mode
-        projectile-mode
-        undo-tree-mode))
-(mapc (lambda (mode)
-        (setq minor-mode-alist
-              (cons (list mode "") (assq-delete-all mode minor-mode-alist))))
-      my/hidden-minor-modes)
-
-(require 'generic-x)
-(require 'cl-lib)
+;; 設定ファイルを指定した順に読み込む
+(el-get-bundle emacs-jp/init-loader
+  :type "github"
+  :pkgname "emacs-jp/init-loader"
+  :features init-loader
+  (init-loader-load "~/.emacs.d/loader"))
