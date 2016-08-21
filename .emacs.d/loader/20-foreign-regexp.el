@@ -1,0 +1,1 @@
+../conf/foreign-regexp.el
