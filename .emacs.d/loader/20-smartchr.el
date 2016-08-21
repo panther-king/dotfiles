@@ -1,0 +1,1 @@
+../conf/smartchr.el
