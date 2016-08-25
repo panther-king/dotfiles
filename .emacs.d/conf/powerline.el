@@ -30,8 +30,6 @@
                                          (powerline-raw which-func-format nil 'l))
                                        (powerline-raw " " face3)
                                        (funcall separator-left face3 face1)
-                                       (when (and (boundp 'erc-track-minor-mode) erc-track-minor-mode)
-                                         (powerline-raw erc-modified-channels-object face1 'l))
                                        (powerline-major-mode face1 'l)
                                        (powerline-process face1)
                                        (powerline-minor-modes face1 'l)
