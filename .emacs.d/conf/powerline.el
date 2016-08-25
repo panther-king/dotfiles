@@ -1,6 +1,7 @@
 ;; モードラインのリッチ化
 (el-get-bundle powerline
   :features powerline
+  (defface mode-line-color-pink '((t (:background "DeepPink2"))) "" :group 'powerline)
   (defun powerline-my-theme ()
     "Setup the my mode-line."
     (interactive)
@@ -12,22 +13,23 @@
                             (mode-line (if active 'mode-line 'mode-line-inactive))
                             (face1 (if active 'powerline-active1 'powerline-inactive1))
                             (face2 (if active 'powerline-active2 'powerline-inactive2))
+                            (face3 'mode-line-color-pink)
                             (separator-left (intern (format "powerline-%s-%s"
                                                             (powerline-current-separator)
                                                             (car powerline-default-separator-dir))))
                             (separator-right (intern (format "powerline-%s-%s"
                                                              (powerline-current-separator)
                                                              (cdr powerline-default-separator-dir))))
-                            (lhs (list (powerline-raw mode-line-modified mode-line 'l)
-                                       (powerline-buffer-id mode-line-buffer-id 'l)
+                            (lhs (list (powerline-raw mode-line-modified face3 'l)
+                                       (powerline-buffer-id face3 'l)
                                        (when powerline-display-buffer-size
-                                         (powerline-buffer-size mode-line 'l))
+                                         (powerline-buffer-size face3 'l))
                                        (when powerline-display-mule-info
-                                         (powerline-raw mode-line-mule-info mode-line 'l))
+                                         (powerline-raw mode-line-mule-info face3 'l))
                                        (when (and (boundp 'which-func-mode) which-func-mode)
                                          (powerline-raw which-func-format nil 'l))
-                                       (powerline-raw " ")
-                                       (funcall separator-left mode-line face1)
+                                       (powerline-raw " " face3)
+                                       (funcall separator-left face3 face1)
                                        (when (and (boundp 'erc-track-minor-mode) erc-track-minor-mode)
                                          (powerline-raw erc-modified-channels-object face1 'l))
                                        (powerline-major-mode face1 'l)
