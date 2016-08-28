@@ -1,8 +1,9 @@
 ;; モードラインのリッチ化
 (el-get-bundle powerline
   :features powerline
-  (defface mode-line-color-pink '((t (:background "DeepPink2"))) "" :group 'powerline)
-  (defface mode-line-color-light-gray '((t (:background "gray60"))) "" :group 'powerline)
+  (defface mode-line-color-pink '((t (:background "#ed3161"))) "" :group 'powerline)
+  (defface mode-line-color-light-gray '((t (:background "#999999"))) "" :group 'powerline)
+  (defface mode-line-color-dark-gray '((t (:background "#555555"))) "" :group 'powerline)
   (defun powerline-my-theme ()
     "Setup the my mode-line."
     (interactive)
@@ -16,6 +17,7 @@
                             (face2 (if active 'powerline-active2 'powerline-inactive2))
                             (face3 'mode-line-color-pink)
                             (face4 'mode-line-color-light-gray)
+                            (face5 'mode-line-color-dark-gray)
                             (separator-left (intern (format "powerline-%s-%s"
                                                             (powerline-current-separator)
                                                             (car powerline-default-separator-dir))))
@@ -36,24 +38,24 @@
                                        (powerline-raw "%4l" face4 'l)
                                        (powerline-raw ":" face4 'l)
                                        (powerline-raw "%3c" face4 'r)
-                                       (funcall separator-left face4 face1)
+                                       (funcall separator-left face4 face5)
 
-                                       (powerline-major-mode face1 'l)
-                                       (powerline-process face1)
-                                       (powerline-minor-modes face1 'l)
-                                       (powerline-narrow face1 'l)
-                                       (powerline-raw " " face1)
-                                       (funcall separator-left face1 face2)
+                                       (powerline-major-mode face5 'l)
+                                       (powerline-process face5)
+                                       (powerline-minor-modes face5 'l)
+                                       (powerline-narrow face5 'l)
+                                       (powerline-raw " " face5)
+                                       (funcall separator-left face5 face2)
 
                                        (powerline-vc face2 'r)))
                             (rhs (list (powerline-raw global-mode-string face2 'r)
                                        (funcall separator-right face2 face1)
 
-                                       (unless window-system
-                                         (powerline-raw (char-to-string #xe0a1) face1 'l))
-                                       (funcall separator-right face1 mode-line)
+                                       ;; (unless window-system
+                                       ;;   (powerline-raw (char-to-string #xe0a1) face1 'l))
+                                       ;; (funcall separator-right face1 mode-line)
 
-                                       (powerline-raw " ")
+                                       ;(powerline-raw " ")
                                        (powerline-raw "%6p" mode-line 'r)
                                        (when powerline-display-hud
                                          (powerline-hud face2 face1)))))
@@ -61,7 +63,4 @@
                                (powerline-fill face2 (powerline-width rhs))
                                (powerline-render rhs)))))))
   (with-eval-after-load-feature 'powerline
-    ;; (defface my-powerline-active1 '((t (:background "#ed3161" :inherit mode-line)))
-    ;;   "Powerline face 1."
-    ;;   :group 'powerline)
     (powerline-my-theme)))
