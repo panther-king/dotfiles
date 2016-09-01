@@ -4,6 +4,20 @@
   (defface mode-line-color-pink '((t (:background "#ed3161"))) "" :group 'powerline)
   (defface mode-line-color-light-gray '((t (:background "#999999"))) "" :group 'powerline)
   (defface mode-line-color-dark-gray '((t (:background "#555555"))) "" :group 'powerline)
+
+  (defun shorten-directory (dir max-length)
+    "Show up to `max-length' characters of a directory name `dir'."
+    (let ((path (reverse (split-string (abbreviate-file-name dir) "/")))
+          (output ""))
+      (when (and path (equal "" (car path)))
+        (setq path (cdr path)))
+      (while (and path (< (length output) (- max-length 4)))
+        (setq output (concat (car path) "/" output))
+        (setq path (cdr path)))
+      (when path
+        (setq output (concat ".../" output)))
+      output))
+
   (defun powerline-my-theme ()
     "Setup the my mode-line."
     (interactive)
@@ -25,13 +39,14 @@
                                                              (powerline-current-separator)
                                                              (cdr powerline-default-separator-dir))))
                             (lhs (list (powerline-raw mode-line-modified face3 'l)
-                                       (powerline-buffer-id face3 'l)
                                        (when powerline-display-buffer-size
                                          (powerline-buffer-size face3 'l))
                                        (when powerline-display-mule-info
                                          (powerline-raw mode-line-mule-info face3 'l))
                                        (when (and (boundp 'which-func-mode) which-func-mode)
                                          (powerline-raw which-func-format nil 'l))
+                                       (powerline-raw (shorten-directory default-directory 15) face3 'l)
+                                       (powerline-buffer-id face3 'l)
                                        (powerline-raw " " face3)
                                        (funcall separator-left face3 face4)
 
