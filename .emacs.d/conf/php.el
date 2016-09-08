@@ -9,7 +9,9 @@
       (define-key php-mode-map (kbd "!") (smartchr '("!" " !== " " != ")))
       (define-key php-mode-map (kbd "(") (smartchr '("(`!!')" "(")))
       (define-key php-mode-map (kbd "[") (smartchr '("[`!!']" "[")))
-      (define-key php-mode-map (kbd "{") (smartchr '("{`!!'}" "{"))))
+      (define-key php-mode-map (kbd "{") (smartchr '("{`!!'}" "{")))
+      (define-key php-mode-map (kbd "'") (smartchr '("'`!!''" "'")))
+      (define-key php-mode-map (kbd "\"") (smartchr '("\"`!!'\"" "\""))))
     (add-hook 'php-mode-hook 'my-php-mode-hook)
 
     ;; 配列のインデントを補正する
