@@ -32,7 +32,8 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; バッファのデフォルトメジャーモード
-(setq default-major-mode 'lisp-interaction-mode)
+(setq default-major-mode 'text-mode)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; バックアップファイルを作らない
 (setq make-backup-files nil)
