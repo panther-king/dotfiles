@@ -1,0 +1,27 @@
+# 必要なモジュールをロード
+zstyle ':prezto:load' pmodule \
+    'environment' \
+    'editor' \
+    'history' \
+    'utility' \
+    'completion' \
+    'prompt' \
+    'directory' \
+    'autosuggestions' \
+    'syntax-highlighting' \
+    'completion'
+
+# キーバインド設定
+zstyle ':prezto:module:editor' key-bindings 'emacs'
+
+# カラー表示
+zstyle ':prezto:*:*' color 'yes'
+
+# テーマをロード
+zstyle ':prezto:module:prompt' theme 'bigfade'
+
+# 補完をカラーリング
+zstyle ':prezto:module:autosuggestions' color 'yes'
+
+# シンタックスハイライト
+zstyle ':prezto:module:syntax-highlighting' color 'yes'
