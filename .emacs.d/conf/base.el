@@ -20,10 +20,15 @@
       (set-frame-parameter nil 'alpha 95)))
 
 ;; フォント
-(progn
-  (set-default-font "RictyDiminishedDiscord-17")
-  (set-fontset-font (frame-parameter nil 'font)
-                    'japanese-jisx0208 '("RictyDiminishedDiscord" . "unicode-bmp")))
+(when window-system
+  (create-fontset-from-ascii-font
+   "SourceCodePro-16:weight=normal:slant=normal" nil "sourcecodepro")
+  (set-fontset-font "fontset-sourcecodepro"
+                    'unicode
+                    (font-spec :family "SourceHanSansJP" :size 16)
+                    nil
+                    'append)
+  (add-to-list 'default-frame-alist '(font . "fontset-sourcecodepro")))
 
 ;; フレーム設定
 (setq frame-title-format (format"emacs@%s : %%f" (system-name)))

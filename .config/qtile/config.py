@@ -115,8 +115,8 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='RictyDiminishedDiscord',
-    fontsize=20,
+    font='SourceHanSansJP',
+    fontsize=18,
     padding=4,
 )
 
