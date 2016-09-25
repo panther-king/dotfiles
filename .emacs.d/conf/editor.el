@@ -26,12 +26,6 @@
 (setq show-paren-delay 0)
 (show-paren-mode t)
 
-;; 連続するスペースの可視化
-(setq-default show-trailing-whitespace t)
-
-;; 行末のスペースは保存時に削除
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
 ;; 補完
 (icomplete-mode 1)
 (global-set-key (kbd "C-j") 'dabbrev-expand)
