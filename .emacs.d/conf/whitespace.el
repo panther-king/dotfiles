@@ -9,11 +9,12 @@
                            tabs
                            trailing))
 
-  (setq whitespace-space-regexp "\\(\u3000+\\)")
+  (setq whitespace-space-regexp "\\(\u0020+\\|\u3000+\\)")
   (setq whitespace-tab-regexp "\\(\u0009+\\)")
 
   (setq whitespace-display-mappings
-        '((space-mark ?\u3000 [?\u25a1])
+        '((space-mark ?\u0020 [?.])
+          (space-mark ?\u3000 [?\u25a1])
           (tab-mark ?\u0009 [?\xBB ?\t])))
 
   (setq whitespace-action '(auto-cleanup))
@@ -28,7 +29,7 @@
                       :underline t)
   (set-face-attribute 'whitespace-space nil
                       :background nil
-                      :foreground "GreenYellow")
+                      :foreground "Gray24")
   (set-face-attribute 'whitespace-empty nil
                       :background nil
                       :foreground "GreenYellow"
