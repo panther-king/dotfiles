@@ -37,7 +37,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; バッファのデフォルトメジャーモード
-(setq default-major-mode 'text-mode)
+(setq major-mode 'text-mode)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; バックアップファイルを作らない
