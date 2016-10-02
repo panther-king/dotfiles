@@ -1,25 +1,53 @@
-;; 設定をロード
-(when load-file-name
-  (setq user-emacs-directory (file-name-directory load-file-name)))
+;; パッケージ関連の初期設定
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+(package-refresh-contents)
 
-;; el-get
-(add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
-    (goto-char (point-max))
-    (eval-print-last-sexp)))
-
-;; el-get設定の拡張
-(el-get-bundle with-eval-after-load-feature-el
-  :type "github"
-  :pkgname "tarao/with-eval-after-load-feature-el"
-  :features with-eval-after-load-feature)
+;; 利用するパッケージ
+(package-install 'cargo)
+(package-install 'company)
+(package-install 'elscreen)
+(package-install 'flycheck)
+(package-install 'flycheck-pos-tip)
+(package-install 'foreign-regexp)
+(package-install 'git-gutter-fringe+)
+(package-install 'gitignore-mode)
+(package-install 'haskell-mode)
+(package-install 'helm)
+(package-install 'helm-ag)
+(package-install 'helm-core)
+(package-install 'helm-projectile)
+(package-install 'init-loader)
+(package-install 'js2-mode)
+(package-install 'json-mode)
+(package-install 'magit)
+(package-install 'markdown-mode)
+(package-install 'migemo)
+(package-install 'neotree)
+(package-install 'open-junk-file)
+(package-install 'php-mode)
+(package-install 'popwin)
+(package-install 'powerline)
+(package-install 'projectile)
+(package-install 'python-mode)
+(package-install 'racer)
+(package-install 'rainbow-delimiters)
+(package-install 'redo+)
+(package-install 'ruby-mode)
+(package-install 'rust-mode)
+(package-install 'toml-mode)
+(package-install 'typescript-mode)
+(package-install 'undo-tree)
+(package-install 'undohist)
+(package-install 'web-mode)
+(package-install 'whitespace)
+(package-install 'yaml-mode)
 
 ;; 設定ファイルを指定した順に読み込む
-(el-get-bundle emacs-jp/init-loader
-  :type "github"
-  :pkgname "emacs-jp/init-loader"
-  :features init-loader
+(use-package init-loader
+  :config
   (init-loader-load "~/.emacs.d/loader"))
+
+;; package-selected-packagesの書き出し先を変更
+(load (setq custom-file "~/.emacs.d/custom.el"))
