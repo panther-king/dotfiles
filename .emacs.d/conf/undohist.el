@@ -1,4 +1,4 @@
 ;; undoの履歴管理
-(el-get-bundle undohist
-  :features undohist
+(use-package undohist
+  :config
   (undohist-initialize))

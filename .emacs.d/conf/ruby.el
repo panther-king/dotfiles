@@ -1,5 +1,7 @@
 ;; Ruby
-(el-get-bundle ruby-mode
-  :features ruby-mode
-  (add-to-list 'auto-mode-alist '("\\.\\(rb\\|rake\\|jbuilder\\)$" . ruby-mode))
-  (add-to-list 'auto-mode-alist '("\\(Gemfile\\|Guardfile\\)$" . ruby-mode)))
+(use-package ruby-mode
+  :mode (("\\.rb$" . ruby-mode)
+         ("\\.rake$" . ruby-mode)
+         ("\\.jbuilder$" . ruby-mode)
+         ("Gemfile$" . ruby-mode)
+         ("Guardfile$" . ruby-mode)))

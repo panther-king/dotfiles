@@ -1,6 +1,6 @@
 ;; モードラインのリッチ化
-(el-get-bundle powerline
-  :features powerline
+(use-package powerline
+  :config
   (defface mode-line-color-pink '((t (:background "#ed3161"))) "" :group 'powerline)
   (defface mode-line-color-dark-gray '((t (:background "#555555"))) "" :group 'powerline)
 
@@ -67,5 +67,4 @@
                        (concat (powerline-render lhs)
                                (powerline-fill face2 (powerline-width rhs))
                                (powerline-render rhs)))))))
-  (with-eval-after-load-feature 'powerline
-    (powerline-my-theme)))
+    (powerline-my-theme))

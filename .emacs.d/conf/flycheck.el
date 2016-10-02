@@ -1,11 +1,11 @@
 ;; 構文チェック
-(el-get-bundle flycheck
-  :features flycheck
-  (with-eval-after-load-feature 'flycheck
-    (add-hook 'after-init-hook #'global-flycheck-mode)))
+(use-package flycheck
+  :config
+  (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 
-(el-get-bundle flycheck-pos-tip
-  :features flycheck-pos-tip
-  (setq flycheck-pos-tip-timeout -1)
-  (with-eval-after-load-feature 'flycheck-pos-tip
-    (custom-set-variables '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages))))
+;; ヒントはポップアップで表示させる
+(use-package flycheck-pos-tip
+  :config
+  (setq flycheck-pos-tip-timeout 10)
+  (custom-set-variables '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))

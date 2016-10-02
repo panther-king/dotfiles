@@ -1,4 +1,5 @@
 ;; Emacsキーバインドの強制
-(el-get-bundle drill-instructor
-  :features drill-instructor
+(use-package drill-instructor
+  :load-path "elisp"
+  :config
   (setq drill-instructor-global t))

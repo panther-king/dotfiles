@@ -1,6 +1,6 @@
 ;; 全半角のスペース可視化
-(el-get-bundle whitespace
-  :features whitespace
+(use-package whitespace
+  :config
   (setq whitespace-style '(face
                            empty
                            space-mark
@@ -29,7 +29,7 @@
                       :underline t)
   (set-face-attribute 'whitespace-space nil
                       :background nil
-                      :foreground "Gray24")
+                      :foreground "Gray22")
   (set-face-attribute 'whitespace-empty nil
                       :background nil
                       :foreground "GreenYellow"

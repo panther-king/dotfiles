@@ -1,4 +1,4 @@
 ;; undoをツリー形式で選択実行
-(el-get-bundle undo-tree
-  :features undo-tree
+(use-package undo-tree
+  :config
   (global-undo-tree-mode))

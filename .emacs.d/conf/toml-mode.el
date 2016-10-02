@@ -1,3 +1,3 @@
 ;; TOML
-(el-get-bundle toml-mode
-  :features toml-mode)
+(use-package toml-mode
+  :mode (("\\.toml$" . toml-mode)))
