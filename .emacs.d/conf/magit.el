@@ -1,13 +1,10 @@
 ;; magit
-;; 依存ライブラリを先にロード
-(load-library "dash")
-(require 'with-editor)
-(when (require 'magit nil t)
-  ;; 依存ライブラリを先にロード
-;  (load-library "dash")
-;  (require 'with-editor)
-  (global-set-key (kbd "C-M-g") 'magit-status)
+(use-package magit
+  :bind (("C-M-g" . magit-status))
+  :config
   (add-hook 'git-commit-mode-hook (setq auto-fill-mode nil))
+  (defadvice git-commit-commit (after move-to-magit-buffer activate)
+    (delete-window))
   (defadvice magit-status (around magit-fullscreen activate)
     (window-configuration-to-register :magit-fullscreen)
     ad-do-it
@@ -16,6 +13,4 @@
     (interactive)
     (kill-buffer)
     (jump-to-register :magit-fullscreen))
-  (define-key magit-status-mode-map (kbd "q") 'my/magit-quit-session)
-  (defadvice git-commit-commit (after move-to-magit-buffer activate)
-    (delete-window)))
+  (bind-key "q" 'my/magit-quit-session magit-status-mode-map))

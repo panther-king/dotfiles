@@ -5,5 +5,5 @@
 (use-package foreign-regexp
   :config
   (custom-set-variables
-   '(foreign-regexp/regexp-type 'ruby)
+   '(foreign-regexp/regexp-type 'perl)
    '(reb-re-syntax 'foreign-regexp)))
