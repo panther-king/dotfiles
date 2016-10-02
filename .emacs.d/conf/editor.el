@@ -1,6 +1,6 @@
 ;; グローバルに利用するキーバインド
-(define-key global-map (kbd "C-h") 'delete-backward-char)
-(define-key global-map (kbd "C-'") 'set-mark-command)
+(bind-key "C-h" 'delete-backward-char)
+(bind-key "C-'" 'set-mark-command)
 
 ;; タブインデントは利用しない
 (setq-default indent-tabs-mode nil)
@@ -28,9 +28,9 @@
 
 ;; 補完
 (icomplete-mode 1)
-(global-set-key (kbd "C-j") 'dabbrev-expand)
+(bind-key "C-j" 'dabbrev-expand)
 (setq read-buffer-completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
 
 ;; diredでのファイル名変更
-(define-key dired-mode-map (kbd "r") 'wdired-change-to-wdired-mode)
+(bind-key "r" 'wdired-change-to-wdired-mode dired-mode-map)
