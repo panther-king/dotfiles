@@ -25,6 +25,7 @@
 (package-install 'markdown-mode)
 (package-install 'migemo)
 (package-install 'neotree)
+(package-install 'omni-scratch)
 (package-install 'open-junk-file)
 (package-install 'php-mode)
 (package-install 'popwin)
