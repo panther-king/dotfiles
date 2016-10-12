@@ -9,5 +9,5 @@
 ;; ヒントはポップアップで表示させる
 (use-package flycheck-pos-tip
   :config
-  (setq flycheck-pos-tip-timeout 10)
+  (setq flycheck-pos-tip-timeout 16)
   (custom-set-variables '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
