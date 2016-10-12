@@ -36,8 +36,7 @@
 ;; yes/noではなくy/nで回答
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; バッファのデフォルトメジャーモード
-(setq major-mode 'text-mode)
+;; テキストモードでの行折り返し
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; バックアップファイルを作らない
