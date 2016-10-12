@@ -17,10 +17,6 @@
 
 (use-package racer
   :config
-  (setq racer-rust-src-path "~/.racer-src/rustc-1.11.0/src/")
+  (setq racer-rust-src-path "~/.racer-src/rustc-1.12.0/src/")
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'company-mode))
-;(when (require 'racer nil t)
-;  (setq racer-rust-src-path "~/.racer-src/rustc-1.11.0/src/")
-;  (add-hook 'rust-mode-hook #'racer-mode)
-;  (add-hook 'racer-mode-hook #'company-mode))
