@@ -7,6 +7,7 @@
 ;; 利用するパッケージ
 (package-install 'cargo)
 (package-install 'company)
+(package-install 'company-jedi)
 (package-install 'elscreen)
 (package-install 'flycheck)
 (package-install 'flycheck-pos-tip)
@@ -19,6 +20,7 @@
 (package-install 'helm-core)
 (package-install 'helm-projectile)
 (package-install 'init-loader)
+(package-install 'jedi-core)
 (package-install 'js2-mode)
 (package-install 'json-mode)
 (package-install 'magit)

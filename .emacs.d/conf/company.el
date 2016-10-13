@@ -1,6 +1,8 @@
 ;; コード補完
 (use-package company
   :config
+  (global-company-mode)
+  (setq company-selection-wrap-around t)
   (bind-keys :map company-active-map
              ("C-n" . company-select-next)
              ("C-p" . company-select-previous)
