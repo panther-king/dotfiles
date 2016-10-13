@@ -1,0 +1,1 @@
+../conf/rainbow-delimiters.el

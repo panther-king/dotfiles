@@ -82,7 +82,7 @@ keys = [
         [mod, "shift"], "Return",
         lazy.layout.toggle_split()
     ),
-    Key([mod], "Return", lazy.spawn("terminology")),
+    Key([mod], "Return", lazy.spawn("tilda")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
@@ -115,8 +115,8 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='RictyDiminishedDiscord',
-    fontsize=20,
+    font='SourceHanSansJP',
+    fontsize=18,
     padding=4,
 )
 

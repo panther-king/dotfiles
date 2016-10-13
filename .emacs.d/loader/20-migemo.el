@@ -1,0 +1,1 @@
+../conf/migemo.el

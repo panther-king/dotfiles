@@ -1,34 +1,56 @@
-;; Define function to add load-path
-(defun add-to-load-path (&rest paths)
-  (let (path)
-    (dolist (path paths paths)
-      (let ((default-directory
-              (expand-file-name (concat user-emacs-directory path))))
-        (add-to-list 'load-path default-directory)
-        (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-            (normal-top-level-add-subdirs-to-load-path))))))
+;; パッケージ関連の初期設定
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+(package-refresh-contents)
 
-(add-to-load-path "elisp" "conf" "elpa" "public_repos")
-(fset 'package-desc-vers 'package--ac-desc-version)
+;; 利用するパッケージ
+(package-install 'cargo)
+(package-install 'company)
+(package-install 'company-jedi)
+(package-install 'elscreen)
+(package-install 'flycheck)
+(package-install 'flycheck-pos-tip)
+(package-install 'foreign-regexp)
+(package-install 'git-gutter-fringe+)
+(package-install 'gitignore-mode)
+(package-install 'haskell-mode)
+(package-install 'helm)
+(package-install 'helm-ag)
+(package-install 'helm-core)
+(package-install 'helm-projectile)
+(package-install 'init-loader)
+(package-install 'jedi-core)
+(package-install 'js2-mode)
+(package-install 'json-mode)
+(package-install 'magit)
+(package-install 'markdown-mode)
+(package-install 'migemo)
+(package-install 'neotree)
+(package-install 'omni-scratch)
+(package-install 'open-junk-file)
+(package-install 'php-mode)
+(package-install 'popwin)
+(package-install 'powerline)
+(package-install 'projectile)
+(package-install 'python-mode)
+(package-install 'racer)
+(package-install 'rainbow-delimiters)
+(package-install 'redo+)
+(package-install 'ruby-mode)
+(package-install 'rust-mode)
+(package-install 'toml-mode)
+(package-install 'typescript-mode)
+(package-install 'undo-tree)
+(package-install 'undohist)
+(package-install 'web-mode)
+(package-install 'whitespace)
+(package-install 'yaml-mode)
 
-;; init-loader settings
-(require 'init-loader)
-(init-loader-load "~/.emacs.d/conf")
+;; 設定ファイルを指定した順に読み込む
+(use-package init-loader
+  :config
+  (init-loader-load "~/.emacs.d/loader"))
 
-;; Ignore display minor-mode
-(setq my/hidden-minor-modes
-      '(ace-isearch-mode
-        eldoc-mode
-        git-gutter+-mode
-        global-whitespace-mode
-        helm-mode
-        helm-migemo-mode
-        projectile-mode
-        undo-tree-mode))
-(mapc (lambda (mode)
-        (setq minor-mode-alist
-              (cons (list mode "") (assq-delete-all mode minor-mode-alist))))
-      my/hidden-minor-modes)
-
-(require 'generic-x)
-(require 'cl-lib)
+;; package-selected-packagesの書き出し先を変更
+(load (setq custom-file "~/.emacs.d/custom.el"))

@@ -2,6 +2,7 @@
 
 !/.emacs.d/init.el
 !/.emacs.d/conf/
+!/.emacs.d/loader/
 
 /.zsh/plugin/*
 /.zsh/options/private/*
