@@ -82,7 +82,7 @@ keys = [
         [mod, "shift"], "Return",
         lazy.layout.toggle_split()
     ),
-    Key([mod], "Return", lazy.spawn("tilda")),
+    Key([mod], "Return", lazy.spawn("lilyterm")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
