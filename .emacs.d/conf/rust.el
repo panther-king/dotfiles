@@ -2,8 +2,8 @@
 (use-package rust-mode
   :config
   (bind-key "=" (smartchr '(" = " " == " "=")) rust-mode-map)
-  (bind-key "+" (smartchr '(" + " " += " "+")) rust-mode-map)
-  (bind-key "-" (smartchr '(" - " " -= " "-")) rust-mode-map)
+  (bind-key "+" (smartchr '("+" " + " " += ")) rust-mode-map)
+  (bind-key "-" (smartchr '("-" " - " " -= ")) rust-mode-map)
   (bind-key "!" (smartchr '("!" " != ")) rust-mode-map)
   (bind-key ">" (smartchr '(">" " > " " -> " " => " " >= ")) rust-mode-map)
   (bind-key "<" (smartchr '("<`!!'>" "<" " < " " <- " " <= ")) rust-mode-map)
