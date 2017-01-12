@@ -63,8 +63,8 @@ case ${UID} in
 esac
 
 # rust用環境変数
-export RUST_SRC_PATH=$HOME/.racer-src/rustc-1.11.0/src/
-export PATH=$PATH:$HOME/.cargo/bin
+source $HOME/.cargo/env
+alias rust="cargo-script"
 
 # anyenv初期化
 export PATH=$PATH:$HOME/.anyenv/bin
