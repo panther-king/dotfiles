@@ -2,7 +2,6 @@
 (use-package magit
   :bind (("C-M-g" . magit-status))
   :config
-  (add-hook 'git-commit-mode-hook (setq auto-fill-mode nil))
   (defadvice git-commit-commit (after move-to-magit-buffer activate)
     (delete-window))
   (defadvice magit-status (around magit-fullscreen activate)
