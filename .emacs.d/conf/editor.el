@@ -31,6 +31,3 @@
 (bind-key "C-j" 'dabbrev-expand)
 (setq read-buffer-completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
-
-;; diredでのファイル名変更
-(bind-key "r" 'wdired-change-to-wdired-mode dired-mode-map)

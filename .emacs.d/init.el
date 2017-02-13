@@ -5,6 +5,8 @@
 (package-refresh-contents)
 
 ;; 利用するパッケージ
+(package-install 'all-the-icons)
+(package-install 'all-the-icons-dired)
 (package-install 'cargo)
 (package-install 'company)
 (package-install 'company-jedi)
