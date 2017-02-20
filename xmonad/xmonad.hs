@@ -21,7 +21,7 @@ import XMonad.Util.Run(spawnPipe)
 
 main = do
     myStatusBar <- spawnPipe "xmobar $HOME/.xmonad/xmobarrc"
-    xmonad $ ewmh defaultConfig
+    xmonad $ ewmh def
         { borderWidth        = 2
         , focusedBorderColor = "#ededed"
         , normalBorderColor  = "#262626"
@@ -41,14 +41,14 @@ main = do
             , ppWsSep           = " "
             , ppSep             = "　"
             }
-        , manageHook         = manageDocks <+> manageHook defaultConfig
+        , manageHook         = manageDocks <+> manageHook def
         , modMask            = mod4Mask
         , startupHook        = myStartupHook
         , terminal           = "terminator"
         }
         `additionalKeysP`
         [
-            ("M-p", shellPrompt defaultXPConfig
+            ("M-p", shellPrompt def
                 { font              = "xft:SourceHanSansJP:size=16:antialias=true"
                 , bgColor           = "black"
                 , fgColor           = "#646464"
