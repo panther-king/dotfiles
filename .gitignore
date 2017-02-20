@@ -13,3 +13,5 @@
 /.xmonad/xmonad.errors
 /.xmonad/xmonad.hi
 /.xmonad/xmonad.o
+/.xmonad/prompt-history
+/.xmonad/xmonad.state

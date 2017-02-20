@@ -4,8 +4,13 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks
 
+import XMonad.Layout.Gaps
+import XMonad.Layout.NoBorders
 import XMonad.Layout.ResizableTile
+import XMonad.Layout.Simplest
 import XMonad.Layout.Spacing
+import XMonad.Layout.ToggleLayouts
+import XMonad.Layout.TwoPane
 
 import XMonad.Prompt
 import XMonad.Prompt.Shell
@@ -22,9 +27,10 @@ main = do
         , normalBorderColor  = "#262626"
         , focusFollowsMouse  = True
         , handleEventHook    = docksEventHook <+> fullscreenEventHook
-        , layoutHook         = avoidStruts $ (spacing 4 $ ResizableTall 1 (3 / 100) (1 / 2) [])
+        , layoutHook         = avoidStruts $ ( toggleLayouts (noBorders Full)
+                                             $ myLayoutHook)
         , logHook            = dynamicLogWithPP $ xmobarPP
-            { ppOrder           = \(workspace:layout:title:_) -> [workspace, title]
+            { ppOrder           = \(workspace:layout:title:_) -> [workspace, layout]
             , ppOutput          = hPutStrLn myStatusBar
             , ppCurrent         = xmobarColor "#ff005f" "black" . \s -> "●"
             , ppUrgent          = xmobarColor "#666666" "black" . \s -> "●"
@@ -53,6 +59,11 @@ main = do
                 }
             )
         ]
+
+myLayoutHook = spacing 4 $ gaps [(U, 4), (D, 4), (L, 8), (R, 8)]
+               $ ResizableTall 1 (3/100) (1/2) []
+               ||| (TwoPane (3/100) (1/2))
+               ||| Simplest
 
 myStartupHook = do
     spawn "fcitx"
