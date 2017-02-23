@@ -1,0 +1,40 @@
+Config { font             = "xft:SourceHanSansJP:size=14:antialias=true"
+       , bgColor          = "black"
+       , border           = BottomBM 0
+       , borderColor      = "black"
+       , fgColor          = "#999999"
+       , lowerOnStart     = False
+       , overrideRedirect = False
+       , position         = TopSize C 100 33
+       , commands         =
+           [ Run Battery           [ "--template", "BAT: <acstatus>"
+                                   , "--Low"     , "20"
+                                   , "--low"     , "red"
+                                   , "--"
+                                   , "-o"        , "<left>% (<timeleft>)"
+                                   , "-O"        , "<fc=#daa520>Charging</fc>"
+                                   , "-i"        , "<fc=#006000>Charged</fc>"
+                                   ] 100
+           , Run Cpu               [ "--template", "CPU: <total>%"
+                                   , "--High"    , "50"
+                                   , "--high"     , "red"
+                                   ] 50
+           , Run DynNetwork        [ "--template", "NET: ▼ <rx>KB ▲ <tx>KB"
+                                   , "--High"    , "1000"
+                                   , "--high"    , "red"
+                                   ] 50
+           , Run Date              "%Y/%m/%d(%a) %H:%M:%S" "date" 10
+           , Run Memory            [ "--template", "MEM: <usedratio>%"
+                                   , "--High"    , "60"
+                                   , "--high"    , "red"
+                                   ] 50
+           , Run StdinReader
+           , Run Wireless "wlp2s0" [ "--template", "WLAN: <essid> <quality>"
+                                   , "--Low"     , "50"
+                                   , "--low"     , "red"
+                                   ] 50
+           ]
+       , sepChar          = "%"
+       , alignSep         = "}{"
+       , template         = " %StdinReader% }{ %cpu% ｜ %memory% ｜ %dynnetwork% ｜ %wlp2s0wi% ｜ %battery% ｜ %date% "
+       }
