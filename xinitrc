@@ -42,5 +42,4 @@ synclient CircScrollTrigger=0
 synclient TapButton1=1
 synclient TapButton2=3
 
-#exec qtile
 exec xmonad

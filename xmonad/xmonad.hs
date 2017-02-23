@@ -59,7 +59,7 @@ main = do
             )
         ]
 
-myLayoutHook = spacing 4 $ gaps [(U, 4), (D, 4), (L, 8), (R, 8)]
+myLayoutHook = spacing 4 $ gaps [(U, 8), (D, 8), (L, 8), (R, 8)]
                $ ResizableTall 1 (3/100) (1/2) []
                ||| (TwoPane (3/100) (1/2))
                ||| Simplest
