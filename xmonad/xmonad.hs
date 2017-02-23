@@ -30,14 +30,13 @@ main = do
         , layoutHook         = avoidStruts $ ( toggleLayouts (noBorders Full)
                                              $ myLayoutHook)
         , logHook            = dynamicLogWithPP $ xmobarPP
-            { ppOrder           = \(workspace:layout:title:_) -> [workspace, layout]
+            { ppOrder           = \(workspace:layout:title:_) -> [workspace]
             , ppOutput          = hPutStrLn myStatusBar
             , ppCurrent         = xmobarColor "#ff005f" "black" . \s -> "●"
-            , ppUrgent          = xmobarColor "#666666" "black" . \s -> "●"
+            , ppUrgent          = xmobarColor "#999999" "black" . \s -> "●"
             , ppVisible         = xmobarColor "#ff005f" "black" . \s -> "⦿"
-            , ppHidden          = xmobarColor "#666666" "black" . \s -> "●"
-            , ppHiddenNoWindows = xmobarColor "#666666" "black" . \s -> "○"
-            , ppTitle           = shorten 30
+            , ppHidden          = xmobarColor "#999999" "black" . \s -> "●"
+            , ppHiddenNoWindows = xmobarColor "#999999" "black" . \s -> "○"
             , ppWsSep           = " "
             , ppSep             = "　"
             }
