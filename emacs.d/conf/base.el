@@ -12,12 +12,12 @@
 (column-number-mode t)
 
 ;; カラーテーマ
-(load-theme 'deeper-blue t)
+(load-theme 'sanityinc-tomorrow-bright t)
 
 ;; ウインドウ透過
 (if window-system
     (progn
-      (set-frame-parameter nil 'alpha 95)))
+      (set-frame-parameter nil 'alpha 85)))
 
 ;; フォント
 (when window-system

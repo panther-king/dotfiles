@@ -8,6 +8,7 @@
 (package-install 'all-the-icons)
 (package-install 'all-the-icons-dired)
 (package-install 'cargo)
+(package-install 'color-theme-sanityinc-tomorrow)
 (package-install 'company)
 (package-install 'company-jedi)
 (package-install 'elscreen)
