@@ -1,11 +1,7 @@
-Config { font             = "xft:SourceHanSansJP:size=14:antialias=true"
+Config { alignSep         = "}{"
        , bgColor          = "black"
        , border           = BottomBM 0
        , borderColor      = "black"
-       , fgColor          = "#999999"
-       , lowerOnStart     = False
-       , overrideRedirect = False
-       , position         = TopSize C 100 33
        , commands         =
            [ Run Battery           [ "--template", "BAT: <acstatus>"
                                    , "--Low"     , "20"
@@ -34,7 +30,11 @@ Config { font             = "xft:SourceHanSansJP:size=14:antialias=true"
                                    , "--low"     , "red"
                                    ] 50
            ]
+       , fgColor          = "#999999"
+       , font             = "xft:SourceHanSansJP:size=14:antialias=true"
+       , lowerOnStart     = False
+       , overrideRedirect = False
+       , position         = TopW C 100
        , sepChar          = "%"
-       , alignSep         = "}{"
        , template         = " %StdinReader% }{ %cpu% ｜ %memory% ｜ %dynnetwork% ｜ %wlp2s0wi% ｜ %battery% ｜ %date% "
        }

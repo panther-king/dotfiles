@@ -30,7 +30,7 @@ main = do
         , layoutHook         = avoidStruts $ ( toggleLayouts (noBorders Full)
                                              $ myLayoutHook)
         , logHook            = dynamicLogWithPP $ xmobarPP
-            { ppOrder           = \(workspace:layout:title:_) -> [workspace]
+            { ppOrder           = \(workspace:layout:title:_) -> [workspace, layout]
             , ppOutput          = hPutStrLn myStatusBar
             , ppCurrent         = xmobarColor "#ff005f" "black" . \s -> "●"
             , ppUrgent          = xmobarColor "#999999" "black" . \s -> "●"
@@ -56,10 +56,11 @@ main = do
                 , alwaysHighlight   = True
                 , height            = 30
                 }
-            )
+            ),
+            ("M-f", sendMessage $ ToggleLayout)
         ]
 
-myLayoutHook = spacing 4 $ gaps [(U, 8), (D, 8), (L, 8), (R, 8)]
+myLayoutHook = spacing 4 $ gaps [(U, 4), (D, 4), (L, 8), (R, 8)]
                $ ResizableTall 1 (3/100) (1/2) []
                ||| (TwoPane (3/100) (1/2))
                ||| Simplest
