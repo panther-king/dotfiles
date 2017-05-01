@@ -74,6 +74,9 @@ eval "$(anyenv init -)"
 # direnv初期化
 eval "$(direnv hook zsh)"
 
+# pip install --user 用のPATH追加
+export PATH=$PATH:$HOME/.local/bin
+
 # 変数の重複を除去
 typeset -U path PATH fpath FPATH
 
