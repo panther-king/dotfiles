@@ -1,0 +1,1 @@
+../conf/mozc.el

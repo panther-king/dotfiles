@@ -29,6 +29,7 @@
 (package-install 'magit)
 (package-install 'markdown-mode)
 (package-install 'migemo)
+(package-install 'mozc-popup)
 (package-install 'neotree)
 (package-install 'omni-scratch)
 (package-install 'open-junk-file)
