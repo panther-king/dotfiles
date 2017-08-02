@@ -15,10 +15,10 @@ Config { alignSep         = "}{"
                                    , "--High"    , "50"
                                    , "--high"     , "red"
                                    ] 50
-           , Run DynNetwork        [ "--template", "NET: ▼ <rx>KB ▲ <tx>KB"
+           , Run DynNetwork        [ "--template", "<dev>: ▼ <rx>KB ▲ <tx>KB"
                                    , "--High"    , "1000"
                                    , "--high"    , "red"
-                                   ] 50
+                                   ] 10
            , Run Date              "%Y/%m/%d(%a) %H:%M:%S" "date" 10
            , Run Memory            [ "--template", "MEM: <usedratio>%"
                                    , "--High"    , "60"
