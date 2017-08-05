@@ -31,3 +31,6 @@
 (bind-key "C-j" 'dabbrev-expand)
 (setq read-buffer-completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
+
+;; ソースコードの折りたたみ
+(define-key global-map (kbd "C-=") 'hs-toggle-hiding)

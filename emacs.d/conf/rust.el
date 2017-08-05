@@ -10,7 +10,10 @@
   (bind-key "|" (smartchr '("|`!!'|" "||" " | " "|")) rust-mode-map)
   (add-to-list 'exec-path (expand-file-name "~/.cargo/bin/"))
   (add-hook 'rust-mode-hook 'rust-enable-format-on-save)
-  (add-hook 'rust-mode-hook 'racer-mode))
+  (add-hook 'rust-mode-hook 'racer-mode)
+  (add-hook 'rust-mode-hook
+            '(lambda ()
+               (hs-minor-mode 1))))
 
 (use-package cargo
   :config

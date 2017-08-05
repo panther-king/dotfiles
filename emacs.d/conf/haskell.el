@@ -11,6 +11,9 @@
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
   (add-hook 'haskell-mode-hook 'font-lock-mode)
   (add-hook 'haskell-mode-hook 'imenu-add-menubar-index)
+  (add-hook 'haskell-mode-hook
+            '(lambda ()
+               (hs-minor-mode 1)))
 
   ;; (custom-set-variables
   ;;  '(haskell-indent-after-keywords (quote (("where" 4 0) ("of" 4) ("do" 4) ("mdo" 4) ("rec" 4) ("in" 4 0) ("{" 4) "if" "then" "else" "let")))

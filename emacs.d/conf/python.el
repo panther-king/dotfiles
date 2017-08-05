@@ -18,4 +18,7 @@
   (setq jedi:complete-on-dot t)
   (setq jedi:use-shortcuts t)
   (add-hook 'python-mode-hook 'jedi:setup)
+  (add-hook 'python-mode-hook
+            '(lambda ()
+               (hs-minor-mode 1)))
   (add-to-list 'company-backends 'company-jedi))

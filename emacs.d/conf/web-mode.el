@@ -15,4 +15,7 @@
                     '(web-mode-server-comment-face ((t (:foreground "#D9333F"))))
                     '(web-mode-css-rule-face ((t (:foreground "#A0D8EF"))))
                     '(web-mode-css-pseudo-class-face ((t (:foreground "#FF7F00"))))
-                    '(web-mode-css-at-rule-face ((t (:foreground "#FF7F00"))))))
+                    '(web-mode-css-at-rule-face ((t (:foreground "#FF7F00")))))
+  (add-hook 'web-mode-hook
+            '(lambda ()
+               (hs-minor-mode 1))))
