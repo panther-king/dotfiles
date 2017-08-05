@@ -19,13 +19,13 @@
 ;; フォント
 (when window-system
   (create-fontset-from-ascii-font
-   "SourceCodePro-16:weight=normal:slant=normal" nil "sourcecodepro")
-  (set-fontset-font "fontset-sourcecodepro"
+   "CicaE-18:weight=normal:slant=normal" nil "cica")
+  (set-fontset-font "fontset-cica"
                     'unicode
-                    (font-spec :family "SourceHanSansJP" :size 16)
+                    (font-spec :family "CicaE" :size 24)
                     nil
                     'append)
-  (add-to-list 'default-frame-alist '(font . "fontset-sourcecodepro")))
+  (add-to-list 'default-frame-alist '(font . "fontset-cica")))
 
 ;; フレーム設定
 (setq frame-title-format (format"emacs@%s : %%f" (system-name)))
