@@ -5,9 +5,6 @@
 (setq inhibit-startup-message t)
 (setq initial-scratch-message nil)
 
-;; 行番号を表示
-(global-linum-mode t)
-
 ;; モードラインに列番号も表示
 (column-number-mode t)
 
@@ -48,6 +45,3 @@
 
 ;; 外部での変更を自動的に読み込む
 (global-auto-revert-mode 1)
-
-;; ;; 日本語入力切り換え
-;; (global-set-key (kbd "C-SPC") 'toggle-input-method)
