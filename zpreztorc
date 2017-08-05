@@ -18,7 +18,7 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 zstyle ':prezto:*:*' color 'yes'
 
 # テーマをロード
-zstyle ':prezto:module:prompt' theme 'giddie'
+zstyle ':prezto:module:prompt' theme 'steeef'
 
 # 補完をカラーリング
 zstyle ':prezto:module:autosuggestions' color 'yes'
