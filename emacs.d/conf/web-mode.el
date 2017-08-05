@@ -5,6 +5,8 @@
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
+  (setq web-mode-style-padding 2)
+  (setq web-mode-script-padding 2)
   (custom-set-faces '(web-mode-doctype-face ((t (:foreground "#82AE46"))))
                     '(web-mode-html-tag-face ((t (:foreground "#E6B422"))))
                     '(web-mode-html-attr-name-face ((t (:foreground "#C97586"))))
