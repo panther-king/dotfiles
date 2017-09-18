@@ -64,7 +64,7 @@ case ${UID} in
 esac
 
 # rust用環境変数
-export PATH=$PATH:$HOME/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+export PATH=$PATH:$HOME/.cargo/bin
 alias rust="cargo-script"
 
 # anyenv初期化
