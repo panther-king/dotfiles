@@ -28,6 +28,7 @@ alias reboot="sudo reboot"
 alias halt="sudo poweroff"
 alias py="python"
 alias bp="bpython"
+alias hp="http-prompt"
 
 # スクリプトと画像ファイルを直接実行できるように
 alias -s py=python
