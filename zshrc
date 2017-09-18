@@ -53,13 +53,14 @@ alias gst="git status"
 
 # 外部設定ファイルの読み込み
 case ${UID} in
-1000)
-    for f in `find ~/.zsh/options -name "*.zsh" -type f`; do
-        source ${f}
-    done
-    ;;
-*)
-    ;;
+    0)
+        :
+        ;;
+    *)
+        for f in `find ~/.zsh/options -name "*.zsh" -type f`; do
+            source ${f}
+        done
+        ;;
 esac
 
 # rust用環境変数
