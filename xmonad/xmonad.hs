@@ -40,7 +40,7 @@ main = do
             , ppWsSep           = " "
             , ppSep             = "　"
             }
-        , manageHook         = manageDocks <+> manageHook def
+        , manageHook         = myManageHook <+> manageDocks <+> manageHook def
         , modMask            = mod4Mask
         , startupHook        = myStartupHook
         , terminal           = "terminator"
@@ -59,6 +59,8 @@ main = do
             ),
             ("M-f", sendMessage $ ToggleLayout)
         ]
+
+myManageHook = composeAll [ className =? "Gimp" --> doFloat ]
 
 myLayoutHook = spacing 4 $ gaps [(U, 4), (D, 4), (L, 8), (R, 8)]
                $ ResizableTall 1 (3/100) (1/2) []
