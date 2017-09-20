@@ -76,14 +76,14 @@ eval "$(anyenv init -)"
 eval "$(direnv hook zsh)"
 
 # pip install --user 用のPATH追加
-export PATH=$PATH:$HOME/.local/bin
+[ -d ~/.local/bin ] && export PATH=$PATH:$HOME/.local/bin
 
 # 変数の重複を除去
 typeset -U path PATH fpath FPATH
 
 # lessをカラー表示
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
-export LESS=' -R '
+export LESS='-R '
 
 # pip zsh completion start
 function _pip_completion {
