@@ -17,12 +17,15 @@
       (set-frame-parameter nil 'alpha 85)))
 
 ;; フォント
+(defvar unicode-font-size
+  (cond ((eq window-system 'x) 24)
+        ((eq window-system 'mac) 18)))
 (when window-system
   (create-fontset-from-ascii-font
    "CicaE-18:weight=normal:slant=normal" nil "cica")
   (set-fontset-font "fontset-cica"
                     'unicode
-                    (font-spec :family "CicaE" :size 24)
+                    (font-spec :family "CicaE" :size unicode-font-size)
                     nil
                     'append)
   (add-to-list 'default-frame-alist '(font . "fontset-cica")))

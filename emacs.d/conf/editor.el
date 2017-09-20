@@ -20,7 +20,20 @@
     (t
      ()))
   "*Face used by hl-line.")
-(global-hl-line-mode t)
+
+;; 環境ごとに現在行のハイライト方法を切り替える
+(cond ((eq window-system 'x)
+       (global-hl-line-mode t))
+      ((eq window-system 'mac)
+       (require 'hl-line)
+       (defvar global-hl-line-timer-exclude-modes '())
+       (defun global-hl-line-timer-function ()
+         (unless (memq major-mode global-hl-line-timer-exclude-modes)
+           (global-hl-line-unhighlight-all)
+           (let ((global-hl-line-mode t))
+             (global-hl-line-highlight))))
+       (setq global-hl-line-timer
+             (run-with-idle-timer 0.03 t 'global-hl-line-timer-function))))
 
 ;; 対応するカッコの強調
 (setq show-paren-delay 0)
