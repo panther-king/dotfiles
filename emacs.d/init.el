@@ -11,6 +11,7 @@
 (package-install 'color-theme-sanityinc-tomorrow)
 (package-install 'company)
 (package-install 'company-jedi)
+(package-install 'dockerfile-mode)
 (package-install 'elscreen)
 (package-install 'flycheck)
 (package-install 'flycheck-pos-tip)
