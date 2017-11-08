@@ -29,6 +29,7 @@ alias halt="sudo poweroff"
 alias py="python"
 alias bp="bpython"
 alias hp="http-prompt"
+alias ocaml="rlwrap ocaml"
 
 # スクリプトと画像ファイルを直接実行できるように
 alias -s py=python
@@ -99,3 +100,6 @@ compctl -K _pip_completion pip
 
 # added by travis gem
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+
+# OPAM configuration
+. /home/taro/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
