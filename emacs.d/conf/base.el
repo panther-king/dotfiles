@@ -14,7 +14,7 @@
 ;; ウインドウ透過
 (if window-system
     (progn
-      (set-frame-parameter nil 'alpha 85)))
+      (set-frame-parameter nil 'alpha 80)))
 
 ;; フォント
 (defvar unicode-font-size
