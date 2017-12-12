@@ -35,11 +35,9 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-xcompmgr &
-
 synclient CircularScrolling=1
 synclient CircScrollTrigger=0
 synclient TapButton1=1
 synclient TapButton2=3
 
-exec xmonad
+exec i3
