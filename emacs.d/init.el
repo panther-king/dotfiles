@@ -35,6 +35,7 @@
 (package-install 'omni-scratch)
 (package-install 'open-junk-file)
 (package-install 'php-mode)
+(package-install 'plantuml-mode)
 (package-install 'popwin)
 (package-install 'powerline)
 (package-install 'projectile)
