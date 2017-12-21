@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+
+ALERT_COLOR = '#FF0000'
+NORMAL_COLOR = '#CCCCCC'
+WARN_COLOR = '#F89406'
+
+ALERT_THRESHOLD = 2.0
+WARN_THRESHOLD = 3.0
+
+mem_total = 0
+mem_free = 0
+
+usage = {}
+with open('/proc/meminfo', 'r') as f:
+    for line in f.readlines():
+        row = [x for x in line.rstrip().split(' ') if x]
+        usage[row[0][:-1]] = int(row[1])
+
+free = usage['MemFree'] + usage['Buffers'] + usage['Cached']
+mem_free = free / 1024 / 1024
+mem_total = usage['MemTotal'] / 1024 / 1024
+
+if ALERT_THRESHOLD < mem_free <= WARN_THRESHOLD:
+    color = WARN_COLOR
+elif mem_free <= ALERT_THRESHOLD:
+    color = ALERT_COLOR
+else:
+    color = NORMAL_COLOR
+
+output = '<span foreground="{}"> {:<.1f}G / {:<.1f}G ({:<.1f}G free)</span>'
+print(output.format(color, mem_total - mem_free, mem_total, mem_free))

@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+
+import subprocess
+
+
+ALERT_COLOR = '#FF0000'
+NORMAL_COLOR = '#CCCCCC'
+WARN_COLOR = '#F89406'
+
+ALERT_THRESHOLD = 70
+WARN_THRESHOLD = 50
+
+mpstat = [
+    'mpstat',
+    '1',
+    '1',
+    '-P',
+    'ALL',
+]
+threshold = 50
+proc = subprocess.run(mpstat, stdout=subprocess.PIPE)
+output = proc.stdout.decode('utf-8')
+
+usage = {}
+for s in output.splitlines():
+    row = [x for x in s.split() if x]
+    try:
+        core = int(row[1])
+        idle = 100 - float(row[-1])
+        usage[core] = idle
+    except (IndexError, ValueError):
+        pass
+
+outputs = []
+for v in usage.values():
+    if WARN_THRESHOLD <= v < ALERT_THRESHOLD:
+        color = WARN_COLOR
+    elif ALERT_THRESHOLD <= v:
+        color = ALERT_COLOR
+    else:
+        color = NORMAL_COLOR
+    outputs.append(
+        '<span foreground="{}"> {:<.1f}%</span>'.format(color, v)
+    )
+
+print(' | '.join(outputs))

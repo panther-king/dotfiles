@@ -1,0 +1,54 @@
+#!/usr/bin/env python
+
+import os
+import subprocess
+import sys
+
+
+ALERT_THRESHOLD = 40
+WARN_THRESHOLD = 60
+UNHEALTHY_THRESHOLD = 80
+
+ALERT_COLOR = '#FF0000'
+WARN_COLOR = '#FFAE00'
+UNHEALTHY_COLOR = '#FFF600'
+HEALTHY_COLOR = '#00FF00'
+
+
+interface = os.getenv('BLOCK_INSTANCE', 'wlp2s0')
+wifi_dir = f'/sys/class/net/{interface}/'
+if not os.path.isdir(f'{wifi_dir}wireless'):
+    sys.exit(1)
+with open(f'{wifi_dir}operstate', 'r') as f:
+    state = f.read()
+    if 'down' in state:
+        sys.exit(1)
+
+usage = ''
+with open('/proc/net/wireless', 'r') as f:
+    for row in f.readlines():
+        if row.startswith(interface):
+            usage = row
+if not usage:
+    sys.exit(1)
+
+quality = int([x for x in usage.split(' ') if x][2].replace('.', ''))
+rate = int(quality * 100 / 70)
+if rate > UNHEALTHY_THRESHOLD:
+    color = HEALTHY_COLOR
+elif UNHEALTHY_THRESHOLD >= rate > WARN_THRESHOLD:
+    color = UNHEALTHY_COLOR
+elif WARN_THRESHOLD >= rate > ALERT_THRESHOLD:
+    color = WARN_COLOR
+else:
+    color = ALERT_COLOR
+
+wifi = ['iw', 'dev', interface, 'link']
+proc = subprocess.run(wifi, stdout=subprocess.PIPE)
+output = proc.stdout.decode('utf-8')
+row = [x for x in output.split('\n') if 'SSID' in x].pop()
+ssid = row.split(': ')[-1]
+
+print(f'{rate}% ({ssid})')  # full text
+print(f'{rate}% ({ssid})')  # short text
+print(color)
