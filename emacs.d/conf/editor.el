@@ -47,3 +47,7 @@
 
 ;; ソースコードの折りたたみ
 (define-key global-map (kbd "C-=") 'hs-toggle-hiding)
+
+;; 定義ジャンプ
+(define-key global-map (kbd "C-M-j") 'dumb-jump-go)
+(define-key global-map (kbd "C-M-p") 'dumb-jump-back)
