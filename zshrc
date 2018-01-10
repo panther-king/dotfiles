@@ -66,6 +66,7 @@ case ${UID} in
 esac
 
 # rust用環境変数
+export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
 source $HOME/.cargo/env
 alias rust="cargo-script"
 

@@ -8,7 +8,10 @@
   (bind-key ">" (smartchr '(">" " > " " -> " " => " " >= ")) rust-mode-map)
   (bind-key "<" (smartchr '("<`!!'>" "<" " < " " <- " " <= ")) rust-mode-map)
   (bind-key "|" (smartchr '("|`!!'|" "||" " | " "|")) rust-mode-map)
+  (exec-path-from-shell-copy-env "LD_LIBRARY_PATH")
   (add-to-list 'exec-path (expand-file-name "~/.cargo/bin/"))
+  (eval-after-load "rust-mode"
+    '(setq-default rust-format-on-save t))
   (add-hook 'rust-mode-hook 'rust-enable-format-on-save)
   (add-hook 'rust-mode-hook 'racer-mode)
   (add-hook 'rust-mode-hook

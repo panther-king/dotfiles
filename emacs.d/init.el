@@ -13,6 +13,7 @@
 (package-install 'company-jedi)
 (package-install 'dockerfile-mode)
 (package-install 'dumb-jump)
+(package-install 'exec-path-from-shell)
 (package-install 'elscreen)
 (package-install 'flycheck)
 (package-install 'flycheck-pos-tip)
