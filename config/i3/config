@@ -163,4 +163,4 @@ bar {
 
 exec --no-startup-id fcitx
 exec --no-startup-id ~/.fehbg
-exec --no-startup-id compton -cbm 0.8
+exec --no-startup-id compton -b --config ~/.comton.conf
