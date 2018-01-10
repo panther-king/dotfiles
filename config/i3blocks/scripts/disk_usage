@@ -18,4 +18,4 @@ free = to_giga(stat.f_frsize * stat.f_bavail)
 used = to_giga(stat.f_frsize * (stat.f_blocks - stat.f_bfree))
 
 output = '<span foreground="{}"> {}G / {}G ({}G free)</span>'
-print(output.format(NORMAL_COLOR, free, total, used))
+print(output.format(NORMAL_COLOR, used, total, free))
