@@ -17,6 +17,7 @@
 (package-install 'elscreen)
 (package-install 'flycheck)
 (package-install 'flycheck-pos-tip)
+(package-install 'flycheck-rust)
 (package-install 'foreign-regexp)
 (package-install 'git-gutter-fringe+)
 (package-install 'gitignore-mode)
