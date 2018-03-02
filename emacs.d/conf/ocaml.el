@@ -8,4 +8,8 @@
   (bind-key ">" (smartchr '(" > " " -> " " >= " ">")) tuareg-mode-map)
   (bind-key "<" (smartchr '(" < " " <- " " <= " "<")) tuareg-mode-map)
   (bind-key "|" (smartchr '("| " " | " "|")) tuareg-mode-map)
-  (bind-key "^" (smartchr '(" ^ " "^")) tuareg-mode-map))
+  (bind-key "^" (smartchr '(" ^ " "^")) tuareg-mode-map)
+  :init
+  (add-hook 'tuareg-mode-hook
+            (lambda ()
+              (electric-indent-mode 0))))
