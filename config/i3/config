@@ -168,3 +168,6 @@ bar {
 exec --no-startup-id fcitx
 exec --no-startup-id ~/.fehbg
 exec --no-startup-id compton -b --config ~/.comton.conf
+
+# screenshot
+bindsym Print exec --no-startup-id import -window root ~/Pictures/screenshot`date "+%Y%m%d%H%M%S"`.jpg
