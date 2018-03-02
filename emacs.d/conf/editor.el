@@ -51,3 +51,6 @@
 ;; 定義ジャンプ
 (define-key global-map (kbd "C-M-j") 'dumb-jump-go)
 (define-key global-map (kbd "C-M-p") 'dumb-jump-back)
+
+;; 検索時の語数とマッチ位置表示
+(global-anzu-mode +1)

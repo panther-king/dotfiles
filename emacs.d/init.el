@@ -7,6 +7,7 @@
 ;; 利用するパッケージ
 (package-install 'all-the-icons)
 (package-install 'all-the-icons-dired)
+(package-install 'anzu)
 (package-install 'cargo)
 (package-install 'color-theme-sanityinc-tomorrow)
 (package-install 'company)
