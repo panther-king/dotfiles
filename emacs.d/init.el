@@ -46,7 +46,6 @@
 (package-install 'python-mode)
 (package-install 'racer)
 (package-install 'rainbow-delimiters)
-(package-install 'redo+)
 (package-install 'ripgrep)
 (package-install 'ruby-mode)
 (package-install 'rust-mode)
