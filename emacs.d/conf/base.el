@@ -22,10 +22,10 @@
         ((eq window-system 'mac) 18)))
 (when window-system
   (create-fontset-from-ascii-font
-   "CicaE-18:weight=normal:slant=normal" nil "cica")
+   "Cica-18:weight=normal:slant=normal" nil "cica")
   (set-fontset-font "fontset-cica"
                     'unicode
-                    (font-spec :family "CicaE" :size unicode-font-size)
+                    (font-spec :family "Cica" :size unicode-font-size)
                     nil
                     'append)
   (add-to-list 'default-frame-alist '(font . "fontset-cica")))
