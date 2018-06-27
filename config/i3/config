@@ -165,6 +165,7 @@ bar {
         position top
 }
 
+exec --no-startup-id nm-applet
 exec --no-startup-id fcitx
 exec --no-startup-id ~/.fehbg
 exec --no-startup-id compton -b --config ~/.config/compton.conf
