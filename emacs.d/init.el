@@ -51,6 +51,7 @@
 (package-install 'ruby-mode)
 (package-install 'rust-mode)
 (package-install 'toml-mode)
+(package-install 'tuareg)
 (package-install 'typescript-mode)
 (package-install 'undo-tree)
 (package-install 'undohist)
