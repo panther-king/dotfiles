@@ -9,6 +9,7 @@
 (package-install 'all-the-icons-dired)
 (package-install 'anzu)
 (package-install 'cargo)
+(package-install 'coffee-mode)
 (package-install 'color-theme-sanityinc-tomorrow)
 (package-install 'company)
 (package-install 'company-jedi)
