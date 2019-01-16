@@ -9,7 +9,7 @@
 (column-number-mode t)
 
 ;; カラーテーマ
-(load-theme 'sanityinc-tomorrow-bright t)
+(load-theme 'madhat2r t)
 
 ;; ウインドウ透過
 (if window-system
