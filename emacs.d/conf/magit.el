@@ -1,7 +1,7 @@
 ;; magit
 (use-package magit
-  :bind (("C-M-g" . magit-status)
-         ("C-c m b" . magit-blame))
+  :bind (("C-c m s" . magit-status)
+         ("C-c m b" . magit-blame-addition))
   :config
   (defadvice git-commit-commit (after move-to-magit-buffer activate)
     (delete-window))
