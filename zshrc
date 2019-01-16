@@ -30,6 +30,7 @@ alias py="python"
 alias bp="bpython"
 alias hp="http-prompt"
 alias ocaml="rlwrap ocaml"
+alias remote-desktop="remmina"
 
 # スクリプトと画像ファイルを直接実行できるように
 alias -s py=python
