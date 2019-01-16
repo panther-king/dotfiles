@@ -49,6 +49,6 @@ output = proc.stdout.decode('utf-8')
 row = [x for x in output.split('\n') if 'SSID' in x].pop()
 ssid = row.split(': ')[-1]
 
-print(f'{rate}% ({ssid})')  # full text
-print(f'{rate}% ({ssid})')  # short text
+print(f'{ssid}')  # full text
+print(f'{ssid}')  # short text
 print(color)
