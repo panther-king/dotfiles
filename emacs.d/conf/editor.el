@@ -16,8 +16,9 @@
   (global-hl-line-mode t))
 
 ;; 対応するカッコの強調
-(setq show-paren-delay 0)
 (show-paren-mode t)
+(setq show-paren-delay 0)
+(setq show-paren-style 'expression)
 
 ;; 補完
 (icomplete-mode 1)
