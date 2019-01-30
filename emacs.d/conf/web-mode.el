@@ -1,6 +1,7 @@
 ;; HTML
 (use-package web-mode
-  :mode (("\\.html$" . web-mode))
+  :ensure t
+  :mode "\\.html$"
   :config
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-code-indent-offset 2)

@@ -1,5 +1,6 @@
 ;; gitの編集箇所ハイライト
 (use-package git-gutter-fringe+
+  :ensure t
   :config
   (global-git-gutter+-mode)
   (setq-default left-fringe-width 20)

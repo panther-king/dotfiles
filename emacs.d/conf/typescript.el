@@ -1,6 +1,7 @@
 ;; TypeScript
 (use-package typescript-mode
-  :mode (("\\.ts$" . typescript-mode))
+  :ensure t
+  :mode "\\.ts$"
   :config
   (bind-key "=" (smartchr '(" = " " === " "=" " == ")) typescript-mode-map)
   (bind-key "!" (smartchr '("!" " != ")) typescript-mode-map)

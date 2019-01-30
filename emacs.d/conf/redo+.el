@@ -1,5 +1,6 @@
 ;; redo
 (use-package redo+
+  :load-path "elisp"
   :bind (("C-M-/" . redo))
   :config
   (setq undo-no-redo t)

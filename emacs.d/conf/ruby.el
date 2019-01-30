@@ -1,5 +1,6 @@
 ;; Ruby
 (use-package ruby-mode
+  :ensure t
   :config
   (bind-key "'" (smartchr '("'`!!''" "'")) ruby-mode-map)
   (bind-key "=" (smartchr '(" = " " == " "=")) ruby-mode-map)

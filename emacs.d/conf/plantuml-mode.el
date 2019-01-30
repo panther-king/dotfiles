@@ -1,5 +1,6 @@
 ;; PlantUML
 (use-package plantuml-mode
-  :mode (("\\.\\(puml\\|uml\\)$" . plantuml-mode))
+  :ensure t
+  :mode "\\.\\(puml\\|uml\\)$"
   :config
   (setq plantuml-jar-path "/opt/plantuml/plantuml.jar"))

@@ -11,5 +11,6 @@
 
 ;; ポップアップ表示
 (use-package mozc-popup
+  :ensure t
   :config
   (setq mozc-candidate-style 'popup))

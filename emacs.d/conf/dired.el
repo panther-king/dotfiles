@@ -1,6 +1,9 @@
 ;; dired強化
-(use-package all-the-icons)
+(use-package all-the-icons
+  :ensure t)
 (use-package all-the-icons-dired
+  :ensure t
+  :requires all-the-icons
   :config
   (put 'dired-find-alternate-file 'disabled nil)
   (defun dired-open-in-accordance-with-situation ()

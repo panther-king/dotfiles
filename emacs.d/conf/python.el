@@ -1,5 +1,6 @@
 ;; Python
 (use-package python-mode
+  :ensure t
   :config
   (bind-key "\"" (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")) python-mode-map)
   (bind-key "'" (smartchr '("'`!!''" "'" "'''`!!''''")) python-mode-map)
@@ -14,6 +15,7 @@
 
 ;; コード補完
 (use-package jedi-core
+  :ensure t
   :config
   (setq jedi:complete-on-dot t)
   (setq jedi:use-shortcuts t)

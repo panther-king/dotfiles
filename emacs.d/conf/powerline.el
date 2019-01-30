@@ -1,5 +1,6 @@
 ;; モードラインのリッチ化
 (use-package powerline
+  :ensure t
   :config
   (defface mode-line-color-pink '((t (:background "#ed3161"))) "" :group 'powerline)
   (defface mode-line-color-dark-gray '((t (:background "#555555"))) "" :group 'powerline)

@@ -1,5 +1,6 @@
 ;; 対応するカッコの色付け
 (use-package rainbow-delimiters
+  :ensure t
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
   (require 'cl-lib)

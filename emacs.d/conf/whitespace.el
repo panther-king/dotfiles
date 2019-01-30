@@ -1,5 +1,6 @@
 ;; 全半角のスペース可視化
 (use-package whitespace
+  :ensure t
   :config
   (setq whitespace-style '(face
                            empty

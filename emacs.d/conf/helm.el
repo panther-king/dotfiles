@@ -1,5 +1,6 @@
 ;; helm
 (use-package helm
+  :ensure t
   :bind (("M-x" . helm-M-x)
          ("C-;" . helm-mini)
          ("C-x C-f" . helm-find-files)

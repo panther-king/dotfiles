@@ -1,5 +1,6 @@
 ;; magit
 (use-package magit
+  :ensure t
   :bind (("C-c m s" . magit-status)
          ("C-c m b" . magit-blame-addition))
   :config

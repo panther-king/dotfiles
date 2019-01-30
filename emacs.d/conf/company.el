@@ -1,5 +1,6 @@
 ;; コード補完
 (use-package company
+  :ensure t
   :config
   (global-company-mode)
   (setq company-selection-wrap-around t)

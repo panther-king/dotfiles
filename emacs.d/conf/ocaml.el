@@ -1,5 +1,6 @@
 ;; OCaml
 (use-package tuareg
+  :ensure t
   :mode (("\\.ml[iylp]?$" . tuareg-mode))
   :config
   (autoload 'tuareg-run-ocaml "tuareg" "Run an inferior OCaml process." t)

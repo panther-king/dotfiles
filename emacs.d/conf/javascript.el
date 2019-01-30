@@ -1,6 +1,7 @@
 ;; JavaScript
 (use-package js2-mode
   :mode (("\\.js$" . js2-mode))
+  :ensure t
   :config
   (bind-key "=" (smartchr '(" = " " === " " = " "=" " == ")) js2-mode-map)
   (bind-key "!" (smartchr '("!" " !== " " != ")) js2-mode-map)
@@ -17,6 +18,7 @@
 ;; CoffeeScript
 (use-package coffee-mode
   :mode (("\\.coffee$" . coffee-mode))
+  :ensure t
   :config
   (bind-key "=" (smartchr '(" = " " == " " = " "=")) coffee-mode-map)
   (bind-key "!" (smartchr '("!" " != ")) coffee-mode-map)

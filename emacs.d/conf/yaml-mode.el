@@ -1,3 +1,4 @@
 ;; YAML
 (use-package yaml-mode
-  :mode (("\\.yml$" . yaml-mode)))
+  :ensure t
+  :mode "\\.yml$")

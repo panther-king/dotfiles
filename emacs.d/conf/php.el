@@ -1,6 +1,7 @@
 ;; PHP
 (use-package php-mode
   :mode (("\\.php$" . php-mode))
+  :ensure t
   :config
   (bind-key "=" (smartchr '(" = " " === " "=" " == ")) php-mode-map)
   (bind-key "!" (smartchr '("!" " !== " " != ")) php-mode-map)

@@ -1,5 +1,6 @@
 ;; ディレクトリツリーの表示
 (use-package neotree
+  :ensure t
   :config
   (bind-key* [f8] 'neotree-toggle)
   (setq neo-show-hidden-files t)

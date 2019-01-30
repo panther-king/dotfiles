@@ -1,5 +1,6 @@
 ;; 複数ウインドウ制御
 (use-package elscreen
+  :ensure t
   :config
   (setq elscreen-prefix-key (kbd "C-z"))
   (setq elscreen-tab-display-kill-screen nil)
