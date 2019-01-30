@@ -3,8 +3,7 @@
 ;; M-s M-r decremental search
 ;; M-s M-% replacement
 (use-package foreign-regexp
-  :config
-  (custom-set-variables
-   '(foreign-regexp/regexp-type 'perl)
-   '(reb-re-syntax 'foreign-regexp)))
   :ensure t
+  :config
+  (custom-set-variables '(foreign-regexp/regexp-type 'perl)
+                        '(reb-re-syntax 'foreign-regexp)))

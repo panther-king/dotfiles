@@ -1,6 +1,7 @@
 ;; Python
 (use-package python-mode
   :ensure t
+  :mode "\\.py$"
   :config
   (bind-key "\"" (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")) python-mode-map)
   (bind-key "'" (smartchr '("'`!!''" "'" "'''`!!''''")) python-mode-map)

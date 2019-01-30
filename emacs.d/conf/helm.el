@@ -6,15 +6,18 @@
          ("C-x C-f" . helm-find-files)
          ("M-y" . helm-show-kill-ring)
          ("C-c i" . helm-imenu)
-         ("C-x b" . helm-buffers-list))
+         ("C-x b" . helm-buffers-list)
+         :map helm-map
+         ("C-h" . delete-backward-char)
+         :map helm-find-files-map
+         ("C-h" . delete-backward-char)
+         :map helm-read-file-map
+         ("TAB" . helm-execute-persistent-action)
+         :map helm-find-files-map
+         ("TAB" . helm-execute-persistent-action))
   :config
   (helm-mode 1)
   (helm-migemo-mode 1)
-  (bind-key "C-h" 'delete-backward-char helm-map)
-  (bind-key "TAB" 'helm-execute-persistent-action helm-read-file-map)
-  (bind-key "C-h" 'delete-backward-char helm-find-files-map)
-  (bind-key "TAB" 'helm-execute-persistent-action helm-find-files-map)
-
   (setq helm-delete-minibuffer-contents-from-point t)
   (defadvice helm-delete-minibuffer-contents (before helm-emulate-kill-line activate)
     "Emulate `kill-line' in helm minibuffer"
