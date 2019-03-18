@@ -8,13 +8,10 @@
 ;; モードラインに列番号も表示
 (column-number-mode t)
 
-;; カラーテーマ
-(load-theme 'madhat2r t)
-
 ;; ウインドウ透過
 (if window-system
     (progn
-      (set-frame-parameter nil 'alpha 80)))
+      (set-frame-parameter nil 'alpha 90)))
 
 ;; フォント
 (when window-system

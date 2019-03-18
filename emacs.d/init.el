@@ -6,7 +6,6 @@
 
 ;; 利用するパッケージ
 (package-install 'anzu)
-(package-install 'color-theme-sanityinc-tomorrow)
 (package-install 'company-jedi)
 (package-install 'dumb-jump)
 (package-install 'exec-path-from-shell)
