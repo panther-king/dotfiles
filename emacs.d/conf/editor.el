@@ -11,15 +11,6 @@
 (setq-default next-line-add-newlines nil)
 (setq-default require-final-newline t)
 
-;; 現在行のハイライト
-(when (eq window-system 'x)
-  (global-hl-line-mode t))
-
-;; 対応するカッコの強調
-(show-paren-mode t)
-(setq show-paren-delay 0)
-(setq show-paren-style 'expression)
-
 ;; 補完
 (icomplete-mode 1)
 (bind-key "C-j" 'dabbrev-expand)
