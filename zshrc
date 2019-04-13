@@ -69,7 +69,6 @@ esac
 # rust用環境変数
 source $HOME/.cargo/env
 export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
-alias rust="cargo-script"
 
 # anyenv初期化
 export PATH=$PATH:$HOME/.anyenv/bin
