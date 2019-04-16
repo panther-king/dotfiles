@@ -358,6 +358,10 @@
   :ensure t
   :hook (after-init-hook . global-company-mode))
 
+(use-package company-box
+  :hook (company-mode . company-box-mode)
+  :ensure t)
+
 ;;
 ;; Syntax checker.
 ;;
