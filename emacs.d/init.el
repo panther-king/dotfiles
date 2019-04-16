@@ -391,10 +391,6 @@
   :custom (flycheck-pos-tip-timeout 16)
   :ensure t)
 
-(use-package flycheck-elm
-  :ensure t
-  :hook (flycheck-mode-hook . flycheck-elm-setup))
-
 (use-package eglot
   :ensure t)
 
@@ -458,7 +454,8 @@
 ;; Elm
 (use-package elm-mode
   :config
-  (add-to-list (make-local-variable 'company-backends) 'company-elm)
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-elm))
   (bind-key "=" (smartchr '(" = " " == " "=")) elm-mode-map)
   (bind-key ">" (smartchr '(" > " " -> " " >> " ">")) elm-mode-map)
   (bind-key "<" (smartchr '(" < " " <- " " << " "<")) elm-mode-map)
@@ -467,6 +464,10 @@
   (bind-key "|" (smartchr '(" | " "|> " " <|" "|")) elm-mode-map)
   :ensure t
   :hook (elm-mode-hook . elm-oracle-setup-completion))
+
+(use-package flycheck-elm
+  :ensure t
+  :hook (flycheck-mode-hook . flycheck-elm-setup))
 
 ;; JavaScript
 (use-package js2-mode
