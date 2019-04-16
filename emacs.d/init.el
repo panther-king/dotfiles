@@ -508,7 +508,7 @@
 
 ;; PlantUML
 (use-package plantuml-mode
-  :custom (plantuml-jar-path "/opt/plantuml/plantuml.jar")
+  :custom (plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
   :ensure t
   :mode ("\\.p?uml\\'" . plantuml-mode))
 
