@@ -313,42 +313,26 @@
 ;;
 
 ;; Completions interface.
-(use-package helm
-  :bind
-  (("M-x" . helm-M-x)
-   ("C-;" . helm-mini)
-   ("C-x C-f" . helm-find-files)
-   ("M-y" . helm-show-kill-ring)
-   ("C-c i" . helm-imenu)
-   ("C-x b" . helm-buffers-list)
-   :map helm-map
-   ("C-h" . delete-backward-char)
-   :map helm-find-files-map
-   ("C-h" . delete-backward-char)
-   :map helm-read-file-map
-   ("TAB" . helm-execute-persistent-action)
-   :map helm-find-files-map
-   ("TAB" . helm-execute-persistent-action))
+(use-package counsel
   :config
-  (helm-mode 1)
-  (helm-migemo-mode 1)
-  (defadvice helm-delete-minibuffer-contents (before helm-emulate-kill-line activate)
-    "Emulate `kill-line' in helm minibuffer"
-    (kill-new (buffer-substring (point) (field-end))))
-
-  (defadvice helm-ff-kill-or-find-buffer-fname (around execute-only-if-exists activate)
-    "Execute command only if CANDIDATE exists"
-    (when (file-exists-p candidate)
-      ad-do-it))
-  :custom (helm-delete-minibuffer-contents-from-point t)
+  (ivy-mode 1)
+  (counsel-mode 1)
+  (bind-key "C-;" 'ivy-switch-buffer)
+  (global-set-key (kbd "C-s") 'swiper)
+  :custom
+  (ivy-height 20)
+  (ivy-use-virtual-buffers t)
+  (ivy-count-format "%d/%d ")
+  (enable-recursive-minibuffers t)
   :ensure t)
 
 ;; Project interaction library.
 (use-package projectile
   :config
   (projectile-global-mode)
-  (helm-projectile-on)
-  :custom (projectile-completion-system 'helm)
+  :ensure t)
+
+(use-package counsel-projectile
   :ensure t)
 
 ;; Code completions.
