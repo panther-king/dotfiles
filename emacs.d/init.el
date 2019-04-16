@@ -445,12 +445,9 @@
   (bind-key "'" (smartchr '("'`!!''" "'")) coffee-mode-map)
   (bind-key "<" (smartchr '("<" " < " " <= ")) coffee-mode-map)
   (bind-key ">" (smartchr '(">" " -> " " > " " >= ")) coffee-mode-map)
+  :custom
+  (coffee-tab-width 2)
   :ensure t
-  :hook (coffee-custom)
-  :init
-  (defun coffee-custom ()
-    (and (set (make-local-variable 'tab-width) 2)
-         (set (make-local-variable 'coffee-tab-width) 2)))
   :mode ("\\.coffee\\'" . coffee-mode))
 
 ;; Docker
