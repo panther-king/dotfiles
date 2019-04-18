@@ -159,7 +159,7 @@
 
 ;; Disposable files.
 (use-package open-junk-file
-  :custom (open-junk-file-format "~/.emacs.d/.junk/%Y%m%d%H%M%S.")
+  :custom (open-junk-file-format "/tmp/junk/%Y%m%d%H%M%S.")
   :ensure t)
 
 ;; Search Japanese with Roman characters.
