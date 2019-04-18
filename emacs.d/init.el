@@ -323,7 +323,9 @@
   (ivy-height 20)
   (ivy-use-virtual-buffers t)
   (ivy-count-format "%d/%d ")
+  (ivy-wrap t)
   (enable-recursive-minibuffers t)
+  (swiper-include-line-number-in-search t)
   :ensure t)
 
 ;; Project interaction library.
