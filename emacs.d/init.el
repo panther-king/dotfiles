@@ -256,6 +256,10 @@
   (bind-key "{" (smartchr '("{`!!'}" "{")))
   :load-path "github/emacs-smartchr")
 
+;; Enable to edit root permission files.
+(use-package sudo-edit
+  :ensure t)
+
 ;; Tree of undo.
 (use-package undo-tree
   :config (global-undo-tree-mode)
