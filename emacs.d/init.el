@@ -432,7 +432,7 @@
   :custom
   (coffee-tab-width 2)
   :ensure t
-  :mode ("\\.coffee\\'" . coffee-mode))
+  :mode ("\\.coffee$" . coffee-mode))
 
 ;; Docker
 (use-package dockerfile-mode
@@ -469,18 +469,18 @@
   (bind-key ">" (smartchr '(">" " => " " > " " >= ")) js2-mode-map)
   :custom (js2-basic-offset 2)
   :ensure t
-  :mode ("\\.js\\'" . js2-mode))
+  :mode ("\\.js$" . js2-mode))
 
 ;; JSON
 (use-package json-mode
   :config (setq js-indent-level 2)
   :ensure t
-  :mode ("\\.json\\'" . json-mode))
+  :mode ("\\.json$" . json-mode))
 
 ;; Markdown
 (use-package markdown-mode
   :ensure t
-  :mode ("\\.md\\'" . gfm-mode))
+  :mode ("\\.md$" . gfm-mode))
 
 ;; PHP
 (use-package php-mode
@@ -493,13 +493,13 @@
   (bind-key "(" (smartchr '("(`!!')" "(")) php-mode-map)
   :ensure t
   :hook (php-enable-psr2-coding-style)
-  :mode ("\\.php\\'" . php-mode))
+  :mode ("\\.php$" . php-mode))
 
 ;; PlantUML
 (use-package plantuml-mode
   :custom (plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
   :ensure t
-  :mode ("\\.p?uml\\'" . plantuml-mode))
+  :mode ("\\.p?uml$" . plantuml-mode))
 
 ;; Python
 (use-package python-mode
@@ -517,7 +517,7 @@
   (tab-width py-indent-offset)
   :ensure t
   :hook (python-mode-hook . eglot-ensure)
-  :mode ("\\.py\\'" . python-mode))
+  :mode ("\\.py$" . python-mode))
 
 (use-package pipenv
   :custom
@@ -541,12 +541,20 @@
   (bind-key "<" (smartchr '("<`!!'>" "<" " < " " <- " " <= ")) rustic-mode-map)
   (bind-key "|" (smartchr '("|`!!'|" "||" " | " "|")) rustic-mode-map)
   :ensure t
-  :mode ("\\.rs\\'" . rustic-mode))
+  :mode ("\\.rs$" . rustic-mode))
+
+;; Shell
+(use-package sh-mode
+  :mode
+  (("\\.z?sh$" . sh-mode)
+   ("rc$" . sh-mode)))
 
 ;; TOML
 (use-package toml-mode
   :ensure t
-  :mode ("\\(Pipfile\\|\\.toml\\)\\'" . toml-mode))
+  :mode
+  (("\\.toml$" . toml-mode)
+   ("^Pipfile$" . toml-mode)))
 
 ;; OCaml
 (use-package tuareg
@@ -563,7 +571,7 @@
   :init
   (defun my-tuareg-mode-hook ()
     (electric-indent-mode 0))
-  :mode ("\\.ml[iylp]?\\'" . tuareg-mode))
+  :mode ("\\.ml[iylp]?$" . tuareg-mode))
 
 ;; TypeScript
 (use-package typescript-mode
@@ -575,7 +583,7 @@
   (bind-key "<" (smartchr '("<" " < " " <= ")) typescript-mode-map)
   (bind-key ">" (smartchr '(">" " => " " > " " >= ")) typescript-mode-map)
   :ensure t
-  :mode ("\\.ts\\'" . typescript-mode))
+  :mode ("\\.ts$" . typescript-mode))
 
 ;; HTML/CSS
 (use-package web-mode
@@ -597,10 +605,10 @@
   (web-mode-css-at-rule-face ((t (:foreground "#FF7F00"))))
   :ensure t
   :mode
-  (("\\.html\\'" . web-mode)
-   ("\\.css\\'" . web-mode)))
+  (("\\.html$" . web-mode)
+   ("\\.css$" . web-mode)))
 
 ;; YAML
 (use-package yaml-mode
-  :mode ("\\.yml\\'" . yaml-mode)
+  :mode ("\\.yml$" . yaml-mode)
   :ensure t)
