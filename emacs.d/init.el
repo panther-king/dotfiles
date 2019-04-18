@@ -131,6 +131,10 @@
           (t
            (dired-find-file)))))
 
+;; Simple keybindings.
+(use-package bind-key
+  :ensure t)
+
 ;; Force emacs key bindings.
 (use-package drill-instructor
   :load-path "elisp"
@@ -323,6 +327,7 @@
   (counsel-mode 1)
   (bind-key "C-;" 'ivy-switch-buffer)
   (global-set-key (kbd "C-s") 'swiper)
+  (global-set-key (kbd "C-r") 'swiper)
   :custom
   (ivy-height 20)
   (ivy-use-virtual-buffers t)
