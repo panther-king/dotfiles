@@ -116,7 +116,7 @@
   :config
   (put 'dired-find-alternate-file 'disabled nil)
   :ensure t
-  :hook (dired-mode-hook)
+  :hook (dired-mode . all-the-icons-dired-mode)
   :init
   (defun dired-open-in-accordance-with-situation ()
     (interactive)
@@ -179,14 +179,13 @@
 
 ;; Japanese input.
 (use-package mozc
-  :config
-  (setq default-input-method "japanese-mozc")
-  (global-set-key (kbd "C-SPC") 'toggle-input-method)
-  ;; Change cursor color by input mode.
-  (add-hook 'input-method-activate-hook
-            (lambda () (set-cursor-color "#66cc66")))
-  (add-hook 'input-method-inactivate-hook
-            (lambda () (set-cursor-color "#d54e53"))))
+  :config (global-set-key (kbd "C-SPC") 'toggle-input-method)
+  :custom (default-input-method "japanese-mozc")
+  :hook
+  ((input-method-activate . (lambda ()
+                              (set-cursor-color "#66cc66")))
+   (input-method-inactivate . (lambda ()
+                                (set-cursor-color "#d54e53")))))
 
 (use-package mozc-popup
   :ensure t
@@ -204,9 +203,8 @@
 
 ;; Window popup.
 (use-package popwin
-  :config
-  (popwin-mode 1)
-  (setq special-display-function 'popwin:display-buffer)
+  :config (popwin-mode 1)
+  :custom (special-display-function 'popwin:display-buffer)
   :ensure t)
 
 ;; Emphasis brackets.
@@ -223,16 +221,7 @@
        (cl-callf color-saturate-name (face-foreground face) 30))))
   (add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
   :ensure t
-  :hook (prog-mode-hook . rainbow-delimiters-mode))
-
-;; Redo settings.
-(use-package redo+
-  :bind ("C-M-/" . redo)
-  :config
-  (setq undo-no-redo t)
-  (setq undo-limit 600000)
-  (setq undo-strong-limit 900000)
-  :load-path "elisp")
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 ;; ripgrep settings.
 (use-package ripgrep
@@ -244,8 +233,9 @@
 
 ;; Jump to home/end of file.
 (use-package sequential-command-config
-  :bind (("C-a" . seq-home)
-         ("C-e" . seq-end))
+  :bind
+  (("C-a" . seq-home)
+   ("C-e" . seq-end))
   :load-path "elisp")
 
 ;; Completion with brackets and quotations.
@@ -270,7 +260,7 @@
 (use-package volatile-highlights
   :custom-face (vhl/default-face ((nil (:foreground "#ff3333" :background "#ffcdcd"))))
   :ensure t
-  :hook (after-init-hook . volatile-highlights-mode))
+  :hook (after-init . volatile-highlights-mode))
 
 ;; Guide of key bindings.
 (use-package which-key
@@ -318,26 +308,64 @@
 ;;
 
 ;; Completions interface.
-(use-package counsel
+(use-package ivy
   :config
   (ivy-mode 1)
-  (counsel-mode 1)
   (bind-key "C-;" 'ivy-switch-buffer)
+  :custom
+  (ivy-count-format "%d/%d ")
+  (ivy-format-function 'ivy-format-function-arrow)
+  (ivy-height 20)
+  (ivy-use-virtual-buffers t)
+  (ivy-wrap t)
+  :ensure t)
+
+(use-package counsel
+  :config
+  (counsel-mode 1)
   (global-set-key (kbd "C-s") 'swiper)
   (global-set-key (kbd "C-r") 'swiper)
   :custom
-  (ivy-height 20)
-  (ivy-use-virtual-buffers t)
-  (ivy-count-format "%d/%d ")
-  (ivy-wrap t)
   (enable-recursive-minibuffers t)
   (swiper-include-line-number-in-search t)
   :ensure t)
 
+(use-package ivy-rich
+  :config
+  (ivy-rich-mode 1)
+  :custom
+  (ivy-rich--display-transformers-list
+   '(ivy-switch-buffer
+     (:columns
+      ((ivy-rich-candidate (:width 32))
+       (ivy-rich-switch-buffer-size (:width 8))
+       (ivy-rich-switch-buffer-indicators (:width 4 :face error :aligh right))
+       (ivy-rich-switch-buffer-major-mode (:width 20 :face warning))
+       (ivy-rich-switch-buffer-project (:width 16 :face success))
+       (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
+      :predicate
+      (lambda (cand) (get-buffer cand)))
+     counsel-M-x
+     (:columns
+      ((counsel-M-x-transformer (:width 40))
+       (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))
+     counsel-describe-function
+     (:columns
+      ((counsel-describe-function-transformer (:width 40))
+       (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))
+     counsel-describe-variable
+     (:columns
+      ((counsel-describe-variable-transformer (:width 40))
+       (ivy-rich-counsel-variable-docstring (:face font-lock-doc-face))))
+     counsel-recentf
+     (:columns
+      ((ivy-rich-candidate (:width 0.8))
+       (ivy-rich-file-last-modified-time (:face font-lock-comment-face))))))
+  :ensure t)
+
 ;; Project interaction library.
 (use-package projectile
-  :config
-  (projectile-global-mode)
+  :config (projectile-mode)
   :ensure t)
 
 (use-package counsel-projectile
@@ -355,20 +383,8 @@
         ("C-n" . company-select-next)
         ("C-p" . company-eslect-previous))
   :custom (company-selection-wrap-around t)
-  :custom-face
-  (company-tooltip ((nil (:foreground "black" :background "lightgrey"))))
-  (company-tooltip-common ((nil (:foreground "black" :background "lightgrey"))))
-  (company-tooltip-common-selection ((nil (:foreground "white" :background "steelblue"))))
-  (company-tooltip-selection ((nil (:foreground "black" :background "steelblue"))))
-  (company-preview-common ((nil (:background nil :foreground "lightgrey" :underline t))))
-  (company-scrollbar-fg ((nil (:background "orange"))))
-  (company-scrollbar-bg ((nil (:background "grey40"))))
   :ensure t
-  :hook (after-init-hook . global-company-mode))
-
-(use-package company-box
-  :hook (company-mode . company-box-mode)
-  :ensure t)
+  :hook (after-init . global-company-mode))
 
 ;;
 ;; Syntax checker.
@@ -380,14 +396,22 @@
    ("<f11>" . flycheck-previous-error))
   :config (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
   :ensure t
-  :hook (after-init-hook . global-flycheck-mode))
+  :hook (after-init . global-flycheck-mode))
 
 (use-package flycheck-pos-tip
   :config (custom-set-variables '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
   :custom (flycheck-pos-tip-timeout 16)
   :ensure t)
 
-(use-package eglot
+(use-package lsp-mode
+  :ensure t)
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :ensure t)
+
+(use-package company-lsp
+  :config (push 'company-lsp company-backends)
   :ensure t)
 
 ;;
@@ -437,8 +461,7 @@
   (bind-key "'" (smartchr '("'`!!''" "'")) coffee-mode-map)
   (bind-key "<" (smartchr '("<" " < " " <= ")) coffee-mode-map)
   (bind-key ">" (smartchr '(">" " -> " " > " " >= ")) coffee-mode-map)
-  :custom
-  (coffee-tab-width 2)
+  :custom (coffee-tab-width 2)
   :ensure t
   :mode ("\\.coffee$" . coffee-mode))
 
@@ -459,11 +482,11 @@
   (bind-key ":" (smartchr '(" : " " :: " ":")) elm-mode-map)
   (bind-key "|" (smartchr '(" | " "|> " " <|" "|")) elm-mode-map)
   :ensure t
-  :hook (elm-mode-hook . elm-oracle-setup-completion))
+  :hook (elm-mode . elm-oracle-setup-completion))
 
 (use-package flycheck-elm
   :ensure t
-  :hook (flycheck-mode-hook . flycheck-elm-setup))
+  :hook (flycheck-mode . flycheck-elm-setup))
 
 ;; JavaScript
 (use-package js2-mode
@@ -500,7 +523,7 @@
   (bind-key "'" (smartchr '("'`!!''" "'")) php-mode-map)
   (bind-key "(" (smartchr '("(`!!')" "(")) php-mode-map)
   :ensure t
-  :hook (php-enable-psr2-coding-style)
+  :hook (php-mode . php-enable-psr2-coding-style)
   :mode ("\\.php$" . php-mode))
 
 ;; PlantUML
@@ -524,7 +547,7 @@
   (py-indent-offset 4)
   (tab-width py-indent-offset)
   :ensure t
-  :hook (python-mode-hook . eglot-ensure)
+  :hook (python-mode . lsp)
   :mode ("\\.py$" . python-mode))
 
 (use-package pipenv
@@ -537,9 +560,6 @@
 
 ;; Rust
 (use-package rustic
-  :custom
-  (rustic-rls-pkg 'eglot)
-  (rustic-format-display-method 'switch-to-buffer)
   :config
   (bind-key "=" (smartchr '(" = " " == " "=")) rustic-mode-map)
   (bind-key "+" (smartchr '("+" " + " " += ")) rustic-mode-map)
@@ -555,6 +575,8 @@
 (use-package sh-mode
   :mode
   (("\\.z?sh$" . sh-mode)
+   ("\\.env$" . sh-mode)
+   ("\\.sample$" . sh-mode)
    ("rc$" . sh-mode)))
 
 ;; TOML
@@ -575,7 +597,7 @@
   (bind-key "|" (smartchr '("| " " | " "|")) tuareg-mode-map)
   (bind-key "^" (smartchr '(" ^ " "^")) tuareg-mode-map)
   :ensure t
-  :hook (my-tuareg-mode-hook)
+  :hook (tuareg . my-tuareg-mode-hook)
   :init
   (defun my-tuareg-mode-hook ()
     (electric-indent-mode 0))
