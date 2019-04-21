@@ -75,8 +75,10 @@
   (global-hl-line-mode t))
 
 ;;
-;; theme
+;; UI
 ;;
+(use-package all-the-icons
+  :ensure t)
 
 (use-package doom-themes
   :config (load-theme 'doom-dracula t)
@@ -93,24 +95,19 @@
   :config
   (doom-modeline-def-modeline 'main
     '(bar buffer-info matches buffer-position selection-info)
-    '(input-method major-mode checker vcs bar))
+    '(lsp input-method vcs major-mode checker buffer-encoding bar))
   :custom
   (doom-modeline-buffer-file-name-style 'truncate-with-project)
-  (doom-modeline-icon t)
-  (doom-modeline-major-mode-icon nil)
-  (doom-modeline-minor-mode nil)
+  (doom-modeline-icon nil)
+  (doom-modeline-vcs-max-length 24)
   :ensure t
-  :hook
-  (after-init . doom-modeline-mode))
+  :hook (after-init . doom-modeline-mode))
 
 ;;
 ;; utilities
 ;;
 
 ;; dired
-(use-package all-the-icons
-  :ensure t)
-
 (use-package all-the-icons-dired
   :bind
   (:map dired-mode-map
