@@ -243,7 +243,7 @@
 
 ;; Highlight results.
 (use-package volatile-highlights
-  :custom-face (vhl/default-face ((nil (:foreground "#ff3333" :background "#ffcdcd"))))
+  :custom-face (vhl/default-face ((nil (:foreground "dark violet" :background "dark magenta"))))
   :ensure t
   :hook (after-init . volatile-highlights-mode))
 
