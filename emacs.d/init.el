@@ -75,37 +75,22 @@
   (global-hl-line-mode t))
 
 ;;
-;; UI
+;; environment
 ;;
-(use-package all-the-icons
-  :ensure t)
-
-(use-package doom-themes
-  :config (load-theme 'doom-dracula t)
-  :custom
-  (doom-themes-enable-italic t)
-  (doom-themes-enable-bold t)
-  :ensure t)
-
-(use-package nyan-mode
-  :ensure t
-  :init (nyan-mode))
-
-(use-package doom-modeline
+(use-package exec-path-from-shell
   :config
-  (doom-modeline-def-modeline 'main
-    '(bar buffer-info matches buffer-position selection-info)
-    '(lsp input-method vcs major-mode checker buffer-encoding bar))
+  (exec-path-from-shell-initialize)
   :custom
-  (doom-modeline-buffer-file-name-style 'truncate-with-project)
-  (doom-modeline-icon nil)
-  (doom-modeline-vcs-max-length 24)
-  :ensure t
-  :hook (after-init . doom-modeline-mode))
+  (exec-path-from-shell-check-startup-files nil)
+  :ensure t)
 
 ;;
 ;; utilities
 ;;
+
+;; icon
+(use-package all-the-icons
+  :ensure t)
 
 ;; dired
 (use-package all-the-icons-dired
@@ -352,7 +337,6 @@
 
 ;; Project interaction library.
 (use-package projectile
-  :config (projectile-mode)
   :ensure t)
 
 (use-package counsel-projectile
@@ -629,3 +613,31 @@
 (use-package yaml-mode
   :mode ("\\.yml$" . yaml-mode)
   :ensure t)
+
+;;
+;; UI
+;;
+(use-package doom-themes
+  :config (load-theme 'doom-dracula t)
+  :custom
+  (doom-dracula-brighter-modeline t)
+  (doom-dracula-padded-modeline t)
+  (doom-themes-enable-italic t)
+  (doom-themes-enable-bold t)
+  :ensure t)
+
+(use-package nyan-mode
+  :ensure t
+  :init (nyan-mode))
+
+(use-package doom-modeline
+  :config
+  (doom-modeline-def-modeline 'main
+    '(buffer-info matches buffer-position selection-info)
+    '(input-method vcs major-mode checker buffer-encoding bar))
+  :custom
+  (doom-modeline-buffer-file-name-style 'truncate-with-project)
+  (doom-modeline-icon nil)
+  (doom-modeline-vcs-max-length 24)
+  :ensure t
+  :hook (after-init . doom-modeline-mode))
