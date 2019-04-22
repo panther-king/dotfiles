@@ -270,22 +270,6 @@
 ;; Show the whitespace.
 (use-package whitespace
   :config
-  (set-face-attribute 'whitespace-trailing nil
-                      :background nil
-                      :foreground "DeepPink"
-                      :underline t)
-  (set-face-attribute 'whitespace-tab nil
-                      :background nil
-                      :foreground "LightSkyBlue"
-                      :underline t)
-  (set-face-attribute 'whitespace-space nil
-                      :background nil
-                      :foreground "Gray22")
-  (set-face-attribute 'whitespace-empty nil
-                      :background nil
-                      :foreground "GreenYellow"
-                      :underline t)
-
   (global-whitespace-mode t)
   :custom
   (whitespace-style '(face
@@ -301,6 +285,9 @@
                                  (space-mark ?\u3000 [?\u25a1])
                                  (tab-mark ?\u0009 [?\xBB ?\t])))
   (whitespace-action '(auto-cleanup))
+  :custom-face
+  (whitespace-space ((t (:background nil :foreground "Gray22"))))
+  (whitespace-tab ((t (:background nil :foreground "LightSkyBlue" :underline t))))
   :ensure t)
 
 ;;
