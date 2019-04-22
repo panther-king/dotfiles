@@ -185,7 +185,7 @@
   ((input-method-activate . (lambda ()
                               (set-cursor-color "#66cc66")))
    (input-method-inactivate . (lambda ()
-                                (set-cursor-color "#d54e53")))))
+                                (set-cursor-color "#c678dd")))))
 
 (use-package mozc-popup
   :ensure t
