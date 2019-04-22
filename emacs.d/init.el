@@ -369,11 +369,6 @@
   :ensure t
   :hook (after-init . global-flycheck-mode))
 
-(use-package flycheck-pos-tip
-  :config (custom-set-variables '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
-  :custom (flycheck-pos-tip-timeout 16)
-  :ensure t)
-
 (use-package lsp-mode
   :ensure t)
 
