@@ -572,10 +572,6 @@
   (bind-key "|" (smartchr '("| " " | " "|")) tuareg-mode-map)
   (bind-key "^" (smartchr '(" ^ " "^")) tuareg-mode-map)
   :ensure t
-  :hook (tuareg . my-tuareg-mode-hook)
-  :init
-  (defun my-tuareg-mode-hook ()
-    (electric-indent-mode 0))
   :mode ("\\.ml[iylp]?$" . tuareg-mode))
 
 ;; TypeScript
