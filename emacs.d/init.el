@@ -537,6 +537,16 @@
   :ensure t
   :mode ("\\.rs$" . rustic-mode))
 
+;; SCSS
+(use-package scss-mode
+  :custom (scss-compile-at-save nil)
+  :ensure t
+  :hook (scss-mode . my-scss-mode-hook)
+  :init
+  (defun my-scss-mode-hook ()
+    (set (make-local-variable 'css-indent-offset) 2))
+  :mode ("\\.scss$" . scss-mode))
+
 ;; Shell
 (use-package sh-mode
   :mode
