@@ -439,8 +439,7 @@
 ;; Elm
 (use-package elm-mode
   :config
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-elm))
+  (push 'company-elm company-backends)
   (bind-key "=" (smartchr '(" = " " == " "=")) elm-mode-map)
   (bind-key ">" (smartchr '(" > " " -> " " >> " ">")) elm-mode-map)
   (bind-key "<" (smartchr '(" < " " <- " " << " "<")) elm-mode-map)
