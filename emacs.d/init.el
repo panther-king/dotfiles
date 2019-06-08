@@ -518,8 +518,12 @@
   (bind-key ">" (smartchr '(">" " -> " " > " " >= ")) python-mode-map)
   (bind-key "<" (smartchr '("<" " <= ")) python-mode-map)
   :ensure t
-  :hook (python-mode . lsp)
   :mode ("\\.py$" . python-mode))
+
+(use-package elpy
+  :after (flycheck python-mode)
+  :ensure t
+  :init (elpy-enable))
 
 (use-package pipenv
   :custom
