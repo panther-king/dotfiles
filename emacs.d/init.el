@@ -384,8 +384,9 @@
   :ensure t)
 
 (use-package company-lsp
-  :config (push 'company-lsp company-backends)
-  :ensure t)
+  :after (lsp-mode company)
+  :ensure t
+  :init (push 'company-lsp company-backends))
 
 ;;
 ;; VCS
@@ -445,8 +446,8 @@
 
 ;; Elm
 (use-package elm-mode
+  :after company
   :config
-  (push 'company-elm company-backends)
   (bind-key "=" (smartchr '(" = " " == " "=")) elm-mode-map)
   (bind-key ">" (smartchr '(" > " " -> " " >> " ">")) elm-mode-map)
   (bind-key "<" (smartchr '(" < " " <- " " << " "<")) elm-mode-map)
@@ -454,6 +455,7 @@
   (bind-key ":" (smartchr '(" : " " :: " ":")) elm-mode-map)
   (bind-key "|" (smartchr '(" | " "|> " " <|" "|")) elm-mode-map)
   :ensure t
+  :init (push 'company-elm company-backends)
   :hook (elm-mode . elm-oracle-setup-completion))
 
 (use-package flycheck-elm
