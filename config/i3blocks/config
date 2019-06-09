@@ -60,13 +60,6 @@ interval=3600
 markup=pango
 separator=false
 
-[disk]
-command=~/.config/i3blocks/scripts/disk_usage
-label=
-instance=/home
-markup=pango
-interval=3600
-
 # Network interface monitoring
 #
 # If the instance is not specified, use the interface used for default route.
