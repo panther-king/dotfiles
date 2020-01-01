@@ -70,8 +70,10 @@
 ;; 検索時の語数とマッチ位置表示
 (global-anzu-mode +1)
 
-;; Highlight current line.
+;; Highlight current line and show line number.
 (when (eq window-system 'x)
+  (global-display-line-numbers-mode t)
+  (custom-set-variables '(display-line-numbers-width-start t))
   (global-hl-line-mode t))
 
 ;;
