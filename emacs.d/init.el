@@ -432,6 +432,7 @@
   (bind-key "+" (smartchr '(" ++ " " + " "+")) elm-mode-map)
   (bind-key ":" (smartchr '(" : " " :: " ":")) elm-mode-map)
   (bind-key "|" (smartchr '(" | " "|> " " <|" "|")) elm-mode-map)
+  (bind-key "\"" (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")) elm-mode-map)
   :ensure t
   :init (push 'company-elm company-backends)
   :hook (elm-mode . elm-oracle-setup-completion))
