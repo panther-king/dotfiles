@@ -373,18 +373,6 @@
   :ensure t
   :hook (after-init . global-flycheck-mode))
 
-(use-package lsp-mode
-  :ensure t)
-
-(use-package lsp-ui
-  :hook (lsp-mode . lsp-ui-mode)
-  :ensure t)
-
-(use-package company-lsp
-  :after (lsp-mode company)
-  :ensure t
-  :init (push 'company-lsp company-backends))
-
 ;;
 ;; VCS
 ;;
