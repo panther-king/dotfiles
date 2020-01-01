@@ -623,7 +623,7 @@
   :config
   (doom-modeline-def-modeline 'main
     '(buffer-info matches buffer-position selection-info)
-    '(input-method vcs major-mode checker buffer-encoding bar))
+    '(vcs major-mode checker buffer-encoding bar))
   :custom
   (doom-modeline-buffer-file-name-style 'truncate-with-project)
   (doom-modeline-icon nil)
