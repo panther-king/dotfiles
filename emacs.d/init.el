@@ -165,14 +165,9 @@
   :ensure t)
 
 ;; Japanese input.
-(use-package mozc
-  :config (global-set-key (kbd "C-SPC") 'toggle-input-method)
-  :custom (default-input-method "japanese-mozc")
-  :hook
-  ((input-method-activate . (lambda ()
-                              (set-cursor-color "#66cc66")))
-   (input-method-inactivate . (lambda ()
-                                (set-cursor-color "#c678dd")))))
+(use-package skk
+  :bind
+  ("C-SPC" . skk-mode))
 
 (use-package mozc-popup
   :ensure t
