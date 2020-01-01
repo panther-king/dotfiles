@@ -332,13 +332,6 @@
        (ivy-rich-file-last-modified-time (:face font-lock-comment-face))))))
   :ensure t)
 
-;; Search Japanese with Roman characters in swiper too.
-(use-package avy-migemo
-  :config
-  (avy-migemo-mode 1)
-  (require 'avy-migemo-e.g.swiper)
-  :ensure t)
-
 ;; Project interaction library.
 (use-package projectile
   :ensure t)
