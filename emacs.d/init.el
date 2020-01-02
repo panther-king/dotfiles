@@ -92,6 +92,8 @@
 
 ;; icon
 (use-package all-the-icons
+  :custom
+  (all-the-icons-scale-factor 1.0)
   :ensure t)
 
 ;; dired
@@ -617,16 +619,26 @@
 
 (use-package nyan-mode
   :ensure t
-  :init (nyan-mode))
+  :init
+  (nyan-mode))
 
 (use-package doom-modeline
+  :commands
+  (doom-modeline-def-modeline)
   :config
-  (doom-modeline-def-modeline 'main
-    '(buffer-info matches buffer-position selection-info)
-    '(vcs major-mode checker buffer-encoding bar))
+  (doom-modeline-def-modeline 'my-modeline
+    '(buffer-info buffer-encoding buffer-position selection-info major-mode vcs checker)
+    nil)
   :custom
   (doom-modeline-buffer-file-name-style 'truncate-with-project)
-  (doom-modeline-icon nil)
+  (doom-modeline-icon t)
+  (doom-modeline-major-mode-icon nil)
+  (doom-modeline-minor-mode-icon nil)
   (doom-modeline-vcs-max-length 24)
   :ensure t
-  :hook (after-init . doom-modeline-mode))
+  :hook
+  (after-init . doom-modeline-mode)
+  (doom-modeline-mode . my-doom-modeline-hook)
+  :init
+  (defun my-doom-modeline-hook ()
+    (doom-modeline-set-modeline 'my-modeline 'default)))
