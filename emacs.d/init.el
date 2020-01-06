@@ -171,10 +171,6 @@
   :bind
   ("C-SPC" . skk-mode))
 
-(use-package mozc-popup
-  :ensure t
-  :config (setq mozc-candidate-style 'popup))
-
 ;; Emphasize brackets.
 (use-package paren
   :custom
@@ -515,17 +511,25 @@
   :hook (python-mode . pipenv-mode))
 
 ;; Rust
-(use-package rustic
+(use-package rust-mode
   :config
-  (bind-key "=" (smartchr '(" = " " == " "=")) rustic-mode-map)
-  (bind-key "+" (smartchr '("+" " + " " += ")) rustic-mode-map)
-  (bind-key "-" (smartchr '("-" " - " " -= ")) rustic-mode-map)
-  (bind-key "!" (smartchr '("!" " != ")) rustic-mode-map)
-  (bind-key ">" (smartchr '(">" " > " " -> " " => " " >= ")) rustic-mode-map)
-  (bind-key "<" (smartchr '("<`!!'>" "<" " < " " <- " " <= ")) rustic-mode-map)
-  (bind-key "|" (smartchr '("|`!!'|" "||" " | " "|")) rustic-mode-map)
+  (use-package racer
+    :ensure t
+    :hook
+    ((racer-mode . company-mode)
+     (racer-mode . eldoc-mode)))
+  (bind-key "=" (smartchr '(" = " " == " "=")) rust-mode-map)
+  (bind-key "+" (smartchr '("+" " + " " += ")) rust-mode-map)
+  (bind-key "-" (smartchr '("-" " - " " -= ")) rust-mode-map)
+  (bind-key "!" (smartchr '("!" " != ")) rust-mode-map)
+  (bind-key ">" (smartchr '(">" " > " " -> " " => " " >= ")) rust-mode-map)
+  (bind-key "<" (smartchr '("<`!!'>" "<" " < " " <- " " <= ")) rust-mode-map)
+  (bind-key "|" (smartchr '("|`!!'|" "||" " | " "|")) rust-mode-map)
+  :custom
+  (rust-format-on-save t)
   :ensure t
-  :mode ("\\.rs$" . rustic-mode))
+  :hook
+  (rust-mode . racer-mode))
 
 ;; SCSS
 (use-package scss-mode
