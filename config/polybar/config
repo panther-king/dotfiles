@@ -1,0 +1,196 @@
+[colors]
+bg = #222D32
+fg = #CFD8DC
+
+adapta-cyan = #00BCD4
+adapta-green = #009688
+adapta-grey = #475359
+adapta-lightgreen = #4DB6AC
+adapta-red = #FF5252
+adapta-yellow = #C9BC0E
+
+[margin]
+for-modules = 1
+
+[bar/main]
+; Styles
+background = ${colors.bg}
+cursor-click = pointer
+foreground = ${colors.fg}
+height = 32
+line-size = 2
+width = 100%
+; Fonts
+font-0 = "Fantasque Sans Mono:pixelsize=14;3"
+font-1 = "Iosevka Nerd Font:pixelsize=14;3"
+font-2 = "FontAwesome5Free:pixelsize=14;3"
+; System tray
+tray-position = right
+wm-restack = i3
+; Modules
+modules-left = i3
+modules-right = cpu memory filesystem wired-network wireless-network battery date
+
+[module/battery]
+type = internal/battery
+; Basic
+adapter = AC
+battery = BAT1
+full-at = 99
+poll-interval = 10
+time-format = %H:%M
+; Styles
+format-charging = <animation-charging> <label-charging>
+format-charging-margin = ${margin.for-modules}
+format-charging-padding = 1
+format-charging-underline = ${colors.adapta-yellow}
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-margin = ${margin.for-modules}
+format-discharging-padding = 1
+format-discharging-underline = ${colors.adapta-cyan}
+label-charging = Charging %percentage%%
+label-discharging = %percentage%% (%time%)
+label-full = Fully charged
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${colors.adapta-red}
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = ${colors.adapta-yellow}
+ramp-capacity-2 = 
+ramp-capacity-2-foreground = ${colors.adapta-cyan}
+ramp-capacity-3 = 
+ramp-capacity-3-foreground = ${colors.adapta-green}
+ramp-capacity-4 = 
+ramp-capacity-4-foreground = ${colors.adapta-green}
+bar-capacity-width = 10
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+animation-discharging-framerate = 500
+
+[module/cpu]
+type = internal/cpu
+; Basic
+interval = 5
+; Styles
+format-margin = ${margin.for-modules}
+format-underline = ${colors.adapta-cyan}
+format-padding = 1
+label = " %percentage-cores%"
+
+[module/date]
+type = internal/date
+interval = 1
+label = %time%
+label-margin = ${margin.for-modules}
+label-padding = 1
+label-underline = ${colors.adapta-cyan}
+time =  %Y/%m/%d(%a) %H:%M:%S
+
+[module/filesystem]
+type = internal/fs
+; Basic
+fixed-values = false
+interval = 60
+mount-0 = /
+; Styles
+label-mounted =  %used% / %total%
+label-mounted-margin = ${margin.for-modules}
+label-mounted-underline = ${colors.adapta-cyan}
+label-mounted-padding = 1
+
+[module/i3]
+type = internal/i3
+; Basic
+enable-click = true
+enable-scroll = false
+fuzzy-match = true
+index-sort = true
+pin-workspaces = true
+reverse-scroll = false
+strip-wsnumbers = true
+wrapping-scroll = false
+; Styles
+format = <label-state> <label-mode>
+label-mode = %mode%
+label-mode-padding = 1
+label-focused = %index%
+label-focused-background = #3f3f3f
+label-focused-foreground = #ffffff
+label-focused-padding = 1
+label-focused-underline = ${colors.adapta-cyan}
+label-separator-padding = 1
+label-unfocused = %index%
+label-unfocused-padding = 1
+label-urgent = %index%
+label-urgent-padding = 1
+label-visible = %index%
+label-visible-padding = 1
+label-visible-underline = ${colors.adapta-cyan}
+
+[module/memory]
+type = internal/memory
+; Basic
+interval = 5
+; Styles
+format-margin = ${margin.for-modules}
+format-padding = 1
+format-underline = ${colors.adapta-cyan}
+label =  %gb_used% / %gb_total%
+
+[module/wired-network]
+type = internal/network
+; Basic
+interface = enp0s31f6
+interval = 5
+; Styles
+format-connected = <label-connected>
+format-connected-margin = ${margin.for-modules}
+format-connected-padding = 1
+format-connected-underline = ${colors.adapta-green}
+format-disconnected = <label-disconnected>
+format-disconnected-margin = ${margin.for-modules}
+format-disconnected-padding = 1
+format-disconnected-underline = ${colors.adapta-grey}
+label-connected = 😃 %local_ip%
+label-connected-foreground = ${colors.adapta-green}
+label-disconnected = 😴 %ifname%
+label-disconnected-foreground = ${colors.adapta-grey}
+
+[module/wireless-network]
+type = internal/network
+; Basic
+interface = wlp2s0
+interval = 5
+; Styles
+format-connected =  <ramp-signal> <label-connected>
+format-connected-margin = ${margin.for-modules}
+format-connected-padding = 1
+format-connected-underline = ${colors.adapta-green}
+format-disconnected = <label-disconnected>
+format-disconnected-margin = ${margin.for-modules}
+format-disconnected-padding = 1
+format-disconnected-underline = ${colors.adapta-grey}
+label-connected = %essid% %signal:4%%
+label-connected-foreground = ${colors.adapta-green}
+label-disconnected = 😴 %ifname%
+label-disconnected-foreground = ${colors.adapta-grey}
+ramp-signal-0 = 😱
+ramp-signal-0-foreground = ${colors.adapta-red}
+ramp-signal-1 = 😠
+ramp-signal-1-foreground = ${colors.adapta-red}
+ramp-signal-2 = 😒
+ramp-signal-2-foreground = ${colors.adapta-yellow}
+ramp-signal-3 = 😊
+ramp-signal-3-foreground = ${colors.adapta-cyan}
+ramp-signal-4 = 😃
+ramp-signal-4-foreground = ${colors.adapta-green}
+ramp-signal-5 = 😈
+ramp-signal-5-foreground = ${colors.adapta-green}
