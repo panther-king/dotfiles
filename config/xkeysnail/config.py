@@ -29,8 +29,6 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "Alacritty"), {
     K("M-Shift-dot"): with_mark(K("C-end")),
     # Newline
     K("C-m"): K("enter"),
-    K("C-j"): K("enter"),
-    K("C-o"): [K("enter"), K("left")],
     # Copy
     K("C-w"): [K("C-x"), set_mark(False)],
     K("M-w"): [K("C-c"), set_mark(False)],
