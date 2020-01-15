@@ -36,6 +36,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# Don't show title bar
+for_window [class="^.*"] border pixel 1
+
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -159,9 +162,10 @@ bindsym $mod+m bar mode toggle
 
 exec --no-startup-id nm-applet
 exec --no-startup-id fcitx
-exec --no-startup-id ~/.fehbg
-exec --no-startup-id compton -b --config ~/.config/compton.conf
+exec --no-startup-id dunst
+exec --no-startup-id $HOME/.fehbg
+exec --no-startup-id compton -b --config $HOME/.config/compton.conf
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # screenshot
-bindsym Print exec --no-startup-id import -window root ~/Pictures/screenshot`date "+%Y%m%d%H%M%S"`.jpg
+bindsym Print exec --no-startup-id import -window root $HOME/Pictures/screenshot`date "+%Y%m%d%H%M%S"`.jpg
