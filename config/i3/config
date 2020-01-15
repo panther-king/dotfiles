@@ -37,7 +37,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # Border settings
-defafult_border none
+default_border none
 for_window [class="^.*"] border pixel 0
 
 # start dmenu (a program launcher)
