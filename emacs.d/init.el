@@ -169,7 +169,9 @@
 ;; Japanese input.
 (use-package skk
   :bind
-  ("C-SPC" . skk-mode))
+  ("C-SPC" . skk-mode)
+  :custom
+  (skk-egg-like-newline t))
 
 ;; Emphasize brackets.
 (use-package paren
