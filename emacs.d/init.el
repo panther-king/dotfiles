@@ -635,7 +635,7 @@
   (doom-modeline-def-modeline 'my-modeline
     '(buffer-info buffer-encoding buffer-position selection-info major-mode vcs checker))
   :custom
-  (doom-modeline-buffer-file-name-style 'truncate-with-project)
+  (doom-modeline-buffer-file-name-style 'relative-from-project)
   (doom-modeline-icon t)
   (doom-modeline-major-mode-icon nil)
   (doom-modeline-minor-mode-icon nil)
