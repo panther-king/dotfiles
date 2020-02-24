@@ -1,0 +1,111 @@
+add_newline = false
+prompt_order = [
+    "username",
+    "hostname",
+    #"kubernetes",
+    "directory",
+    "git_branch",
+    #"git_commit",
+    #"git_state",
+    "git_status",
+    #"hg_branch",
+    "package",
+    #"dotnet",
+    "elm",
+    #"golang",
+    #"haskell",
+    #"java",
+    "nodejs",
+    #"php",
+    "python",
+    #"ruby",
+    "rust",
+    #"terraform",
+    #"nix_shell",
+    #"conda",
+    #"memory_usage",
+    #"aws",
+    #"env_var",
+    #"crystal",
+    "cmd_duration",
+    "line_break",
+    #"jobs",
+    #"battery",
+    #"time",
+    "character",
+]
+scan_timeout = 30
+
+[aws]
+disabled = true
+
+[battery]
+disabled = true
+
+[character]
+error_symbol = "✖"
+style_failure = "bold red"
+style_success = "bold green"
+symbol = "❯"
+use_symbol_for_status = true
+
+[cmd_duration]
+min_time = 2_000
+show_milliseconds = true
+style = "bold yellow"
+
+[conda]
+disabled = true
+
+[crystal]
+disabled = true
+
+[directory]
+truncate_to_repo = false
+truncation_length = 8
+
+[dotnet]
+disabled = true
+
+[env_var]
+disabled = true
+
+[git_branch]
+symbol = "🌱 "
+
+[git_state]
+disabled = true
+
+[git_status]
+deleted.style = "red"
+modified.style = "blue"
+renamed.style = "yellow"
+staged.style = "green"
+style = "bright-black"
+untracked.style = "yellow"
+
+[golang]
+disabled = true
+
+[java]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[php]
+disabled = true
+
+[python]
+pyenv_version_name = true
+
+[ruby]
+disabled = true
+
+[terraform]
+disabled = true
+
+[username]
+show_always = true
+style_root = "bold red"
+style_user = "bold purple"

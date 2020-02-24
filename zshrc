@@ -104,3 +104,6 @@ compctl -K _pip_completion pip
 
 # OPAM configuration
 . /home/taro/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# starship
+eval "$(starship init zsh)"
