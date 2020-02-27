@@ -8,6 +8,9 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=1000000
 
+# autosuggestの補完色
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
+
 setopt HIST_IGNORE_DUPS  # 重複するコマンド履歴は無視
 setopt auto_param_keys   # カッコの対応を自動補完
 setopt correct           # コマンドのスペル補正
