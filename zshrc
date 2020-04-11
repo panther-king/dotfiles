@@ -11,9 +11,11 @@ SAVEHIST=1000000
 # autosuggestの補完色
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 
-setopt HIST_IGNORE_DUPS  # 重複するコマンド履歴は無視
-setopt auto_param_keys   # カッコの対応を自動補完
-setopt correct           # コマンドのスペル補正
+# setopt HIST_IGNORE_DUPS  # 重複するコマンド履歴は無視
+# setopt HIST_SAVE_NO_DUPS
+# setopt HIST_VERIFY
+# setopt AUTO_PARAM_KEYS   # カッコの対応を自動補完
+# setopt CORRECT           # コマンドのスペル補正
 # setopt extended_glob     # glob機能の拡張
 # setopt hist_ignore_dups  # 直前と同じコマンドは.zsh_historyに追加しない
 # setopt list_packed       # 補完候補を詰めて表示
@@ -22,18 +24,15 @@ setopt correct           # コマンドのスペル補正
 # setopt nolistbeep
 # setopt nonomatch
 # setopt notify            # バックグラウンドジョブの状態変化を通知
-setopt print_eight_bit   # 日本語ファイル名等の8ビットを通す
-setopt extended_history  # コマンド実行日時も記録
+# setopt PRINT_EIGHT_BIT   # 日本語ファイル名等の8ビットを通す
+# setopt EXTENDED_HISTORY  # コマンド実行日時も記録
+# setopt COMBINING_CHARS
+# setopt SHARE_HISTORY
 
 # コマンドエイリアス
 alias vi="vim"
 alias reboot="sudo reboot"
 alias halt="sudo poweroff"
-alias py="python"
-alias bp="bpython"
-alias hp="http-prompt"
-alias ocaml="rlwrap ocaml"
-alias remote-desktop="remmina"
 
 # スクリプトと画像ファイルを直接実行できるように
 alias -s py=python
@@ -104,9 +103,6 @@ compctl -K _pip_completion pip
 
 # added by travis gem
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
-
-# OPAM configuration
-. /home/taro/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # starship
 eval "$(starship init zsh)"
