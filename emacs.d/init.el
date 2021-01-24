@@ -2,6 +2,8 @@
 ;; Base settings
 ;;
 
+(setq byte-compile-warnings '(not cl-functions obsolete))
+
 ;; package
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -629,3 +631,7 @@
   :init
   (defun my-doom-modeline-hook ()
     (doom-modeline-set-modeline 'my-modeline 'default)))
+
+;; Local Variables:
+;; byte-compile-warnings: (not cl-functions obsolete)
+;; End:
