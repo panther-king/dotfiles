@@ -132,6 +132,12 @@
   (elscreen-tab-display-control nil)
   :ensure t)
 
+;; Guide indent
+(use-package highlight-indent-guides
+  :custom (highlight-indent-guides-method 'character)
+  :ensure t
+  :hook (prog-mode . highlight-indent-guides-mode))
+
 ;; Show the directory tree.
 (use-package neotree
   :config
