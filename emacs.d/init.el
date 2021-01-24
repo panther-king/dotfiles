@@ -442,13 +442,9 @@
   (bind-key ":" (smartchr '(" : " " :: " ":")) elm-mode-map)
   (bind-key "|" (smartchr '(" | " "|> " " <|" "|")) elm-mode-map)
   (bind-key "\"" (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")) elm-mode-map)
-  :ensure t
-  :init (push 'company-elm company-backends)
-  :hook (elm-mode . elm-oracle-setup-completion))
-
-(use-package flycheck-elm
-  :ensure t
-  :hook (flycheck-mode . flycheck-elm-setup))
+  (add-to-ilst 'company-backends 'elm-company)
+  (add-hook 'elm-mode-hook 'elm-format-on-save-mode)
+  :ensure t)
 
 ;; JavaScript
 (use-package js2-mode
