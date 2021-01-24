@@ -67,9 +67,6 @@
 (setq-default next-line-add-newlines nil)
 (setq-default require-final-newline t)
 
-;; 検索時の語数とマッチ位置表示
-(global-anzu-mode +1)
-
 ;; Highlight current line and show line number.
 (when (eq window-system 'x)
   (global-display-line-numbers-mode t)
@@ -561,31 +558,6 @@
   :mode
   (("\\.toml$" . toml-mode)
    ("^Pipfile$" . toml-mode)))
-
-;; OCaml
-(use-package tuareg
-  :config
-  (autoload 'tuareg-run-ocaml "tuareg" "Run an inferior OCaml process." t)
-  (autoload 'ocamldebug "ocamldebug" "Run the OCaml debugger." t)
-  (bind-key "=" (smartchr '(" = " "=")) tuareg-mode-map)
-  (bind-key ">" (smartchr '(" > " " -> " " >= " ">")) tuareg-mode-map)
-  (bind-key "<" (smartchr '(" < " " <- " " <= " "<")) tuareg-mode-map)
-  (bind-key "|" (smartchr '("| " " | " "|")) tuareg-mode-map)
-  (bind-key "^" (smartchr '(" ^ " "^")) tuareg-mode-map)
-  :ensure t
-  :mode ("\\.ml[iylp]?$" . tuareg-mode))
-
-;; TypeScript
-(use-package typescript-mode
-  :config
-  (bind-key "=" (smartchr '(" = " " === " "=" " == ")) typescript-mode-map)
-  (bind-key "!" (smartchr '("!" " != ")) typescript-mode-map)
-  (bind-key "+" (smartchr '("+" "++" " += ")) typescript-mode-map)
-  (bind-key "-" (smartchr '("-" "--" " -= ")) typescript-mode-map)
-  (bind-key "<" (smartchr '("<" " < " " <= ")) typescript-mode-map)
-  (bind-key ">" (smartchr '(">" " => " " > " " >= ")) typescript-mode-map)
-  :ensure t
-  :mode ("\\.ts$" . typescript-mode))
 
 ;; HTML/CSS
 (use-package web-mode
