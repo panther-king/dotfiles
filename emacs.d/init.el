@@ -77,10 +77,8 @@
 ;; environment
 ;;
 (use-package exec-path-from-shell
-  :config
-  (exec-path-from-shell-initialize)
-  :custom
-  (exec-path-from-shell-check-startup-files nil)
+  :config (exec-path-from-shell-initialize)
+  :custom (exec-path-from-shell-check-startup-files nil)
   :ensure t)
 
 ;;
@@ -89,8 +87,7 @@
 
 ;; icon
 (use-package all-the-icons
-  :custom
-  (all-the-icons-scale-factor 1.0)
+  :custom (all-the-icons-scale-factor 1.0)
   :ensure t)
 
 ;; dired
@@ -99,8 +96,7 @@
   (:map dired-mode-map
         ("C-m" . dired-open-in-accordance-with-situation)
         ("a" . dired-find-file))
-  :config
-  (put 'dired-find-alternate-file 'disabled nil)
+  :config (put 'dired-find-alternate-file 'disabled nil)
   :ensure t
   :hook (dired-mode . all-the-icons-dired-mode)
   :init
@@ -120,7 +116,7 @@
 
 ;; Force emacs key bindings.
 (use-package drill-instructor
-  :load-path "elisp"
+  :load-path "github/emacs-drill-instructor"
   :custom (drill-instructor-global t))
 
 ;; Multi window settings.
@@ -140,8 +136,7 @@
 
 ;; Show the directory tree.
 (use-package neotree
-  :config
-  (bind-key* [f8] 'neotree-toggle)
+  :config (bind-key* [f8] 'neotree-toggle)
   :custom
   (neo-show-hidden-files t)
   (neo-create-file-auto-open t)
@@ -171,10 +166,8 @@
 
 ;; Japanese input.
 (use-package skk
-  :bind
-  ("C-SPC" . skk-mode)
-  :custom
-  (skk-egg-like-newline t))
+  :bind ("C-SPC" . skk-mode)
+  :custom (skk-egg-like-newline t))
 
 ;; Emphasize brackets.
 (use-package paren
@@ -210,7 +203,6 @@
 
 ;; ripgrep settings.
 (use-package ripgrep
-  :bind ("C-c r g" . ripgrep-regexp)
   :custom
   (ripgrep-executable "~/.cargo/bin/rg")
   (ripgrep-arguments '("-S"))
@@ -220,8 +212,7 @@
 (use-package sequential-command-config
   :bind
   (("C-a" . seq-home)
-   ("C-e" . seq-end))
-  :load-path "elisp")
+   ("C-e" . seq-end)))
 
 ;; Completion with brackets and quotations.
 (use-package smartchr
@@ -254,8 +245,7 @@
 
 ;; Show the whitespace.
 (use-package whitespace
-  :config
-  (global-whitespace-mode t)
+  :config (global-whitespace-mode t)
   :custom
   (whitespace-style '(face
                       empty
@@ -303,8 +293,7 @@
   :ensure t)
 
 (use-package ivy-rich
-  :config
-  (ivy-rich-mode 1)
+  :config (ivy-rich-mode 1)
   :custom
   (ivy-rich--display-transformers-list
    '(ivy-switch-buffer
@@ -534,11 +523,9 @@
   (bind-key ">" (smartchr '(">" " > " " -> " " => " " >= ")) rust-mode-map)
   (bind-key "<" (smartchr '("<`!!'>" "<" " < " " <- " " <= ")) rust-mode-map)
   (bind-key "|" (smartchr '("|`!!'|" "||" " | " "|")) rust-mode-map)
-  :custom
-  (rust-format-on-save t)
+  :custom (rust-format-on-save t)
   :ensure t
-  :hook
-  (rust-mode . racer-mode))
+  :hook (rust-mode . racer-mode))
 
 ;; SCSS
 (use-package scss-mode
@@ -590,7 +577,7 @@
 
 ;; YAML
 (use-package yaml-mode
-  :mode ("\\.yml$" . yaml-mode)
+  :mode ("\\.ya?ml$" . yaml-mode)
   :ensure t)
 
 ;; F#
@@ -623,15 +610,12 @@
 
 (use-package nyan-mode
   :ensure t
-  :init
-  (nyan-mode))
+  :init (nyan-mode))
 
 (use-package doom-modeline
-  :commands
-  (doom-modeline-def-modeline)
-  :config
-  (doom-modeline-def-modeline 'my-modeline
-    '(buffer-info buffer-encoding buffer-position selection-info major-mode vcs checker))
+  :commands (doom-modeline-def-modeline)
+  :config (doom-modeline-def-modeline 'my-modeline
+            '(buffer-info buffer-encoding buffer-position selection-info major-mode vcs checker))
   :custom
   (doom-modeline-buffer-file-name-style 'relative-from-project)
   (doom-modeline-icon t)
