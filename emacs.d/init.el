@@ -400,6 +400,10 @@
   (git-gutter:deleted-sign "-")
   :ensure t)
 
+;; LSP
+(use-package eglot
+  :ensure t)
+
 ;;
 ;; Major mode
 ;;
@@ -610,6 +614,22 @@
 (use-package yaml-mode
   :mode ("\\.yml$" . yaml-mode)
   :ensure t)
+
+;; F#
+(use-package fsharp-mode
+  :config
+  (require 'eglot-fsharp)
+  (bind-key "=" (smartchr '(" = " "=")) fsharp-mode-map)
+  (bind-key ">" (smartchr '(" -> " " > " " >> " ">")) fsharp-mode-map)
+  (bind-key "<" (smartchr '("<>" " <- " " < " " << " "<")) fsharp-mode-map)
+  (bind-key "+" (smartchr '(" + " "+")) fsharp-mode-map)
+  (bind-key "*" (smartchr '(" * " " ** " "*")) fsharp-mode-map)
+  (bind-key ":" (smartchr '(" : " " :: " ":")) fsharp-mode-map)
+  (bind-key "|" (smartchr '("|" "| " " | " "|> " " <|")) fsharp-mode-map)
+  (bind-key "\"" (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")) fsharp-mode-map)
+  (modify-coding-system-alist 'file "\\.fs\\'" 'utf-8-dos)
+  :ensure t
+  :hook (fsharp-mode . eglot-ensure))
 
 ;;
 ;; UI

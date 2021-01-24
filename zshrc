@@ -79,6 +79,9 @@ eval "$(anyenv init -)"
 # direnv初期化
 eval "$(direnv hook zsh)"
 
+# dotnetコマンドパス
+[ -d ~/.dotnet ] && export PATH=$PATH:$HOME/.dotnet
+
 # pip install --user 用のPATH追加
 [ -d ~/.local/bin ] && export PATH=$PATH:$HOME/.local/bin
 
