@@ -352,13 +352,24 @@
 ;; Syntax checker.
 ;;
 
-(use-package flycheck
+(use-package flymake
   :bind
-  (("<f12>" . flycheck-next-error)
-   ("<f11>" . flycheck-previous-error))
-  :config (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-  :ensure t
-  :hook (after-init . global-flycheck-mode))
+  (("<f12>" . flymake-goto-next-error)
+   ("<f11>" . flymake-goto-prev-error))
+  :config (add-hook 'prog-mode-hook '(lambda () (flymake-mode t))))
+
+(use-package flymake-diagnostic-at-point
+  :after flymake
+  :config (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode)
+  :ensure t)
+
+;; (use-package flycheck
+;;   :bind
+;;   (("<f12>" . flycheck-next-error)
+;;    ("<f11>" . flycheck-previous-error))
+;;   :config (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+;;   :ensure t
+;;   :hook (after-init . global-flycheck-mode))
 
 ;;
 ;; VCS
