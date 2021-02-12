@@ -593,14 +593,15 @@
 ;; F#
 (use-package fsharp-mode
   :config
-  (require 'eglot-fsharp)
+  (use-package eglot-fsharp)
   (bind-key "=" (smartchr '(" = " "=")) fsharp-mode-map)
-  (bind-key ">" (smartchr '(" -> " " > " " >> " ">")) fsharp-mode-map)
-  (bind-key "<" (smartchr '("<>" " <- " " < " " << " "<")) fsharp-mode-map)
+  (bind-key ">" (smartchr '(" > " " -> " " >> " ">")) fsharp-mode-map)
+  (bind-key "<" (smartchr '("<`!!'>" " < " " <- " " << " "<")) fsharp-mode-map)
   (bind-key "+" (smartchr '(" + " "+")) fsharp-mode-map)
   (bind-key "*" (smartchr '(" * " " ** " "*")) fsharp-mode-map)
-  (bind-key ":" (smartchr '(" : " " :: " ":")) fsharp-mode-map)
-  (bind-key "|" (smartchr '("|" "| " " | " "|> " " <|")) fsharp-mode-map)
+  (bind-key ":" (smartchr '(": " " :: " ":")) fsharp-mode-map)
+  (bind-key "|" (smartchr '("|" "|> " "<| " " | ")) fsharp-mode-map)
+  (bind-key "`" (smartchr '("\``!!'\`" "\`\``!!'\`\`" "\`")) fsharp-mode-map)
   (bind-key "\"" (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")) fsharp-mode-map)
   (modify-coding-system-alist 'file "\\.fs\\'" 'utf-8-dos)
   :ensure t
