@@ -363,14 +363,6 @@
   :config (add-hook 'flymake-mode-hook #'flymake-diagnostic-at-point-mode)
   :ensure t)
 
-;; (use-package flycheck
-;;   :bind
-;;   (("<f12>" . flycheck-next-error)
-;;    ("<f11>" . flycheck-previous-error))
-;;   :config (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-;;   :ensure t
-;;   :hook (after-init . global-flycheck-mode))
-
 ;;
 ;; VCS
 ;;
@@ -611,10 +603,8 @@
 ;; UI
 ;;
 (use-package doom-themes
-  :config (load-theme 'doom-dracula t)
+  :config (load-theme 'doom-dark+ t)
   :custom
-  (doom-dracula-brighter-modeline t)
-  (doom-dracula-padded-modeline t)
   (doom-themes-enable-italic t)
   (doom-themes-enable-bold t)
   :ensure t)
