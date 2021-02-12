@@ -522,11 +522,6 @@
 ;; Rust
 (use-package rust-mode
   :config
-  (use-package racer
-    :ensure t
-    :hook
-    ((racer-mode . company-mode)
-     (racer-mode . eldoc-mode)))
   (bind-key "=" (smartchr '(" = " " == " "=")) rust-mode-map)
   (bind-key "+" (smartchr '("+" " + " " += ")) rust-mode-map)
   (bind-key "-" (smartchr '("-" " - " " -= ")) rust-mode-map)
@@ -536,7 +531,11 @@
   (bind-key "|" (smartchr '("|`!!'|" "||" " | " "|")) rust-mode-map)
   :custom (rust-format-on-save t)
   :ensure t
-  :hook (rust-mode . racer-mode))
+  :hook (rust-mode . eglot-ensure))
+
+(use-package cargo
+  :ensure t
+  :hook (rust-mode . cargo-minor-mode))
 
 ;; SCSS
 (use-package scss-mode
