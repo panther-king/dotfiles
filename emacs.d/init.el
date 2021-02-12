@@ -46,15 +46,8 @@
   (set-frame-parameter nil 'alpha 90))
 
 ;; Font settings.
-(when window-system
-  (create-fontset-from-ascii-font
-   "Cica-18:weight=normal:slant=normal" nil "cica")
-  (set-fontset-font "fontset-cica"
-                    'unicode
-                    (font-spec :family "Cica" :size 24)
-                    nil
-                    'append)
-  (add-to-list 'default-frame-alist '(font . "fontset-cica")))
+(when (member "Cica" (font-family-list))
+  (add-to-list 'default-frame-alist '(font . "Cica 18")))
 
 ;; Global key-bindings.
 (bind-key "C-h" 'delete-backward-char)
