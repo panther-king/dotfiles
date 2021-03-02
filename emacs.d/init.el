@@ -444,7 +444,7 @@
   (bind-key "'" (smartchr '("'`!!''" "'")) js2-mode-map)
   (bind-key "<" (smartchr '("<" " < " " <= ")) js2-mode-map)
   (bind-key ">" (smartchr '(">" " => " " > " " >= ")) js2-mode-map)
-  :custom (js2-basic-offset 2)
+  :custom (js-indent-level 2)
   :ensure t
   :mode ("\\.js$" . js2-mode))
 
@@ -581,7 +581,7 @@
   :config
   (use-package eglot-fsharp)
   (bind-key "=" (smartchr '(" = " "=")) fsharp-mode-map)
-  (bind-key ">" (smartchr '(" > " " -> " " >> " ">")) fsharp-mode-map)
+  (bind-key ">" (smartchr '(" > " " -> " " >> " " >=> " ">")) fsharp-mode-map)
   (bind-key "<" (smartchr '("<`!!'>" " < " " <- " " << " "<")) fsharp-mode-map)
   (bind-key "+" (smartchr '(" + " "+")) fsharp-mode-map)
   (bind-key "*" (smartchr '(" * " " ** " "*")) fsharp-mode-map)
