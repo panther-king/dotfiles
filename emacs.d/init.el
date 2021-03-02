@@ -125,7 +125,8 @@
 
 ;; Guide indent
 (use-package highlight-indent-guides
-  :custom (highlight-indent-guides-method 'character)
+  :custom
+  (highlight-indent-guides-method 'bitmap)
   :ensure t
   :hook (prog-mode . highlight-indent-guides-mode))
 
