@@ -99,20 +99,21 @@ font:
     #   - (Linux) monospace
     #   - (Windows) Consolas
     #family: monospace
-    family: Cica
-
+    #family: Cica
+    family: Migu 2M
     # The `style` can be specified to pick a specific face.
     #style: Regular
     style: Regular
 
   # Bold font face
-  #bold:
+  bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
-    family: Cica
+    #family: Cica
+    family: Migu 2M
 
     # The `style` can be specified to pick a specific face.
     #style: Bold
@@ -125,19 +126,20 @@ font:
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
-    family: Cica
+    #family: Cica
+    family: Migu 2M
 
     # The `style` can be specified to pick a specific face.
     #style: Italic
     style: Italic
 
   # Point size
-  size: 9.0
+  size: 8.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
-    x: 0
+    x: 2
     y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with

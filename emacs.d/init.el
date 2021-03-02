@@ -46,8 +46,8 @@
   (set-frame-parameter nil 'alpha 90))
 
 ;; Font settings.
-(when (member "Cica" (font-family-list))
-  (add-to-list 'default-frame-alist '(font . "Cica 18")))
+(when (member "Migu 2M" (font-family-list))
+  (add-to-list 'default-frame-alist '(font . "Migu 2M 16")))
 
 ;; Global key-bindings.
 (bind-key "C-h" 'delete-backward-char)
