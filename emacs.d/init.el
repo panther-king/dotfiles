@@ -395,6 +395,11 @@
 (use-package eglot
   :ensure t)
 
+;; EditorConfig
+(use-package editorconfig
+  :config (editorconfig-mode 1)
+  :ensure t)
+
 ;;
 ;; Major mode
 ;;
