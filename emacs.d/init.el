@@ -18,6 +18,7 @@
 ;; Disable backup.
 (setq make-backup-files nil)
 (setq auto-save-default nil)
+(setq create-lockfiles nil)
 
 ;; Disable beep.
 (setq ring-bell-function 'ignore)
