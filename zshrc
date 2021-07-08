@@ -73,11 +73,7 @@ source $HOME/.cargo/env
 export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
 
 # asdf
-. $HOME/.asdf/asdf.sh
-
-# anyenv初期化
-export PATH=$PATH:$HOME/.anyenv/bin
-eval "$(anyenv init -)"
+. /opt/asdf-vm/asdf.sh
 
 # direnv初期化
 eval "$(direnv hook zsh)"
