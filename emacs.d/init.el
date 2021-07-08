@@ -595,7 +595,8 @@
   (bind-key "|" (smartchr '("|" "|> " "<| " " | ")) fsharp-mode-map)
   (bind-key "`" (smartchr '("\``!!'\`" "\`\``!!'\`\`" "\`")) fsharp-mode-map)
   (bind-key "\"" (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")) fsharp-mode-map)
-  (modify-coding-system-alist 'file "\\.fs\\'" 'utf-8-dos)
+  (bind-key "[" (smartchr '("[`!!']" "[" "[ `!!' ]" "[| `!!' |]")) fsharp-mode-map)
+  (bind-key "{" (smartchr '("{`!!'}" "{" "{ `!!' }" "{| `!!' |}")) fsharp-mode-map)
   :ensure t
   :hook (fsharp-mode . eglot-ensure))
 
