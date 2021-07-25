@@ -81,6 +81,11 @@
 ;; utilities
 ;;
 
+(use-package delight
+  :ensure t
+  :init
+  (delight '((eldoc-mode nil "ElDoc"))))
+
 ;; icon
 (use-package all-the-icons
   :custom (all-the-icons-scale-factor 1.0)
@@ -113,7 +118,8 @@
 ;; Force emacs key bindings.
 (use-package drill-instructor
   :load-path "github/emacs-drill-instructor"
-  :custom (drill-instructor-global t))
+  :custom (drill-instructor-global t)
+  :delight drill-instructor)
 
 ;; Multi window settings.
 (use-package elscreen
@@ -128,6 +134,7 @@
 (use-package highlight-indent-guides
   :custom
   (highlight-indent-guides-method 'bitmap)
+  :delight
   :ensure t
   :hook (prog-mode . highlight-indent-guides-mode))
 
@@ -227,16 +234,19 @@
 ;; Tree of undo.
 (use-package undo-tree
   :config (global-undo-tree-mode)
+  :delight
   :ensure t)
 
 ;; Highlight results.
 (use-package volatile-highlights
   :custom-face (vhl/default-face ((nil (:foreground "dark violet" :background "dark magenta"))))
+  :delight
   :ensure t
   :hook (after-init . volatile-highlights-mode))
 
 ;; Guide of key bindings.
 (use-package which-key
+  :delight
   :ensure t
   :init (which-key-mode 1))
 
@@ -390,6 +400,7 @@
   (git-gutter:modified-sign "~")
   (git-gutter:added-sign "+")
   (git-gutter:deleted-sign "-")
+  :delight
   :ensure t)
 
 ;; LSP
@@ -399,6 +410,7 @@
 ;; EditorConfig
 (use-package editorconfig
   :config (editorconfig-mode 1)
+  :delight
   :ensure t)
 
 ;;
@@ -435,9 +447,9 @@
   (bind-key "|" (smartchr '(" | " "|> " " <|" "|")) elm-mode-map)
   (bind-key "\"" (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")) elm-mode-map)
   (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-elm)
-    (add-hook 'elm-mode-hook #'elm-oracle-setup-completion))
-  (add-hook 'elm-mode-hook 'elm-format-on-save-mode)
+    (add-to-list 'company-backends 'company-elm))
+  ;; (add-hook 'elm-mode-hook 'elm-format-on-save-mode)
+  ;; (add-hook 'elm-mode-hook 'eglot-ensure)
   :ensure t)
 
 ;; JavaScript
@@ -603,35 +615,24 @@
 ;;
 ;; UI
 ;;
-(use-package doom-themes
-  :config (load-theme 'doom-dark+ t)
-  :custom
-  (doom-themes-enable-italic t)
-  (doom-themes-enable-bold t)
-  :ensure t)
-
-(use-package nyan-mode
+(use-package modus-themes
   :ensure t
-  :init (nyan-mode))
-
-(use-package doom-modeline
-  :commands (doom-modeline-def-modeline)
-  :config (doom-modeline-def-modeline 'my-modeline
-            '(buffer-info buffer-encoding buffer-position selection-info major-mode vcs checker))
-  :custom
-  (doom-modeline-buffer-file-name-style 'relative-from-project)
-  (doom-modeline-icon t)
-  (doom-modeline-major-mode-icon nil)
-  (doom-modeline-minor-mode-icon nil)
-  (doom-modeline-vcs-max-length 24)
-  :ensure t
-  :hook
-  (after-init . doom-modeline-mode)
-  (doom-modeline-mode . my-doom-modeline-hook)
   :init
-  (defun my-doom-modeline-hook ()
-    (doom-modeline-set-modeline 'my-modeline 'default)))
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs t
+        modus-themes-region '(bg-only no-extend)
+        modus-themes-mode-line '(accented borderless))
+  (modus-themes-load-themes)
+  :config
+  (modus-themes-load-vivendi))
 
+(use-package smart-mode-line
+  :ensure t
+  :init
+  (setq sml/modified-char "*"
+        sml/no-confirm-load-theme t
+        sml/read-only-char "%%")
+  (sml/setup))
 ;; Local Variables:
 ;; byte-compile-warnings: (not cl-functions obsolete)
 ;; End:
