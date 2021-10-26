@@ -629,13 +629,19 @@
   :config
   (modus-themes-load-vivendi))
 
-(use-package smart-mode-line
+(use-package moody
+  :ensure t
+  :config
+  (setq x-underline-at-descent-line t)
+  (moody-replace-mode-line-buffer-identification)
+  (moody-replace-vc-mode))
+
+(use-package minions
   :ensure t
   :init
-  (setq sml/modified-char "*"
-        sml/no-confirm-load-theme t
-        sml/read-only-char "%%")
-  (sml/setup))
+  (minions-mode)
+  :config
+  (setq minions-mode-line-lighter "[+]"))
 ;; Local Variables:
 ;; byte-compile-warnings: (not cl-functions obsolete)
 ;; End:
