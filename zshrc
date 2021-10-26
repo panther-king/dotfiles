@@ -33,13 +33,14 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 alias vi="vim"
 alias reboot="sudo reboot"
 alias halt="sudo poweroff"
+alias viewer="viewnior"
 
 # スクリプトと画像ファイルを直接実行できるように
 alias -s py=python
 alias -s php=php
 alias -s rb=ruby
 alias -s pl=perl
-alias -s {bmp,gif,jpg,jpeg,png,tiff,BMP,GIF,JPG,JPEG,PNG,TIFF}=geeqie
+alias -s {bmp,gif,jpg,jpeg,png,tiff,BMP,GIF,JPG,JPEG,PNG,TIFF}=viewnior
 alias -s pdf=mupdf
 
 # gitのエイリアス
