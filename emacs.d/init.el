@@ -492,7 +492,10 @@
 
 ;; PlantUML
 (use-package plantuml-mode
-  :custom (plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
+  :custom
+  (plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
+  (plantuml-default-exec-mode 'jar)
+  (plantuml-indent-level 4)
   :ensure t
   :mode ("\\.p?uml$" . plantuml-mode))
 
