@@ -43,14 +43,6 @@ alias -s pl=perl
 alias -s {bmp,gif,jpg,jpeg,png,tiff,BMP,GIF,JPG,JPEG,PNG,TIFF}=viewnior
 alias -s pdf=mupdf
 
-# gitのエイリアス
-alias gad="git add -p"
-alias gbr="git branch"
-alias gcm="git commit -v"
-alias gco="git checkout"
-alias gsl="git stash list"
-alias gst="git status"
-
 # autoload history-search-end
 # zle -N history-beginning-search-backward-end history-search-end
 # zle -N history-beginning-search-forward-end hitory-search-end
