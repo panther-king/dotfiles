@@ -36,6 +36,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
+# Lock screen
+bindsym $mod+Shift+Return exec i3lock -c 000000
+
 # Border settings
 default_border none
 for_window [class="^.*"] border pixel 0
