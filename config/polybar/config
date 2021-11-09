@@ -162,7 +162,7 @@ label-disconnected-foreground = ${colors.adapta-grey}
 [module/wireless-network]
 type = internal/network
 ; Basic
-interface = wlp2s0
+interface = wlp0s20f3
 interval = 5
 ; Styles
 format-connected = <ramp-signal> <label-connected>
