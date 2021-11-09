@@ -1,39 +1,18 @@
 add_newline = false
-prompt_order = [
-    "username",
-    "hostname",
-    #"kubernetes",
-    "directory",
-    "git_branch",
-    #"git_commit",
-    #"git_state",
-    "git_status",
-    #"hg_branch",
-    "package",
-    #"dotnet",
-    "elm",
-    #"golang",
-    #"haskell",
-    #"java",
-    "nodejs",
-    #"php",
-    "python",
-    #"ruby",
-    "rust",
-    #"terraform",
-    #"nix_shell",
-    #"conda",
-    #"memory_usage",
-    #"aws",
-    #"env_var",
-    #"crystal",
-    "cmd_duration",
-    "line_break",
-    #"jobs",
-    #"battery",
-    #"time",
-    "character",
-]
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$package\
+$elm\
+$nodejs\
+$python\
+$rust\
+$cmd_duration\
+$line_break\
+$character"""
 scan_timeout = 30
 
 [aws]
@@ -43,11 +22,8 @@ disabled = true
 disabled = true
 
 [character]
-error_symbol = "✖"
-style_failure = "bold red"
-style_success = "bold green"
-symbol = "❯"
-use_symbol_for_status = true
+success_symbol = "[❯](bold green)"
+error_symbol = "[✖](bold red)"
 
 [cmd_duration]
 min_time = 2_000
