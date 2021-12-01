@@ -40,7 +40,11 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-xinput --set-prop 10 "Synaptic Finger" 20 20 0
+xinput set-prop 10 "Synaptics Tap Move" 250
+xinput set-prop 10 "Synaptics Finger" 25 30 0
+xinput set-prop 10 "Synaptics Scrolling Distance" 114 114
+xinput set-prop 10 "Synaptics Tap Action" 0 0 0 0 1 3 0
+xinput set-prop 10 "Synaptics Noise Cancellation" 28 28
 
 synclient CircularScrolling=1
 synclient CircScrollTrigger=0
