@@ -1,109 +1,164 @@
 [colors]
-bg = #222D32
-fg = #CFD8DC
+; Nord
+; https://www.nordtheme.com
+night-0 = #2e3440
+night-1 = #3b4252
+night-2 = #434c5e
+night-3 = #4c566a
+snow-0 = #d8dee9
+snow-1 = #e5e9f0
+snow-2 = #eceff4
+frost-0 = #8fbcbb
+frost-1 = #88c0d0
+frost-2 = #81a1c1
+frost-3 = #5e81ac
+red = #bf616a
+orange = #d08770
+yellow = #ebcb8b
+green = #a3be8c
+purple = #b48ead
 
-adapta-cyan = #00BCD4
-adapta-green = #009688
-adapta-grey = #475359
-adapta-lightgreen = #4DB6AC
-adapta-red = #FF5252
-adapta-yellow = #C9BC0E
+[bar/barbase]
+width = ${env:width}
+offset-x = ${env:offsetx}
+monitor = ${env:monitor}
+height = 32
+line-size = 4
+fixed-center = true
 
-[margin]
-for-modules = 1
+background = ${colors.night-0}
+foreground = ${colors.snow-0}
+
+radius-top = 0.0
+radius-bottom = 0.0
+
+font-0 = "Fantasque Sans Mono:pixelsize=12;3"
+font-1 = "Iosevka Nerd Font:pixelsize=12;3"
+font-2 = "Migu 2M:pixelsize=12;3"
+
+locale = ja_JP.UTF-8
+
+module-margin = 4
+modules-right = wireless-network wired-network cpu memory battery date
+
+tray-position = right
+tray-detached = false
+tray-maxsize = 16
+tray-background = ${colors.night-0}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 4
+tray-scale = 1.0
+
+enable-ipc = true
 
 [bar/main]
-; Styles
-background = ${colors.bg}
-cursor-click = pointer
-foreground = ${colors.fg}
-height = 32
-line-size = 2
-width = 100%
-; Fonts
-font-0 = "Fantasque Sans Mono:pixelsize=14;3"
-font-1 = "Iosevka Nerd Font:pixelsize=14;3"
-font-2 = "FontAwesome5Free:pixelsize=14;3"
-; System tray
-tray-position = right
-wm-restack = i3
-; Modules
-modules-left = i3
-modules-right = cpu memory filesystem wired-network wireless-network battery date
+inherit = bar/barbase
 
+wm-restack = i3
+modules-left = i3
+
+[settings]
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+
+screenchange-reload = false
+
+compositing-background = source
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+;; Modules
 [module/battery]
 type = internal/battery
-; Basic
+
 adapter = AC
 battery = BAT1
 full-at = 99
 poll-interval = 10
 time-format = %H:%M
-; Styles
-format-charging = <animation-charging>  <label-charging>
-format-charging-margin = ${margin.for-modules}
-format-charging-padding = 1
-format-charging-underline = ${colors.adapta-yellow}
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-margin = ${margin.for-modules}
-format-discharging-padding = 1
-format-discharging-underline = ${colors.adapta-cyan}
+
+format-charging = BAT: <label-charging> <animation-charging>
+format-charging-padding = 4
+format-charging-underline = ${colors.green}
+
+format-discharging = BAT: <label-discharging> <ramp-capacity>
+format-discharging-padding = 4
+format-discharging-underline = ${colors.frost-1}
+
 label-charging = %percentage%%
 label-discharging = %percentage%% (%time%)
-label-full = Fully charged
+label-full = Fully Charged
+label-full-foreground = ${color.green}
+label-full-background = ${color.night-0}
+label-full-padding = 2
+
 ramp-capacity-0 = 
-ramp-capacity-0-foreground = ${colors.adapta-red}
+ramp-capacity-0-foreground = ${colors.red}
 ramp-capacity-1 = 
-ramp-capacity-1-foreground = ${colors.adapta-yellow}
+ramp-capacity-1-foreground = ${colors.orange}
 ramp-capacity-2 = 
-ramp-capacity-2-foreground = ${colors.adapta-cyan}
+ramp-capacity-2-foreground = ${colors.yellow}
 ramp-capacity-3 = 
-ramp-capacity-3-foreground = ${colors.adapta-cyan}
+ramp-capacity-3-foreground = ${colors.night-3}
 ramp-capacity-4 = 
-ramp-capacity-4-foreground = ${colors.adapta-cyan}
-bar-capacity-width = 10
+ramp-capacity-4-foreground = ${colors.night-3}
+ramp-capacity-padding-left = 2
+
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${colors.adapta-yellow}
+animation-charging-foreground = ${colors.frost-1}
 animation-charging-framerate = 750
 
 [module/cpu]
 type = internal/cpu
-; Basic
-interval = 5
-; Styles
-format-margin = ${margin.for-modules}
-format-underline = ${colors.adapta-cyan}
-format-padding = 1
-label = " %percentage-cores%"
+
+format = <label> <ramp-load>
+format-padding = 4
+format-underline = ${colors.frost-0}
+interval = 1
+label = CPU: %percentage%%
+
+ramp-load-0 = ▁
+ramp-load-0-foreground = ${colors.night-3}
+ramp-load-1 = ▂
+ramp-load-1-foreground = ${colors.night-3}
+ramp-load-2 = ▃
+ramp-load-2-foreground = ${colors.night-3}
+ramp-load-3 = ▄
+ramp-load-3-foreground = ${colors.yellow}
+ramp-load-4 = ▅
+ramp-load-4-foreground = ${colors.yellow}
+ramp-load-5 = ▆
+ramp-load-5-foreground = ${colors.orange}
+ramp-load-6 = ▇
+ramp-load-6-foreground = ${colors.red}
+ramp-load-7 = █
+ramp-load-7-foreground = ${colors.red}
+ramp-load-padding-left = 2
 
 [module/date]
 type = internal/date
-interval = 1
-label = %time%
-label-margin = ${margin.for-modules}
-label-padding = 1
-label-underline = ${colors.adapta-cyan}
-time =  %Y/%m/%d(%a) %H:%M:%S
 
-[module/filesystem]
-type = internal/fs
-; Basic
-fixed-values = false
-interval = 60
-mount-0 = /
-; Styles
-label-mounted =  %used% / %total%
-label-mounted-margin = ${margin.for-modules}
-label-mounted-underline = ${colors.adapta-cyan}
-label-mounted-padding = 1
+interval = 1
+label = %date% %time%
+
+date = %Y/%m/%d(%a)
+time = %H:%M:%S
+
+format = <label>
+format-padding = 4
+format-underline = ${colors.frost-1}
 
 [module/i3]
 type = internal/i3
-; Basic
+
 enable-click = true
 enable-scroll = false
 fuzzy-match = true
@@ -112,80 +167,114 @@ pin-workspaces = true
 reverse-scroll = false
 strip-wsnumbers = true
 wrapping-scroll = false
-; Styles
+
 format = <label-state> <label-mode>
 label-mode = %mode%
 label-mode-padding = 1
 label-focused = %index%
-label-focused-background = #3f3f3f
-label-focused-foreground = #ffffff
-label-focused-padding = 1
-label-focused-underline = ${colors.adapta-cyan}
-label-separator-padding = 1
+label-focused-background = ${colors.night-1}
+label-focused-foreground = ${colors.frost-0}
+label-focused-padding = 2
+label-focused-underline = ${colors.frost-0}
+label-separator-padding = 2
 label-unfocused = %index%
-label-unfocused-padding = 1
+label-unfocused-foreground = ${colors.night-3}
+label-unfocused-underline = ${colors.night-3}
+label-unfocused-padding = 2
 label-urgent = %index%
-label-urgent-padding = 1
+label-urgent-padding = 2
 label-visible = %index%
-label-visible-padding = 1
-label-visible-underline = ${colors.adapta-cyan}
+label-visible-padding = 2
 
 [module/memory]
 type = internal/memory
-; Basic
+
+format = <label> <ramp-used>
+format-padding = 4
+format-underline = ${colors.frost-0}
 interval = 5
-; Styles
-format-margin = ${margin.for-modules}
-format-padding = 1
-format-underline = ${colors.adapta-cyan}
-label =  %gb_used% / %gb_total%
+label = RAM: %gb_used%
+
+ramp-used-0 = ▁
+ramp-used-0-foreground = ${colors.night-3}
+ramp-used-1 = ▂
+ramp-used-1-foreground = ${colors.night-3}
+ramp-used-2 = ▃
+ramp-used-2-foreground = ${colors.night-3}
+ramp-used-3 = ▄
+ramp-used-3-foreground = ${colors.yellow}
+ramp-used-4 = ▅
+ramp-used-4-foreground = ${colors.yellow}
+ramp-used-5 = ▆
+ramp-used-5-foreground = ${colors.orange}
+ramp-used-6 = ▇
+ramp-used-6-foreground = ${colors.red}
+ramp-used-7 = █
+ramp-used-7-foreground = ${colors.red}
+ramp-used-padding-left = 2
+
+[module/title]
+type = internal/xwindow
+
+format = <label>
+format-background = ${colors.night-0}
+format-foreground = ${colors.night-3}
+format-padding = 0
+
+label = %title%
+label-maxlen = 40
+
+label-empty = stfuawsc
+label-empty-foreground = ${colors.night-3}
 
 [module/wired-network]
 type = internal/network
-; Basic
+
 interface = enp0s31f6
 interval = 5
-; Styles
+
 format-connected = <label-connected>
-format-connected-margin = ${margin.for-modules}
-format-connected-padding = 1
-format-connected-underline = ${colors.adapta-green}
+format-connected-padding = 4
+format-connected-underline = ${colors.green}
 format-disconnected = <label-disconnected>
-format-disconnected-margin = ${margin.for-modules}
-format-disconnected-padding = 1
-format-disconnected-underline = ${colors.adapta-grey}
-label-connected = 😃 %local_ip%
-label-connected-foreground = ${colors.adapta-green}
-label-disconnected = 😴 %ifname%
-label-disconnected-foreground = ${colors.adapta-grey}
+format-disconnected-foreground = ${colors.green}
+format-disconnected-padding = 4
+format-disconnected-underline = ${colors.night-3}
+label-connected = %local_ip%
+label-connected-foreground = ${colors.night-3}
+label-disconnected = %ifname%
+label-disconnected-foreground = ${colors.night-3}
 
 [module/wireless-network]
 type = internal/network
-; Basic
 interface = wlp0s20f3
 interval = 5
-; Styles
-format-connected = <ramp-signal> <label-connected>
-format-connected-margin = ${margin.for-modules}
-format-connected-padding = 1
-format-connected-underline = ${colors.adapta-green}
+
+format-connected = <label-connected> <ramp-signal>
+format-connected-padding = 4
+format-connected-foreground = ${colors.green}
+format-connected-underline = ${colors.green}
 format-disconnected = <label-disconnected>
-format-disconnected-margin = ${margin.for-modules}
-format-disconnected-padding = 1
-format-disconnected-underline = ${colors.adapta-grey}
-label-connected = %essid% %signal:4%%
-label-connected-foreground = ${colors.adapta-green}
-label-disconnected = 😴 %ifname%
-label-disconnected-foreground = ${colors.adapta-grey}
-ramp-signal-0 = 😱
-ramp-signal-0-foreground = ${colors.adapta-red}
-ramp-signal-1 = 😠
-ramp-signal-1-foreground = ${colors.adapta-red}
-ramp-signal-2 = 😒
-ramp-signal-2-foreground = ${colors.adapta-yellow}
-ramp-signal-3 = 😊
-ramp-signal-3-foreground = ${colors.adapta-cyan}
-ramp-signal-4 = 😃
-ramp-signal-4-foreground = ${colors.adapta-green}
-ramp-signal-5 = 😈
-ramp-signal-5-foreground = ${colors.adapta-green}
+format-disconnected-foreground = ${colors.night-3}
+format-disconnected-padding = 4
+format-disconnected-underline = ${colors.night-3}
+label-connected = %essid%
+label-disconnected = %ifname%
+
+ramp-signal-0 = ▁
+ramp-signal-0-foreground = ${colors.red}
+ramp-signal-1 = ▂
+ramp-signal-1-foreground = ${colors.red}
+ramp-signal-2 = ▃
+ramp-signal-2-foreground = ${colors.red}
+ramp-signal-3 = ▄
+ramp-signal-3-foreground = ${colors.orange}
+ramp-signal-4 = ▅
+ramp-signal-4-foreground = ${colors.orange}
+ramp-signal-5 = ▆
+ramp-signal-5-foreground = ${colors.night-3}
+ramp-signal-6 = ▇
+ramp-signal-6-foreground = ${colors.night-3}
+ramp-signal-7 = █
+ramp-signal-7-foreground = ${colors.night-3}
+ramp-signal-padding-left = 2

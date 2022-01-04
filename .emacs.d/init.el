@@ -42,13 +42,9 @@
 ;; Frame settings.
 (setq frame-title-format (format"emacs@%s : %%f" (system-name)))
 
-;; Transparent.
-(when window-system
-  (set-frame-parameter nil 'alpha 90))
-
 ;; Font settings.
 (when (member "Migu 2M" (font-family-list))
-  (add-to-list 'default-frame-alist '(font . "Migu 2M 16")))
+  (add-to-list 'default-frame-alist '(font . "Migu 2M 14")))
 
 ;; Global key-bindings.
 (bind-key "C-h" 'delete-backward-char)
@@ -615,19 +611,11 @@
   :ensure t
   :hook (fsharp-mode . eglot-ensure))
 
-;;
 ;; UI
-;;
-(use-package modus-themes
+(use-package nord-theme
   :ensure t
   :init
-  (setq modus-themes-italic-constructs t
-        modus-themes-bold-constructs t
-        modus-themes-region '(bg-only no-extend)
-        modus-themes-mode-line '(accented borderless))
-  (modus-themes-load-themes)
-  :config
-  (modus-themes-load-vivendi))
+  (load-theme 'nord t))
 
 (use-package moody
   :ensure t
@@ -642,6 +630,7 @@
   (minions-mode)
   :config
   (setq minions-mode-line-lighter "[+]"))
+
 ;; Local Variables:
 ;; byte-compile-warnings: (not cl-functions obsolete)
 ;; End:
