@@ -230,6 +230,8 @@
 ;; Tree of undo.
 (use-package undo-tree
   :config (global-undo-tree-mode)
+  :custom
+  (undo-tree-auto-save-history nil)
   :delight
   :ensure t)
 
