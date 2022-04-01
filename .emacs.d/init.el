@@ -43,8 +43,8 @@
 (setq frame-title-format (format"emacs@%s : %%f" (system-name)))
 
 ;; Font settings.
-(when (member "Migu 2M" (font-family-list))
-  (add-to-list 'default-frame-alist '(font . "Migu 2M 14")))
+(when (member "HackGenNerd" (font-family-list))
+  (add-to-list 'default-frame-alist '(font . "HackGenNerd 14")))
 
 ;; Global key-bindings.
 (bind-key "C-h" 'delete-backward-char)

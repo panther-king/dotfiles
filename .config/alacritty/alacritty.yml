@@ -98,7 +98,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: Migu 2M
+    family: HackGenNerd
     # The `style` can be specified to pick a specific face.
     #style: Regular
     style: Regular
@@ -109,7 +109,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Migu 2M
+    family: HackGenNerd
 
     # The `style` can be specified to pick a specific face.
     #style: Bold
@@ -121,7 +121,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: Migu 2M
+    family: HackGenNerd
 
     # The `style` can be specified to pick a specific face.
     #style: Italic
@@ -133,7 +133,7 @@ font:
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
-    x: 2
+    x: 1
     y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with

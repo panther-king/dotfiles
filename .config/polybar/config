@@ -34,11 +34,12 @@ radius-bottom = 0.0
 
 font-0 = "Fantasque Sans Mono:pixelsize=12;3"
 font-1 = "Iosevka Nerd Font:pixelsize=12;3"
-font-2 = "Migu 2M:pixelsize=12;3"
+; font-2 = "Migu 2M:pixelsize=12;3"
+font-2 = "HackGenNerd:pixelsize=12;3"
 
 locale = ja_JP.UTF-8
 
-module-margin = 4
+module-margin = 2
 modules-right = wireless-network wired-network cpu memory battery date
 
 tray-position = right
@@ -47,7 +48,7 @@ tray-maxsize = 16
 tray-background = ${colors.night-0}
 tray-offset-x = 0
 tray-offset-y = 0
-tray-padding = 4
+tray-padding = 2
 tray-scale = 1.0
 
 enable-ipc = true
@@ -82,11 +83,11 @@ poll-interval = 10
 time-format = %H:%M
 
 format-charging = BAT: <label-charging> <animation-charging>
-format-charging-padding = 4
+format-charging-padding = 2
 format-charging-underline = ${colors.green}
 
 format-discharging = BAT: <label-discharging> <ramp-capacity>
-format-discharging-padding = 4
+format-discharging-padding = 2
 format-discharging-underline = ${colors.frost-1}
 
 label-charging = %percentage%%
@@ -120,7 +121,7 @@ animation-charging-framerate = 750
 type = internal/cpu
 
 format = <label> <ramp-load>
-format-padding = 4
+format-padding = 2
 format-underline = ${colors.frost-0}
 interval = 1
 label = CPU: %percentage%%
@@ -153,7 +154,7 @@ date = %Y/%m/%d(%a)
 time = %H:%M:%S
 
 format = <label>
-format-padding = 4
+format-padding = 2
 format-underline = ${colors.frost-1}
 
 [module/i3]
@@ -174,23 +175,23 @@ label-mode-padding = 1
 label-focused = %index%
 label-focused-background = ${colors.night-1}
 label-focused-foreground = ${colors.frost-0}
-label-focused-padding = 2
+label-focused-padding = 1
 label-focused-underline = ${colors.frost-0}
-label-separator-padding = 2
+label-separator-padding = 1
 label-unfocused = %index%
 label-unfocused-foreground = ${colors.night-3}
 label-unfocused-underline = ${colors.night-3}
-label-unfocused-padding = 2
+label-unfocused-padding = 1
 label-urgent = %index%
-label-urgent-padding = 2
+label-urgent-padding = 1
 label-visible = %index%
-label-visible-padding = 2
+label-visible-padding = 1
 
 [module/memory]
 type = internal/memory
 
 format = <label> <ramp-used>
-format-padding = 4
+format-padding = 2
 format-underline = ${colors.frost-0}
 interval = 5
 label = RAM: %gb_used%
@@ -234,11 +235,11 @@ interface = enp0s31f6
 interval = 5
 
 format-connected = <label-connected>
-format-connected-padding = 4
+format-connected-padding = 2
 format-connected-underline = ${colors.green}
 format-disconnected = <label-disconnected>
 format-disconnected-foreground = ${colors.green}
-format-disconnected-padding = 4
+format-disconnected-padding = 2
 format-disconnected-underline = ${colors.night-3}
 label-connected = %local_ip%
 label-connected-foreground = ${colors.night-3}
@@ -251,12 +252,12 @@ interface = wlp0s20f3
 interval = 5
 
 format-connected = <label-connected> <ramp-signal>
-format-connected-padding = 4
+format-connected-padding = 2
 format-connected-foreground = ${colors.green}
 format-connected-underline = ${colors.green}
 format-disconnected = <label-disconnected>
 format-disconnected-foreground = ${colors.night-3}
-format-disconnected-padding = 4
+format-disconnected-padding = 2
 format-disconnected-underline = ${colors.night-3}
 label-connected = %essid%
 label-disconnected = %ifname%
