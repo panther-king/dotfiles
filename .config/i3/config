@@ -148,6 +148,6 @@ bindsym XF86AudioRaiseVolume exec amixer set Master 1%-
 exec --no-startup-id nm-applet
 exec --no-startup-id fcitx
 exec --no-startup-id dunst
-exec --no-startup-id feh --no-fehbg --bg-scale "$HOME/Pictures/background-arch-linux.jpg"
+exec --no-startup-id feh --no-fehbg --bg-scale "$HOME/Pictures/background-gnu-linux.jpg"
 exec --no-startup-id picom -CGb --config $HOME/.config/picom/picom.conf
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
