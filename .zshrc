@@ -16,6 +16,7 @@ alias vi="vim"
 alias reboot="sudo reboot"
 alias halt="sudo poweroff"
 alias viewer="viewnior"
+alias docker="sudo docker"
 
 # スクリプトと画像ファイルを直接実行できるように
 alias -s py=python
