@@ -1,42 +1,16 @@
-# preztoをロード
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-# コマンド履歴
-HISTFILE=~/.zsh_history
-HISTSIZE=100000
-SAVEHIST=1000000
-
-# autosuggestの補完色
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
+# 変数の重複を除去
+typeset -U path PATH fpath FPATH
 
 # コマンドエイリアス
+alias ls="ls --color=auto --group-directories-first"
+alias ll="ls -lh"
+alias la="ll -A"
 alias vi="vim"
-alias reboot="sudo reboot"
-alias halt="sudo poweroff"
-alias viewer="viewnior"
 alias docker="sudo docker"
 
-# スクリプトと画像ファイルを直接実行できるように
-alias -s py=python
-alias -s php=php
-alias -s rb=ruby
-alias -s pl=perl
+# 画像とPDFファイルを直接開けるように
 alias -s {bmp,gif,jpg,jpeg,png,tiff,BMP,GIF,JPG,JPEG,PNG,TIFF}=viewnior
 alias -s pdf=mupdf
-
-# 外部設定ファイルの読み込み
-case ${UID} in
-    0)
-        :
-        ;;
-    *)
-        for f in `find ~/.zsh/options -name "*.zsh" -type f`; do
-            source ${f}
-        done
-        ;;
-esac
 
 # rust用環境変数
 source $HOME/.cargo/env
@@ -45,36 +19,80 @@ export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
 # asdf
 . /opt/asdf-vm/asdf.sh
 
-# direnv初期化
-eval "$(direnv hook zsh)"
-
 # dotnetコマンドパス
 [ -d ~/.dotnet ] && export PATH=$PATH:$HOME/.dotnet
 
 # pip install --user 用のPATH追加
 [ -d ~/.local/bin ] && export PATH=$PATH:$HOME/.local/bin
 
-# 変数の重複を除去
-typeset -U path PATH fpath FPATH
+# added by travis gem
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# starship
+eval "$(starship init zsh)"
 
 # lessをカラー表示
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export LESS='-R '
 
-# pip zsh completion start
-function _pip_completion {
-  local words cword
-  read -Ac words
-  read -cn cword
-  reply=( $( COMP_WORDS="$words[*]" \
-             COMP_CWORD=$(( cword-1 )) \
-             PIP_AUTO_COMPLETE=1 $words[1] ) )
-}
-compctl -K _pip_completion pip
-# pip zsh completion end
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
 
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# starship
-eval "$(starship init zsh)"
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
+
+# コマンド履歴
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=1000000
+
+setopt inc_append_history  # 履歴を追加
+setopt share_history  # 履歴をリアルタイム共有
+setopt hist_ignore_all_dups  # historyで重複は非表示
+setopt hist_save_no_dups     # 同じコマンドの保存は古い方を削除
+setopt extended_history      # 実行時のタイムスタンプを記録
+setopt hist_expire_dups_first   # HISTFILEのサイズがHISTSIZEを超えたら、まず重複を除去
+
+# zinitプラグイン
+
+## 補完
+zinit ice wait'!0'; zinit light zsh-users/zsh-completions
+autoload -Uz compinit && compinit
+
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'    # 補完はignore case
+zstyle ':completion:*:default' menu select=2           # 候補をTabで選択可能に
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}  # ファイル補完候補に色付け
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"  # 補完色
+
+setopt auto_param_slash   # ディレクトリ名補完で末尾のスラッシュも付与
+setopt auto_param_keys    # カッコを自動補完
+setopt mark_dirs          # ファイル名展開でディレクトリマッチ時は末尾スラッシュを補完
+setopt auto_menu          # 補完キーで自動補完
+setopt magic_equal_subst  # ロングオプションの引数も補完可能に
+setopt auto_cd            # ディレクトリ名のみでcd
+setopt correct               # スペルミス補正
+setopt interactive_comments  # CLIでも'#'以降をコメントとみなす
