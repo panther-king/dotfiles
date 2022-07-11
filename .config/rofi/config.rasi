@@ -1,0 +1,6 @@
+configuration {
+  font: "HackGen 12";
+  show-icons: true;
+  icon-theme: "Papirus";
+}
+@theme "/home/i/.local/share/rofi/themes/nord.rasi"
