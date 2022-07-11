@@ -32,10 +32,10 @@ foreground = ${colors.snow-0}
 radius-top = 0.0
 radius-bottom = 0.0
 
-font-0 = "Fantasque Sans Mono:pixelsize=12;3"
-font-1 = "Iosevka Nerd Font:pixelsize=12;3"
-; font-2 = "Migu 2M:pixelsize=12;3"
-font-2 = "HackGenNerd:pixelsize=12;3"
+;font-0 = "Fantasque Sans Mono:pixelsize=12;3"
+;font-1 = "Iosevka Nerd Font:pixelsize=12;3"
+;font-2 = "Migu 2M:pixelsize=12;3"
+font-2 = "HackGen:pixelsize=12;3"
 
 locale = ja_JP.UTF-8
 
