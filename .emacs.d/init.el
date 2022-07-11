@@ -415,19 +415,6 @@
 ;; Major mode
 ;;
 
-(use-package coffee-mode
-  :config
-  (bind-key "=" (smartchr '(" = " " == " " = " "=")) coffee-mode-map)
-  (bind-key "!" (smartchr '("!" " != ")) coffee-mode-map)
-  (bind-key "+" (smartchr '("+" " += " "++")) coffee-mode-map)
-  (bind-key "-" (smartchr '("-" " -= " "--")) coffee-mode-map)
-  (bind-key "'" (smartchr '("'`!!''" "'")) coffee-mode-map)
-  (bind-key "<" (smartchr '("<" " < " " <= ")) coffee-mode-map)
-  (bind-key ">" (smartchr '(">" " -> " " > " " >= ")) coffee-mode-map)
-  :custom (coffee-tab-width 2)
-  :ensure t
-  :mode ("\\.coffee$" . coffee-mode))
-
 ;; Docker
 (use-package dockerfile-mode
   :mode (("Dockerfile$" . dockerfile-mode))
