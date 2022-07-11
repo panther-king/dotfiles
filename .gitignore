@@ -1,17 +1,5 @@
-/emacs.d/*
+/.emacs.d/*
 
-!/emacs.d/init.el
-!/emacs.d/conf/
-!/emacs.d/loader/
-
-/zsh/plugin/*
-/zsh/options/private/*
-
-/config/qtile/__pycache__/
-
-/xmonad/xmonad-x86_64-linux
-/xmonad/xmonad.errors
-/xmonad/xmonad.hi
-/xmonad/xmonad.o
-/xmonad/prompt-history
-/xmonad/xmonad.state
+!/.emacs.d/init.el
+!/.emacs.d/conf/
+!/.emacs.d/loader/
