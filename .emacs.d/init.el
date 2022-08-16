@@ -583,8 +583,8 @@
   :config
   (use-package eglot-fsharp)
   (bind-key "=" (smartchr '(" = " "=")) fsharp-mode-map)
-  (bind-key ">" (smartchr '(" > " " -> " " >> " " >=> " ">")) fsharp-mode-map)
-  (bind-key "<" (smartchr '("<`!!'>" " < " " <- " " << " "<")) fsharp-mode-map)
+  (bind-key ">" (smartchr '(" > " " -> " " >> " " >=> " " => " ">")) fsharp-mode-map)
+  (bind-key "<" (smartchr '("<`!!'>" " < " " <- " " << " " <= " "<")) fsharp-mode-map)
   (bind-key "+" (smartchr '(" + " "+")) fsharp-mode-map)
   (bind-key "*" (smartchr '(" * " " ** " "*")) fsharp-mode-map)
   (bind-key ":" (smartchr '(": " " :: " ":")) fsharp-mode-map)
@@ -595,6 +595,11 @@
   (bind-key "{" (smartchr '("{`!!'}" "{" "{ `!!' }" "{| `!!' |}")) fsharp-mode-map)
   :ensure t
   :hook (fsharp-mode . eglot-ensure))
+
+;; Lisp
+(load (expand-file-name "~/quicklisp/slime-helper.el"))
+  ;; Replace "sbcl" with the path to your implementation
+  (setq inferior-lisp-program "clisp")
 
 ;; UI
 (use-package nord-theme
