@@ -1,87 +1,140 @@
 add_newline = false
+
 format = """
 $username\
 $hostname\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
 $directory\
+$vcsh\
 $git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
 $git_status\
+$hg_branch\
+$docker_context\
 $package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
 $elm\
+$erlang\
+$golang\
+$haskell\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
 $nodejs\
+$ocaml\
+$perl\
+$php\
+$pulumi\
+$purescript\
 $python\
+$raku\
+$rlang\
+$red\
+$ruby\
 $rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$env_var\
+$crystal\
+$custom\
+$sudo\
 $cmd_duration\
 $line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$container\
+$shell\
 $character"""
+
 scan_timeout = 30
 
 [aws]
 disabled = true
 
-[battery]
-disabled = true
+# [battery]
+# disabled = true
 
 [character]
-success_symbol = "[❯](bold green)"
-error_symbol = "[✖](bold red)"
+success_symbol = "[❯](bold #a3be8c)"
+error_symbol = "[❯](bold #bf616a)"
 
 [cmd_duration]
 min_time = 2_000
 show_milliseconds = true
-style = "bold yellow"
-
-[conda]
-disabled = true
-
-[crystal]
-disabled = true
+style = "bold #ebcb8b"
 
 [directory]
+read_only_style = "#bf616a"
+style = "bold #88c0d0"
 truncate_to_repo = false
 truncation_length = 8
 
 [dotnet]
-disabled = true
+symbol = "🥅 "
+style = "dimmed #a3be8c"
 
 [env_var]
 disabled = true
 
 [git_branch]
+style = "bold #b48ead"
 symbol = "🌱 "
 
 [git_state]
 disabled = true
 
 [git_status]
-deleted.style = "red"
-modified.style = "blue"
-renamed.style = "yellow"
-staged.style = "green"
-style = "bright-black"
-untracked.style = "yellow"
+behind = "😰"
+diverged = "😵"
+up_to_date = "✓"
+untracked = "🤷"
+stashed = "📦"
+modified = "📝"
+renamed = "👅"
 
-[golang]
-disabled = true
+[hostname]
+ssh_only = false
+style = "bold dimmed #a3be8c"
+trim_at = ""
 
-[java]
-disabled = true
+[rust]
+style = "bold #bf616a"
 
-[nix_shell]
-disabled = true
-
-[php]
-disabled = true
-
-[python]
-pyenv_version_name = true
-
-[ruby]
-disabled = true
-
-[terraform]
-disabled = true
+[shell]
+disabled = false
+style = "bold #eceff4"
 
 [username]
 show_always = true
-style_root = "bold red"
-style_user = "bold purple"
+style_root = "bold #bf616a"
+style_user = "bold #ebcb8b"
