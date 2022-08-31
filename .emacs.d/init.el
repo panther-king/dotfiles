@@ -589,8 +589,12 @@
 
 ;; Lisp
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
-  ;; Replace "sbcl" with the path to your implementation
-  (setq inferior-lisp-program "clisp")
+;; Replace "sbcl" with the path to your implementation
+(setq inferior-lisp-program "clisp")
+(use-package slime
+  :ensure t
+  :init
+  (slime-setup '(slime-repl slime-fancy slime-banner)))
 
 ;; UI
 (use-package nord-theme
