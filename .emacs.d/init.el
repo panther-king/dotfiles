@@ -130,6 +130,7 @@
 (use-package highlight-indent-guides
   :custom
   (highlight-indent-guides-method 'bitmap)
+  (set-face-foreground 'highlight-indent-guides-character-face "#3b4252")
   :delight
   :ensure t
   :hook (prog-mode . highlight-indent-guides-mode))
@@ -175,7 +176,7 @@
   (show-paren-style 'mixed)
   (show-paren-when-point-inside-paren t)
   (show-paren-when-point-in-periphery t)
-  :custom-face (show-paren-match ((nil (:background "#44475a" :foreground "violet"))))
+  :custom-face (show-paren-match ((nil (:background "#434c5e" :foreground "#d08770"))))
   :ensure nil
   :init (show-paren-mode t))
 
@@ -237,7 +238,7 @@
 
 ;; Highlight results.
 (use-package volatile-highlights
-  :custom-face (vhl/default-face ((nil (:foreground "dark violet" :background "dark magenta"))))
+  :custom-face (vhl/default-face ((nil (:foreground "#81a1c1" :background "#5e81ac"))))
   :delight
   :ensure t
   :hook (after-init . volatile-highlights-mode))
@@ -266,8 +267,8 @@
                                  (tab-mark ?\u0009 [?\xBB ?\t])))
   (whitespace-action '(auto-cleanup))
   :custom-face
-  (whitespace-space ((t (:background nil :foreground "Gray22"))))
-  (whitespace-tab ((t (:background nil :foreground "LightSkyBlue" :underline t))))
+  (whitespace-space ((t (:background nil :foreground "#3b4252"))))
+  (whitespace-tab ((t (:background nil :foreground "#d08770" :underline t))))
   :ensure t)
 
 ;;
@@ -558,16 +559,6 @@
   (web-mode-css-indent-offset 2)
   (web-mode-style-padding 2)
   (web-mode-script-padding 2)
-  :custom-face
-  (web-mode-doctype-face ((t (:foreground "#82AE46"))))
-  (web-mode-html-tag-face ((t (:foreground "#E6B422"))))
-  (web-mode-html-attr-name-face ((t (:foreground "#C97586"))))
-  (web-mode-html-attr-value-face ((t (:foreground "#82AE46"))))
-  (web-mode-comment-face ((t (:foreground "#D9333F"))))
-  (web-mode-server-comment-face ((t (:foreground "#D9333F"))))
-  (web-mode-css-rule-face ((t (:foreground "#A0D8EF"))))
-  (web-mode-css-pseudo-class-face ((t (:foreground "#FF7F00"))))
-  (web-mode-css-at-rule-face ((t (:foreground "#FF7F00"))))
   :ensure t
   :mode
   (("\\.html$" . web-mode)
