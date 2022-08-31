@@ -116,11 +116,12 @@ disabled = true
 [git_status]
 behind = "😰"
 diverged = "😵"
-up_to_date = "✓"
-untracked = "🤷"
-stashed = "📦"
 modified = "📝"
 renamed = "👅"
+stashed = "📦"
+style = "bold #d08770"
+untracked = "🤷"
+up_to_date = "✓"
 
 [hostname]
 ssh_only = false
