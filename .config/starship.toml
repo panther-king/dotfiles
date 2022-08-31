@@ -81,8 +81,8 @@ scan_timeout = 30
 [aws]
 disabled = true
 
-# [battery]
-# disabled = true
+[battery]
+disabled = true
 
 [character]
 success_symbol = "[❯](bold #a3be8c)"
