@@ -33,8 +33,6 @@
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
 (tool-bar-mode 0)
-(setq inhibit-startup-message t)
-(setq initial-scratch-message nil)
 
 ;; Show column numbers on modeline.
 (column-number-mode t)
@@ -76,6 +74,20 @@
 ;;
 ;; utilities
 ;;
+
+;; dashboard
+(use-package dashboard
+  :config
+  (dashboard-setup-startup-hook)
+  :custom
+  (dashboard-items '((recents . 5)
+                     (projects . 5)
+                     (bookmarks . 5)))
+  (dashboard-set-file-icons t)
+  (dashboard-set-footer nil)
+  (dashboard-set-heading-icons t)
+  (dashboard-startup-banner 'logo)
+  :ensure t)
 
 (use-package delight
   :ensure t
