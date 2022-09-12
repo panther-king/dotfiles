@@ -418,6 +418,14 @@
     (kill-buffer)
     (jump-to-register :magit-fullscreen)))
 
+(use-package magit-delta
+  :custom
+  (magit-delta-default-dark-theme "Nord")
+  (magit-delta-hide-plus-minus-markers nil)
+  :ensure t
+  :hook
+  (magit-mode . magit-delta-mode))
+
 ;; Show the status of lines on fringe.
 (use-package git-gutter
   :config (global-git-gutter-mode t)
