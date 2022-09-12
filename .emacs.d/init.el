@@ -241,12 +241,14 @@
 
 ;; Completion with brackets and quotations.
 (use-package smartchr
-  :config
-  (bind-key "\"" (smartchr '("\"`!!'\"" "\"")))
-  (bind-key "(" (smartchr '("(`!!')" "(")))
-  (bind-key "[" (smartchr '("[`!!']" "[")))
-  (bind-key "{" (smartchr '("{`!!'}" "{")))
   :load-path "github/emacs-smartchr")
+
+;; Completion with brackets and quotations.
+(use-package smartparens-config
+  :config
+  (progn (show-smartparens-global-mode t))
+  :hook (prog-mode . turn-on-smartparens-strict-mode)
+  :ensure smartparens)
 
 ;; Enable to edit root permission files.
 (use-package sudo-edit
@@ -455,7 +457,6 @@
   (bind-key "+" (smartchr '(" ++ " " + " "+")) elm-mode-map)
   (bind-key ":" (smartchr '(" : " " :: " ":")) elm-mode-map)
   (bind-key "|" (smartchr '(" | " "|> " " <|" "|")) elm-mode-map)
-  (bind-key "\"" (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")) elm-mode-map)
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-elm))
   ;; (add-hook 'elm-mode-hook 'elm-format-on-save-mode)
@@ -469,7 +470,6 @@
   (bind-key "!" (smartchr '("!" " !== " " != ")) js2-mode-map)
   (bind-key "+" (smartchr '("+" "++" " += ")) js2-mode-map)
   (bind-key "-" (smartchr '("-" "--" " -= ")) js2-mode-map)
-  (bind-key "'" (smartchr '("'`!!''" "'")) js2-mode-map)
   (bind-key "<" (smartchr '("<" " < " " <= ")) js2-mode-map)
   (bind-key ">" (smartchr '(">" " => " " > " " >= ")) js2-mode-map)
   :custom (js-indent-level 2)
@@ -494,8 +494,6 @@
   (bind-key "!" (smartchr '("!" " !== " " != ")) php-mode-map)
   (bind-key "<" (smartchr '("<" " < " " <= " " <<< ")) php-mode-map)
   (bind-key ">" (smartchr '(">" "->" " => ")) php-mode-map)
-  (bind-key "'" (smartchr '("'`!!''" "'")) php-mode-map)
-  (bind-key "(" (smartchr '("(`!!')" "(")) php-mode-map)
   :ensure t
   :hook (php-mode . php-enable-psr2-coding-style)
   :mode ("\\.php$" . php-mode))
@@ -512,8 +510,6 @@
 ;; Python
 (use-package python-mode
   :config
-  (bind-key "\"" (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")) python-mode-map)
-  (bind-key "'" (smartchr '("'`!!''" "'" "'''`!!''''")) python-mode-map)
   (bind-key "=" (smartchr '(" = " " == " "=")) python-mode-map)
   (bind-key "!" (smartchr '("!" " != ")) python-mode-map)
   (bind-key "-" (smartchr '("-" " - " " -= ")) python-mode-map)
@@ -605,7 +601,6 @@
   (bind-key ":" (smartchr '(": " " :: " ":")) fsharp-mode-map)
   (bind-key "|" (smartchr '("|" "|> " "<| " " | ")) fsharp-mode-map)
   (bind-key "`" (smartchr '("\``!!'\`" "\`\``!!'\`\`" "\`")) fsharp-mode-map)
-  (bind-key "\"" (smartchr '("\"`!!'\"" "\"" "\"\"\"`!!'\"\"\"")) fsharp-mode-map)
   (bind-key "[" (smartchr '("[`!!']" "[" "[ `!!' ]" "[| `!!' |]")) fsharp-mode-map)
   (bind-key "{" (smartchr '("{`!!'}" "{" "{ `!!' }" "{| `!!' |}")) fsharp-mode-map)
   :ensure t
