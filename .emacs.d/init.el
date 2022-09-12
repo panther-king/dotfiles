@@ -204,12 +204,6 @@
   :ensure nil
   :init (show-paren-mode t))
 
-;; Window popup.
-(use-package popwin
-  :config (popwin-mode 1)
-  :custom (special-display-function 'popwin:display-buffer)
-  :ensure t)
-
 ;; Emphasis brackets.
 (use-package rainbow-delimiters
   :config
