@@ -43,8 +43,8 @@
 (setq frame-title-format (format"emacs@%s : %%f" (system-name)))
 
 ;; Font settings.
-(when (member "HackGenNerd" (font-family-list))
-  (add-to-list 'default-frame-alist '(font . "HackGenNerd 14")))
+(when (member "HackGen" (font-family-list))
+  (add-to-list 'default-frame-alist '(font . "HackGen 14")))
 
 ;; Global key-bindings.
 (bind-key "C-h" 'delete-backward-char)
