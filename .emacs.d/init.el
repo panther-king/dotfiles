@@ -148,14 +148,26 @@
   :hook (prog-mode . highlight-indent-guides-mode))
 
 ;; Show the directory tree.
-(use-package neotree
-  :config (bind-key* [f8] 'neotree-toggle)
+;; (use-package neotree
+;;   :config (bind-key* [f8] 'neotree-toggle)
+;;   :custom
+;;   (neo-show-hidden-files t)
+;;   (neo-create-file-auto-open t)
+;;   (neo-smart-open t)
+;;   (neo-vc-integration '(face char))
+;;   (neo-window-position '(quote right))
+;;   :ensure t)
+
+(use-package treemacs
+  :config
+  (bind-key* [f8] 'treemacs)
   :custom
-  (neo-show-hidden-files t)
-  (neo-create-file-auto-open t)
-  (neo-smart-open t)
-  (neo-vc-integration '(face char))
-  (neo-window-position '(quote right))
+  (treemacs-position 'right)
+  :ensure t)
+
+(use-package treemacs-all-the-icons
+  :config
+  (treemacs-load-theme "all-the-icons")
   :ensure t)
 
 ;; Disposable files.
