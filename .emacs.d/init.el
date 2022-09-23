@@ -220,8 +220,7 @@
 (leaf open-junk-file
   :doc "一時ファイルを手軽に作成する"
   :ensure t
-  :defun open-junk-file-format
-  :config (open-junk-file-format "/tmp/junk/%Y%m%d%H%M%S."))
+  :custom ((open-junk-file-format . "/tmp/junk/%Y%m%d%H%M%S.")))
 
 (leaf skk
   :doc "日本語入力にDDSKKを利用する"
@@ -289,8 +288,8 @@
   :tag "utility"
   :ensure t
   :require t
-  :config global-undo-tree-mode
-  :custom ((undo-tree-auto-save-history . nil)))
+  :custom ((global-undo-tree-mode . t)
+           (undo-tree-auto-save-history . nil)))
 
 (leaf volatile-highlights-mode
   :doc "特定操作の実行をハイライトする"
