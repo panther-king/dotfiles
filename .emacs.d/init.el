@@ -117,6 +117,16 @@
   :tag "builtin" "utility"
   :global-minor-mode delete-selection-mode)
 
+(leaf tab-bar-mode
+  :doc "フレームごとのタブを利用する"
+  :tag "builtin" "utility"
+  :config (tab-bar-mode +1)
+  :custom ((tab-bar-new-button-show . nil)
+           (tab-bar-close-button-show . nil))
+  :custom-face ((tab-bar . '((t (:background "#4c566a" :foreground "#5e81ac"))))
+                (tab-bar-tab . '((t (:background "#81a1c1" :foreground "#d8dee9"))))
+                (tab-bar-tab-inactive . '((t (:background "#5e81ac" :foreground "#88c0d0"))))))
+
 (leaf flymake
   :doc "Synatx checkにflymakeを利用する"
   :tag "builtin" "programming"
@@ -182,16 +192,6 @@
   :require t
   :bind (("C-h" . delete-backward-char)
          ("C-'" . set-mark-command)))
-
-(leaf elscreen
-  :doc "ウインドウをタブ管理できるようにする"
-  :tag "interface"
-  :ensure t
-  :require t
-  :config (elscreen-start)
-  :bind (("C-z" . elscreen-prefix-key))
-  :custom ((elscreen-tab-display-kill-screen . nil)
-           (elscreen-tab-display-control . nil)))
 
 (leaf highlight-indent-guides
   :doc "インデントを可視化する"
