@@ -265,9 +265,9 @@
   :ensure t
   :config
   (leaf sequential-command-config
-    :bind (("C-a" . seq-home)
-           ("C-e" . seq-end))))
-
+    :require t
+    :defun sequential-command-setup-keys
+    :config (sequential-command-setup-keys)))
 
 (leaf smartparens
   :doc "カッコを自動的に補完する"
@@ -432,7 +432,6 @@
   :doc "magitのdiff表示にdeltaを利用する"
   :tag "git" "utility"
   :ensure t
-  :require magit
   :custom ((magit-delta-default-dark-theme . "Nord")
            (magit-delta-hide-plus-minus-markers . nil))
   :hook (magit-mode-hook . magit-delta-mode))
@@ -624,7 +623,7 @@
   :tag "lisp" "programming" "utility"
   :ensure t
   :require t
-  :init (prog2
+  :init (progn
             (load (expand-file-name "~/quicklisp/slime-helper.el"))
             (slime-setup '(slime-repl slime-fancy slime-banner)))
   :custom ((inferior-lisp-program . "clisp")))
@@ -641,9 +640,10 @@
   :tag "interface"
   :ensure t
   :require t
-  :config (prog2
-              (moody-replace-mode-line-buffer-identification)
-              (moody-replace-vc-mode))
+  :defun moody-replace-mode-line-buffer-identification moody-replace-vc-mode
+  :config (progn
+            (moody-replace-mode-line-buffer-identification)
+            (moody-replace-vc-mode))
   :custom ((x-underline-at-descent-line . t)))
 
 (leaf minions
@@ -651,8 +651,10 @@
   :tag "interface"
   :ensure t
   :require t
-  :config (minions-mode)
-  :custom ((minions-mode-line-lighter . "[+]")))
+  :defun minions-mode
+  :config (minions-mode 1)
+  :custom ((minions-prominent-modes . '(flymake-mode))
+           (minions-mode-line-lighter . "[+]")))
 
 (provide 'init)
 
