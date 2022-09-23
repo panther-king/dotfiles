@@ -117,6 +117,12 @@
   :tag "builtin" "utility"
   :global-minor-mode delete-selection-mode)
 
+(leaf uniquify
+  :doc "モードラインのファイル名にディレクトリも表示する"
+  :tag "builtin" "interface"
+  :custom ((uniquify-buffer-name-style . 'forward)
+           (uniquify-min-dir-content . 3)))
+
 (leaf tab-bar-mode
   :doc "フレームごとのタブを利用する"
   :tag "builtin" "utility"
