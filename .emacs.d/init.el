@@ -222,8 +222,9 @@
   :ensure t
   :custom ((open-junk-file-format . "/tmp/junk/%Y%m%d%H%M%S.")))
 
-(leaf skk
+(leaf ddskk
   :doc "日本語入力にDDSKKを利用する"
+  :ensure t
   :bind (("C-SPC" . skk-mode))
   :custom ((skk-egg-like-newline . t)
            (skk-use-color-cursor . t)
@@ -291,7 +292,7 @@
   :custom ((global-undo-tree-mode . t)
            (undo-tree-auto-save-history . nil)))
 
-(leaf volatile-highlights-mode
+(leaf volatile-highlights
   :doc "特定操作の実行をハイライトする"
   :tag "interface"
   :ensure t
