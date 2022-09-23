@@ -124,6 +124,11 @@
          ("<f11>" . flymake-goto-prev-error))
   :hook (prog-mode-hook . flymake-mode))
 
+(leaf drill-instructor
+  :el-get k1LoW/emacs-drill-instructor
+  :require t
+  :custom ((drill-instructor-global . t)))
+
 (leaf exec-path-from-shell
   :doc "シェルの環境変数を引き継ぐ"
   :ensure t
