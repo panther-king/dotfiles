@@ -558,6 +558,52 @@
     :ensure t
     :mode "\\.ya?ml$"))
 
+(leaf completion
+  :doc "補完系設定"
+  :tag "completion"
+  :config
+  (leaf vertico
+    :doc "ミニバッファで補完を利用する"
+    :ensure t
+    :init (vertico-mode)
+    :custom ((vertico-cycle .t )
+             (vertico-count . 20)))
+  (leaf consult
+    :doc "補完コマンドを利用する"
+    :ensure t
+    :bind (("C-;" . consult-buffer)
+           ("C-s" . consult-line)
+           ("C-r" . consult-line)
+           ([remap goto-line] . consult-goto-line)))
+  (leaf orderless
+    :doc "順不同の複数キーワードで補完候補を絞り込めるようにする"
+    :ensure t
+    :custom ((completion-styles . '(orderless))))
+  (leaf marginalia
+    :doc "補完候補の情報を表示する"
+    :ensure t
+    :hook after-init-hook)
+  (leaf embark
+    :doc "補完候補に対するアクションを行えるようにする"
+    :ensure t
+    :config
+    (leaf embark-consult
+      :doc "ConsultとEmbarkを組み合わせて利用する"
+      :ensure t))
+  (leaf corfu
+    :doc "コードの補完候補をポップアップする"
+    :ensure t
+    :init (global-corfu-mode)
+    :bind (:corfu-map
+           ("C-n" . corfu-next)
+           ("C-p" . corfu-previous))
+    :custom ((corfu-cycle . t)
+             (corfu-auto . t))
+    :hook (prog-mode-hook . corfu-mode))
+  (leaf cape
+    :doc "補完方法をカスタマイズする"
+    :ensure t))
+
 (leaf leaf
   :doc "leaf関連設定"
   :tag "leaf"
@@ -576,73 +622,9 @@
     :bind (("C-c e" . macrostep-expand)))
   )
 
-(leaf ivy
-  :ensure t
-  :require t
-  :config (ivy-mode 1)
-  :bind (("C-;" . ivy-switch-buffer))
-  :custom ((ivy-count-format . "%d/%d ")
-           (ivy-format-function . 'ivy-format-function-arrow)
-           (ivy-height . 20)
-           (ivy-use-virtual-buffers . t)
-           (ivy-wrap . t)))
-
-(leaf counsel
-  :ensure t
-  :require t
-  :config (counsel-mode 1)
-  :bind (("C-s" . swiper)
-         ("C-r" . swiper))
-  :custom ((enable-recursive-minibuffers . t)
-           (swiper-include-line-number-in-search . t)))
-
-(leaf ivy-rich
-  :ensure t
-  :require t
-  :config (ivy-rich-mode 1)
-  :custom ((ivy-rich--display-transformers-list . '(ivy-switch-buffer
-                                                    (:columns
-                                                     ((ivy-rich-candidate (:width 32))
-                                                      (ivy-rich-switch-buffer-size (:width 8))
-                                                      (ivy-rich-switch-buffer-indicators (:width 4 :face error :aligh right))
-                                                      (ivy-rich-switch-buffer-major-mode (:width 20 :face warning))
-                                                      (ivy-rich-switch-buffer-project (:width 16 :face success))
-                                                      (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
-                                                     :predicate
-                                                     (lambda (cand) (get-buffer cand)))
-                                                    counsel-M-x
-                                                    (:columns
-                                                     ((counsel-M-x-transformer (:width 40))
-                                                      (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))
-                                                    counsel-describe-function
-                                                    (:columns
-                                                     ((counsel-describe-function-transformer (:width 40))
-                                                      (ivy-rich-counsel-function-docstring (:face font-lock-doc-face))))
-                                                    counsel-describe-variable
-                                                    (:columns
-                                                     ((counsel-describe-variable-transformer (:width 40))
-                                                      (ivy-rich-counsel-variable-docstring (:face font-lock-doc-face))))
-                                                    counsel-recentf
-                                                    (:columns
-                                                     ((ivy-rich-candidate (:width 0.8))
-                                                      (ivy-rich-file-last-modified-time (:face font-lock-comment-face))))))))
-
-(leaf counsel-projectile
-  :ensure t
-  :require counsel projectile)
-
-(leaf company
-  :ensure t
-  :bind ((:company-active-map
-          ("C-n" . company-select-next)
-          ("C-p" . company-select-previous)
-          ("C-s" . company-filter-candidates)
-          ("C-i" . company-complete-selection))
-         (:company-search-map
-          ("C-n" . company-select-next)
-          ("C-p" . company-eslect-previous)))
-  :custom ((company-selection-wrap-around . t))
-  :hook (after-init-hook . global-company-mode))
+;; (leaf counsel-projectile
+;;   :ensure t
+;;   :require counsel projectile)
 
 (provide 'init)
 
