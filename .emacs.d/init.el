@@ -29,7 +29,7 @@
 (leaf ignore-custom-el
   :doc "カスタマイズ内容をinit.el以外に記録する"
   :tag "settings"
-  :custom `((custom-file . ,(locate-user-emacs-file "custom.el"))))
+  :custom `((custom-file . ,(locate-user-emacs-file "custom.el"))))  ;; カスタマイズ保存ファイルを指定するがロードはしない
 
 (leaf customize-deafult
   :doc "デフォルト挙動のカスタマイズ"
@@ -37,32 +37,21 @@
   :config
   (fset 'yes-or-no-p 'y-or-n-p)
   (add-to-list 'default-frame-alist '(font . "HackGen 14"))
-  :custom (;; 起動画面を表示しない
-           (inhibit-startup-screen . t)
-           ;; バックアップファイルを作成しない
-           (make-backup-files . nil)
-           ;; 自動保存を行わない
-           (auto-save-default . nil)
-           ;; ロックファイルを作成しない
-           (create-lockfiles . nil)
-           ;; ビープ音を無効化
-           (ring-bell-function . 'ignore)
-           ;; スクロールバーは利用しない
-           (scroll-bar-mode . nil)
-           ;; メニューバーは利用しない
-           (menu-bar-mode . nil)
-           ;; ツールバーは利用しない
-           (tool-bar-mode  . nil)
-           ;; モードラインに列番号も表示する
-           (column-number-mode . t)
-           ;; タブインデントは利用しない
-           (indent-tabs-mode . nil)
-           ;; C-kで行末の改行コードごと削除する
-           (kill-whole-line .  t)
-           ;; バッファの末尾で新しい行を追加しない
-           (next-line-add-newlines . nil)
-           ;; ファイルの末尾は改行を必須にする
-           (require-final-newline . t)))
+  :custom ((inhibit-startup-screen . t)    ;; 起動画面を表示しない
+           (initial-scratch-message . "")  ;; scratchバッファのメッセージを表示しない
+           (make-backup-files . nil)       ;; バックアップファイルを作成しない
+           (auto-save-default . nil)       ;; 自動保存を行わない
+           (create-lockfiles . nil)        ;; ロックファイルを作成しない
+           (ring-bell-function . 'ignore)  ;; ビープ音を無効化
+           (scroll-bar-mode . nil)         ;; スクロールバーは利用しない
+           (menu-bar-mode . nil)           ;; メニューバーは利用しない
+           (tool-bar-mode  . nil)          ;; ツールバーは利用しない
+           (column-number-mode . t)        ;; モードラインに列番号も表示する
+           (indent-tabs-mode . nil)        ;; タブインデントは利用しない
+           (kill-whole-line .  t)          ;; C-kで行末の改行コードごと削除する
+           (next-line-add-newlines . nil)  ;; バッファの末尾で新しい行を追加しない
+           (require-final-newline . t)     ;; ファイルの末尾は改行を必須にする
+           (vc-follow-symlinks . t)))      ;; 常にシンボリックリンクをたどる
 
 (leaf nord-theme
   :doc "UIテーマにNordを利用する"
@@ -78,8 +67,8 @@
   (leaf uniquify
     :doc "モードラインのファイル名にディレクトリも表示する"
     :tag "mode-line" "built-in"
-    :custom ((uniquify-buffer-name-style . 'forward)
-             (uniquify-min-dir-content . 3)))
+    :custom ((uniquify-buffer-name-style . 'forward)  ;; ディレクトリ名はファイル名の前に表示する
+             (uniquify-min-dir-content . 3)))         ;; 3階層まで表示する
   (leaf moody
     :doc "モードラインの表示を分かりやすくする"
     :tag "mode-line"
@@ -88,15 +77,15 @@
     :config
     (moody-replace-mode-line-buffer-identification)
     (moody-replace-vc-mode)
-    :custom ((x-underline-at-descent-line . t)))
+    :custom ((x-underline-at-descent-line . t)))  ;; フォントの描画が揃う位置にアンダーラインを引く
   (leaf minions
     :doc "モードラインのマイナーモード表示をシンプルにする"
     :tag "mode-line"
     :ensure t
     :require t
     :config (minions-mode 1)
-    :custom ((minions-prominent-modes . '(flymake-mode))
-             (minions-mode-line-lighter . "[+]"))))
+    :custom ((minions-prominent-modes . '(flymake-mode))  ;; エラー情報を可視化するため、flymakeは常に表示する
+             (minions-mode-line-lighter . "[+]"))))       ;; minor-modeを展開するUIを変更する
 
 (leaf customize-buffer
   :doc "バッファ関連設定"
@@ -105,12 +94,11 @@
   (leaf hl-line
     :doc "現在行をハイライトする"
     :tag "buffer" "built-in"
-    :custom ((global-hl-line-mode . t)))
+    :custom ((global-hl-line-mode . t)))  ;; 常にハイライトさせる
   (leaf display-line-numbers-mode
     :doc "行番号を表示させる"
     :tag "buffer" "built-in"
-    :custom ((global-display-line-numbers-mode . t)
-             (display-line-numbers-width-start . t)))
+    :custom ((global-display-line-numbers-mode . t)))  ;; 常に表示させる
   (leaf volatile-highlights
     :doc "特定操作の実行をハイライトする"
     :ensure t
@@ -120,7 +108,7 @@
     :doc "インデントを可視化する"
     :tag "buffer"
     :ensure t
-    :custom ((highlight-indent-guides-method . 'bitmap))
+    :custom ((highlight-indent-guides-method . 'bitmap))  ;; インデントガイドをbitmapで表示する
     :custom-face (hilight-indent-guides-character-face . '((t (:foreground "#3b4252"))))
     :hook prog-mode-hook)
   (leaf whitespace
@@ -129,13 +117,20 @@
     :ensure t
     :require t
     :config (global-whitespace-mode t)
-    :custom ((whitespace-style . '(face empty space-mark spaces tab-mark tabs trailing))
-             (whitespace-space-regexp . "\\(\u0020+\\|\u3000+\\)")
-             (whitespace-tab-regexp . "\\(\u0009+\\)")
-             (whitespace-display-mappings . '((space-mark ?\u0020 [?.])
-                                              (space-mark ?\u3000 [?\u25a1])
-                                              (tab-mark ?\u0009 [?\xBB ?\t])))
-             (whitespace-action . '(auto-cleanup)))
+    :custom ((whitespace-style . '(face                                         ;; 可視化の有効化
+                                   empty                                        ;; バッファ前後の空行を可視化
+                                   spaces                                       ;; 空白を可視化
+                                   space-mark                                   ;; 空白文字は別の文字に置き換える
+                                   tabs                                         ;; タブ文字を可視化
+                                   tab-mark                                     ;; タブ文字は別の文字に置き換える
+                                   trailing))                                   ;; 行末の空白を可視化
+             (whitespace-space-regexp . "\\(\u0020+\\|\u3000+\\)")              ;; no-break spaceと全角スペースも対象にする
+             (whitespace-tab-regexp . "\\(\u0009+\\)")                          ;; タブも対象にする
+             (whitespace-display-mappings . '((space-mark ?\u0020 [?.])  ;;     ;; 半角スペースは.で可視化する
+                                              (space-mark ?\u3000 [?\u25a1])    ;; 全角スペースは□で可視化する
+                                              (tab-mark ?\u0009 [?\xBB ?\t])))  ;; タブはタブ記号で可視化する
+             (whitespace-global-modes . '(not dired-mode))                      ;; 特定のモードでは可視化しない
+             (whitespace-action . '(auto-cleanup)))                             ;; 保存時に余計な空白・タブを削除
     :custom-face ((whitespace-space . '((t (:background nil :foreground "#3b4252"))))
                   (whitespace-tab . '((t (:background nil :foreground "#d08770" :underline t)))))))
 
@@ -147,25 +142,14 @@
     :doc "対応するカッコを強調表示する"
     :tag "paren" "built-in"
     :config (show-paren-mode t)
-    :custom ((show-paren-style . 'mixed)
-             (show-paren-when-point-inside-paren . t)
-             (show-paren-when-point-in-periphery . t))
-    :custom-face (show-paren-match '((nil (:background "#434c5e" :foreground "#d08770")))))
+    :custom ((show-paren-style . 'mixed)                 ;; 対応カッコが画面外なら式全体をハイライトする
+             (show-paren-when-point-inside-paren . t)    ;; カーソルがカッコの内側にあってもハイライトする
+             (show-paren-when-point-in-periphery . t)))  ;; 論理的に最も近いカッコをハイライトする
   (leaf rainbow-delimiters
     :doc "カッコの対応を色づけする"
     :tag "paren"
     :ensure t
     :require cl-lib color
-    :defun color-saturate-name
-    :defvar rainbow-delimiters-max-face-count
-    :init
-    (defun rainbow-delimiters-using-stronger-colors ()
-      (interactive)
-      (cl-loop
-       for index from 1 to rainbow-delimiters-max-face-count
-       do
-       (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
-         (cl-callf color-saturate-name (face-foreground face) 30))))
     :hook (prog-mode-hook . rainbow-delimiters-mode))
   (leaf smartparens
     :doc "カッコを自動的に補完する"
@@ -185,7 +169,7 @@
     :tag "icon"
     :ensure t
     :require t
-    :custom ((all-the-icons-scale-factor . 1.0)))
+    :custom ((all-the-icons-scale-factor . 1.0)))  ;; アイコンフォントは等倍で表示する
   (leaf all-the-icons-dired
     :doc "diredでもall-the-iconのアイコンを利用する"
     :ensure t
@@ -213,7 +197,6 @@
   (leaf autorevert
     :doc "Emacs外でファイルが変更されたら自動的に読み直す"
     :tag "utility" "built-in"
-    :custom ((auto-revert-interval . 1))
     :global-minor-mode global-auto-revert-mode)
   (leaf undo-tree
     :doc "undo履歴をツリー形式で可視化する"
@@ -221,7 +204,7 @@
     :ensure t
     :require t
     :custom ((global-undo-tree-mode . t)
-             (undo-tree-auto-save-history . nil)))
+             (undo-tree-auto-save-history . nil)))  ;; 履歴をファイルに保存しない
   (leaf exec-path-from-shell
     :doc "シェルの環境変数を引き継ぐ"
     :tag "utility"
@@ -232,7 +215,7 @@
     :doc "一時ファイルを作成する"
     :tag "utility"
     :ensure t
-    :custom ((open-junk-file-format . "/tmp/junk/%Y%m%d%H%M%S.")))
+    :custom ((open-junk-file-format . "/tmp/junk/%Y%m%d%H%M%S.")))  ;; 一時ファイルは/tmpに保存する
   (leaf sudo-edit
     :doc "Emacsからroot権限でファイルを編集できるようにする"
     :tag "utility"
@@ -242,8 +225,8 @@
     :doc "検索にRipgrepを利用する"
     :ensure t
     :require t
-    :custom ((ripgrep-executable . "~/.cargo/bin/rg")
-             (ripgrep-arguments . '("-S")))))
+    :custom ((ripgrep-executable . "~/.cargo/bin/rg")  ;; cargo経由でインストールしたripgrepを利用する
+             (ripgrep-arguments . '("-S")))))          ;; case-sensitiveをよしなに判断させる
 
 (leaf ide
   :doc "EmacsをIDEライクに利用する"
@@ -253,8 +236,8 @@
     :doc "フレームをタブで管理する"
     :tag "ide"
     :config (tab-bar-mode +1)
-    :custom ((tab-bar-new-button-show . nil)
-             (tab-bar-close-button-show . nil))
+    :custom ((tab-bar-new-button-show . nil)     ;; タブに追加ボタンを表示させない
+             (tab-bar-close-button-show . nil))  ;; タブに閉じるボタンを表示させない
     :custom-face ((tab-bar . '((t (:background "#4c566a" :foreground "#5e81ac"))))
                   (tab-bar-tab . '((t (:background "#81a1c1" :foreground "#d8dee9"))))
                   (tab-bar-tab-inactive . '((t (:background "#5e81ac" :foreground "#88c0d0"))))))
@@ -268,7 +251,7 @@
     :ensure t
     :require t
     :bind* ([f8] . 'treemacs)
-    :custom ((treemacs-position . 'right)))
+    :custom ((treemacs-position . 'right)))  ;; フレーム右側に表示する
   (leaf treemacs-all-the-icons
     :doc "treemacsでall-the-iconを利用する"
     :tag "ide"
@@ -303,7 +286,7 @@
     :doc "Emacsキーバインドを強制する"
     :el-get k1LoW/emacs-drill-instructor
     :require t
-    :custom ((drill-instructor-global . t)))
+    :custom ((drill-instructor-global . t)))  ;; 常にEmacsキーバインドを強制する
   (leaf bind-key
     :doc "よく利用する機能を特定のキーバインドにマッピングする"
     :ensure t
@@ -324,14 +307,12 @@
     :doc "日本語入力にDDSKKを利用する"
     :ensure t
     :bind (("C-SPC" . skk-mode))
-    :custom ((skk-egg-like-newline . t)
-             (skk-use-color-cursor . t)
-             (skk-cursor-hiragana-color . "#a3be8c")
-             (skk-cursor-katakana-color . "#d08770")
-             (skk-cursor-jisx0201-color . "#ebcb8b")
-             (skk-cursor-jisx0208-latin-color . "#b48ead")
-             (skk-cursor-latin-color . "#d8dee9")
-             (skk-cursor-abbrev-color . "#5e81ac"))))
+    :custom ((skk-egg-like-newline . t)                     ;; Enterキーでも入力を確定する
+             (skk-use-color-cursor . t)                     ;; カーソル色でモードを判断できるようにする
+             (skk-cursor-hiragana-color . "#a3be8c")        ;; ひらがなモード
+             (skk-cursor-katakana-color . "#d08770")        ;; カタカナモード
+             (skk-cursor-jisx0208-latin-color . "#b48ead")  ;; 全角英数モード
+             (skk-cursor-latin-color . "#d8dee9"))))        ;; ASCIIモード
 
 (leaf vcs
   :doc "git"
@@ -358,17 +339,17 @@
   (leaf magit-delta
     :doc "magitのdiff表示にdeltaを利用する"
     :ensure t
-    :custom ((magit-delta-default-dark-theme . "Nord")
-             (magit-delta-hide-plus-minus-markers . nil))
+    :custom ((magit-delta-default-dark-theme . "Nord")     ;; Nordベースのダークテーマを利用する
+             (magit-delta-hide-plus-minus-markers . nil))  ;; diffの行頭に+/-を表示する
     :hook (magit-mode-hook . magit-delta-mode))
   (leaf git-gutter
     :doc "ファイルの編集状況をフリンジに表示させる"
     :ensure t
     :require t
     :config (global-git-gutter-mode t)
-    :custom ((git-gutter:modified-sign . "~")
-             (git-gutter:added-sign . "+")
-             (git-gutter:deleted-sign . "-"))))
+    :custom ((git-gutter:modified-sign . "~")    ;; 変更あり
+             (git-gutter:added-sign . "+")       ;; 追加
+             (git-gutter:deleted-sign . "-"))))  ;; 削除
 
 (leaf syntax-check
   :doc "構文チェック"
@@ -489,7 +470,7 @@
           ("<" . ("<`!!'>" " < " " <- " " <= " "<"))
           ("!" . (" != " "!"))
           ("|" . ("|`!!'|" "||" " | " "|")))
-  :custom ((rust-format-on-save . t))
+  :custom ((rust-format-on-save . t))  ;; 保存時にコーディングスタイルを整形する
   :hook (rust-mode-hook . eglot-ensure)
   :config
   (leaf cargo
@@ -505,7 +486,7 @@
   :init
   (load (expand-file-name "~/quicklisp/slime-helper.el"))
   (slime-setup '(slime-repl slime-fancy slime-banner))
-  :custom ((inferior-lisp-program . "clisp")))
+  :custom ((inferior-lisp-program . "clisp")))  ;; CLISPを利用する
 
 (leaf structured-data
   :doc "マークアップ・データ構造言語の設定"
@@ -528,9 +509,9 @@
     :doc "EmacsでPlantUMLを編集する"
     :ensure t
     :mode "\\.p?uml$"
-    :custom ((plantuml-jar-path . "/usr/share/java/plantuml/plantuml.jar")
-             (plantuml-default-exec-mode . 'jar)
-             (plantuml-indent-level . 4)))
+    :custom ((plantuml-jar-path . "/usr/share/java/plantuml/plantuml.jar")  ;; Pacmanで入るPlantUMLを利用する
+             (plantuml-default-exec-mode . 'jar)                            ;; jarを利用してレンダリングする
+             (plantuml-indent-level . 4)))                                  ;; インデントを変更する
   (leaf scss-mode
     :doc "EmacsからSCSSを編集する"
     :ensure t
@@ -538,7 +519,7 @@
     :init
     (defun my-scss-mode-hook ()
       (set (make-local-variable 'css-indent-offset) 2))
-    :custom ((scss-comple-at-save . nil))
+    :custom ((scss-compile-at-save . nil))  ;; 保存時にコンパイルしない
     :hook (scss-mode-hook . my-scss-mode-hook))
   (leaf toml-mode
     :doc "EmacsからTOMLを編集する"
@@ -566,8 +547,13 @@
     :doc "ミニバッファで補完を利用する"
     :ensure t
     :init (vertico-mode)
-    :custom ((vertico-cycle .t )
-             (vertico-count . 20)))
+    :config
+    (leaf vertico-directory
+      :require t
+      :bind (:vertico-map
+             ("C-l" . vertico-directory-up)))
+    :custom ((vertico-cycle . t)     ;; 候補の先頭と末尾を移動できるようにする
+             (vertico-count . 20)))  ;; 候補表示は20個まで
   (leaf consult
     :doc "補完コマンドを利用する"
     :ensure t
@@ -594,6 +580,15 @@
     :doc "コードの補完候補をポップアップする"
     :ensure t
     :init (global-corfu-mode)
+    :config
+    (leaf kind-icon
+      :doc "補完候補にアイコンを利用する"
+      :tag "icon"
+      :ensure t
+      :defvar corfu-margin-formatters
+      :defun kind-icon-margin-formatter
+      :config (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter)
+      :custom ((kind-icon-default-face . 'corfu-default)))
     :bind (:corfu-map
            ("C-n" . corfu-next)
            ("C-p" . corfu-previous))
@@ -621,10 +616,6 @@
     :ensure t
     :bind (("C-c e" . macrostep-expand)))
   )
-
-;; (leaf counsel-projectile
-;;   :ensure t
-;;   :require counsel projectile)
 
 (provide 'init)
 
