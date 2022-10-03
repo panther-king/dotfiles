@@ -102,7 +102,7 @@
   (leaf volatile-highlights
     :doc "特定操作の実行をハイライトする"
     :ensure t
-    :custom-face (vhl/default-face '((nil (:foreground "#81a1c1" :background "#5e81ac"))))
+    :custom-face (vhl/default-face '((t (:foreground "#81a1c1" :background "#5e81ac"))))
     :hook (after-init-hook . volatile-highlights-mode))
   (leaf highlight-indent-guides
     :doc "インデントを可視化する"
@@ -564,6 +564,10 @@
   (leaf orderless
     :doc "順不同の複数キーワードで補完候補を絞り込めるようにする"
     :ensure t
+    :custom-face ((orderless-match-face-0 . '((t (:foreground "#ebcb8b" :weight bold))))
+                  (orderless-match-face-1 . '((t (:foreground "#d08770" :weight bold))))
+                  (orderless-match-face-2 . '((t (:foreground "#a3be8c" :weight bold))))
+                  (orderless-match-face-3 . '((t (:foreground "#b48ead" :weight bold)))))
     :custom ((completion-styles . '(orderless))))
   (leaf marginalia
     :doc "補完候補の情報を表示する"
