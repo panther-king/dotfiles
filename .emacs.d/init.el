@@ -226,7 +226,9 @@
     :ensure t
     :require t
     :custom ((ripgrep-executable . "~/.cargo/bin/rg")  ;; cargo経由でインストールしたripgrepを利用する
-             (ripgrep-arguments . '("-S")))))          ;; case-sensitiveをよしなに判断させる
+             (ripgrep-arguments . '("-S"))))           ;; case-sensitiveをよしなに判断させる
+  (leaf savehist
+    :init (savehist-mode)))
 
 (leaf ide
   :doc "EmacsをIDEライクに利用する"
