@@ -458,6 +458,12 @@
           ("|" . ("|" "|> " "<| " " | "))
           ("`" . ("\``!!'\`" "\`\``!!'\`\`" "\`")))
   :hook (fsharp-mode-hook . eglot-ensure))
+(leaf eglot-fsharp
+  :doc "F#でeglotを利用する"
+  :tag "programming" "fsharp"
+  :after fsharp-mode
+  :ensure t
+  :require t)
 
 (leaf rust-mode
   :doc "EmacsでRustを編集する"
