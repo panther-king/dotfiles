@@ -35,7 +35,9 @@
   :doc "デフォルト挙動のカスタマイズ"
   :tag "settings"
   :config
-  (fset 'yes-or-no-p 'y-or-n-p)
+  (fset 'yes-or-no-p 'y-or-n-p)                             ;; プロンプトでyes/noを短縮する
+  (set-frame-parameter (selected-frame) 'alpha '(85 . 50))  ;; ウインドウを透過する
+  (add-to-list 'default-frame-alist '(alpha . (85 . 50)))
   (add-to-list 'default-frame-alist '(font . "HackGen 14"))
   :custom ((inhibit-startup-screen . t)    ;; 起動画面を表示しない
            (initial-scratch-message . "")  ;; scratchバッファのメッセージを表示しない
@@ -53,12 +55,14 @@
            (require-final-newline . t)     ;; ファイルの末尾は改行を必須にする
            (vc-follow-symlinks . t)))      ;; 常にシンボリックリンクをたどる
 
-(leaf nord-theme
-  :doc "UIテーマにNordを利用する"
-  :tag "theme"
-  :ensure t
-  :require t
-  :config (load-theme 'nord t))
+(leaf modus-theme
+  :config (load-theme 'modus-vivendi)
+  :custom ((modus-themes-italic-constructs . t)                      ;; 斜体を強調する
+           (modus-themes-bold-constructs . t)                        ;; 特定のキーワードを太字にする
+           (modus-themes-mode-line . '(moody borderless))            ;; モードラインをmoodyに合わせる
+           (modus-themes-syntax . '(yellow-comments green-strings))  ;; コメントと文字列リテラルをカラーリングする
+           (modus-themes-paren-match . '(bold intense))              ;; マッチするカッコを強調する
+           (modus-themes-region . '(bg-only no-extend))))            ;; regionを適度に強調する
 
 (leaf customize-mode-line
   :doc "モードライン設定"
@@ -76,8 +80,7 @@
     :require t
     :config
     (moody-replace-mode-line-buffer-identification)
-    (moody-replace-vc-mode)
-    :custom ((x-underline-at-descent-line . t)))  ;; フォントの描画が揃う位置にアンダーラインを引く
+    (moody-replace-vc-mode))
   (leaf minions
     :doc "モードラインのマイナーモード表示をシンプルにする"
     :tag "mode-line"
@@ -102,14 +105,13 @@
   (leaf volatile-highlights
     :doc "特定操作の実行をハイライトする"
     :ensure t
-    :custom-face (vhl/default-face '((t (:foreground "#81a1c1" :background "#5e81ac"))))
     :hook (after-init-hook . volatile-highlights-mode))
   (leaf highlight-indent-guides
     :doc "インデントを可視化する"
     :tag "buffer"
     :ensure t
-    :custom ((highlight-indent-guides-method . 'bitmap))  ;; インデントガイドをbitmapで表示する
-    :custom-face (hilight-indent-guides-character-face . '((t (:foreground "#3b4252"))))
+    :custom ((highlight-indent-guides-method . 'bitmap)  ;; インデントガイドをbitmapで表示する
+             (highlight-indent-guides-character-face . '((t (:background nil :foreground "")))))
     :hook prog-mode-hook)
   (leaf whitespace
     :doc "スペース・タブを可視化する"
@@ -131,8 +133,8 @@
                                               (tab-mark ?\u0009 [?\xBB ?\t])))  ;; タブはタブ記号で可視化する
              (whitespace-global-modes . '(not dired-mode))                      ;; 特定のモードでは可視化しない
              (whitespace-action . '(auto-cleanup)))                             ;; 保存時に余計な空白・タブを削除
-    :custom-face ((whitespace-space . '((t (:background nil :foreground "#3b4252"))))
-                  (whitespace-tab . '((t (:background nil :foreground "#d08770" :underline t)))))))
+    :custom-face ((whitespace-space . '((t (:background nil :foreground "#1e1e1e"))))
+                  (whitespace-tab . '((t (:background nil :foreground "#ff8059")))))))
 
 (leaf customize-paren
   :doc "カッコ関連の設定"
@@ -238,11 +240,8 @@
     :doc "フレームをタブで管理する"
     :tag "ide"
     :config (tab-bar-mode +1)
-    :custom ((tab-bar-new-button-show . nil)     ;; タブに追加ボタンを表示させない
-             (tab-bar-close-button-show . nil))  ;; タブに閉じるボタンを表示させない
-    :custom-face ((tab-bar . '((t (:background "#4c566a" :foreground "#5e81ac"))))
-                  (tab-bar-tab . '((t (:background "#81a1c1" :foreground "#d8dee9"))))
-                  (tab-bar-tab-inactive . '((t (:background "#5e81ac" :foreground "#88c0d0"))))))
+    :custom ((tab-bar-new-button-show . nil)      ;; タブに追加ボタンを表示させない
+             (tab-bar-close-button-show . nil)))  ;; タブに閉じるボタンを表示させない
   (leaf projectile
     :doc "Emacsでプロジェクト管理を行う"
     :ensure t
@@ -309,12 +308,11 @@
     :doc "日本語入力にDDSKKを利用する"
     :ensure t
     :bind (("C-SPC" . skk-mode))
-    :custom ((skk-egg-like-newline . t)                     ;; Enterキーでも入力を確定する
-             (skk-use-color-cursor . t)                     ;; カーソル色でモードを判断できるようにする
-             (skk-cursor-hiragana-color . "#a3be8c")        ;; ひらがなモード
-             (skk-cursor-katakana-color . "#d08770")        ;; カタカナモード
-             (skk-cursor-jisx0208-latin-color . "#b48ead")  ;; 全角英数モード
-             (skk-cursor-latin-color . "#d8dee9"))))        ;; ASCIIモード
+    :custom ((skk-egg-like-newline . t)     ;; Enterキーでも入力を確定する
+             (skk-use-color-cursor . t)
+             (skk-cursor-hiragana-color . "#70d73f")  ;; ひらがなモード
+             (skk-cursor-katakana-color . "#dbbe5f")  ;; カタカナモード
+             (skk-cursor-jisx0208-latin-color . "#d5b1ff"))))  ;; 全角英数モード
 
 (leaf vcs
   :doc "git"
@@ -349,9 +347,7 @@
     :ensure t
     :require t
     :config (global-git-gutter-mode t)
-    :custom ((git-gutter:modified-sign . "~")    ;; 変更あり
-             (git-gutter:added-sign . "+")       ;; 追加
-             (git-gutter:deleted-sign . "-"))))  ;; 削除
+    :custom ((git-gutter:modified-sign . "~"))))  ;; 変更行のマーカーを変更する
 
 (leaf syntax-check
   :doc "構文チェック"
@@ -572,10 +568,6 @@
   (leaf orderless
     :doc "順不同の複数キーワードで補完候補を絞り込めるようにする"
     :ensure t
-    :custom-face ((orderless-match-face-0 . '((t (:foreground "#ebcb8b" :weight bold))))
-                  (orderless-match-face-1 . '((t (:foreground "#d08770" :weight bold))))
-                  (orderless-match-face-2 . '((t (:foreground "#a3be8c" :weight bold))))
-                  (orderless-match-face-3 . '((t (:foreground "#b48ead" :weight bold)))))
     :custom ((completion-styles . '(orderless))))
   (leaf marginalia
     :doc "補完候補の情報を表示する"

@@ -70,7 +70,7 @@ window:
 
   dynamic_title: true
 
-  opacity: 1.0
+  opacity: 0.85
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -164,35 +164,64 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
+color_schemes:
+  modus-vivendi: &modus-vivendi
+    # Default colors
+    primary:
+      background: '0x000000'
+      foreground: '0xFFFFFF'
+
+    # Normal colors
+    normal:
+      black:   '0x3B4252'
+      red:     '0xFF8059'
+      green:   '0x44BC44'
+      yellow:  '0xD0BC00'
+      blue:    '0x2FAFFF'
+      magenta: '0xFEACD0'
+      cyan:    '0x00D3D0'
+      white:   '0xFFFFFF'
+
+    # Bright colors
+    bright:
+      black:   '0x3B4252'
+      red:     '0xFF8059'
+      green:   '0x44BC44'
+      yellow:  '0xD0BC00'
+      blue:    '0x2FAFFF'
+      magenta: '0xFEACD0'
+      cyan:    '0x00D3D0'
+      white:   '0xFFFFFF'
+  nord: &nord
+    # Default colors
+    primary:
+      background: '0x2E3440'
+      foreground: '0xD8DEE9'
+
+    # Normal colors
+    normal:
+      black:   '0x3B4252'
+      red:     '0xBF616A'
+      green:   '0xA3BE8C'
+      yellow:  '0xEBCB8B'
+      blue:    '0x81A1C1'
+      magenta: '0xB48EAD'
+      cyan:    '0x88C0D0'
+      white:   '0xE5E9F0'
+
+    # Bright colors
+    bright:
+      black:   '0x4C566A'
+      red:     '0xBF616A'
+      green:   '0xA3BE8C'
+      yellow:  '0xEBCB8B'
+      blue:    '0x81A1C1'
+      magenta: '0xB48EAD'
+      cyan:    '0x8FBCBB'
+      white:   '0xECEFF4'
 
 # Colors (Nord)
-colors:
-  # Default colors
-  primary:
-    background: '0x2E3440'
-    foreground: '0xD8DEE9'
-
-  # Normal colors
-  normal:
-    black:   '0x3B4252'
-    red:     '0xBF616A'
-    green:   '0xA3BE8C'
-    yellow:  '0xEBCB8B'
-    blue:    '0x81A1C1'
-    magenta: '0xB48EAD'
-    cyan:    '0x88C0D0'
-    white:   '0xE5E9F0'
-
-  # Bright colors
-  bright:
-    black:   '0x4C566A'
-    red:     '0xBF616A'
-    green:   '0xA3BE8C'
-    yellow:  '0xEBCB8B'
-    blue:    '0x81A1C1'
-    magenta: '0xB48EAD'
-    cyan:    '0x8FBCBB'
-    white:   '0xECEFF4'
+colors: *modus-vivendi
 
 # Visual Bell
 #

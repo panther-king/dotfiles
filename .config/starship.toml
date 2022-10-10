@@ -85,29 +85,29 @@ disabled = true
 disabled = true
 
 [character]
-success_symbol = "[❯](bold #a3be8c)"
-error_symbol = "[❯](bold #bf616a)"
+success_symbol = "[❯](bold #44bc44)"
+error_symbol = "[❯](bold #ff8059)"
 
 [cmd_duration]
 min_time = 2_000
 show_milliseconds = true
-style = "bold #ebcb8b"
+style = "#c0c530"
 
 [directory]
-read_only_style = "#bf616a"
-style = "bold #88c0d0"
+read_only_style = "#ff8059"
+style = "#2fafff"
 truncate_to_repo = false
 truncation_length = 8
 
 [dotnet]
 symbol = "🥅 "
-style = "dimmed #a3be8c"
+style = "#78BF78"
 
 [env_var]
 disabled = true
 
 [git_branch]
-style = "bold #b48ead"
+style = "#feacd0"
 symbol = "🌱 "
 
 [git_state]
@@ -119,23 +119,23 @@ diverged = "😵"
 modified = "📝"
 renamed = "👅"
 stashed = "📦"
-style = "bold #d08770"
+style = "#ff9077"
 untracked = "🤷"
 up_to_date = "✓"
 
 [hostname]
 ssh_only = false
-style = "bold dimmed #a3be8c"
+style = "#78bf78"
 trim_at = ""
 
 [rust]
-style = "bold #bf616a"
+style = "#ff8059"
 
 [shell]
 disabled = false
-style = "bold #eceff4"
+style = "#a8a8a8"
 
 [username]
 show_always = true
-style_root = "bold #bf616a"
-style_user = "bold #ebcb8b"
+style_root = "bold #ff8059"
+style_user = "bold #d2b580"

@@ -1,22 +1,18 @@
 [colors]
-; Nord
+; Modus
 ; https://www.nordtheme.com
-night-0 = #2e3440
-night-1 = #3b4252
-night-2 = #434c5e
-night-3 = #4c566a
-snow-0 = #d8dee9
-snow-1 = #e5e9f0
-snow-2 = #eceff4
-frost-0 = #8fbcbb
-frost-1 = #88c0d0
-frost-2 = #81a1c1
-frost-3 = #5e81ac
+black = #000000
+white = #ffffff
+bg-active = #323232
+bg-active-accent = #2a2a66
+bg-special-mild = #00322e
+fg-active = #f4f4f4
 red = #bf616a
-orange = #d08770
-yellow = #ebcb8b
-green = #a3be8c
-purple = #b48ead
+orange = #ef8b50
+yellow = #d0bc00
+green = #78bf78
+magenta = #feacd0
+cyan = #00d3d0
 
 [bar/barbase]
 width = ${env:width}
@@ -26,8 +22,8 @@ height = 32
 line-size = 4
 fixed-center = true
 
-background = ${colors.night-0}
-foreground = ${colors.snow-0}
+background = ${colors.black}
+foreground = ${colors.white}
 
 radius-top = 0.0
 radius-bottom = 0.0
@@ -45,7 +41,7 @@ modules-right = wireless-network wired-network cpu memory battery date
 tray-position = right
 tray-detached = false
 tray-maxsize = 16
-tray-background = ${colors.night-0}
+tray-background = ${colors.black}
 tray-offset-x = 0
 tray-offset-y = 0
 tray-padding = 2
@@ -88,13 +84,13 @@ format-charging-underline = ${colors.green}
 
 format-discharging = BAT: <label-discharging> <ramp-capacity>
 format-discharging-padding = 2
-format-discharging-underline = ${colors.frost-1}
+format-discharging-underline = ${colors.cyan}
 
 label-charging = %percentage%%
 label-discharging = %percentage%% (%time%)
 label-full = Fully Charged
 label-full-foreground = ${color.green}
-label-full-background = ${color.night-0}
+label-full-background = ${color.black}
 label-full-padding = 2
 
 ramp-capacity-0 = 
@@ -104,9 +100,9 @@ ramp-capacity-1-foreground = ${colors.orange}
 ramp-capacity-2 = 
 ramp-capacity-2-foreground = ${colors.yellow}
 ramp-capacity-3 = 
-ramp-capacity-3-foreground = ${colors.night-3}
+ramp-capacity-3-foreground = ${colors.bg-special-mild}
 ramp-capacity-4 = 
-ramp-capacity-4-foreground = ${colors.night-3}
+ramp-capacity-4-foreground = ${colors.bg-special-mild}
 ramp-capacity-padding-left = 2
 
 animation-charging-0 = 
@@ -114,7 +110,7 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-foreground = ${colors.frost-1}
+animation-charging-foreground = ${colors.fg-acitve}
 animation-charging-framerate = 750
 
 [module/cpu]
@@ -122,16 +118,16 @@ type = internal/cpu
 
 format = <label> <ramp-load>
 format-padding = 2
-format-underline = ${colors.frost-0}
+format-underline = ${colors.cyan}
 interval = 1
 label = CPU: %percentage%%
 
 ramp-load-0 = ▁
-ramp-load-0-foreground = ${colors.night-3}
+ramp-load-0-foreground = ${colors.bg-special-mild}
 ramp-load-1 = ▂
-ramp-load-1-foreground = ${colors.night-3}
+ramp-load-1-foreground = ${colors.bg-special-mild}
 ramp-load-2 = ▃
-ramp-load-2-foreground = ${colors.night-3}
+ramp-load-2-foreground = ${colors.bg-special-mild}
 ramp-load-3 = ▄
 ramp-load-3-foreground = ${colors.yellow}
 ramp-load-4 = ▅
@@ -155,7 +151,7 @@ time = %H:%M:%S
 
 format = <label>
 format-padding = 2
-format-underline = ${colors.frost-1}
+format-underline = ${colors.magenta}
 
 [module/i3]
 type = internal/i3
@@ -173,14 +169,14 @@ format = <label-state> <label-mode>
 label-mode = %mode%
 label-mode-padding = 1
 label-focused = %index%
-label-focused-background = ${colors.night-1}
-label-focused-foreground = ${colors.frost-0}
+label-focused-background = ${colors.bg-active-accent}
+label-focused-foreground = ${colors.fg-active}
 label-focused-padding = 1
-label-focused-underline = ${colors.frost-0}
+label-focused-underline = ${colors.fg-active}
 label-separator-padding = 1
 label-unfocused = %index%
-label-unfocused-foreground = ${colors.night-3}
-label-unfocused-underline = ${colors.night-3}
+label-unfocused-foreground = ${colors.bg-special-mild}
+label-unfocused-underline = ${colors.bg-special-mild}
 label-unfocused-padding = 1
 label-urgent = %index%
 label-urgent-padding = 1
@@ -192,16 +188,16 @@ type = internal/memory
 
 format = <label> <ramp-used>
 format-padding = 2
-format-underline = ${colors.frost-0}
+format-underline = ${colors.cyan}
 interval = 5
 label = RAM: %gb_used%
 
 ramp-used-0 = ▁
-ramp-used-0-foreground = ${colors.night-3}
+ramp-used-0-foreground = ${colors.bg-special-mild}
 ramp-used-1 = ▂
-ramp-used-1-foreground = ${colors.night-3}
+ramp-used-1-foreground = ${colors.bg-special-mild}
 ramp-used-2 = ▃
-ramp-used-2-foreground = ${colors.night-3}
+ramp-used-2-foreground = ${colors.bg-special-mild}
 ramp-used-3 = ▄
 ramp-used-3-foreground = ${colors.yellow}
 ramp-used-4 = ▅
@@ -218,15 +214,15 @@ ramp-used-padding-left = 2
 type = internal/xwindow
 
 format = <label>
-format-background = ${colors.night-0}
-format-foreground = ${colors.night-3}
+format-background = ${colors.black}
+format-foreground = ${colors.bg-special-mild}
 format-padding = 0
 
 label = %title%
 label-maxlen = 40
 
 label-empty = stfuawsc
-label-empty-foreground = ${colors.night-3}
+label-empty-foreground = ${colors.bg-special-mild}
 
 [module/wired-network]
 type = internal/network
@@ -240,11 +236,11 @@ format-connected-underline = ${colors.green}
 format-disconnected = <label-disconnected>
 format-disconnected-foreground = ${colors.green}
 format-disconnected-padding = 2
-format-disconnected-underline = ${colors.night-3}
+format-disconnected-underline = ${colors.bg-special-mild}
 label-connected = %local_ip%
-label-connected-foreground = ${colors.night-3}
+label-connected-foreground = ${colors.bg-special-mild}
 label-disconnected = %ifname%
-label-disconnected-foreground = ${colors.night-3}
+label-disconnected-foreground = ${colors.bg-special-mild}
 
 [module/wireless-network]
 type = internal/network
@@ -256,9 +252,9 @@ format-connected-padding = 2
 format-connected-foreground = ${colors.green}
 format-connected-underline = ${colors.green}
 format-disconnected = <label-disconnected>
-format-disconnected-foreground = ${colors.night-3}
+format-disconnected-foreground = ${colors.bg-special-mild}
 format-disconnected-padding = 2
-format-disconnected-underline = ${colors.night-3}
+format-disconnected-underline = ${colors.bg-special-mild}
 label-connected = %essid%
 label-disconnected = %ifname%
 
@@ -273,9 +269,9 @@ ramp-signal-3-foreground = ${colors.orange}
 ramp-signal-4 = ▅
 ramp-signal-4-foreground = ${colors.orange}
 ramp-signal-5 = ▆
-ramp-signal-5-foreground = ${colors.night-3}
+ramp-signal-5-foreground = ${colors.bg-special-mild}
 ramp-signal-6 = ▇
-ramp-signal-6-foreground = ${colors.night-3}
+ramp-signal-6-foreground = ${colors.bg-special-mild}
 ramp-signal-7 = █
-ramp-signal-7-foreground = ${colors.night-3}
+ramp-signal-7-foreground = ${colors.bg-special-mild}
 ramp-signal-padding-left = 2
