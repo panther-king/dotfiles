@@ -388,6 +388,18 @@
     :custom ((flymake-diagnostic-at-point-error-prefix . "❯ "))
     :hook (flymake-mode-hook . flymake-diagnostic-at-point-mode)))
 
+(leaf syntax-highlight
+  :doc "シンタックスハイライト"
+  :tag "syntax-highlight"
+  :config
+  (leaf tree-sitter
+    :doc "tree-sitetrでハイライトをより正確にする"
+    :tag "syntax-highlight"
+    :ensure (t tree-sitter-langs)
+    :require tree-sitter-langs
+    :config (global-tree-sitter-mode)
+    :hook (tree-sitter-after-on-hook . tree-sitter-hl-mode)))
+
 (leaf lsp
   :doc "LSP設定"
   :tag "lsp"
