@@ -229,6 +229,28 @@
     :require t
     :custom ((ripgrep-executable . "~/.cargo/bin/rg")  ;; cargo経由でインストールしたripgrepを利用する
              (ripgrep-arguments . '("-S"))))           ;; case-sensitiveをよしなに判断させる
+  (leaf recentf
+    :doc "最近開いたファイルを保存する"
+    :tag "built-in"
+    :config (recentf-mode 1)
+    :custom ((recentf-save-file . "~/.emacs.d/.recentf")  ;; 保存先を変更する
+             (recentf-max-saved-items . 2000)             ;; 保存アイテム数
+             (recentf-exclude . '(".recentf"))))          ;; .recentfファイルは対象としない
+  (leaf dashboard
+    :doc "カスタマイズした起動画面を表示する"
+    :ensure t
+    :config (dashboard-setup-startup-hook)
+    :custom ((dashboard-items . '((recents . 10)
+                                  (projects . 5)
+                                  (bookmarks . 5)))
+             (dashboard-item-names . '(("Recent Files:" . "Recently opened files:")
+                                       ("Projects:" . "Git repositories:")
+                                       ("Bookmarks:" . "Bookmark files:")))
+             (dashboard-startup-banner . 'logo)
+             (dashboard-banner-logo-title . "Shut the fxxk up and write some code!!")
+             (dashboard-set-navigator . t)
+             (dashboard-set-heading-icons . t)
+             (dashboard-set-file-icons . t)))
   (leaf savehist
     :init (savehist-mode)))
 
