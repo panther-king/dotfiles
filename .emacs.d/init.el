@@ -414,61 +414,62 @@
   :doc "Elm"
   :tag "programming" "elm"
   :ensure t
-  :defvar elm-mode-map
-  :combo (elm-mode-map
-          ("=" . (" = " " == " "="))
-          ("+" . (" ++ " " + " "+"))
-          ("-" . (" - " "-"))
-          (">" . (" > " " -> " " >> " ">"))
-          ("<" . (" < " " <- " " << " "<"))
-          (":" . (" : " " :: " ":"))
-          ("|" . (" | " "|> " " <|" "|")))
   :hook ((elm-mode-hook . elm-format-on-save-mode)
-         (elm-mode-hook . eglot-ensure)))
+         (elm-mode-hook . eglot-ensure))
+  :defvar elm-mode-map
+  :config
+  (key-combo-define elm-mode-map "=" '(" = " " == " "="))
+  (key-combo-define elm-mode-map "+" '(" ++ " " + " "+"))
+  (key-combo-define elm-mode-map "-" '(" - " "-"))
+  (key-combo-define elm-mode-map ">" '(" > " " -> " " >> " ">"))
+  (key-combo-define elm-mode-map "<" '(" < " " <- " " << " "<"))
+  (key-combo-define elm-mode-map ":" '(" : " " :: " ":"))
+  (key-combo-define elm-mode-map "|" '(" | " "|> " " <|" "|")))
 
 (leaf js2-mode
   :doc "EmacsでJavaScriptを編集する"
   :tag "programming" "javascript"
   :ensure t
   :mode "\\.js$"
+  :custom ((js-indent-level . 2))
   :defvar js2-mode-map
-  :combo (js2-mode-map
-          ("=" . (" = " " === " " == " "="))
-          ("+" . (" + " " += " "++" "+"))
-          ("-" . (" - " " -= " "--" "-"))
-          ("<" . (" < " " <= " "<"))
-          (">" . (" > " " => " " >= " ">"))
-          ("!" . (" !== " " != " "!")))
-  :custom ((js-indent-level . 2)))
+  :config
+  (key-combo-define js2-mode-map "=" '(" = " " === " " == " "="))
+  (key-combo-define js2-mode-map "+" '(" + " " += " "++" "+"))
+  (key-combo-define js2-mode-map "-" '(" - " " -= " "--" "-"))
+  (key-combo-define js2-mode-map ">" '(" > " " => " " >= " ">"))
+  (key-combo-define js2-mode-map "<" '(" < " " <= " "<"))
+  (key-combo-define js2-mode-map "!" '(" !== " " != " "!")))
 
 (leaf php-mode
   :doc "EmacsでPHPを編集する"
   :tag "programming" "php"
   :ensure t
   :mode "\\.php$"
+  :hook (php-mode-hook . php-enable-psr2-coding-style)
   :defvar php-mode-map
-  :combo (php-mode-map
-          ("=" . (" = " " === " " == " "="))
-          ("+" . (" + " " += " "++" "+"))
-          ("-" . (" - " " -= " "--" "-"))
-          ("<" . (" < " " <= " " <<< " "<"))
-          (">" . ("->" " => " " > " " >= " ">"))
-          ("!" . (" !== " " != " "!")))
-  :hook (php-mode-hook . php-enable-psr2-coding-style))
+  :config
+  (key-combo-define php-mode-map "=" '(" = " " === " " == " "="))
+  (key-combo-define php-mode-map "+" '(" + " " += " "++" "+"))
+  (key-combo-define php-mode-map "-" '(" - " " -= " "--" "-"))
+  (key-combo-define php-mode-map ">" '("->" " => " " > " " >= " ">"))
+  (key-combo-define php-mode-map "<" '(" < " " <= " " <<< " "<"))
+  (key-combo-define php-mode-map "!" '(" !== " " != " "!")))
 
 (leaf python-mode
   :doc "EmacsでPythonを編集する"
   :tag "programming" "python"
   :ensure t
   :mode "\\.py$"
+  :hook (python-mode-hook . eglot-ensure)
   :defvar python-mode-map
-  :combo (python-mode-map
-          ("=" . (" = " " == " "="))
-          ("+" . (" + " " += " "+"))
-          ("-" . (" - " " -= " "-"))
-          ("<" . (" < " " <= " "<"))
-          (">" . (" -> " " > " " >= " ">")))
-  :hook (python-mode-hook . eglot-ensure))
+  :config
+  (key-combo-define python-mode-map "=" '(" = " " == " "="))
+  (key-combo-define python-mode-map "+" '(" + " " += " "+"))
+  (key-combo-define python-mode-map "-" '(" - " " -= " "-"))
+  (key-combo-define python-mode-map "<" '(" < " " <= " "<"))
+  (key-combo-define python-mode-map ">" '(" -> " " > " " >= " ">"))
+  (key-combo-define python-mode-map "!" '(" != " "!")))
 
 (leaf sh-mode
   :doc "EmacsからShellファイルを編集する"
@@ -479,15 +480,14 @@
   :doc "EmacsからF#を編集する"
   :tag "programming" "fsharp"
   :ensure t
+  :hook (fsharp-mode-hook . eglot-ensure)
   :defvar fsharp-mode-map
-  :combo (fsharp-mode-map
-          ("=" . (" = " "="))
-          (">" . (" > " " -> " " >> " " >=> " " >= " ">"))
-          ("<" . ("<`!!'>" " < " " <- " " << " " <= " "<"))
-          (":" . (": " " :: " ":"))
-          ("|" . ("|" "|> " "<| " " | "))
-          ("`" . ("\``!!'\`" "\`\``!!'\`\`" "\`")))
-  :hook (fsharp-mode-hook . eglot-ensure))
+  :config
+  (key-combo-define fsharp-mode-map "=" '(" = " "="))
+  (key-combo-define fsharp-mode-map ">" '(" > " " -> " " >> " " >=> " " >= " ">"))
+  (key-combo-define fsharp-mode-map "<" '("<`!!'>" " < " " <- " " << " " <= " "<"))
+  (key-combo-define fsharp-mode-map ":" '(": " " :: " ":"))
+  (key-combo-define fsharp-mode-map "|" '("|" "|> " "<| " " | ")))
 (leaf eglot-fsharp
   :doc "F#でeglotを利用する"
   :tag "programming" "fsharp"
@@ -499,22 +499,21 @@
   :doc "EmacsでRustを編集する"
   :tag "programming" "rust"
   :ensure t
-  :defvar rust-mode-map
-  :combo (rust-mode-map
-          ("=" . (" = " " == " "="))
-          ("+" . (" + " " += " "+"))
-          ("-" . (" - " " -= " "-"))
-          (">" . (" > " " -> " " => " " >= " ">"))
-          ("<" . ("<`!!'>" " < " " <- " " <= " "<"))
-          ("!" . (" != " "!"))
-          ("|" . ("|`!!'|" "||" " | " "|")))
-  :custom ((rust-format-on-save . t))  ;; 保存時にコーディングスタイルを整形する
   :hook (rust-mode-hook . eglot-ensure)
+  :custom ((rust-format-on-save . t))  ;; 保存時にコーディングスタイルを整形する
+  :defvar rust-mode-map
   :config
   (leaf cargo
     :doc "EmacsからCargoを操作する"
     :ensure t
-    :hook (rust-mode-hook . cargo-minor-mode)))
+    :hook (rust-mode-hook . cargo-minor-mode))
+  (key-combo-define rust-mode-map "=" '(" = " " == " "="))
+  (key-combo-define rust-mode-map "+" '(" + " " += " "+"))
+  (key-combo-define rust-mode-map "-" '(" - " " -= "" -"))
+  (key-combo-define rust-mode-map ">" '(" > " " -> " " => " " >= " ">"))
+  (key-combo-define rust-mode-map "<" '("<`!!'>" " < " " <- " " <= " "<"))
+  (key-combo-define rust-mode-map "!" '(" != " "!"))
+  (key-combo-define rust-mode-map "|" '("|`!!'|" "||" " | " "|")))
 
 (leaf slime
   :doc "EmacsでLISPのREPLを利用する"
