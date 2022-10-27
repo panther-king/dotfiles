@@ -580,7 +580,11 @@
   (leaf yaml-mode
     :doc "EmacsからYAMLを編集する"
     :ensure t
-    :mode "\\.ya?ml$"))
+    :mode "\\.ya?ml$")
+  (leaf terraform-mode
+    :doc "EmacsからTerraformを編集する"
+    :ensure t
+    :hook (terraform-mode-hook . terraform-format-on-save-mode)))
 
 (leaf completion
   :doc "補完系設定"
