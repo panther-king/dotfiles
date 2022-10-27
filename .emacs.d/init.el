@@ -330,10 +330,16 @@
     :doc "日本語入力にDDSKKを利用する"
     :ensure t
     :bind (("C-SPC" . skk-mode))
-    :custom ((skk-egg-like-newline . t)     ;; Enterキーでも入力を確定する
-             (skk-use-color-cursor . t)
-             (skk-cursor-hiragana-color . "#70d73f")  ;; ひらがなモード
-             (skk-cursor-katakana-color . "#dbbe5f")  ;; カタカナモード
+    :custom ((skk-egg-like-newline . t)                        ;; Enterキーでも入力を確定する
+             (skk-show-annotation . t)                         ;; 変換候補に注釈を表示する
+             (skk-auto-insert-paren . t)                       ;; 全角のカッコを自動補完する
+             (skk-latin-mode-string . "[_A]")                  ;; ASCIIモードのモードライン表示
+             (skk-hiragana-mode-string . "[あ]")               ;; ひらがなモードのモードライン表示
+             (skk-katakana-mode-string . "[ア]")               ;; カタカナモードのモードライン表示
+             (skk-jisx0208-latin-mode-string . "[Ａ]")         ;; 全角英数モードのモードライン表示
+             (skk-use-color-cursor . t)                        ;; カーソルカラーでモードが判別できるようにする
+             (skk-cursor-hiragana-color . "#70d73f")           ;; ひらがなモード
+             (skk-cursor-katakana-color . "#dbbe5f")           ;; カタカナモード
              (skk-cursor-jisx0208-latin-color . "#d5b1ff"))))  ;; 全角英数モード
 
 (leaf vcs
