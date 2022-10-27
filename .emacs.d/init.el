@@ -599,8 +599,9 @@
       :require t
       :bind (:vertico-map
              ("C-l" . vertico-directory-up)))
-    :custom ((vertico-cycle . t)     ;; 候補の先頭と末尾を移動できるようにする
-             (vertico-count . 20)))  ;; 候補表示は20個まで
+    :custom ((vertico-cycle . t)                            ;; 候補の先頭と末尾を移動できるようにする
+             (vertico-sort-function . 'vertico-sort-alpha)  ;; 候補はアルファベット順で表示する
+             (vertico-count . 20)))                         ;; 候補表示は20個まで
   (leaf consult
     :doc "補完コマンドを利用する"
     :ensure t
