@@ -1,12 +1,13 @@
 [colors]
 ; Modus
-; https://www.nordtheme.com
+; https://protesilaos.com/emacs/modus-themes
 black = #000000
 white = #ffffff
 bg-active = #323232
 bg-active-accent = #2a2a66
 bg-special-mild = #00322e
 fg-active = #f4f4f4
+fg-inactive = #404148
 red = #bf616a
 orange = #ef8b50
 yellow = #d0bc00
@@ -175,7 +176,7 @@ label-focused-padding = 1
 label-focused-underline = ${colors.fg-active}
 label-separator-padding = 1
 label-unfocused = %index%
-label-unfocused-foreground = ${colors.bg-special-mild}
+label-unfocused-foreground = ${colors.fg-inactive}
 label-unfocused-underline = ${colors.bg-special-mild}
 label-unfocused-padding = 1
 label-urgent = %index%
