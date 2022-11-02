@@ -158,9 +158,9 @@
     :tag "paren"
     :ensure t
     :require smartparens-config
-    :commands turn-on-smartparens-strict-mode
+    :commands turn-on-smartparens-mode
     :custom ((show-smartparens-global-mode . t))
-    :hook ((prog-mode-hook . turn-on-smartparens-strict-mode))))
+    :hook ((prog-mode-hook . turn-on-smartparens-mode))))
 
 (leaf icon
   :doc "アイコン設定"
