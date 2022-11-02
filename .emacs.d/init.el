@@ -101,7 +101,8 @@
   (leaf display-line-numbers-mode
     :doc "行番号を表示させる"
     :tag "buffer" "built-in"
-    :custom ((global-display-line-numbers-mode . t)))  ;; 常に表示させる
+    :custom ((global-display-line-numbers-mode . t)    ;; 常に表示させる
+             (display-line-numbers-width-start . t)))  ;; 行番号の幅を最大行に合わせる
   (leaf volatile-highlights
     :doc "特定操作の実行をハイライトする"
     :ensure t
