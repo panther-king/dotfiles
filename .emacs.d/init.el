@@ -355,7 +355,7 @@
   (leaf magit-delta
     :doc "magitのdiff表示にdeltaを利用する"
     :ensure t
-    :custom ((magit-delta-default-dark-theme . "Nord")     ;; Nordベースのダークテーマを利用する
+    :custom ((magit-delta-default-dark-theme . "TwoDark")  ;; Nordベースのダークテーマを利用する
              (magit-delta-hide-plus-minus-markers . nil))  ;; diffの行頭に+/-を表示する
     :hook (magit-mode-hook . magit-delta-mode))
   (leaf git-gutter
