@@ -349,21 +349,8 @@
   (leaf magit
     :doc "gitをEmacsから操作する"
     :ensure t
-    :init
-    (defun my/magit-quit-session ()
-      (interactive)
-      (kill-buffer)
-      (jump-to-register :magit-fullscreen))
-    :advice ((:after git-commit-commit move-to-magit-buffer)
-             (:around magit-status (lambda (f &rest args)
-                                     (prog2
-                                         (window-configuration-to-register :magit-fullscreen)
-                                         (apply f args)
-                                       (delete-other-windows)))))
     :bind (("C-c m s" . magit-status)
-           ("C-c m b" . magit-blame-addition)
-           (:magit-status-mode-map
-            ("q" . my/magit-quit-session))))
+           ("C-c m b" . magit-blame-addition)))
   (leaf magit-delta
     :doc "magitのdiff表示にdeltaを利用する"
     :ensure t
