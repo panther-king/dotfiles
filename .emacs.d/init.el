@@ -120,22 +120,12 @@
     :ensure t
     :require t
     :config (global-whitespace-mode t)
-    :custom ((whitespace-style . '(face                                         ;; 可視化の有効化
-                                   empty                                        ;; バッファ前後の空行を可視化
-                                   spaces                                       ;; 空白を可視化
-                                   space-mark                                   ;; 空白文字は別の文字に置き換える
-                                   tabs                                         ;; タブ文字を可視化
-                                   tab-mark                                     ;; タブ文字は別の文字に置き換える
-                                   trailing))                                   ;; 行末の空白を可視化
-             (whitespace-space-regexp . "\\(\u0020+\\|\u3000+\\)")              ;; no-break spaceと全角スペースも対象にする
-             (whitespace-tab-regexp . "\\(\u0009+\\)")                          ;; タブも対象にする
-             (whitespace-display-mappings . '((space-mark ?\u0020 [?.])  ;;     ;; 半角スペースは.で可視化する
-                                              (space-mark ?\u3000 [?\u25a1])    ;; 全角スペースは□で可視化する
-                                              (tab-mark ?\u0009 [?\xBB ?\t])))  ;; タブはタブ記号で可視化する
-             (whitespace-global-modes . '(not dired-mode))                      ;; 特定のモードでは可視化しない
-             (whitespace-action . '(auto-cleanup)))                             ;; 保存時に余計な空白・タブを削除
-    :custom-face ((whitespace-space . '((t (:background nil :foreground "#1e1e1e"))))
-                  (whitespace-tab . '((t (:background nil :foreground "#ff8059")))))))
+    :custom ((whitespace-style . '(face                ;; 可視化の有効化
+                                   empty               ;; バッファ前後の空行を可視化
+                                   tab-mark            ;; タブを専用マークで表示
+                                   tabs                ;; タブを可視化
+                                   trailing))          ;; 行末の空白を可視化
+             (whitespace-action . '(auto-cleanup)))))  ;; 保存時に余計な空白・タブを削除
 
 (leaf customize-paren
   :doc "カッコ関連の設定"
@@ -363,7 +353,9 @@
     :ensure t
     :require t
     :config (global-git-gutter-mode t)
-    :custom ((git-gutter:modified-sign . "~"))))  ;; 変更行のマーカーを変更する
+    :custom ((git-gutter:modified-sign . " ")
+             (git-gutter:added-sign . " ")
+             (git-gutter:deleted-sign . " "))))
 
 (leaf syntax-check
   :doc "構文チェック"
