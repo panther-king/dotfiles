@@ -111,8 +111,8 @@
     :doc "インデントを可視化する"
     :tag "buffer"
     :ensure t
-    :custom ((highlight-indent-guides-method . 'bitmap)  ;; インデントガイドをbitmapで表示する
-             (highlight-indent-guides-character-face . '((t (:background nil :foreground "")))))
+    :custom ((highlight-indent-guides-responsive . 'top)  ;; 現在のインデントガイドを強調する
+             (highlight-indent-guides-method . 'bitmap))  ;; インデントガイドをbitmapで表示する
     :hook prog-mode-hook)
   (leaf whitespace
     :doc "スペース・タブを可視化する"
