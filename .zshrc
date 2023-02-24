@@ -25,9 +25,6 @@ export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
 # pip install --user 用のPATH追加
 [ -d ~/.local/bin ] && export PATH=$PATH:$HOME/.local/bin
 
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
-
 # direnv
 eval "$(direnv hook zsh)"
 
