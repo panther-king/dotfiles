@@ -63,16 +63,14 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=1000000
 
-setopt inc_append_history  # 履歴を追加
-setopt share_history  # 履歴をリアルタイム共有
-setopt hist_ignore_all_dups  # historyで重複は非表示
-setopt hist_save_no_dups     # 同じコマンドの保存は古い方を削除
-setopt extended_history      # 実行時のタイムスタンプを記録
+setopt inc_append_history       # 履歴を追加
+setopt share_history            # 履歴をリアルタイム共有
+setopt hist_ignore_all_dups     # historyで重複は非表示
+setopt hist_save_no_dups        # 同じコマンドの保存は古い方を削除
+setopt extended_history         # 実行時のタイムスタンプを記録
 setopt hist_expire_dups_first   # HISTFILEのサイズがHISTSIZEを超えたら、まず重複を除去
 
-# zinitプラグイン
-
-## 補完
+# 補完
 zinit ice wait'!0'; zinit light zsh-users/zsh-completions
 autoload -Uz compinit && compinit
 
@@ -85,11 +83,54 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}  # ファイル補完候�
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"  # 補完色
 
-setopt auto_param_slash   # ディレクトリ名補完で末尾のスラッシュも付与
-setopt auto_param_keys    # カッコを自動補完
-setopt mark_dirs          # ファイル名展開でディレクトリマッチ時は末尾スラッシュを補完
-setopt auto_menu          # 補完キーで自動補完
-setopt magic_equal_subst  # ロングオプションの引数も補完可能に
-setopt auto_cd            # ディレクトリ名のみでcd
+# cdr
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+
+zstyle ':chpwd:*' recent-dirs-default true
+zstyle ':chpwd:*' recent-dirs-max 1000
+zstyle ':chpwd:*' recent-dirs-file $HOME/.cache/chpwd-recent-dirs
+zstyle ':chpwd:*' recent-dirs-prune 'parent'
+zstyle ':completion:*' recent-dirs-insert always
+
+setopt auto_param_slash      # ディレクトリ名補完で末尾のスラッシュも付与
+setopt auto_param_keys       # カッコを自動補完
+setopt mark_dirs             # ファイル名展開でディレクトリマッチ時は末尾スラッシュを補完
+setopt auto_menu             # 補完キーで自動補完
+setopt magic_equal_subst     # ロングオプションの引数も補完可能に
+setopt auto_cd               # ディレクトリ名のみでcd
 setopt correct               # スペルミス補正
 setopt interactive_comments  # CLIでも'#'以降をコメントとみなす
+
+# pecoでコマンド履歴を検索
+function peco-history () {
+    BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N peco-history
+bindkey '^R' peco-history
+
+# ghq + peco でリポジトリ移動
+function peco-ghq () {
+    local selected_dir=$(ghq list -p | peco --prompt="ghq >" --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-ghq
+bindkey '^]' peco-ghq
+
+# cdr + peco でディレクトリ移動
+function peco-cdr () {
+    local selected_dir=$(cdr -l | sed 's/^[0-9]\+ \+//' | peco --prompt="cdr >" --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N peco-cdr
+bindkey '^[' peco-cdr
