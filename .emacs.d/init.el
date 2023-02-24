@@ -500,7 +500,7 @@
   (key-combo-define rust-mode-map "-" '(" - " " -= "" -"))
   (key-combo-define rust-mode-map ">" '(" > " " -> " " => " " >= " ">"))
   (key-combo-define rust-mode-map "<" '("<`!!'>" " < " " <- " " <= " "<"))
-  (key-combo-define rust-mode-map "!" '(" != " "!"))
+  (key-combo-define rust-mode-map "!" '("!" " != "))
   (key-combo-define rust-mode-map "|" '("|`!!'|" "||" " | " "|")))
 
 (leaf slime
