@@ -231,8 +231,8 @@
     :doc "カスタマイズした起動画面を表示する"
     :ensure t
     :config (dashboard-setup-startup-hook)
-    :custom ((dashboard-items . '((recents . 10)
-                                  (projects . 5)
+    :custom ((dashboard-items . '((projects . 10)
+                                  (recents . 5)
                                   (bookmarks . 5)))
              (dashboard-item-names . '(("Recent Files:" . "Recently opened files:")
                                        ("Projects:" . "Git repositories:")
@@ -258,7 +258,9 @@
   (leaf projectile
     :doc "Emacsでプロジェクト管理を行う"
     :ensure t
-    :require t)
+    :require t
+    :bind ("C-c p" . projectile-command-map)
+    :custom (projectile-mode . +1))
   (leaf treemacs
     :doc "ディレクトリ・ファイルツリーを表示する"
     :tag "ide"
