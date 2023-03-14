@@ -1,162 +1,235 @@
+include-file = ~/src/github.com/bacara/powerline-for-polybar/powerline-for-polybar.config
+
 [colors]
 ; Modus
 ; https://protesilaos.com/emacs/modus-themes
-black = #000000
-white = #ffffff
-bg-active = #323232
-bg-active-accent = #2a2a66
-bg-special-mild = #00322e
-fg-active = #f4f4f4
-fg-inactive = #404148
-red = #bf616a
-orange = #ef8b50
+; https://protesilaos.com/emacs/modus-themes-colors
+bg-main = #000000
+bg-dim  = #1e1e1e
+fg-main = #ffffff
+fg-dim = #989898
+fg-alt = #c6daff
+bg-active = #535353
+bg-inactive = #303030
+border = #646464
+red = #ff5f59
+red-warmer = #ff6b55
+red-cooler = #ff7f9f
+red-faint = #ff9580
+red-intense = #ff5f5f
+green = #44bc44
+green-warmer = #70b900
+green-cooler = #00c06f
+green-faint = #88ca9f
+green-intense = #44df44
 yellow = #d0bc00
-green = #78bf78
+yellow-warmer = #fec43f
+yellow-cooler = #dfaf7a
+yellow-faint = #d2b580
+yellow-intense = #efef00
+blue = #2fafff
+blue-warmer = #79a8ff
+blue-cooler = #00bcff
+blue-faint = #82b0ec
+blue-intense = #338fff
 magenta = #feacd0
+magenta-warmer = #f78fe7
+magenta-cooler = #b6a0ff
+magenta-faint = #caa6df
+magenta-intense = #ff66ff
 cyan = #00d3d0
-
-[bar/barbase]
-width = ${env:width}
-offset-x = ${env:offsetx}
-monitor = ${env:monitor}
-height = 32
-line-size = 4
-fixed-center = true
-
-background = ${colors.black}
-foreground = ${colors.white}
-
-radius-top = 0.0
-radius-bottom = 0.0
-
-;font-0 = "Fantasque Sans Mono:pixelsize=12;3"
-;font-1 = "Iosevka Nerd Font:pixelsize=12;3"
-;font-2 = "Migu 2M:pixelsize=12;3"
-font-2 = "HackGen:pixelsize=12;3"
-
-locale = ja_JP.UTF-8
-
-module-margin = 2
-modules-right = wireless-network wired-network cpu memory battery date
-
-tray-position = right
-tray-detached = false
-tray-maxsize = 16
-tray-background = ${colors.black}
-tray-offset-x = 0
-tray-offset-y = 0
-tray-padding = 2
-tray-scale = 1.0
-
-enable-ipc = true
+cyan-warmer = #4ae2f0
+cyan-cooler = #6ae4b9
+cyan-faint = #9ac8e0
+cyan-intense = #00eff0
+rust = #db7b5f
+gold = #c0965b
+olive = #9cbd6f
+slate = #76afbf
+indigo = #9099d9
+maroon = #cf7fa7
+pink = #d09dc0
+bg-red-intense = #9d1f1f
+bg-green-intense = #2f822f
+bg-yellow-intense = #7a6100
+bg-blue-intense = #1640b0
+bg-magenta-intense = #7030af
+bg-cyan-intense = #2266ae
+bg-red-subtle = #620f2a
+bg-green-subtle = #00422a
+bg-yellow-subtle = #4a4000
+bg-blue-subtle = #242679
+bg-magenta-subtle = #552f5f
+bg-cyan-subtle = #004065
+bg-red-nuanced = #2c0614
+bg-green-nuanced = #001904
+bg-yellow-nuanced = #221000
+bg-blue-nuanced = #0f0e39
+bg-magenta-nuanced = #230631
+bg-cyan-nuanced = #041529
+bg-graph-red-0 = #b52c2c
+bg-graph-red-1 = #702020
+bg-graph-green-0 = #4fd100
+bg-graph-green-1 = #007800
+bg-graph-yellow-0 = #f1e00a
+bg-graph-yellow-1 = #b08600
+bg-graph-blue-0 = #2fafef
+bg-graph-blue-1 = #1f2f8f
+bg-graph-magenta-0 = #bf94fe
+bg-graph-magenta-1 = #5f509f
+bg-graph-cyan-0 = #47dfea
+bg-graph-cyan-1 = #00808f
+bg-completion = #2f447f
+bg-hover = #004f70
+bg-hover-secondary = #654a39
+bg-hl-line = #2f3849
+bg-paren-match = #2f7f9f
+bg-paren-expression = #453040
+bg-region = #5c5c5c
+bg-region-subtle = #4f1c2f
+bg-char-0 = #0050af
+bg-char-1 = #7f1f7f
+bg-char-2 = #625a00
+bg-mode-line-active = #505050
+fg-mode-line-active = #ffffff
+border-mode-line-active = #959595
+bg-mode-line-inactive = #2d2d2d
+fg-mode-line-inactive = #969696
+border-mode-line-inactive = #606060
+modeline-err = #ffa9bf
+modeline-warning = #dfcf43
+modeline-info = #9fefff
+bg-tab-bar = #313131
+bg-tab-current = #000000
+bg-tab-other = #545454
+bg-added = #00381f
+bg-added-faint = #002910
+bg-added-refine = #034f2f
+bg-added-intense = #237f3f
+fg-added = #a0e0a0
+fg-added-intense = #80e080
+bg-changed = #363300
+bg-changed-faint = #2a1f00
+bg-changed-refine = #4a4a00
+bg-changed-intense = #8a7a00
+fg-changed = #efef80
+fg-changed-intense = #c0b05f
+bg-removed = #4f1119
+bg-removed-faint = #380a0f
+bg-removed-refine = #781a1f
+bg-removed-intense = #b81a1f
+fg-removed = #ffbfbf
+fg-removed-intense = #ff9095
 
 [bar/main]
-inherit = bar/barbase
-
+enable-ipc = true
+font-0 = "Fantasque Sans Mono:pixelsize=14;3"
+locale = ja_JP.UTF-8
+monitor = ${env:monitor}
 wm-restack = i3
+
+width = ${env:width}
+height = 24
+offset-x = ${env:offsetx}
+
+background = ${colors.bg-dim}
+
 modules-left = i3
+modules-center = cpu memory filesystem
+modules-right = wireless-network wired-network battery-left battery battery-right date
+
+tray-background = ${colors.bg-dim}
+tray-detached = false
+tray-maxsize = 24
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 8
+tray-position = right
+tray-scale = 1.0
 
 [settings]
-throttle-output = 5
-throttle-output-for = 10
-throttle-input-for = 30
-
 screenchange-reload = false
 
 compositing-background = source
+compositing-border = over
 compositing-foreground = over
 compositing-overline = over
 compositing-underline = over
-compositing-border = over
 
 ;; Modules
 [module/battery]
 type = internal/battery
-
 adapter = AC
 battery = BAT1
 full-at = 99
 poll-interval = 10
 time-format = %H:%M
 
-format-charging = BAT: <label-charging> <animation-charging>
-format-charging-padding = 2
-format-charging-underline = ${colors.green}
+inherit = powerline-templates/right-to-left-item-with-separator
+separator = ${colors.bg-dim}
 
-format-discharging = BAT: <label-discharging> <ramp-capacity>
-format-discharging-padding = 2
-format-discharging-underline = ${colors.cyan}
+format-charging-background = ${colors.yellow}
+format-discharging-foreground = ${colors.bg-dim}
+format-discharging-background = ${colors.yellow}
+label-charging = " BAT: %percentage%% "
+label-discharging = " BAT: %percentage%% (%time%) "
+label-full = " BAT: Fully Charged "
+label-full-background = ${colors.yellow}
+label-full-foreground = ${colors.bg-dim}
 
-label-charging = %percentage%%
-label-discharging = %percentage%% (%time%)
-label-full = Fully Charged
-label-full-foreground = ${color.green}
-label-full-background = ${color.black}
-label-full-padding = 2
+[module/battery-left]
+inherit = powerline-modules/right-to-left-starting-arrow
 
-ramp-capacity-0 = 
-ramp-capacity-0-foreground = ${colors.red}
-ramp-capacity-1 = 
-ramp-capacity-1-foreground = ${colors.orange}
-ramp-capacity-2 = 
-ramp-capacity-2-foreground = ${colors.yellow}
-ramp-capacity-3 = 
-ramp-capacity-3-foreground = ${colors.bg-special-mild}
-ramp-capacity-4 = 
-ramp-capacity-4-foreground = ${colors.bg-special-mild}
-ramp-capacity-padding-left = 2
+background = ${colors.yellow}
+background-next = ${colors.bg-dim}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-foreground = ${colors.fg-acitve}
-animation-charging-framerate = 750
+[module/battery-right]
+inherit = powerline-modules/right-to-left-starting-arrow
+
+background = ${colors.bg-dim}
+background-next = ${colors.yellow}
 
 [module/cpu]
 type = internal/cpu
-
-format = <label> <ramp-load>
-format-padding = 2
-format-underline = ${colors.cyan}
 interval = 1
-label = CPU: %percentage%%
 
-ramp-load-0 = ▁
-ramp-load-0-foreground = ${colors.bg-special-mild}
-ramp-load-1 = ▂
-ramp-load-1-foreground = ${colors.bg-special-mild}
-ramp-load-2 = ▃
-ramp-load-2-foreground = ${colors.bg-special-mild}
-ramp-load-3 = ▄
-ramp-load-3-foreground = ${colors.yellow}
-ramp-load-4 = ▅
-ramp-load-4-foreground = ${colors.yellow}
-ramp-load-5 = ▆
-ramp-load-5-foreground = ${colors.orange}
-ramp-load-6 = ▇
-ramp-load-6-foreground = ${colors.red}
-ramp-load-7 = █
-ramp-load-7-foreground = ${colors.red}
-ramp-load-padding-left = 2
+inherit = powerline-templates/right-to-left-item-with-separator
+separator = ${colors.bg-dim}
+
+background = ${colors.cyan}
+foreground = ${colors.bg-dim}
+label = " CPU: %percentage%% "
+label-background = ${colors.cyan}
+label-foreground = ${colors.bg-dim}
 
 [module/date]
 type = internal/date
-
-interval = 1
-label = %date% %time%
-
 date = %Y/%m/%d(%a)
+interval = 1
 time = %H:%M:%S
 
-format = <label>
-format-padding = 2
-format-underline = ${colors.magenta}
+inherit = powerline-templates/right-to-left-item-with-separator
+separator = ${colors.bg-dim}
+
+background = ${colors.red}
+format-background = ${colors.red}
+format-foreground = ${colors.bg-dim}
+label = " %date% %time% "
+
+[module/filesystem]
+type = internal/fs
+mount-0 = /
+
+inherit = powerline-templates/right-to-left-item-with-separator
+separator = ${colors.bg-dim}
+
+background = ${colors.indigo}
+format-mounted-background = ${colors.indigo}
+format-mounted-foreground = ${colors.bg-dim}
+label-mounted = " DISK: %used% / %total% "
 
 [module/i3]
 type = internal/i3
-
 enable-click = true
 enable-scroll = false
 fuzzy-match = true
@@ -170,14 +243,12 @@ format = <label-state> <label-mode>
 label-mode = %mode%
 label-mode-padding = 1
 label-focused = %index%
-label-focused-background = ${colors.bg-active-accent}
-label-focused-foreground = ${colors.fg-active}
+label-focused-background = ${colors.bg-blue-subtle}
+label-focused-foreground = ${colors.fg-main}
 label-focused-padding = 1
-label-focused-underline = ${colors.fg-active}
 label-separator-padding = 1
 label-unfocused = %index%
-label-unfocused-foreground = ${colors.fg-inactive}
-label-unfocused-underline = ${colors.bg-special-mild}
+label-unfocused-foreground = ${colors.bg-active}
 label-unfocused-padding = 1
 label-urgent = %index%
 label-urgent-padding = 1
@@ -186,93 +257,47 @@ label-visible-padding = 1
 
 [module/memory]
 type = internal/memory
-
-format = <label> <ramp-used>
-format-padding = 2
-format-underline = ${colors.cyan}
 interval = 5
-label = RAM: %gb_used%
 
-ramp-used-0 = ▁
-ramp-used-0-foreground = ${colors.bg-special-mild}
-ramp-used-1 = ▂
-ramp-used-1-foreground = ${colors.bg-special-mild}
-ramp-used-2 = ▃
-ramp-used-2-foreground = ${colors.bg-special-mild}
-ramp-used-3 = ▄
-ramp-used-3-foreground = ${colors.yellow}
-ramp-used-4 = ▅
-ramp-used-4-foreground = ${colors.yellow}
-ramp-used-5 = ▆
-ramp-used-5-foreground = ${colors.orange}
-ramp-used-6 = ▇
-ramp-used-6-foreground = ${colors.red}
-ramp-used-7 = █
-ramp-used-7-foreground = ${colors.red}
-ramp-used-padding-left = 2
+inherit = powerline-templates/right-to-left-item-with-separator
+separator = ${colors.bg-dim}
 
-[module/title]
-type = internal/xwindow
-
-format = <label>
-format-background = ${colors.black}
-format-foreground = ${colors.bg-special-mild}
-format-padding = 0
-
-label = %title%
-label-maxlen = 40
-
-label-empty = stfuawsc
-label-empty-foreground = ${colors.bg-special-mild}
+background = ${colors.magenta}
+format-background = ${colors.magenta}
+format-foreground = ${colors.bg-dim}
+label = " RAM: %gb_used% "
 
 [module/wired-network]
 type = internal/network
-
 interface = enp0s31f6
 interval = 5
 
+inherit = powerline-templates/right-to-left-item-with-separator
+separator = ${colors.bg-dim}
+
+background = ${colors.green}
+format-background = ${colors.green}
 format-connected = <label-connected>
-format-connected-padding = 2
-format-connected-underline = ${colors.green}
 format-disconnected = <label-disconnected>
-format-disconnected-foreground = ${colors.green}
-format-disconnected-padding = 2
-format-disconnected-underline = ${colors.bg-special-mild}
-label-connected = %local_ip%
-label-connected-foreground = ${colors.bg-special-mild}
-label-disconnected = %ifname%
-label-disconnected-foreground = ${colors.bg-special-mild}
+format-disconnected-background = ${colors.green}
+format-disconnected-foreground = ${colors.fg-mode-line-inactive}
+label-connected = " %local_ip% "
+label-disconnected = " %ifname% "
 
 [module/wireless-network]
 type = internal/network
 interface = wlp0s20f3
 interval = 5
 
-format-connected = <label-connected> <ramp-signal>
-format-connected-padding = 2
-format-connected-foreground = ${colors.green}
-format-connected-underline = ${colors.green}
-format-disconnected = <label-disconnected>
-format-disconnected-foreground = ${colors.bg-special-mild}
-format-disconnected-padding = 2
-format-disconnected-underline = ${colors.bg-special-mild}
-label-connected = %essid%
-label-disconnected = %ifname%
+inherit = powerline-templates/right-to-left-item-with-separator
+separator = ${colors.bg-dim}
 
-ramp-signal-0 = ▁
-ramp-signal-0-foreground = ${colors.red}
-ramp-signal-1 = ▂
-ramp-signal-1-foreground = ${colors.red}
-ramp-signal-2 = ▃
-ramp-signal-2-foreground = ${colors.red}
-ramp-signal-3 = ▄
-ramp-signal-3-foreground = ${colors.orange}
-ramp-signal-4 = ▅
-ramp-signal-4-foreground = ${colors.orange}
-ramp-signal-5 = ▆
-ramp-signal-5-foreground = ${colors.bg-special-mild}
-ramp-signal-6 = ▇
-ramp-signal-6-foreground = ${colors.bg-special-mild}
-ramp-signal-7 = █
-ramp-signal-7-foreground = ${colors.bg-special-mild}
-ramp-signal-padding-left = 2
+background = ${colors.green}
+content-background = ${colors.green}
+format-connected-background = ${colors.green}
+format-disconnected = <label-disconnected>
+format-disconnected-background = ${colors.green}
+label-connected = " %essid%: %local_ip% "
+label-connected-foreground = ${colors.bg-dim}
+label-disconnected = " %ifname% "
+label-disconnected-foreground = ${colors.fg-mode-line-inactive}
