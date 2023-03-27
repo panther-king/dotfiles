@@ -30,9 +30,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-if [ -x /opt/xkeysnail/bin/xkeysnail ]; then
-    xhost +SI:localuser:xkeysnail
-    sudo -u xkeysnail DISPLAY=$DISPLAY /opt/xkeysnail/bin/xkeysnail /etc/opt/xkeysnail/config.py &
+if [ -f $HOME/.config/xremap/config.yml ]; then
+    xremap $HOME/.config/xremap/config.yml &
 fi
 
 setxkbmap us
