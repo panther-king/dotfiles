@@ -137,8 +137,8 @@ gaps inner 8
 bindsym Print exec --no-startup-id import -window root $HOME/Pictures/screenshot`date "+%Y%m%d%H%M%S"`.jpg
 
 # brightness
-bindsym XF86MonBrightnessUp exec light -A 5  # increase
-bindsym XF86MonBrightnessDown exec light -U 5  # decrease
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5  # increase
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5  # decrease
 
 # volume
 bindsym XF86AudioMute exec amixer sset Master mute
