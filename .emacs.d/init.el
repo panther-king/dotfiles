@@ -357,7 +357,10 @@
     :config (global-git-gutter-mode t)
     :custom ((git-gutter:modified-sign . " ")
              (git-gutter:added-sign . " ")
-             (git-gutter:deleted-sign . " "))))
+             (git-gutter:deleted-sign . " ")))
+  (leaf git-modes
+    :doc "gitの設定関連ファイル用メジャーモード"
+    :ensure t))
 
 (leaf syntax-check
   :doc "構文チェック"
