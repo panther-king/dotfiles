@@ -648,8 +648,7 @@
   (leaf macrostep
     :doc "leafのマクロを展開する"
     :ensure t
-    :bind (("C-c e" . macrostep-expand)))
-  )
+    :bind (("C-c e" . macrostep-expand))))
 
 (provide 'init)
 
