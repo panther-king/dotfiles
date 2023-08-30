@@ -511,6 +511,7 @@
   :tag "programming" "lisp"
   :ensure t
   :require t
+  :if (file-exists-p (expand-file-name "~/quicklisp/slime-helper.el"))
   :init
   (load (expand-file-name "~/quicklisp/slime-helper.el"))
   (slime-setup '(slime-repl slime-fancy slime-banner))
