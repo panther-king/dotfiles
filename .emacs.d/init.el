@@ -383,23 +383,13 @@
   :doc "シンタックスハイライト"
   :tag "syntax-highlight"
   :config
-  (leaf tree-sitter
+  (leaf treesit-auto
     :doc "tree-sitetrでハイライトをより正確にする"
     :tag "syntax-highlight"
-    :ensure (t tree-sitter-langs)
-    :require tree-sitter-langs
-    :config (global-tree-sitter-mode)
-    :hook (tree-sitter-after-on-hook . tree-sitter-hl-mode)))
-
-(leaf lsp
-  :doc "LSP設定"
-  :tag "lsp"
-  :config
-  (leaf eglot
-    :doc "EmacsからLSPを利用する"
-    :tag "lsp"
     :ensure t
-    :require t))
+    :config (global-treesit-auto-mode)
+    :custom ((treesit-auto-install . t)
+             (treesit-font-lock-level . 4))))
 
 (leaf elm-mode
   :doc "Elm"
