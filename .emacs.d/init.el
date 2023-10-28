@@ -552,7 +552,8 @@
   (leaf web-mode
     :doc "EmacsからHTML/CSSを編集する"
     :ensure t
-    :mode "\\.html$" "\\.css$"
+    :mode "\\.html$" "\\.css$" "\\.tsx?$"
+    :hook (web-mode-hook . eglot-ensure)
     :custom ((web-mode-markup-indent-offset . 2)
              (web-mode-code-indent-offset . 2)
              (web-mode-css-indent-offset . 2)
