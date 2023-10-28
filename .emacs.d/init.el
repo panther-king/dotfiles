@@ -242,6 +242,11 @@
              (dashboard-set-navigator . t)
              (dashboard-set-heading-icons . t)
              (dashboard-set-file-icons . t)))
+  (leaf gcmh
+    :doc "アイドル状態時にGCする"
+    :ensure t
+    :custom (gcmh-verbose . t)
+    :config (gcmh-mode 1))
   (leaf savehist
     :init (savehist-mode)))
 
@@ -387,8 +392,8 @@
     :doc "tree-sitetrでハイライトをより正確にする"
     :tag "syntax-highlight"
     :ensure t
-    :config (global-treesit-auto-mode)
-    :custom ((treesit-auto-install . t)
+    :custom ((global-treesit-auto-modes . t)
+             (treesit-auto-install . t)
              (treesit-font-lock-level . 4))))
 
 (leaf elm-mode
