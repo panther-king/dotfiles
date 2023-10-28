@@ -16,8 +16,8 @@ alias -s pdf=mupdf
 source $HOME/.cargo/env
 export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
 
-# asdf
-. /opt/asdf-vm/asdf.sh
+# rtx
+eval "$($HOME/.cargo/bin/rtx activate zsh)"
 
 # dotnetコマンドパス
 [ -d ~/.dotnet ] && export PATH=$PATH:$HOME/.dotnet
