@@ -38,7 +38,7 @@
   (fset 'yes-or-no-p 'y-or-n-p)                             ;; プロンプトでyes/noを短縮する
   (set-frame-parameter (selected-frame) 'alpha '(85 . 50))  ;; ウインドウを透過する
   (add-to-list 'default-frame-alist '(alpha . (85 . 50)))
-  (add-to-list 'default-frame-alist '(font . "HackGen 14"))
+  (add-to-list 'default-frame-alist '(font . "UdevGothic 14"))
   :custom ((inhibit-startup-screen . t)    ;; 起動画面を表示しない
            (initial-scratch-message . "")  ;; scratchバッファのメッセージを表示しない
            (make-backup-files . nil)       ;; バックアップファイルを作成しない
