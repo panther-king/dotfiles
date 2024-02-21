@@ -72,7 +72,7 @@
     :doc "モードラインのファイル名にディレクトリも表示する"
     :tag "mode-line" "built-in"
     :custom ((uniquify-buffer-name-style . 'forward)  ;; ディレクトリ名はファイル名の前に表示する
-             (uniquify-min-dir-content . 3)))         ;; 3階層まで表示する
+             (uniquify-min-dir-content . 5)))         ;; 5階層まで表示する
   (leaf moody
     :doc "モードラインの表示を分かりやすくする"
     :tag "mode-line"
