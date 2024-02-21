@@ -242,11 +242,11 @@
              (dashboard-set-navigator . t)
              (dashboard-set-heading-icons . t)
              (dashboard-set-file-icons . t)))
-  (leaf gcmh
-    :doc "アイドル状態時にGCする"
-    :ensure t
-    :custom (gcmh-verbose . t)
-    :config (gcmh-mode 1))
+  ;; (leaf gcmh
+  ;;   :doc "アイドル状態時にGCする"
+  ;;   :ensure t
+  ;;   :custom (gcmh-verbose . t)
+  ;;   :config (gcmh-mode 1))
   (leaf savehist
     :init (savehist-mode)))
 
