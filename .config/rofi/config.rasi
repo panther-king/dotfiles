@@ -1,5 +1,5 @@
 configuration {
-  font: "HackGen 12";
+  font: "UDEV Gothic NF 12";
   show-icons: true;
   icon-theme: "Papirus";
 }
