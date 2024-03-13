@@ -442,7 +442,7 @@
 ;; F#
 (use-package fsharp-mode
   :ensure t
-  :after smartchr
+  :after (smartchr)
   :config (progn
             (bind-key "=" (smartchr "=" " = ") fsharp-mode-map)
             (bind-key "+" (smartchr "+" " + ") fsharp-mode-map)
@@ -451,7 +451,8 @@
             (bind-key "<" (smartchr "<" "<`!!'>" " < " " <- " " << " " <= ") fsharp-mode-map)
             (bind-key ":" (smartchr ":" ": " " :: ") fsharp-mode-map)
             (bind-key "|" (smartchr "|" "|> " "<| " " | ") fsharp-mode-map))
-  :hook (fsharp-mode . eglot-ensure))
+  :hook ((fsharp-mode . eglot-ensure)
+         (fsharp-mode . (lambda () (add-hook 'before-save-hook 'eglot-format-buffer nil 'local)))))
 
 (use-package eglot-fsharp
   :ensure t
