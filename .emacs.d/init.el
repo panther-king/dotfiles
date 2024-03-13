@@ -435,7 +435,7 @@
   :hook (python-mode . eglot-ensure))
 
 ;; Shell script
-(use-package sh-script
+(use-package sh-mode
   :defer t
   :mode "\\.z?sh\\'" "\\.env\\'" "\\.sample\\'" "rc\\'")
 
