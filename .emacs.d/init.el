@@ -28,7 +28,6 @@
 (add-to-list 'default-frame-alist '(font . "UDEV Gothic NF 14"))  ;; フォントはUDEV Gothic
 
 (custom-set-variables '(inhibit-startup-screen t)    ;; 起動画面を表示しない
-                      '(initial-scratch-message "")  ;; scratchバッファのメッセージを表示しない
                       '(make-backup-files nil)       ;; バックアップファイルを作成しない
                       '(auto-save-default nil)       ;; 自動保存を行わない
                       '(create-lockfiles nil)        ;; ロックファイルを作成しない
@@ -216,19 +215,6 @@
   :custom ((recentf-save-file "~/.emacs.d/.recentf")  ;; 保存先を変更する
            (recentf-max-saved-items 2000)             ;; 保存アイテム数
            (recentf-exclude '(".recentf"))))          ;; .recentfファイルは対象としない
-
-;; カスタマイズした起動画面を表示する
-(use-package dashboard
-  :ensure t
-  :config (dashboard-setup-startup-hook)
-  :custom ((dashboard-items '((projects . 10)                  ;; プロジェクト表示数
-                              (recents . 5)                    ;; 最近開いたファイル表示数
-                              (bookmarks . 5)))                ;; ブックマーク表示数
-           (dashboard-startup-banner 'logo)                    ;; Emacsのロゴを表示する
-           (dashboard-banner-logo-title "Enjoy programming!")  ;; ロゴタイトル
-           (dashboard-set-navigator t)
-           (dashboard-set-heading-icons t)                     ;; アイテムの見出しにアイコンを表示する
-           (dashboard-set-file-icons t)))                      ;; ファイルアイコンを表示する
 
 ;; ミニバッファの履歴を保存する
 (use-package savehist
