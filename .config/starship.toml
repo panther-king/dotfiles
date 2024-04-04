@@ -85,8 +85,8 @@ disabled = true
 disabled = true
 
 [character]
-success_symbol = "[❯](bold #44bc44)"
-error_symbol = "[❯](bold #ff8059)"
+success_symbol = "[▶](bold #44bc44)"
+error_symbol = "[▶](bold #ff8059)"
 
 [cmd_duration]
 min_time = 2_000
