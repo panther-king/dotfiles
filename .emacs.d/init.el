@@ -492,7 +492,11 @@
 ;; Markdown
 (use-package markdown-mode
   :ensure t
-  :mode ("\\.md\\'" . gfm-mode))
+  :mode ("\\.md\\'" . gfm-mode)
+  :custom (markdown-command "pandoc"))
+
+(use-package markdown-preview-mode
+  :ensure t)
 
 ;; PlantUML
 (use-package plantuml-mode
