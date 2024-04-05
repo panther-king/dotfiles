@@ -317,7 +317,7 @@
   :after magit
   :hook magit-mode
   :custom ((magit-delta-default-dark-theme "TwoDark")   ;; bat --list-themes
-           (magit-detal-hide-plus-minus-markers nil)))  ;; diffの行頭に+/-を表示する
+           (magit-delta-hide-plus-minus-markers nil)))  ;; diffの行頭に+/-を表示する
 
 ;; ファイルの編集状況をフリンジに表示する
 (use-package git-gutter
