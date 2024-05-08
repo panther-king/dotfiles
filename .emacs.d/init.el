@@ -46,6 +46,10 @@
   (package-vc-install "https://github.com/slotThe/vc-use-package"))
 (require 'vc-use-package)
 
+(global-set-key (kbd "C-]") 'hs-toggle-hiding)
+(add-hook 'prog-mode-hook
+          #'(lambda () (hs-minor-mode 1)))
+
 ;;
 ;; テーマ設定
 ;;
