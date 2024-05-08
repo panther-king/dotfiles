@@ -472,7 +472,15 @@
 (use-package gleam-mode
   ;; treesitter/treesitter-indentをMELPAからインストールしている
   :load-path "~/src/github.com/gleam-lang/gleam-mode"
-  :hook (gleam-mode . (lambda () (add-hook 'before-save-hook 'gleam-format nil 'local))))
+  :hook (gleam-mode . (lambda () (add-hook 'before-save-hook 'gleam-format nil 'local)))
+  :config (progn
+            (bind-key "=" (smartchr "=" " = " " == ") gleam-mode-map)
+            (bind-key "+" (smartchr "+" " + " " += ") gleam-mode-map)
+            (bind-key "-" (smartchr "-" " - " " -= ") gleam-mode-map)
+            (bind-key ">" (smartchr ">" " > " " -> " " >= ") gleam-mode-map)
+            (bind-key "<" (smartchr "<" "<`!!'>" " < " " <- " " <= ") gleam-mode-map)
+            (bind-key "!" (smartchr "!" " != ") gleam-mode-map)
+            (bind-key "|" (smartchr "|" "|> " " || ") gleam-mode-map)))
 
 ;;
 ;; 構造化言語設定
