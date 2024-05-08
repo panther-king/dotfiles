@@ -6,7 +6,6 @@ alias ls="ls --color=auto --group-directories-first"
 alias ll="ls -lh"
 alias la="ll -A"
 alias vi="vim"
-alias docker="sudo docker"
 
 # 画像とPDFファイルを直接開けるように
 alias -s {bmp,gif,jpg,jpeg,png,tiff,BMP,GIF,JPG,JPEG,PNG,TIFF}=viewnior
@@ -24,6 +23,9 @@ eval "$($HOME/.cargo/bin/mise activate zsh)"
 
 # pip install --user 用のPATH追加
 [ -d ~/.local/bin ] && export PATH=$PATH:$HOME/.local/bin
+
+# docker-rootless
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
 # direnv
 eval "$(direnv hook zsh)"
