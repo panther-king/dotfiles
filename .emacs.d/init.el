@@ -402,7 +402,7 @@
   :after smartchr
   :mode "\\.php\\'"
   :config (progn
-            (bind-key "=" (smartchr "=" " === " " == ") php-mode-map)
+            (bind-key "=" (smartchr "=" " = " " === " " == ") php-mode-map)
             (bind-key "+" (smartchr "+" " += " "++") php-mode-map)
             (bind-key "-" (smartchr "-" " -= " "--") php-mode-map)
             (bind-key ">" (smartchr ">" "->" " => " " > " " >= ") php-mode-map)
