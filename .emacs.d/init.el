@@ -138,7 +138,6 @@
 ;; カッコの対応を色づけする
 (use-package rainbow-delimiters
   :ensure t
-;;  :requires (cl-lib color)
   :hook prog-mode)
 
 ;; カッコを自動的に補完する
