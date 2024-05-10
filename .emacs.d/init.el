@@ -537,7 +537,7 @@
 ;; Terraform
 (use-package terraform-mode
   :ensure t
-  :hook (terraform-mode . terraform-on-save-mode))
+  :custom (terraform-format-on-save t))
 
 ;;
 ;; 絞り込み・補完設定
