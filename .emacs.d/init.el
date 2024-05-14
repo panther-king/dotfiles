@@ -27,20 +27,21 @@
 (add-to-list 'default-frame-alist '(alpha . (85 . 50)))           ;; ウインドウを透過する
 (add-to-list 'default-frame-alist '(font . "UDEV Gothic NF 14"))  ;; フォントはUDEV Gothic
 
-(custom-set-variables '(inhibit-startup-screen t)    ;; 起動画面を表示しない
-                      '(make-backup-files nil)       ;; バックアップファイルを作成しない
-                      '(auto-save-default nil)       ;; 自動保存を行わない
-                      '(create-lockfiles nil)        ;; ロックファイルを作成しない
-                      '(ring-bell-function 'ignore)  ;; ビープ音を無効化
-                      '(scroll-bar-mode nil)         ;; スクロールバーは利用しない
-                      '(menu-bar-mode nil)           ;; メニューバーは利用しない
-                      '(tool-bar-mode nil)           ;; ツールバーは利用しない
-                      '(column-number-mode t)        ;; モードラインに列番号も表示する
-                      '(indent-tabs-mode nil)        ;; タブインデントは利用しない
-                      '(kill-whole-line t)           ;; C-kで行末の改行コードごと削除する
-                      '(next-line-add-newlines nil)  ;; バッファの末尾で新しい行を追加しない
-                      '(require-final-newline t)     ;; ファイルの末尾は改行を必須にする
-                      '(vc-follow-symlinks t))       ;; 常にシンボリックリンクをたどる
+(custom-set-variables '(inhibit-startup-screen t)     ;; 起動画面を表示しない
+                      '(initial-scratch-message nil)  ;; Scratchバッファにメッセージは表示しない
+                      '(make-backup-files nil)        ;; バックアップファイルを作成しない
+                      '(auto-save-default nil)        ;; 自動保存を行わない
+                      '(create-lockfiles nil)         ;; ロックファイルを作成しない
+                      '(ring-bell-function 'ignore)   ;; ビープ音を無効化
+                      '(scroll-bar-mode nil)          ;; スクロールバーは利用しない
+                      '(menu-bar-mode nil)            ;; メニューバーは利用しない
+                      '(tool-bar-mode nil)            ;; ツールバーは利用しない
+                      '(column-number-mode t)         ;; モードラインに列番号も表示する
+                      '(indent-tabs-mode nil)         ;; タブインデントは利用しない
+                      '(kill-whole-line t)            ;; C-kで行末の改行コードごと削除する
+                      '(next-line-add-newlines nil)   ;; バッファの末尾で新しい行を追加しない
+                      '(require-final-newline t)      ;; ファイルの末尾は改行を必須にする
+                      '(vc-follow-symlinks t))        ;; 常にシンボリックリンクをたどる
 
 (unless (package-installed-p 'vc-use-package)
   (package-vc-install "https://github.com/slotThe/vc-use-package"))
