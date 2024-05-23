@@ -561,6 +561,7 @@
 (use-package consult
   :ensure t
   :bind (("C-;" . consult-buffer)
+         ("C-o" . consult-outline)
          ("C-s" . consult-line)
          ("C-r" . consult-line)
          ([remap goto-line] . consult-goto-line)))
