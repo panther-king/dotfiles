@@ -214,10 +214,9 @@
 
 ;; 最近開いたファイルを保存する
 (use-package recentf
-  :defer t
   :config (recentf-mode 1)
-  :custom ((recentf-save-file "~/.emacs.d/.recentf")  ;; 保存先を変更する
-           (recentf-max-saved-items 2000)             ;; 保存アイテム数
+  :custom ((recentf-max-saved-items 2000)             ;; 保存アイテム数
+           (recentf-filename-handlers nil)
            (recentf-exclude '(".recentf"))))          ;; .recentfファイルは対象としない
 
 ;; ミニバッファの履歴を保存する
@@ -559,6 +558,7 @@
 
 ;; 補完コマンドを利用する
 (use-package consult
+  :after recentf
   :ensure t
   :bind (("C-;" . consult-buffer)
          ("C-o" . consult-outline)
