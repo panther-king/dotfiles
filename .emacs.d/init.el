@@ -253,6 +253,10 @@
   :after (all-the-icons treemacs)
   :custom (treemacs-load-theme "all-the-icons"))
 
+(use-package treemacs-projectile
+  :ensure t
+  :after (projectile treemacs))
+
 ;; EmacsにEditorConfigを認識させる
 (use-package editorconfig
   :ensure t
