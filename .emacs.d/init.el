@@ -432,7 +432,7 @@
 ;; F#
 (use-package fsharp-mode
   :ensure t
-  :after (smartchr)
+  :after smartchr
   :config (progn
             (bind-key "=" (smartchr "=" " = ") fsharp-mode-map)
             (bind-key "+" (smartchr "+" " + ") fsharp-mode-map)
@@ -599,7 +599,7 @@
 ;; 補完候補にアイコンを利用する
 (use-package kind-icon
   :ensure t
-  :after (corfu)
+  :after corfu
   :config (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 ;; 補完方法をカスタマイズする
