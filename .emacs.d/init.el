@@ -228,13 +228,6 @@
 ;; IDE設定
 ;;
 
-;; フレームをタブで管理する
-(use-package tab-bar
-  :defer t
-  :config (tab-bar-mode +1)
-  :custom ((tab-bar-new-button-show nil)      ;; タブに追加ボタンを表示させない
-           (tab-bar-close-button-show nil)))  ;; タブに閉じるボタンを表示させない
-
 ;; Emacsでプロジェクト管理を行う
 (use-package projectile
   :ensure t
