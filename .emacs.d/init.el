@@ -152,31 +152,15 @@
 ;;
 
 ;; アイコンを利用する
-(use-package all-the-icons
-  :ensure t
-  :custom (all-the-icons-scale-factor 1.0))  ;; アイコンフォントは等倍で表示する
+(use-package nerd-icons
+  :ensure t)
 
-;; diredでもall-the-iconsのアイコンを利用する
-(use-package all-the-icons-dired
+;; diredでもnerd-iconsのアイコンを利用する
+(use-package nerd-icons-dired
   :ensure t
-  :after all-the-icons
-  :init
-  (defun dired-open-in-accordance-with-situation ()
-    (interactive)
-    (cond ((string-match "\\.\\.?$"
-                         (format "%s" (thing-at-point 'filename)))
-           (dired-find-alternate-file))
-          ((file-directory-p (dired-get-filename))
-           (dired-find-alternate-file))
-          (t
-           (dired-find-file))))
-  :bind (:map dired-mode-map
-              ("C-m" . dired-open-in-accordance-with-situation)
-              ("a" . dired-find-file))
-  :config (put 'dired-find-alternate-file 'disabled nil)
-  :hook dired-mode)
+  :after nerd-icons
+  :hook (dired-mode . nerd-icons-dired-mode))
 
-;;
 ;; 便利系拡張設定
 ;;
 
@@ -240,11 +224,11 @@
   :bind ([f8] . treemacs)
   :custom (treemacs-position 'right))  ;; フレーム右側に表示する
 
-;; treemacsでall-the-iconsを利用する
-(use-package treemacs-all-the-icons
+;; treemacsでnerd-iconsを利用する
+(use-package treemacs-nerd-icons
   :ensure t
-  :after (all-the-icons treemacs)
-  :custom (treemacs-load-theme "all-the-icons"))
+  :after (nerd-icons treemacs)
+  :custom (treemacs-load-theme "nerd-icons"))
 
 (use-package treemacs-projectile
   :ensure t
