@@ -110,8 +110,13 @@
 ;; インデントを可視化する
 (use-package highlight-indent-guides
   :ensure t
-  :custom ((highlight-indent-guides-responsive 'top)   ;; 現在のインデントガイドを強調する
-           (highlight-indent-guides-method 'bitmap)))  ;; インデントガイドをbitmapで表示する
+  :custom ((highlight-indent-guides-auto-enabled nil)  ;; カラーはカスタム定義する
+           (highlight-indent-guides-responsive 'top)   ;; 現在のインデントガイドを強調する
+           (highlight-indent-guides-method 'bitmap))   ;; インデントガイドをbitmapで表示する
+  :custom-face
+  (highlight-indent-guides-top-character-face ((t (:foreground "#505050"))))  ;; 基本カラー(bg-mode-line-inactive)
+  (highlight-indent-guides-character-face ((t (:foreground "#2d2d2d"))))      ;; 現在のインデントカラー(bg-mode-line-active)
+  :hook prog-mode)
 
 ;; スペース・タブを可視化する
 (use-package whitespace
