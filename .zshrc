@@ -21,9 +21,6 @@ eval "$($HOME/.cargo/bin/mise activate zsh)"
 # dotnetコマンドパス
 [ -d ~/.dotnet ] && export PATH=$PATH:$HOME/.dotnet
 
-# pip install --user 用のPATH追加
-[ -d ~/.local/bin ] && export PATH=$PATH:$HOME/.local/bin
-
 # docker-rootless
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
