@@ -41,7 +41,9 @@
                       '(kill-whole-line t)            ;; C-kで行末の改行コードごと削除する
                       '(next-line-add-newlines nil)   ;; バッファの末尾で新しい行を追加しない
                       '(require-final-newline t)      ;; ファイルの末尾は改行を必須にする
-                      '(vc-follow-symlinks t))        ;; 常にシンボリックリンクをたどる
+                      '(vc-follow-symlinks t)         ;; 常にシンボリックリンクをたどる
+                      '(cua-mode t)                   ;; 矩形編集のためにcua-modeを有効にする
+                      '(cua-enable-cua-keys nil))     ;; cuaのデフォルトキーバインドは利用しない
 
 (unless (package-installed-p 'vc-use-package)
   (package-vc-install "https://github.com/slotThe/vc-use-package"))
@@ -166,6 +168,7 @@
   :after nerd-icons
   :hook (dired-mode . nerd-icons-dired-mode))
 
+;;
 ;; 便利系拡張設定
 ;;
 
