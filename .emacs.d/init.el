@@ -244,6 +244,11 @@
   :ensure t
   :config (editorconfig-mode 1))
 
+;; Emacsでmiseを利用する
+(use-package mise
+  :ensure t
+  :hook (after-init . global-mise-mode))
+
 ;;
 ;; キーバインド拡張設定
 ;;
