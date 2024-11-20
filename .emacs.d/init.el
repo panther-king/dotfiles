@@ -362,15 +362,17 @@
 (use-package elm-mode
   :ensure t
   :after smartchr
-  :hook ((elm-mode . elm-format-on-save-mode)
-         (elm-mode . eglot-ensure))
+  :custom (elm-format-on-save t)
+  :hook ((elm-mode . eglot-ensure))
+         ;; (elm-mode . (lambda () (add-hook 'before-save-hook 'eglot-format-buffer nil 'local))))
   :config (progn
-            (bind-key "=" (smartchr " = " " == " "=") elm-mode-map)
-            (bind-key "+" (smartchr " ++ " " + " "+") elm-mode-map)
-            (bind-key "-" (smartchr " - " "-") elm-mode-map)
-            (bind-key ">" (smartchr " > " " -> " " >> " ">") elm-mode-map)
-            (bind-key "<" (smartchr " < " " <- " " << " "<") elm-mode-map)
-            (bind-key ":" (smartchr " : " " :: " ":") elm-mode-map)))
+            (bind-key "=" (smartchr "=" " = " " == " ) elm-mode-map)
+            (bind-key "+" (smartchr "+" " ++ " " + ") elm-mode-map)
+            (bind-key "-" (smartchr "-" " - ") elm-mode-map)
+            (bind-key ">" (smartchr ">" " > " " -> " " >> ") elm-mode-map)
+            (bind-key "<" (smartchr "<" " < " " <- " " << ") elm-mode-map)
+            (bind-key "|" (smartchr "|" "|> " "<| " " | ") elm-mode-map)
+            (bind-key ":" (smartchr ":" " : " " :: ") elm-mode-map)))
 
 ;; JavaScript
 (use-package js2-mode
