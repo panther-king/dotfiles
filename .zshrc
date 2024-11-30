@@ -21,6 +21,9 @@ eval "$($HOME/.cargo/bin/mise activate zsh)"
 # dotnetコマンドパス
 [ -d ~/.dotnet ] && export PATH=$PATH:$HOME/.dotnet
 
+# ghcup
+[ -f "/home/i/.ghcup/env" ] && . "/home/i/.ghcup/env"
+
 # docker-rootless
 export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 
