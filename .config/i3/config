@@ -150,5 +150,5 @@ exec --no-startup-id fcitx5
 exec --no-startup-id dunst
 exec --no-startup-id parcellite
 exec --no-startup-id feh --no-fehbg --bg-scale "$HOME/Pictures/background-gnu-linux.jpg"
-exec --no-startup-id picom -CGb --config $HOME/.config/picom/picom.conf
+exec --no-startup-id picom -b --config $HOME/.config/picom/picom.conf
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
