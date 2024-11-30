@@ -27,27 +27,40 @@
 (add-to-list 'default-frame-alist '(alpha . (85 . 50)))           ;; ウインドウを透過する
 (add-to-list 'default-frame-alist '(font . "UDEV Gothic NF 14"))  ;; フォントはUDEV Gothic
 
-(custom-set-variables '(inhibit-startup-screen t)     ;; 起動画面を表示しない
-                      '(initial-scratch-message nil)  ;; Scratchバッファにメッセージは表示しない
-                      '(make-backup-files nil)        ;; バックアップファイルを作成しない
-                      '(auto-save-default nil)        ;; 自動保存を行わない
-                      '(create-lockfiles nil)         ;; ロックファイルを作成しない
-                      '(ring-bell-function 'ignore)   ;; ビープ音を無効化
-                      '(scroll-bar-mode nil)          ;; スクロールバーは利用しない
-                      '(menu-bar-mode nil)            ;; メニューバーは利用しない
-                      '(tool-bar-mode nil)            ;; ツールバーは利用しない
-                      '(column-number-mode t)         ;; モードラインに列番号も表示する
-                      '(indent-tabs-mode nil)         ;; タブインデントは利用しない
-                      '(kill-whole-line t)            ;; C-kで行末の改行コードごと削除する
-                      '(next-line-add-newlines nil)   ;; バッファの末尾で新しい行を追加しない
-                      '(require-final-newline t)      ;; ファイルの末尾は改行を必須にする
-                      '(vc-follow-symlinks t)         ;; 常にシンボリックリンクをたどる
-                      '(cua-mode t)                   ;; 矩形編集のためにcua-modeを有効にする
-                      '(cua-enable-cua-keys nil))     ;; cuaのデフォルトキーバインドは利用しない
+(custom-set-variables '(inhibit-startup-screen t)            ;; 起動画面を表示しない
+                      '(initial-scratch-message nil)         ;; Scratchバッファにメッセージは表示しない
+                      '(make-backup-files nil)               ;; バックアップファイルを作成しない
+                      '(auto-save-default nil)               ;; 自動保存を行わない
+                      '(create-lockfiles nil)                ;; ロックファイルを作成しない
+                      '(ring-bell-function 'ignore)          ;; ビープ音を無効化
+                      '(scroll-bar-mode nil)                 ;; スクロールバーは利用しない
+                      '(menu-bar-mode nil)                   ;; メニューバーは利用しない
+                      '(tool-bar-mode nil)                   ;; ツールバーは利用しない
+                      '(column-number-mode t)                ;; モードラインに列番号も表示する
+                      '(indent-tabs-mode nil)                ;; タブインデントは利用しない
+                      '(kill-whole-line t)                   ;; C-kで行末の改行コードごと削除する
+                      '(next-line-add-newlines nil)          ;; バッファの末尾で新しい行を追加しない
+                      '(require-final-newline t)             ;; ファイルの末尾は改行を必須にする
+                      '(vc-follow-symlinks t)                ;; 常にシンボリックリンクをたどる
+                      '(package-install-upgrade-built-in t)  ;; ビルトインパッケージも更新対象にする
+                      '(package-native-compile t)            ;; インストール時にネイティブコンパイルする
+                      '(cua-mode t)                          ;; 矩形編集のためにcua-modeを有効にする
+                      '(native-comp-async-report-warnings-errors 'silent)
+                      '(cua-enable-cua-keys nil))            ;; cuaのデフォルトキーバインドは利用しない
+
+;;
+;; パッケージ設定
+;;
+(use-package use-package
+  :custom (use-package-always-ensure t))
 
 (unless (package-installed-p 'vc-use-package)
   (package-vc-install "https://github.com/slotThe/vc-use-package"))
 (require 'vc-use-package)
+
+(use-package auto-package-update
+  :config (auto-package-update-maybe)
+  :custom (auto-package-update-interval 1))
 
 (global-set-key (kbd "C-]") 'hs-toggle-hiding)
 (add-hook 'prog-mode-hook
@@ -71,7 +84,7 @@
 
 ;; モードラインのファイル名にディレクトリ名も表示する
 (use-package uniquify
-  :defer t
+  :ensure nil
   :custom ((uniquify-buffer-name-style 'forward)  ;; ディレクトリ名はファイル名の前に表示する
            (uniquify-min-dir-content 5)))         ;; 5階層まで表示する
 
@@ -168,6 +181,17 @@
   :after nerd-icons
   :hook (dired-mode . nerd-icons-dired-mode))
 
+;; verticoでもnerd-iconsを利用する
+(use-package nerd-icons-completion
+  :after nerd-icons
+  :hook (after-init . nerd-icons-completion-mode))
+
+;; corfuでもnerd-iconsを利用する
+(use-package nerd-icons-corfu
+  :after corfu nerd-icons
+  :vc (:fetcher github :repo "LuigiPiucco/nerd-icons-corfu")
+  :config (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
 ;;
 ;; 便利系拡張設定
 ;;
@@ -258,12 +282,12 @@
 
 ;; 同一キーの入力で入力内容を切り替える
 (use-package smartchr
-  :vc (:fetcher github :repo imakado/emacs-smartchr)
+  :vc (:fetcher github :repo "imakado/emacs-smartchr")
   :ensure t)
 
 ;; Emacsキーバインドを強制する
 (use-package drill-instructor
-  :vc (:fetcher github :repo k1LoW/emacs-drill-instructor)
+  :vc (:fetcher github :repo "k1LoW/emacs-drill-instructor")
   :ensure t
   :config (setq drill-instructor-global t))  ;; 常にEmacsキーバインドを強制する
 
@@ -421,7 +445,7 @@
 
 ;; Shell script
 (use-package sh-mode
-  :defer t
+  :ensure nil
   :mode "\\.z?sh\\'" "\\.env\\'" "\\.sample\\'" "rc\\'")
 
 ;; F#
@@ -548,6 +572,7 @@
            (vertico-count 20)))                         ;; 候補表示は20個まで
 
 (use-package vertico-directory
+  :ensure nil
   :after vertico
   :bind (:map vertico-map
               ("C-l" . vertico-directory-up)))  ;; C-lでディレクトリ階層を上がれるようにする
