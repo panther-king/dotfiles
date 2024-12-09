@@ -189,7 +189,7 @@
 ;; corfuでもnerd-iconsを利用する
 (use-package nerd-icons-corfu
   :after corfu nerd-icons
-  :vc (:fetcher github :repo "LuigiPiucco/nerd-icons-corfu")
+  :vc (:fetcher github :repo LuigiPiucco/nerd-icons-corfu)
   :config (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
 
 ;;
@@ -282,12 +282,12 @@
 
 ;; 同一キーの入力で入力内容を切り替える
 (use-package smartchr
-  :vc (:fetcher github :repo "imakado/emacs-smartchr")
+  :vc (:fetcher github :repo imakado/emacs-smartchr)
   :ensure t)
 
 ;; Emacsキーバインドを強制する
 (use-package drill-instructor
-  :vc (:fetcher github :repo "k1LoW/emacs-drill-instructor")
+  :vc (:fetcher github :repo k1LoW/emacs-drill-instructor)
   :ensure t
   :config (setq drill-instructor-global t))  ;; 常にEmacsキーバインドを強制する
 
