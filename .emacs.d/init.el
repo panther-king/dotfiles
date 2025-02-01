@@ -279,6 +279,11 @@
   :ensure t
   :hook (after-init . global-mise-mode))
 
+;; EmacsでGithub Copilotを利用する
+(use-package copilot
+  :vc (:fetcher github :repo copilot-emacs/copilot.el)
+  :hook prog-mode)
+
 ;;
 ;; キーバインド拡張設定
 ;;
