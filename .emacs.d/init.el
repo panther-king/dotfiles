@@ -60,7 +60,9 @@
 
 (use-package auto-package-update
   :config (auto-package-update-maybe)
-  :custom (auto-package-update-interval 1))
+  :custom ((auto-package-update-interval 1)
+           (auto-package-update-prompt-before-update t)
+           (auto-package-update-delete-old-versions t)))
 
 (global-set-key (kbd "C-]") 'hs-toggle-hiding)
 (add-hook 'prog-mode-hook
@@ -284,12 +286,12 @@
 ;; 同一キーの入力で入力内容を切り替える
 (use-package smartchr
   :vc (:fetcher github :repo imakado/emacs-smartchr)
-  :ensure t)
+  :ensure nil)
 
 ;; Emacsキーバインドを強制する
 (use-package drill-instructor
   :vc (:fetcher github :repo k1LoW/emacs-drill-instructor)
-  :ensure t
+  :ensure nil
   :config (setq drill-instructor-global t))  ;; 常にEmacsキーバインドを強制する
 
 ;; よく利用する機能を特定のキーバインドにマッピングする
