@@ -142,6 +142,7 @@
                                tab-mark           ;; タブを専用マークで表示
                                tabs               ;; タブを可視化
                                trailing))         ;; 行末の空白を可視化
+           (whitespace-global-modes '(not dired-mode))
            (whitespace-action '(auto-cleanup))))  ;; 保存時に余計な空白・タブを削除
 
 ;;
