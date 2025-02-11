@@ -60,9 +60,10 @@
 
 (use-package auto-package-update
   :config (auto-package-update-maybe)
-  :custom ((auto-package-update-interval 1)
-           (auto-package-update-prompt-before-update t)
-           (auto-package-update-delete-old-versions t)))
+  :custom ((auto-package-update-prompt-before-update t)                            ;; アップデート実行前に確認
+           (auto-package-update-show-preview t)                                    ;; アップデート対象パッケージを事前に表示する
+           (auto-package-update-delete-old-versions t)                             ;; 旧バージョンのパッケージは削除
+           (auto-package-update-excluded-packages '(drill-instructor smartchr))))  ;; ELPAからインストールしていないパッケージは対象外
 
 (global-set-key (kbd "C-]") 'hs-toggle-hiding)
 (add-hook 'prog-mode-hook
