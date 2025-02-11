@@ -337,9 +337,9 @@
 ;; gitをEmacsから操作する
 (use-package magit
   :ensure t
-  :bind (("C-c m s" . magit-status)
-         ("C-c m b" . magit-blame-addition)
-         ("C-c m l" . magit-log-buffer-file)))
+  :bind (("C-x g" . magit-status)
+         ("C-c g" . magit-dispatch)
+         ("C-c f" . magit-file-dispatch)))
 
 ;; magitのdiff表示にdeltaを利用する
 (use-package magit-delta
