@@ -287,6 +287,13 @@
   :ensure t
   :hook prog-mode)
 
+;; eglotのlspを高速化する
+;; cargo install emacs-lsp-booster
+(use-package eglot-booster
+  :ensure t
+  :after eglot
+  :config (eglot-booster-mode))
+
 ;;
 ;; キーバインド拡張設定
 ;;
