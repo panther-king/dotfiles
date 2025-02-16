@@ -285,7 +285,8 @@
   :bind (:map copilot-mode-map
               ("M-i" . copilot-accept-completion))
   :ensure t
-  :hook prog-mode)
+  :hook prog-mode
+  :custom (copilot-indent-offset-warning-disable t))  ;; インデント警告を無効化する
 
 ;; eglotのlspを高速化する
 ;; cargo install emacs-lsp-booster
