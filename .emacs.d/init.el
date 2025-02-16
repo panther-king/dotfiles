@@ -283,7 +283,7 @@
 ;; EmacsでGithub Copilotを利用する
 (use-package copilot
   :bind (:map copilot-mode-map
-              ("C-M-i" . copilot-accept-completion))
+              ("M-i" . copilot-accept-completion))
   :ensure t
   :hook prog-mode)
 
