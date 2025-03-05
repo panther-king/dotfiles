@@ -72,14 +72,11 @@
 ;;
 ;; テーマ設定
 ;;
-(require-theme 'modus-themes)
-(setopt modus-themes-italic-constructs t                      ;; 斜体を強調する
-        modus-themes-bold-constructs t                        ;; 特定のキーワードを太字にする
-        modus-themes-mode-line '(moody borderless)            ;; モードラインをmoodyに合わせる
-        modus-themes-syntax '(yellow-comments green-strings)  ;; コメントと文字列リテラルをカラーリングする
-        modus-themes-paren-match '(bold intense)              ;; マッチするカッコを強調する
-        modus-themes-region '(bg-only no-extend))             ;; regionを適度に強調する
-(load-theme 'modus-vivendi)
+(use-package catppuccin-theme
+  :ensure t
+  :init (load-theme 'catppuccin :no-confirm)
+  :custom ((catppuccin-highlight-matches t)  ;; 検索キーワードをハイライトする
+           (catppuccin-italic-comments t)))  ;; コメントは斜体にする
 
 ;;
 ;; モードライン設定
@@ -128,12 +125,14 @@
 ;; インデントを可視化する
 (use-package highlight-indent-guides
   :ensure t
+  :config (custom-set-faces
+           `(highlight-indent-guides-top-character-face
+             ((t (:foreground ,(cdr (assoc 'overlay0 catppuccin-mocha-colors))))))
+           `(highlight-indent-guides-character-face
+             ((t (:foreground ,(cdr (assoc 'surface0 catppuccin-mocha-colors)))))))
   :custom ((highlight-indent-guides-auto-enabled nil)  ;; カラーはカスタム定義する
            (highlight-indent-guides-responsive 'top)   ;; 現在のインデントガイドを強調する
            (highlight-indent-guides-method 'bitmap))   ;; インデントガイドをbitmapで表示する
-  :custom-face
-  (highlight-indent-guides-top-character-face ((t (:foreground "#505050"))))  ;; 基本カラー(bg-mode-line-inactive)
-  (highlight-indent-guides-character-face ((t (:foreground "#2d2d2d"))))      ;; 現在のインデントカラー(bg-mode-line-active)
   :hook prog-mode)
 
 ;; スペース・タブを可視化する
@@ -327,17 +326,17 @@
 (use-package ddskk
   :ensure t
   :bind ("C-SPC" . skk-mode)
-  :custom ((skk-egg-like-newline t)                       ;; Enterキーでも入力を確定する
-           (skk-show-annotation t)                        ;; 変換候補に注釈を表示する
-           (skk-auto-insert-paren t)                      ;; 全角のカッコを自動補完する
-           (skk-latin-mode-string "[_A]")                 ;; ASCIIモードのモードライン表示
-           (skk-hiragana-mode-string "[あ]")              ;; ひらがなモードのモードライン表示
-           (skk-katakana-mode-string "[ア]")              ;; カタカナモードのモードライン表示
-           (skk-jisx0208-latin-mode-string "[Ａ]")        ;; 全角英数モードのモードライン表示
-           (skk-use-color-cursor t)                       ;; カーソルカラーでモードが判別できるようにする
-           (skk-cursor-hiragana-color "#70d73f")          ;; ひらがなモード
-           (skk-cursor-katakana-color "#dbbe5f")          ;; カタカナモード
-           (skk-cursor-jisx0208-latin-color "#d5b1ff")))  ;; 全角英数モード
+  :custom ((skk-egg-like-newline t)                                                          ;; Enterキーでも入力を確定する
+           (skk-show-annotation t)                                                           ;; 変換候補に注釈を表示する
+           (skk-auto-insert-paren t)                                                         ;; 全角のカッコを自動補完する
+           (skk-latin-mode-string "[_A]")                                                    ;; ASCIIモードのモードライン表示
+           (skk-hiragana-mode-string "[あ]")                                                 ;; ひらがなモードのモードライン表示
+           (skk-katakana-mode-string "[ア]")                                                 ;; カタカナモードのモードライン表示
+           (skk-jisx0208-latin-mode-string "[Ａ]")                                           ;; 全角英数モードのモードライン表示
+           (skk-use-color-cursor t)                                                          ;; カーソルカラーでモードが判別できるようにする
+           (skk-cursor-hiragana-color (cdr (assoc 'green catppuccin-mocha-colors)))          ;; ひらがなモード
+           (skk-cursor-katakana-color (cdr (assoc 'red catppuccin-mocha-colors)))            ;; カタカナモード
+           (skk-cursor-jisx0208-latin-color (cdr (assoc 'mauve catppuccin-mocha-colors)))))  ;; 全角英数モード
 
 ;;
 ;; git設定
@@ -355,16 +354,16 @@
   :ensure t
   :after magit
   :hook magit-mode
-  :custom ((magit-delta-default-dark-theme "TwoDark")   ;; bat --list-themes
+  :custom ((magit-delta-default-dark-theme "Catppuccin Mocha")   ;; bat --list-themes
            (magit-delta-hide-plus-minus-markers nil)))  ;; diffの行頭に+/-を表示する
 
 ;; ファイルの編集状況をフリンジに表示する
 (use-package git-gutter
   :ensure t
   :config (global-git-gutter-mode t)
-  :custom ((git-gutter:modified-sign " ")   ;; 変更
-           (git-gutter-added-sign " ")      ;; 追加
-           (git-gutter-deleted-sign " ")))  ;; 削除
+  :custom ((git-gutter:modified-sign "~")   ;; 変更
+           (git-gutter:added-sign "+")      ;; 追加
+           (git-gutter:deleted-sign "!")))  ;; 削除
 
 ;; gitの設定ファイルメジャーモード
 (use-package git-modes
