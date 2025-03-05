@@ -291,7 +291,7 @@
 ;; eglotのlspを高速化する
 ;; cargo install emacs-lsp-booster
 (use-package eglot-booster
-  :ensure t
+  :vc (:fetcher github :repo jdtsmith/eglot-booster)
   :after eglot
   :config (eglot-booster-mode))
 
