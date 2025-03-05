@@ -226,11 +226,9 @@
   :ensure t)
 
 ;; 検索にripgrepを利用する
-(use-package ripgrep
+(use-package rg
   :ensure t
-  :if (file-exists-p "~/.cargo/bin/rg")
-  :custom ((ripgrep-executable "~/.cargo/bin/rg")  ;; cargo経由でインストールしたripgrepを利用する
-           (ripgrep-arguments '("-S"))))           ;; case-sensitiveをよしなに判断させる
+  :config (rg-enable-default-bindings))  ;; magit同様のデフォルトキーバインドを利用する
 
 ;; 最近開いたファイルを保存する
 (use-package recentf
