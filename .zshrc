@@ -104,35 +104,39 @@ setopt auto_cd               # ディレクトリ名のみでcd
 setopt correct               # スペルミス補正
 setopt interactive_comments  # CLIでも'#'以降をコメントとみなす
 
-# pecoでコマンド履歴を検索
-function peco-history () {
-    BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco`
+# @refs https://github.com/catppuccin/skim
+export SKIM_DEFAULT_OPTIONS="$SKIM_DEFAULT_OPTIONS \
+--color=fg:#cdd6f4,bg:#1e1e2e,matched:#313244,matched_bg:#f2cdcd,current:#cdd6f4,current_bg:#45475a,current_match:#1e1e2e,current_match_bg:#f5e0dc,spinner:#a6e3a1,info:#cba6f7,prompt:#89b4fa,cursor:#f38ba8,selected:#eba0ac,header:#94e2d5,border:#6c7086"
+
+# sk(skim)でコマンド履歴を検索
+function sk-history () {
+    BUFFER=`history -n 1 | tac | awk '!a[$0]++' | sk`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
-zle -N peco-history
-bindkey '^R' peco-history
+zle -N sk-history
+bindkey '^R' sk-history
 
-# ghq + peco でリポジトリ移動
-function peco-ghq () {
-    local selected_dir=$(ghq list -p | peco --prompt="ghq >" --query "$LBUFFER")
+# ghq + sk でリポジトリ移動
+function sk-ghq () {
+    local selected_dir=$(ghq list -p | sk --prompt="ghq >" --query "$LBUFFER")
     if [ -n "$selected_dir" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line
     fi
     zle clear-screen
 }
-zle -N peco-ghq
-bindkey '^]' peco-ghq
+zle -N sk-ghq
+bindkey '^]' sk-ghq
 
-# cdr + peco でディレクトリ移動
-function peco-cdr () {
-    local selected_dir=$(cdr -l | sed 's/^[0-9]\+ \+//' | peco --prompt="cdr >" --query "$LBUFFER")
+# cdr + sk でディレクトリ移動
+function sk-cdr () {
+    local selected_dir=$(cdr -l | sed 's/^[0-9]\+ \+//' | sk --prompt="cdr >" --query "$LBUFFER")
     if [ -n "$selected_dir" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line
     fi
     zle clear-screen
 }
-zle -N peco-cdr
-bindkey '^[' peco-cdr
+zle -N sk-cdr
+bindkey '^[' sk-cdr
