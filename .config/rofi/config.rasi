@@ -3,4 +3,6 @@ configuration {
   show-icons: true;
   icon-theme: "Papirus";
 }
-@theme "/home/i/.local/share/rofi/themes/rounded-gray-dark.rasi"
+
+/* @refs https://github.com/catppuccin/rofi */
+@theme "catppuccin-default"
