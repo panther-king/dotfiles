@@ -16,7 +16,7 @@ source $HOME/.cargo/env
 export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
 
 # mise
-eval "$($HOME/.cargo/bin/mise activate zsh)"
+eval "$(/usr/bin/mise activate zsh)"
 
 # dotnetコマンドパス
 [ -d ~/.dotnet ] && export PATH=$PATH:$HOME/.dotnet
