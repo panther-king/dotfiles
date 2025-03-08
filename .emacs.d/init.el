@@ -264,9 +264,14 @@
   :after (nerd-icons treemacs)
   :custom (treemacs-load-theme "nerd-icons"))
 
+;; treemacsとprojectileを統合する
 (use-package treemacs-projectile
   :ensure t
   :after (projectile treemacs))
+
+(use-package treemacs-magit
+  :ensure t
+  :after (treemacs magit))
 
 ;; EmacsにEditorConfigを認識させる
 (use-package editorconfig
