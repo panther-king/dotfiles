@@ -255,6 +255,7 @@
 (use-package treemacs
   :ensure t
   :bind ([f8] . treemacs)
+  :hook (treemacs-mode . (lambda () (display-line-numbers-mode -1)))
   :custom (treemacs-position 'right))  ;; フレーム右側に表示する
 
 ;; treemacsでnerd-iconsを利用する
