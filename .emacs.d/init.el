@@ -86,7 +86,7 @@
 (use-package uniquify
   :ensure nil
   :custom ((uniquify-buffer-name-style 'forward)  ;; ディレクトリ名はファイル名の前に表示する
-           (uniquify-min-dir-content 5)))         ;; 5階層まで表示する
+           (uniquify-min-dir-content 1)))         ;; centaur-tabs と競合するため1階層だけ表示する
 
 ;; モードラインの表示を分かりやすくする
 (use-package moody
@@ -272,6 +272,18 @@
 (use-package treemacs-magit
   :ensure t
   :after (treemacs magit))
+
+;; バッファをタブで管理する
+(use-package centaur-tabs
+  :demand
+  :ensure t
+  :config (centaur-tabs-mode t)
+  :custom ((centaur-tabs-gray-out-icons 'buffer)  ;; アクティブでないバッファのアイコンはグレーアウト
+           (centaur-tabs-style "box")             ;; タブスタイルはシンプルなスクエア
+           (centaur-tabs-set-icons t)             ;; タブにアイコンを表示する
+           (centaur-tabs-set-bar 'left)           ;; アクティブタブの左にバーを表示
+           (centaur-tabs-icon-type 'nerd-icons)   ;; アイコンはNerd Iconで統一
+           (centaur-tabs-height 28)))             ;; タブの高さは標準より少し高め
 
 ;; EmacsにEditorConfigを認識させる
 (use-package editorconfig
