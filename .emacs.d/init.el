@@ -27,26 +27,26 @@
 (add-to-list 'default-frame-alist '(alpha . (85 . 50)))           ;; ウインドウを透過する
 (add-to-list 'default-frame-alist '(font . "UDEV Gothic NF 14"))  ;; フォントはUDEV Gothic
 
-(custom-set-variables '(inhibit-startup-screen t)            ;; 起動画面を表示しない
-                      '(initial-scratch-message nil)         ;; Scratchバッファにメッセージは表示しない
-                      '(make-backup-files nil)               ;; バックアップファイルを作成しない
-                      '(auto-save-default nil)               ;; 自動保存を行わない
-                      '(create-lockfiles nil)                ;; ロックファイルを作成しない
-                      '(ring-bell-function 'ignore)          ;; ビープ音を無効化
-                      '(scroll-bar-mode nil)                 ;; スクロールバーは利用しない
-                      '(menu-bar-mode nil)                   ;; メニューバーは利用しない
-                      '(tool-bar-mode nil)                   ;; ツールバーは利用しない
-                      '(column-number-mode t)                ;; モードラインに列番号も表示する
-                      '(indent-tabs-mode nil)                ;; タブインデントは利用しない
-                      '(kill-whole-line t)                   ;; C-kで行末の改行コードごと削除する
-                      '(next-line-add-newlines nil)          ;; バッファの末尾で新しい行を追加しない
-                      '(require-final-newline t)             ;; ファイルの末尾は改行を必須にする
-                      '(vc-follow-symlinks t)                ;; 常にシンボリックリンクをたどる
-                      '(package-install-upgrade-built-in t)  ;; ビルトインパッケージも更新対象にする
-                      '(package-native-compile t)            ;; インストール時にネイティブコンパイルする
-                      '(cua-mode t)                          ;; 矩形編集のためにcua-modeを有効にする
-                      '(native-comp-async-report-warnings-errors 'silent)
-                      '(cua-enable-cua-keys nil))            ;; cuaのデフォルトキーバインドは利用しない
+(custom-set-variables '(inhibit-startup-screen t)                          ;; 起動画面を表示しない
+                      '(initial-scratch-message nil)                       ;; Scratchバッファにメッセージは表示しない
+                      '(make-backup-files nil)                             ;; バックアップファイルを作成しない
+                      '(auto-save-default nil)                             ;; 自動保存を行わない
+                      '(create-lockfiles nil)                              ;; ロックファイルを作成しない
+                      '(ring-bell-function 'ignore)                        ;; ビープ音を無効化
+                      '(scroll-bar-mode nil)                               ;; スクロールバーは利用しない
+                      '(menu-bar-mode nil)                                 ;; メニューバーは利用しない
+                      '(tool-bar-mode nil)                                 ;; ツールバーは利用しない
+                      '(column-number-mode t)                              ;; モードラインに列番号も表示する
+                      '(indent-tabs-mode nil)                              ;; タブインデントは利用しない
+                      '(kill-whole-line t)                                 ;; C-kで行末の改行コードごと削除する
+                      '(next-line-add-newlines nil)                        ;; バッファの末尾で新しい行を追加しない
+                      '(require-final-newline t)                           ;; ファイルの末尾は改行を必須にする
+                      '(vc-follow-symlinks t)                              ;; 常にシンボリックリンクをたどる
+                      '(package-install-upgrade-built-in t)                ;; ルトインパッケージも更新対象にする
+                      '(package-native-compile t)                          ;; インストール時にネイティブコンパイルする
+                      '(cua-mode t)                                        ;; 矩形編集のためにcua-modeを有効にする
+                      '(native-comp-async-report-warnings-errors 'silent)  ;; サブプロセスのネイティブコンパイル警告は *Warnings* に出す
+                      '(cua-enable-cua-keys nil))                          ;; cuaのデフォルトキーバインドは利用しない
 
 ;;
 ;; パッケージ設定
@@ -269,6 +269,7 @@
   :ensure t
   :after (projectile treemacs))
 
+;; treemacsとmagitを統合する
 (use-package treemacs-magit
   :ensure t
   :after (treemacs magit))
@@ -373,7 +374,7 @@
   :after magit
   :hook magit-mode
   :custom ((magit-delta-default-dark-theme "Catppuccin Mocha")   ;; bat --list-themes
-           (magit-delta-hide-plus-minus-markers nil)))  ;; diffの行頭に+/-を表示する
+           (magit-delta-hide-plus-minus-markers nil)))           ;; diffの行頭に+/-を表示する
 
 ;; ファイルの編集状況をフリンジに表示する
 (use-package git-gutter
