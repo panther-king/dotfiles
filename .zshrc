@@ -140,3 +140,5 @@ function sk-cdr () {
 }
 zle -N sk-cdr
 bindkey '^[' sk-cdr
+
+eval "$(zellij setup --generate-auto-start zsh)"

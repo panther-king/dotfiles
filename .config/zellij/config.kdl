@@ -412,3 +412,10 @@ default_mode "locked"
 // Default: true (if the host terminal supports it)
 //
 // support_kitty_keyboard_protocol false
+
+ui {
+    pane_frames {
+        hide_session_name true
+        rounded_corners true
+    }
+}
