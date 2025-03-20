@@ -133,23 +133,18 @@ keybinds clear-defaults=true {
         }
     }
     shared_among "normal" "locked" {
-        bind "Alt left" { MoveFocusOrTab "left"; }
-        bind "Alt down" { MoveFocus "down"; }
-        bind "Alt up" { MoveFocus "up"; }
-        bind "Alt right" { MoveFocusOrTab "right"; }
-        bind "Alt +" { Resize "Increase"; }
-        bind "Alt -" { Resize "Decrease"; }
-        bind "Alt =" { Resize "Increase"; }
-        bind "Alt [" { PreviousSwapLayout; }
-        bind "Alt ]" { NextSwapLayout; }
-        bind "Alt f" { ToggleFloatingPanes; }
-        bind "Alt h" { MoveFocusOrTab "left"; }
-        bind "Alt i" { MoveTab "left"; }
-        bind "Alt j" { MoveFocus "down"; }
-        bind "Alt k" { MoveFocus "up"; }
-        bind "Alt l" { MoveFocusOrTab "right"; }
-        bind "Alt n" { NewPane; }
-        bind "Alt o" { MoveTab "right"; }
+        bind "Ctrl Super enter" { NewPane; }
+        bind "Ctrl Super h" { MoveFocusOrTab "left"; }
+        bind "Ctrl Super j" { MoveFocus "down"; }
+        bind "Ctrl Super k" { MoveFocus "up"; }
+        bind "Ctrl Super l" { MoveFocusOrTab "right"; }
+        bind "Ctrl Super n" { MoveTab "right"; }
+        bind "Ctrl Super p" { MoveTab "left"; }
+        bind "Ctrl Super +" { Resize "Increase"; }
+        bind "Ctrl Super -" { Resize "Decrease"; }
+        bind "Ctrl Super [" { PreviousSwapLayout; }
+        bind "Ctrl Super ]" { NextSwapLayout; }
+        bind "Ctrl Super f" { ToggleFloatingPanes; }
     }
     shared_except "locked" "renametab" "renamepane" {
         bind "Ctrl g" { SwitchToMode "locked"; }
