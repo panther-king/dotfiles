@@ -110,7 +110,7 @@ export SKIM_DEFAULT_OPTIONS="$SKIM_DEFAULT_OPTIONS \
 
 # sk(skim)でコマンド履歴を検索
 function sk-history () {
-    BUFFER=`history -n 1 | sk --tac --no-sort`
+    BUFFER=`history -n 1 | sk`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
