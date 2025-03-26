@@ -105,10 +105,12 @@
 
 ;; 現在行をハイライトする
 (use-package hl-line
+  :ensure nil
   :custom (global-hl-line-mode t))  ;; 常にハイライトさせる
 
 ;; 行番号を表示させる
 (use-package display-line-numbers
+  :ensure nil
   :custom ((global-display-line-numbers-mode t)    ;; 常に表示させる
            (display-line-numbers-width-start t)))  ;; 行番号の幅を最大行に合わせる
 
@@ -130,7 +132,7 @@
 
 ;; スペース・タブを可視化する
 (use-package whitespace
-  :ensure t
+  :ensure nil
   :config (global-whitespace-mode t)
   :custom ((whitespace-style '(face               ;; 可視化の有効化
                                empty              ;; バッファ前後の空行を可視化
@@ -146,7 +148,7 @@
 
 ;; 対応するカッコを強調表示する
 (use-package paren
-  :ensure t
+  :ensure nil
   :config (show-paren-mode t)
   :custom ((show-paren-style 'mixed)                 ;; 対応カッコが画面外なら式全体をハイライトする
            (show-paren-when-point-inside-paren t)    ;; カーソルがカッコの内側にあってもハイライトする
@@ -221,6 +223,7 @@
 
 ;; ミニバッファの履歴を保存する
 (use-package savehist
+  :ensure nil
   :config (savehist-mode t))
 
 ;;
