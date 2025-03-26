@@ -73,7 +73,6 @@
 ;; テーマ設定
 ;;
 (use-package catppuccin-theme
-  :ensure t
   :init (load-theme 'catppuccin :no-confirm)
   :custom ((catppuccin-highlight-matches t)  ;; 検索キーワードをハイライトする
            (catppuccin-italic-comments t)))  ;; コメントは斜体にする
@@ -90,14 +89,12 @@
 
 ;; モードラインの表示を分かりやすくする
 (use-package moody
-  :ensure t
   :config (progn
             (moody-replace-mode-line-buffer-identification)
             (moody-replace-vc-mode)))
 
 ;; モードラインのマイナーモード表示をシンプルにする
 (use-package minions
-  :ensure t
   :config (minions-mode 1)
   :custom ((minions-prominent-mode '(flymake-mode))  ;; エラー情報を可視化するため、flymakeは常に表示する
            (minions-mode-line-lighter "[+]")))       ;; minor-modeを展開するUIを変更する
@@ -119,12 +116,10 @@
 
 ;; 特定操作の実行をハイライトする
 (use-package volatile-highlights
-  :ensure t
   :hook (after-init . volatile-highlights-mode))  ;; 全バッファで有効にする
 
 ;; インデントを可視化する
 (use-package highlight-indent-guides
-  :ensure t
   :config (custom-set-faces
            `(highlight-indent-guides-top-character-face
              ((t (:foreground ,(cdr (assoc 'overlay0 catppuccin-mocha-colors))))))
@@ -161,12 +156,10 @@
 
 ;; カッコの対応を色づけする
 (use-package rainbow-delimiters
-  :ensure t
   :hook prog-mode)
 
 ;; カッコを自動的に補完する
 (use-package smartparens
-  :ensure t
   :config (require 'smartparens-config)
   :hook prog-mode)
 
@@ -175,12 +168,10 @@
 ;;
 
 ;; アイコンを利用する
-(use-package nerd-icons
-  :ensure t)
+(use-package nerd-icons)
 
 ;; diredでもnerd-iconsのアイコンを利用する
 (use-package nerd-icons-dired
-  :ensure t
   :after nerd-icons
   :hook (dired-mode . nerd-icons-dired-mode))
 
@@ -206,27 +197,22 @@
 
 ;; undo履歴をツリー形式で可視化する
 (use-package undo-tree
-  :ensure t
   :custom ((global-undo-tree-mode t)            ;; 常に有効にする
            (undo-tree-auto-save-history nil)))  ;; 履歴をファイルに保存しない
 
 ;; シェルの環境変数を引き継ぐ
 (use-package exec-path-from-shell
-  :ensure t
   :config (exec-path-from-shell-initialize))  ;; すべての環境変数を引き継ぐ
 
 ;; 一時ファイルを作成する
 (use-package open-junk-file
-  :ensure t
   :custom (open-junk-file-format "/tmp/junk/%Y%m%d-%H%M%S."))  ;; 一時ファイルは/tmpに保存する
 
 ;; Emacsからroot権限でファイルを編集できるようにする
-(use-package sudo-edit
-  :ensure t)
+(use-package sudo-edit)
 
 ;; 検索にripgrepを利用する
 (use-package rg
-  :ensure t
   :config (rg-enable-default-bindings))  ;; magit同様のデフォルトキーバインドを利用する
 
 ;; 最近開いたファイルを保存する
@@ -247,37 +233,31 @@
 
 ;; Emacsでプロジェクト管理を行う
 (use-package projectile
-  :ensure t
   :bind ("C-c p" . projectile-command-map)
   :custom (projectile-mode +1))
 
 ;; ディレクトリ・ファイルツリーを表示する
 (use-package treemacs
-  :ensure t
   :bind ([f8] . treemacs)
   :hook (treemacs-mode . (lambda () (display-line-numbers-mode -1)))
   :custom (treemacs-position 'right))  ;; フレーム右側に表示する
 
 ;; treemacsでnerd-iconsを利用する
 (use-package treemacs-nerd-icons
-  :ensure t
   :after (nerd-icons treemacs)
   :custom (treemacs-load-theme "nerd-icons"))
 
 ;; treemacsとprojectileを統合する
 (use-package treemacs-projectile
-  :ensure t
   :after (projectile treemacs))
 
 ;; treemacsとmagitを統合する
 (use-package treemacs-magit
-  :ensure t
   :after (treemacs magit))
 
 ;; バッファをタブで管理する
 (use-package centaur-tabs
   :demand
-  :ensure t
   :config (centaur-tabs-mode t)
   :custom ((centaur-tabs-gray-out-icons 'buffer)  ;; アクティブでないバッファのアイコンはグレーアウト
            (centaur-tabs-style "box")             ;; タブスタイルはシンプルなスクエア
@@ -288,19 +268,16 @@
 
 ;; EmacsにEditorConfigを認識させる
 (use-package editorconfig
-  :ensure t
   :config (editorconfig-mode 1))
 
 ;; Emacsでmiseを利用する
 (use-package mise
-  :ensure t
   :hook (after-init . global-mise-mode))
 
 ;; EmacsでGithub Copilotを利用する
 (use-package copilot
   :bind (:map copilot-mode-map
               ("M-i" . copilot-accept-completion))
-  :ensure t
   :hook prog-mode
   :custom (copilot-indent-offset-warning-disable t))  ;; インデント警告を無効化する
 
@@ -328,13 +305,11 @@
 
 ;; よく利用する機能を特定のキーバインドにマッピングする
 (use-package bind-key
-  :ensure t
   :bind (("C-h" . delete-backward-char)  ;; 1文字前を削除
          ("C-'" . set-mark-command)))    ;; リージョン選択
 
 ;; prefixキーの次の操作をナビゲーションする
 (use-package which-key
-  :ensure t
   :config (which-key-mode 1))
 
 ;;
@@ -343,7 +318,6 @@
 
 ;; 日本語入力にDDSKKを利用する
 (use-package ddskk
-  :ensure t
   :bind ("C-SPC" . skk-mode)
   :custom ((skk-egg-like-newline t)                                                          ;; Enterキーでも入力を確定する
            (skk-show-annotation t)                                                           ;; 変換候補に注釈を表示する
@@ -363,14 +337,12 @@
 
 ;; gitをEmacsから操作する
 (use-package magit
-  :ensure t
   :bind (("C-x g" . magit-status)
          ("C-c g" . magit-dispatch)
          ("C-c f" . magit-file-dispatch)))
 
 ;; magitのdiff表示にdeltaを利用する
 (use-package magit-delta
-  :ensure t
   :after magit
   :hook magit-mode
   :custom ((magit-delta-default-dark-theme "Catppuccin Mocha")   ;; bat --list-themes
@@ -378,15 +350,13 @@
 
 ;; ファイルの編集状況をフリンジに表示する
 (use-package git-gutter
-  :ensure t
   :config (global-git-gutter-mode t)
   :custom ((git-gutter:modified-sign "~")   ;; 変更
            (git-gutter:added-sign "+")      ;; 追加
            (git-gutter:deleted-sign "!")))  ;; 削除
 
 ;; gitの設定ファイルメジャーモード
-(use-package git-modes
-  :ensure t)
+(use-package git-modes)
 
 ;;
 ;; 構文チェック設定
@@ -401,7 +371,6 @@
 
 ;; flymakeのエラーメッセージをポップアップで表示する
 (use-package flymake-diagnostic-at-point
-  :ensure t
   :after flymake
   :hook flymake-mode
   :custom (flymake-diagnostic-at-point-error-prefix "❯ "))
@@ -412,7 +381,6 @@
 
 ;; tree-sitterでハイライトをより正確にする
 (use-package treesit-auto
-  :ensure t
   :custom ((global-treesit-auto-modes t)
            (treesit-auto-install t)
            (treesit-font-lock-level 4)))
@@ -423,7 +391,6 @@
 
 ;; Elm
 (use-package elm-mode
-  :ensure t
   :after smartchr
   :custom (elm-format-on-save t)
   :hook ((elm-mode . eglot-ensure))
@@ -439,7 +406,6 @@
 
 ;; JavaScript
 (use-package js2-mode
-  :ensure t
   :after smartchr
   :mode "\\.js\\'"
   :config (progn
@@ -453,7 +419,6 @@
 
 ;; PHP
 (use-package php-mode
-  :ensure t
   :after smartchr
   :mode "\\.php\\'"
   :config (progn
@@ -467,7 +432,6 @@
 
 ;; Python
 (use-package python-mode
-  :ensure t
   :after smartchr
   :mode "\\.py\\'"
   :config (progn
@@ -486,7 +450,6 @@
 
 ;; F#
 (use-package fsharp-mode
-  :ensure t
   :after smartchr
   :config (progn
             (bind-key "=" (smartchr "=" " = ") fsharp-mode-map)
@@ -500,12 +463,10 @@
          (fsharp-mode . (lambda () (add-hook 'before-save-hook 'eglot-format-buffer nil 'local)))))
 
 (use-package eglot-fsharp
-  :ensure t
   :after fsharp-mode)
 
 ;; Rust
 (use-package rust-mode
-  :ensure t
   :after smartchr
   :hook (rust-mode . eglot-ensure)
   :config (progn
@@ -519,13 +480,11 @@
   :custom (rust-format-on-save t))  ;; 保存時にコーディングスタイルを整形する
 
 (use-package cargo
-  :ensure t
   :after rust-mode
   :hook (rust-mode . cargo-minor-mode))
 
 ;; Haskell
 (use-package haskell-mode
-  :ensure t
   :hook (haskell-mode . eglot-ensure))
 
 ;;
@@ -534,37 +493,30 @@
 
 ;; Dockerfile
 (use-package dockerfile-mode
-  :ensure t
   :mode "Dockerfile\\'")
 
 ;; JSON
 (use-package json-mode
-  :ensure t
   :mode "\\.json\\'"
   :custom (js-indent-level 2))
 
 ;; TOML
 (use-package toml-mode
-  :ensure t
   :mode ("\\.toml\\'" "^Pipfile\\'"))
 
 ;; YAML
 (use-package yaml-mode
-  :ensure t
   :mode "\\.ya?ml\\'")
 
 ;; Markdown
 (use-package markdown-mode
-  :ensure t
   :mode ("\\.md\\'" . gfm-mode)
   :custom (markdown-command "pandoc"))
 
-(use-package markdown-preview-mode
-  :ensure t)
+(use-package markdown-preview-mode)
 
 ;; PlantUML
 (use-package plantuml-mode
-  :ensure t
   :if (file-exists-p "/usr/share/java/plantuml/plantuml.jar")
   :mode "\\.p?uml\\'"
   :custom ((plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")  ;; pacmanで入るPlantUMLを利用する
@@ -573,7 +525,6 @@
 
 ;; HTML
 (use-package web-mode
-  :ensure t
   :mode ("\\.html\\'" "\\.css\\'" "\\.tsx\\'")
   :custom ((web-mode-markup-indent-offset 2)  ;; HTMLは2スペースインデント
            (web-mode-code-indent-offset 2)    ;; JavaScriptは2スペースインデント
@@ -583,7 +534,6 @@
 
 ;; Terraform
 (use-package terraform-mode
-  :ensure t
   :custom (terraform-format-on-save t))
 
 ;;
@@ -592,7 +542,6 @@
 
 ;; ミニバッファで補完を利用する
 (use-package vertico
-  :ensure t
   :init (vertico-mode)
   :custom ((vertico-cycle t)                            ;; 候補の先頭・末尾を移動できるようにする
            (vertico-sort-function 'vertico-sort-alpha)  ;; 候補はアルファベット順で表示する
@@ -607,7 +556,6 @@
 ;; 補完コマンドを利用する
 (use-package consult
   :after recentf
-  :ensure t
   :bind (("C-;" . consult-buffer)
          ("C-o" . consult-outline)
          ("C-s" . consult-line)
@@ -616,26 +564,21 @@
 
 ;; 順不同の複数キーワードで補完候補を絞り込む
 (use-package orderless
-  :ensure t
   :custom (completion-styles '(orderless basic)))
 
 ;; 補完候補の情報を表示する
 (use-package marginalia
-  :ensure t
   :hook after-init)
 
 ;; 補完候補に対するアクションを行えるようにする
-(use-package embark
-  :ensure t)
+(use-package embark)
 
 ;; consultとembarkを組み合わせて利用する
 (use-package embark-consult
-  :ensure t
   :after (consult embark))
 
 ;; コードの補完候補をポップアップする
 (use-package corfu
-  :ensure t
   :init (global-corfu-mode)
   :hook prog-mode
   :bind (:map corfu-map
@@ -646,13 +589,11 @@
 
 ;; 補完候補にアイコンを利用する
 (use-package kind-icon
-  :ensure t
   :after corfu
   :config (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 ;; 補完方法をカスタマイズする
-(use-package cape
-  :ensure t)
+(use-package cape)
 
 (provide 'init)
 
