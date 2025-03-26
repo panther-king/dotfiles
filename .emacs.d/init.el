@@ -293,13 +293,11 @@
 
 ;; 同一キーの入力で入力内容を切り替える
 (use-package smartchr
-  :vc (:fetcher github :repo imakado/emacs-smartchr)
-  :ensure nil)
+  :vc (:fetcher github :repo imakado/emacs-smartchr))
 
 ;; Emacsキーバインドを強制する
 (use-package drill-instructor
   :vc (:fetcher github :repo k1LoW/emacs-drill-instructor)
-  :ensure nil
   :config (setq drill-instructor-global t))  ;; 常にEmacsキーバインドを強制する
 
 ;; よく利用する機能を特定のキーバインドにマッピングする
