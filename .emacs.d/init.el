@@ -105,12 +105,10 @@
 
 ;; 現在行をハイライトする
 (use-package hl-line
-  :defer t
   :custom (global-hl-line-mode t))  ;; 常にハイライトさせる
 
 ;; 行番号を表示させる
 (use-package display-line-numbers
-  :defer t
   :custom ((global-display-line-numbers-mode t)    ;; 常に表示させる
            (display-line-numbers-width-start t)))  ;; 行番号の幅を最大行に合わせる
 
@@ -192,7 +190,6 @@
 
 ;; Emacs外でファイルが変更されたら自動的に読み込み直す
 (use-package autorevert
-  :defer t
   :commands global-auto-revert-mode)
 
 ;; undo履歴をツリー形式で可視化する
@@ -224,7 +221,6 @@
 
 ;; ミニバッファの履歴を保存する
 (use-package savehist
-  :defer t
   :config (savehist-mode t))
 
 ;;
@@ -364,7 +360,6 @@
 
 ;; Syntax checkにflymakeを利用する
 (use-package flymake
-  :defer t
   :hook prog-mode
   :bind (("<f12>" . flymake-goto-next-error)
          ("<f11>" . flymake-goto-prev-error)))
