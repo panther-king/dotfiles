@@ -256,7 +256,7 @@
 
 ;; バッファをタブで管理する
 (use-package centaur-tabs
-  :demand
+  :demand t  ;; 起動時にロード
   :config (centaur-tabs-mode t)
   :custom ((centaur-tabs-gray-out-icons 'buffer)  ;; アクティブでないバッファのアイコンはグレーアウト
            (centaur-tabs-style "box")             ;; タブスタイルはシンプルなスクエア
