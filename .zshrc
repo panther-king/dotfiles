@@ -119,7 +119,7 @@ bindkey '^R' sk-history
 
 # ghq + sk でリポジトリ移動
 function sk-ghq () {
-    local selected_dir=$(ghq list -p | sk --prompt="ghq >" --query "$LBUFFER")
+    local selected_dir=$(ghq list -p | sk --prompt="ghq > " --query "$LBUFFER")
     if [ -n "$selected_dir" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line
@@ -131,7 +131,7 @@ bindkey '^]' sk-ghq
 
 # cdr + sk でディレクトリ移動
 function sk-cdr () {
-    local selected_dir=$(cdr -l | sed 's/^[0-9]\+ \+//' | sk --prompt="cdr >" --query "$LBUFFER")
+    local selected_dir=$(cdr -l | sed 's/^[0-9]\+ \+//' | sk --prompt="cdr > " --query "$LBUFFER")
     if [ -n "$selected_dir" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line
