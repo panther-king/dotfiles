@@ -370,7 +370,8 @@
   :bind
   (("C-x g" . magit-status)
    ("C-c g" . magit-dispatch)
-   ("C-c f" . magit-file-dispatch)))
+   ("C-c f" . magit-file-dispatch))
+  :custom (auto-revert-check-vc-info t))  ;; magitのブランチ変更を自動的に検知する
 
 ;; magitのdiff表示にdeltaを利用する
 (use-package magit-delta
