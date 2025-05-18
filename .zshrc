@@ -15,9 +15,6 @@ alias -s pdf=mupdf
 source $HOME/.cargo/env
 export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
 
-# mise
-eval "$(/usr/bin/mise activate zsh)"
-
 # dotnetコマンドパス
 [ -d ~/.dotnet ] && export PATH=$PATH:$HOME/.dotnet
 
@@ -141,4 +138,8 @@ function sk-cdr () {
 zle -N sk-cdr
 bindkey '^[' sk-cdr
 
+# zellij
 eval "$(zellij setup --generate-auto-start zsh)"
+
+# mise
+eval "$(/usr/bin/mise activate zsh)"
