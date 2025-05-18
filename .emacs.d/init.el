@@ -336,7 +336,7 @@
 
 ;; 日本語入力にDDSKKを利用する
 (use-package ddskk
-  :bind ("C-SPC" . skk-mode)
+  :bind ("C-x j" . skk-mode)
   :custom
   ((skk-auto-insert-paren t)                                                       ;; 全角のカッコを自動補完する
    (skk-cursor-hiragana-color (cdr (assoc 'green catppuccin-mocha-colors)))        ;; ひらがなモード
