@@ -580,7 +580,7 @@
    (web-mode-markup-indent-offset 2)  ;; HTMLは2スペースインデント
    (web-mode-script-padding 2)
    (web-mode-style-padding 2))
-  :mode ("\\.html\\'" "\\.css\\'" "\\.tsx\\'"))
+  :mode ("\\.html\\'" "\\.css\\'" "\\.tsx\\'" "\\.blade\\.php\\'"))
 
 ;; YAML
 (use-package yaml-mode
