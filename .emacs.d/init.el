@@ -208,7 +208,7 @@
 
 ;; Emacs外でファイルが変更されたら自動的に読み込み直す
 (use-package autorevert
-  :commands global-auto-revert-mode)
+  :custom (global-auto-revert-mode t))  ;; 常に自動更新する
 
 ;; シェルの環境変数を引き継ぐ
 (use-package exec-path-from-shell
