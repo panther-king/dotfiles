@@ -117,9 +117,11 @@
 ;; 行番号を表示させる
 (use-package display-line-numbers
   :custom
-  ((display-line-numbers-width-start t)   ;; 行番号の幅を最大行に合わせる
-   (global-display-line-numbers-mode t))  ;; 常に表示させる
-  :ensure nil)
+  (display-line-numbers-width-start t)        ;; 行番号の幅を最大行に合わせる
+  :ensure nil
+  :hook
+  ((prog-mode . display-line-numbers-mode)    ;; プログラミングモードで行番号を表示する
+   (text-mode . display-line-numbers-mode)))  ;; テキストモードでも行番号を表示する
 
 ;; インデントを可視化する
 (use-package highlight-indent-guides
