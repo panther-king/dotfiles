@@ -197,11 +197,6 @@
   :after nerd-icons
   :hook (after-init . nerd-icons-completion-mode))
 
-;; diredでもnerd-iconsのアイコンを利用する
-(use-package nerd-icons-dired
-  :after nerd-icons
-  :hook (dired-mode . nerd-icons-dired-mode))
-
 ;;
 ;; 便利系拡張設定
 ;;
@@ -268,6 +263,28 @@
   :custom (copilot-indent-offset-warning-disable t)  ;; インデント警告を無効化する
   :hook prog-mode)
 
+;; dirvishでdiredを拡張する
+(use-package dirvish
+  :bind ("C-c d" . dirvish-side)
+  :config
+  (dirvish-side-follow-mode)
+  :custom
+  ((dirvish-attributes '(vc-state                ;; フリンジにgitの状態を表示する
+                         subtree-state           ;; ディレクトリの階層有無を表示する
+                         nerd-icons              ;; アイコンを表示する
+                         collapse                ;; 詳細を折りたたんで表示する
+                         file-modes              ;; パーミッションを表示する
+                         file-size               ;; ファイルサイズを表示する
+                         file-time               ;; タイムスタンプを表示する
+                         git-msg))               ;; 直近のgitコミットメッセージを表示する
+   (dirvish-mode-line-height 30)                 ;; モードラインの高さはmoodyのデフォルトに合わせる
+   (dirvish-side-attributes '(vc-state           ;; フリンジにgitの状態を表示する
+                              nerd-icons         ;; アイコンを表示する
+                              collapse))         ;; 詳細を折りたたんで表示する
+   (dirvish-time-format-string "%Y-%m-%d %R"))   ;; タイムスタンプは西暦4ケタで表示する
+  :init
+  (dirvish-override-dired-mode t))
+
 ;; EmacsにEditorConfigを認識させる
 (use-package editorconfig
   :config (editorconfig-mode 1))
@@ -287,25 +304,6 @@
 (use-package projectile
   :bind ("C-c p" . projectile-command-map)
   :custom (projectile-mode +1))
-
-;; ディレクトリ・ファイルツリーを表示する
-(use-package treemacs
-  :bind ([f8] . treemacs)
-  :custom (treemacs-position 'right)  ;; フレーム右側に表示する
-  :hook (treemacs-mode . (lambda () (display-line-numbers-mode -1))))
-
-;; treemacsとmagitを統合する
-(use-package treemacs-magit
-  :after (treemacs magit))
-
-;; treemacsでnerd-iconsを利用する
-(use-package treemacs-nerd-icons
-  :after (nerd-icons treemacs)
-  :custom (treemacs-load-theme "nerd-icons"))
-
-;; treemacsとprojectileを統合する
-(use-package treemacs-projectile
-  :after (projectile treemacs))
 
 ;;
 ;; キーバインド拡張設定
