@@ -416,6 +416,8 @@
           (python . ("https://github.com/tree-sitter/tree-sitter-python"))
           (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
           (toml . ("https://github.com/ikatyang/tree-sitter-toml/"))
+          (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))
+          (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))
           (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
   :config
   (dolist (element treesit-language-source-alist)
@@ -535,6 +537,13 @@
   :after rust-mode
   :hook (rust-mode . cargo-minor-mode))
 
+;; Typescript
+(use-package typescript-ts-mode
+  :custom (typescript-ts-mode-indent-level 2)  ;; TypeScriptのインデントは2スペース
+  :ensure nil
+  :mode (("\\.ts\\'" . typescript-ts-mode)
+        ("\\.tsx\\'" . typescript-ts-mode)))
+
 ;;
 ;; 構造化言語設定
 ;;
@@ -580,7 +589,7 @@
    (web-mode-markup-indent-offset 2)  ;; HTMLは2スペースインデント
    (web-mode-script-padding 2)
    (web-mode-style-padding 2))
-  :mode ("\\.html\\'" "\\.css\\'" "\\.tsx\\'" "\\.blade\\.php\\'"))
+  :mode ("\\.html\\'" "\\.css\\'" "\\.blade\\.php\\'"))
 
 ;; YAML
 (use-package yaml-mode
