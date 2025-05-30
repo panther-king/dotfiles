@@ -592,7 +592,7 @@
   :mode ("\\.html\\'" "\\.css\\'" "\\.blade\\.php\\'"))
 
 ;; YAML
-(use-package yaml-mode
+(use-package yaml-ts-mode
   :mode "\\.ya?ml\\'")
 
 ;;
