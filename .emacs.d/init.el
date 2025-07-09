@@ -592,8 +592,11 @@
   :mode ("\\.html\\'" "\\.css\\'" "\\.blade\\.php\\'"))
 
 ;; YAML
-(use-package yaml-ts-mode
+(use-package yaml-mode
   :mode "\\.ya?ml\\'")
+(use-package yaml-pro
+  :after yaml-mode
+  :hook (yaml-mode . yaml-pro-mode))
 
 ;;
 ;; 絞り込み・補完設定
