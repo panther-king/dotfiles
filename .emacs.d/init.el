@@ -575,7 +575,9 @@
 
 ;; Terraform
 (use-package terraform-mode
-  :custom (terraform-format-on-save t))
+  :custom
+  ((terraform-format-on-save t)
+   (terraform-command "tofu")))
 
 ;; TOML
 (use-package toml-mode
