@@ -652,6 +652,10 @@
 
 ;; ミニバッファで補完を利用する
 (use-package vertico
+  :bind
+  (:map vertico-map
+        ("C-v" . vertico-scroll-up)
+        ("M-v" . vertico-scroll-down))
   :custom
   ((vertico-count 20)                            ;; 候補表示は20個まで
    (vertico-cycle t)                             ;; 候補の先頭・末尾を移動できるようにする
