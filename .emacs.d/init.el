@@ -577,7 +577,8 @@
 (use-package terraform-mode
   :custom
   ((terraform-format-on-save t)
-   (terraform-command "tofu")))
+   (terraform-command "tofu"))
+  :hook (terraform-mode . eglot-ensure))
 
 ;; TOML
 (use-package toml-mode
