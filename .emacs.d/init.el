@@ -560,7 +560,8 @@
 ;; Markdown
 (use-package markdown-mode
   :mode ("\\.md\\'" . gfm-mode)
-  :custom (markdown-command "pandoc"))
+  :custom (markdown-command "pandoc")
+  :hook (markdown-mode . (lambda () (setq-local whitespace-action nil))))  ;; Markdown編集時に行末の空白を削除しない
 
 (use-package markdown-preview-mode)
 
