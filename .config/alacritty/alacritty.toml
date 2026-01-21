@@ -526,10 +526,10 @@ working_directory = "None"
 # @refs https://github.com/catppuccin/alacritty
 import = [
   # uncomment the flavour you want below:
-  #"~/.config/alacritty/catppuccin-latte.toml"
-  # "~/.config/alacritty/catppuccin-frappe.toml"
-  # "~/.config/alacritty/catppuccin-macchiato.toml"
-  "~/.config/alacritty/catppuccin-mocha.toml"
+  # "~/src/github.com/catppuccin/alacritty/catppuccin-latte.toml"
+  # "~/src/github.com/catppuccin/alacritty/catppuccin-frappe.toml"
+  # "~/src/github.com/catppuccin/alacritty/catppuccin-macchiato.toml"
+  "~/src/github.com/catppuccin/alacritty/catppuccin-mocha.toml"
 ]
 
 [[mouse.bindings]]
