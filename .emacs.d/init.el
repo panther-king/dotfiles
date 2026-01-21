@@ -121,6 +121,7 @@
   :ensure nil
   :hook
   ((prog-mode . display-line-numbers-mode)    ;; プログラミングモードで行番号を表示する
+   (conf-mode . display-line-numbers-mode)    ;; 設定ファイルモードでも行番号を表示する
    (text-mode . display-line-numbers-mode)))  ;; テキストモードでも行番号を表示する
 
 ;; インデントを可視化する
