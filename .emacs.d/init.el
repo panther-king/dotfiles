@@ -408,12 +408,16 @@
   :init
   (setq treesit-language-source-alist
         '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
+          (css . ("https://github.com/tree-sitter/tree-sitter-css"))
           (dockerfile . ("https://github.com/camdencheek/tree-sitter-dockerfile"))
           (haskell . ("https://github.com/tree-sitter/tree-sitter-haskell"))
+          (html . ("https://github.com/tree-sitter/tree-sitter-html"))
           (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))
+          (jsdoc . ("https://github.com/tree-sitter/tree-sitter-jsdoc"))
           (json . ("https://github.com/tree-sitter/tree-sitter-json"))
           (markdown . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
           (php . ("https://github.com/tree-sitter/tree-sitter-php" "master" "php/src"))
+          (phpdoc . ("https://github.com/claytonrcarter/tree-sitter-phpdoc"))
           (python . ("https://github.com/tree-sitter/tree-sitter-python"))
           (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
           (toml . ("https://github.com/ikatyang/tree-sitter-toml/"))
@@ -487,8 +491,11 @@
   :mode "\\.js\\'")
 
 ;; PHP
+;; paru -S nodejs-intelephense
 (use-package php-mode
   :after smartchr
+  :custom
+  ((php-mode-coding-style 'psr12))
   :config
   (progn
     (bind-key "=" (smartchr "=" " = " " === " " == ") php-mode-map)
@@ -497,7 +504,9 @@
     (bind-key ">" (smartchr ">" "->" " => " " > " " >= ") php-mode-map)
     (bind-key "<" (smartchr "<" " <= " " =< " " <<< ") php-mode-map)
     (bind-key "!" (smartchr "!" " !== " " != ") php-mode-map))
-  :hook (php-mode . php-enable-psr2-coding-style)
+  :hook
+  ((php-mode . eglot-ensure)
+   (php-mode . (lambda () (add-hook 'before-save-hook 'eglot-format-buffer nil 'local))))
   :mode "\\.php\\'")
 
 ;; Python
