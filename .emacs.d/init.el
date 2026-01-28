@@ -262,9 +262,14 @@
 (use-package copilot
   :bind
   (:map copilot-mode-map
-        ("M-i" . copilot-accept-completion))
-  :custom (copilot-indent-offset-warning-disable t)  ;; インデント警告を無効化する
-  :hook prog-mode)
+        ("C-c" . copilot-complete)             ;; 補完候補を表示する
+        ("M-i" . copilot-accept-completion))   ;; 補完を受け入れる
+  :custom
+  ((copilot-idle-delay nil)                    ;; 自動補完を無効にする
+   (copilot-indent-offset-warning-disable t))  ;; インデント警告を無効化する
+  :hook
+  (prog-mode . copilot-mode)
+  (text-mode . copilot-mode))
 
 ;; dirvishでdiredを拡張する
 (use-package dirvish
