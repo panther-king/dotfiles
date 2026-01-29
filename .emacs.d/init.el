@@ -345,13 +345,16 @@
   :bind ("C-x j" . skk-mode)
   :custom
   ((skk-auto-insert-paren t)                                                       ;; 全角のカッコを自動補完する
+   (skk-use-jisx0201-input-method t)                                               ;; 半角カナモードを利用する
    (skk-cursor-hiragana-color (cdr (assoc 'green catppuccin-mocha-colors)))        ;; ひらがなモード
    (skk-cursor-jisx0208-latin-color (cdr (assoc 'mauve catppuccin-mocha-colors)))  ;; 全角英数モード
    (skk-cursor-katakana-color (cdr (assoc 'red catppuccin-mocha-colors)))          ;; カタカナモード
+   (skk-cursor-jisx0201-color (cdr (assoc 'yellow catppuccin-mocha-colors)))       ;; 半角カナモード
    (skk-egg-like-newline t)                                                        ;; Enterキーでも入力を確定する
    (skk-hiragana-mode-string "[あ]")                                               ;; ひらがなモードのモードライン表示
    (skk-jisx0208-latin-mode-string "[Ａ]")                                         ;; 全角英数モードのモードライン表示
    (skk-katakana-mode-string "[ア]")                                               ;; カタカナモードのモードライン表示
+   (skk-jisx0201-mode-sring "[ｱ]")                                                 ;; 半角カナモードのモードライン表示
    (skk-latin-mode-string "[_A]")                                                  ;; ASCIIモードのモードライン表示
    (skk-show-annotation t)                                                         ;; 変換候補に注釈を表示する
    (skk-use-color-cursor t)))                                                      ;; カーソルカラーでモードが判別できるようにする
