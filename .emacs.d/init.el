@@ -250,7 +250,19 @@
   :config
   (add-to-list 'eglot-server-programs
                ;; paru -S nodejs-intelephense
-               '(php-mode . ("intelephense" "--stdio"))))
+               '(php-mode . ("intelephense" "--stdio")))
+  :hook
+  ((elm-mode . eglot-ensure)
+   (fsharp-mode . eglot-ensure)
+   (haskell-mode . eglot-ensure)
+   (js2-mode . eglot-ensure)
+   (php-mode . eglot-ensure)
+   (python-mode . eglot-ensure)
+   (rust-mode . eglot-ensure)
+   (terraform-mode . eglot-ensure)
+   (typescript-ts-mode . eglot-ensure)
+   (eglot-managed-mode . (lambda ()
+                           (add-hook 'before-save-hook 'eglot-format-buffer -10 t)))))
 
 ;; バッファをタブで管理する
 (use-package centaur-tabs
@@ -507,22 +519,15 @@
 ;;
 
 ;; Elm
-(use-package elm-mode
-  :custom (elm-format-on-save t)
-  :hook ((elm-mode . eglot-ensure)))
+(use-package elm-mode)
 
 ;; F#
-(use-package fsharp-mode
-  :hook
-  ((fsharp-mode . eglot-ensure)
-   (fsharp-mode . (lambda () (add-hook 'before-save-hook 'eglot-format-buffer nil 'local)))))
-
+(use-package fsharp-mode)
 (use-package eglot-fsharp
   :after fsharp-mode)
 
 ;; Haskell
-(use-package haskell-mode
-  :hook (haskell-mode . eglot-ensure))
+(use-package haskell-mode)
 
 ;; JavaScript
 (use-package js2-mode
@@ -532,16 +537,11 @@
 ;; PHP
 ;; paru -S nodejs-intelephense
 (use-package php-mode
-  :custom
-  (php-mode-coding-style 'psr2)
-  :hook
-  ((php-mode . eglot-ensure)
-   (php-mode . (lambda () (add-hook 'before-save-hook 'eglot-format-buffer nil 'local))))
+  :custom (php-mode-coding-style 'psr2)
   :mode "\\.php\\'")
 
 ;; Python
 (use-package python-mode
-  :hook (python-mode . eglot-ensure)
   :mode "\\.py\\'")
 
 ;; Shell script
@@ -550,10 +550,7 @@
   :mode "\\.z?sh\\'" "\\.env\\'" "\\.sample\\'" "rc\\'")
 
 ;; Rust
-(use-package rust-mode
-  :custom (rust-format-on-save t)
-  :hook (rust-mode . eglot-ensure))
-
+(use-package rust-mode)
 (use-package cargo
   :after rust-mode
   :hook (rust-mode . cargo-minor-mode))
@@ -583,7 +580,6 @@
   :mode ("\\.md\\'" . gfm-mode)
   :custom (markdown-command "pandoc")
   :hook (markdown-mode . (lambda () (setq-local whitespace-action nil))))  ;; Markdown編集時に行末の空白を削除しない
-
 (use-package markdown-preview-mode)
 
 ;; PlantUML
@@ -597,10 +593,7 @@
 
 ;; Terraform
 (use-package terraform-mode
-  :custom
-  ((terraform-format-on-save t)
-   (terraform-command "tofu"))
-  :hook (terraform-mode . eglot-ensure))
+  :custom (terraform-command "tofu"))
 
 ;; TOML
 (use-package toml-mode
