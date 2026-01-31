@@ -246,6 +246,13 @@
 ;; IDE設定
 ;;
 
+(use-package eglot
+  :ensure nil
+  :config
+  (add-to-list 'eglot-server-programs
+               ;; paru -S nodejs-intelephense
+               '(php-mode . ("intelephense" "--stdio"))))
+
 ;; バッファをタブで管理する
 (use-package centaur-tabs
   :config (centaur-tabs-mode t)
