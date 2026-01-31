@@ -553,7 +553,6 @@
 ;; Rust
 (use-package rust-mode)
 (use-package cargo
-  :after rust-mode
   :hook (rust-mode . cargo-minor-mode))
 
 ;; Typescript
@@ -615,7 +614,6 @@
 (use-package yaml-mode
   :mode "\\.ya?ml\\'")
 (use-package yaml-pro
-  :after yaml-mode
   :hook (yaml-mode . yaml-pro-mode))
 
 ;;
@@ -624,7 +622,6 @@
 
 ;; 補完コマンドを利用する
 (use-package consult
-  :after recentf
   :bind
   (("C-;" . consult-buffer)
    ("C-o" . consult-outline)
@@ -641,7 +638,6 @@
   :custom
   (corfu-cycle t)
   (corfu-auto t)
-  :hook prog-mode
   :init (global-corfu-mode))
 
 ;; 補完候補の情報を表示する
