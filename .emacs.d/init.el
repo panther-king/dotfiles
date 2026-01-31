@@ -462,17 +462,11 @@
 
 ;; Syntax checkにflymakeを利用する
 (use-package flymake
-  :hook prog-mode
   :bind
   (("<f12>" . flymake-goto-next-error)
    ("<f11>" . flymake-goto-prev-error))
-  :ensure nil)
-
-;; flymakeのエラーメッセージをポップアップで表示する
-(use-package flymake-diagnostic-at-point
-  :after flymake
-  :custom (flymake-diagnostic-at-point-error-prefix "❯ ")
-  :hook flymake-mode)
+  :ensure nil
+  :hook prog-mode)
 
 ;;
 ;; 構文ハイライト設定
