@@ -337,6 +337,66 @@
 
 ;; 同一キーの入力で入力内容を切り替える
 (use-package smartchr
+  :config
+  (declare-function smartchr "smartchr" (&rest strings))  ;; 古い関数でautoloadコメントが無いため、ここで伝えておく
+  ;; Elm
+  (defun my/elm-smartchr-init ()
+    (local-set-key (kbd "=") (smartchr "=" " = " " == "))
+    (local-set-key (kbd "+") (smartchr "+" " ++ " " + "))
+    (local-set-key (kbd "-") (smartchr "-" " - "))
+    (local-set-key (kbd ">") (smartchr ">" " > " " -> " " >> "))
+    (local-set-key (kbd "<") (smartchr "<" " < " " <- " " << "))
+    (local-set-key (kbd "|") (smartchr "|" "|> " "<| " " | "))
+    (local-set-key (kbd ":") (smartchr ":" " : " " :: ")))
+  ;; F#
+  (defun my/fsharp-smartchr-init ()
+    (local-set-key (kbd "=") (smartchr "=" " = "))
+    (local-set-key (kbd "+") (smartchr "+" " + "))
+    (local-set-key (kbd "-") (smartchr "-" " - "))
+    (local-set-key (kbd ">") (smartchr ">" " > " " -> " " >> " " >=> " " >= "))
+    (local-set-key (kbd "<") (smartchr "<" "<`!!'>" " < " " <- " " << " " <= "))
+    (local-set-key (kbd ":") (smartchr ":" ": " " :: "))
+    (local-set-key (kbd "|") (smartchr "|" "|> " "<| " " | ")))
+  ;; JavaScript
+  (defun my/js2-smartchr-init ()
+    (local-set-key (kbd "=") (smartchr "=" " = " " === " " == "))
+    (local-set-key (kbd "+") (smartchr "+" " += " "++"))
+    (local-set-key (kbd "-") (smartchr "-" "-=" "--"))
+    (local-set-key (kbd ">") (smartchr ">" "->" " => " " > " " >= "))
+    (local-set-key (kbd "<") (smartchr "<" " <= " " =< " " <<< "))
+    (local-set-key (kbd "!") (smartchr "!" " !== " " != ")))
+  ;; PHP
+  (defun my/php-smartchr-init ()
+    (local-set-key (kbd "=") (smartchr "=" " = " " === " " == "))
+    (local-set-key (kbd "+") (smartchr "+" " += " "++"))
+    (local-set-key (kbd "-") (smartchr "-" "-=" "--"))
+    (local-set-key (kbd ">") (smartchr ">" "->" " => " " > " " >= "))
+    (local-set-key (kbd "<") (smartchr "<" " <= " " =< " " <<< "))
+    (local-set-key (kbd "!") (smartchr "!" " !== " " != ")))
+  ;; Python
+  (defun my/python-smartchr-init ()
+    (local-set-key (kbd "=") (smartchr "=" " = " " == "))
+    (local-set-key (kbd "+") (smartchr "+" " + " " += "))
+    (local-set-key (kbd "-") (smartchr "-" " - " " -= "))
+    (local-set-key (kbd "<") (smartchr "<" " < " " <= "))
+    (local-set-key (kbd ">") (smartchr ">" " > " " >= " " -> "))
+    (local-set-key (kbd "!") (smartchr "!" " != ")))
+  ;; Rust
+  (defun my/rust-smartchr-init ()
+    (local-set-key (kbd "=") (smartchr "=" " = " " == "))
+    (local-set-key (kbd "+") (smartchr "+" " + " " += "))
+    (local-set-key (kbd "-") (smartchr "-" " - " " -= "))
+    (local-set-key (kbd ">") (smartchr ">" " > " " -> " " => " " >= "))
+    (local-set-key (kbd "<") (smartchr "<" "<`!!'>" " < " " <- " " <= "))
+    (local-set-key (kbd "!") (smartchr "!" " != "))
+    (local-set-key (kbd "|") (smartchr "|" "|`!!'|" " || " " | ")))
+  :hook
+  ((elm-mode . my/elm-smartchr-init)
+   (fsharp-mode . my/fsharp-smartchr-init)
+   (js2-mode . my/js2-smartchr-init)
+   (php-mode . my/php-smartchr-init)
+   (python-mode . my/python-smartchr-init)
+   (rust-mode . my/rust-smartchr-init))
   :vc (:fetcher github :repo imakado/emacs-smartchr))
 
 ;; prefixキーの次の操作をナビゲーションする
@@ -455,31 +515,11 @@
 
 ;; Elm
 (use-package elm-mode
-  :after smartchr
-  :config
-  (progn
-    (bind-key "=" (smartchr "=" " = " " == " ) elm-mode-map)
-    (bind-key "+" (smartchr "+" " ++ " " + ") elm-mode-map)
-    (bind-key "-" (smartchr "-" " - ") elm-mode-map)
-    (bind-key ">" (smartchr ">" " > " " -> " " >> ") elm-mode-map)
-    (bind-key "<" (smartchr "<" " < " " <- " " << ") elm-mode-map)
-    (bind-key "|" (smartchr "|" "|> " "<| " " | ") elm-mode-map)
-    (bind-key ":" (smartchr ":" " : " " :: ") elm-mode-map))
   :custom (elm-format-on-save t)
   :hook ((elm-mode . eglot-ensure)))
 
 ;; F#
 (use-package fsharp-mode
-  :after smartchr
-  :config
-  (progn
-    (bind-key "=" (smartchr "=" " = ") fsharp-mode-map)
-    (bind-key "+" (smartchr "+" " + ") fsharp-mode-map)
-    (bind-key "-" (smartchr "-" " - ") fsharp-mode-map)
-    (bind-key ">" (smartchr ">" " > " " -> " " >> " " >=> " " >= ") fsharp-mode-map)
-    (bind-key "<" (smartchr "<" "<`!!'>" " < " " <- " " << " " <= ") fsharp-mode-map)
-    (bind-key ":" (smartchr ":" ": " " :: ") fsharp-mode-map)
-    (bind-key "|" (smartchr "|" "|> " "<| " " | ") fsharp-mode-map))
   :hook
   ((fsharp-mode . eglot-ensure)
    (fsharp-mode . (lambda () (add-hook 'before-save-hook 'eglot-format-buffer nil 'local)))))
@@ -493,32 +533,14 @@
 
 ;; JavaScript
 (use-package js2-mode
-  :after smartchr
-  :config
-  (progn
-    (bind-key "=" (smartchr "=" " = " " === " " == ") js2-mode-map)
-    (bind-key "+" (smartchr "+" " + " " += " "++") js2-mode-map)
-    (bind-key "-" (smartchr "-" " - " " -= " "--") js2-mode-map)
-    (bind-key ">" (smartchr ">" " > " " => " " >= ") js2-mode-map)
-    (bind-key "<" (smartchr "<" " < " " <= ") js2-mode-map)
-    (bind-key "!" (smartchr "!" " !== " " != ") js2-mode-map))
   :custom (js-indent-level 2)
   :mode "\\.js\\'")
 
 ;; PHP
 ;; paru -S nodejs-intelephense
 (use-package php-mode
-  :after smartchr
   :custom
-  ((php-mode-coding-style 'psr2))
-  :config
-  (progn
-    (bind-key "=" (smartchr "=" " = " " === " " == ") php-mode-map)
-    (bind-key "+" (smartchr "+" " += " "++") php-mode-map)
-    (bind-key "-" (smartchr "-" " -= " "--") php-mode-map)
-    (bind-key ">" (smartchr ">" "->" " => " " > " " >= ") php-mode-map)
-    (bind-key "<" (smartchr "<" " <= " " =< " " <<< ") php-mode-map)
-    (bind-key "!" (smartchr "!" " !== " " != ") php-mode-map))
+  (php-mode-coding-style 'psr2)
   :hook
   ((php-mode . eglot-ensure)
    (php-mode . (lambda () (add-hook 'before-save-hook 'eglot-format-buffer nil 'local))))
@@ -526,15 +548,6 @@
 
 ;; Python
 (use-package python-mode
-  :after smartchr
-  :config
-  (progn
-    (bind-key "=" (smartchr "=" " = " " == ") python-mode-map)
-    (bind-key "+" (smartchr "+" " + " " += ") python-mode-map)
-    (bind-key "-" (smartchr "-" " - " " -= ") python-mode-map)
-    (bind-key "<" (smartchr "<" " < " " <= ") python-mode-map)
-    (bind-key ">" (smartchr ">" " > " " >= " " -> ") python-mode-map)
-    (bind-key "!" (smartchr "!" " != ") python-mode-map))
   :hook (python-mode . eglot-ensure)
   :mode "\\.py\\'")
 
@@ -545,16 +558,6 @@
 
 ;; Rust
 (use-package rust-mode
-  :after smartchr
-  :config
-  (progn
-    (bind-key "=" (smartchr "=" " = " " == ") rust-mode-map)
-    (bind-key "+" (smartchr "+" " + " " += ") rust-mode-map)
-    (bind-key "-" (smartchr "-" " - " " -= ") rust-mode-map)
-    (bind-key ">" (smartchr ">" " > " " -> " " => " " >= ") rust-mode-map)
-    (bind-key "<" (smartchr "<" "<`!!'>" " < " " <- " " <= ") rust-mode-map)
-    (bind-key "!" (smartchr "!" " != ") rust-mode-map)
-    (bind-key "|" (smartchr "|" "|`!!'|" " || " " | ") rust-mode-map))
   :custom (rust-format-on-save t)
   :hook (rust-mode . eglot-ensure))
 
