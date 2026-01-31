@@ -503,7 +503,7 @@
 (use-package php-mode
   :after smartchr
   :custom
-  ((php-mode-coding-style 'psr12))
+  ((php-mode-coding-style 'psr2))
   :config
   (progn
     (bind-key "=" (smartchr "=" " = " " === " " == ") php-mode-map)
