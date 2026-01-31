@@ -237,10 +237,9 @@
 (use-package sudo-edit)
 
 ;; undo履歴をツリー形式で可視化する
-(use-package undo-tree
-  :custom
-  ((global-undo-tree-mode t)            ;; 常に有効にする
-   (undo-tree-auto-save-history nil)))  ;; 履歴をファイルに保存しない
+(use-package vundo
+  :bind ("C-x u" . vundo)
+  :custom (vundo-glyph-alist vundo-unicode-symbols))  ;; 差分ツリーはユニコードも利用する
 
 ;;
 ;; IDE設定
