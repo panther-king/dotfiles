@@ -24,35 +24,33 @@
 ;; ベース設定
 ;;
 
-(fset 'yes-or-no-p 'y-or-n-p)                                     ;; プロンプトでyes/noを短縮する
-(add-to-list 'default-frame-alist '(alpha . (85 . 50)))           ;; ウインドウを透過する
-(add-to-list 'default-frame-alist '(font . "UDEV Gothic NF 14"))  ;; フォントはUDEV Gothic
-
-(custom-set-variables
- '(auto-save-default nil)                             ;; 自動保存を行わない
- '(column-number-mode t)                              ;; モードラインに列番号も表示する
- '(create-lockfiles nil)                              ;; ロックファイルを作成しない
- '(cua-mode t)                                        ;; 矩形編集のためにcua-modeを有効にする
- '(cua-enable-cua-keys nil)                           ;; cuaのデフォルトキーバインドは利用しない
- '(indent-tabs-mode nil)                              ;; タブインデントは利用しない
- '(inhibit-startup-screen t)                          ;; 起動画面を表示しない
- '(initial-scratch-message nil)                       ;; Scratchバッファにメッセージは表示しない
- '(kill-whole-line t)                                 ;; C-kで行末の改行コードごと削除する
- '(make-backup-files nil)                             ;; バックアップファイルを作成しない
- '(menu-bar-mode nil)                                 ;; メニューバーは利用しない
- '(native-comp-async-report-warnings-errors 'silent)  ;; サブプロセスのネイティブコンパイル警告は *Warnings* に出す
- '(next-line-add-newlines nil)                        ;; バッファの末尾で新しい行を追加しない
- '(package-install-upgrade-built-in t)                ;; ビルトインパッケージも更新対象にする
- '(package-native-compile t)                          ;; インストール時にネイティブコンパイルする
- '(require-final-newline t)                           ;; ファイルの末尾は改行を必須にする
- '(ring-bell-function 'ignore)                        ;; ビープ音を無効化
- '(scroll-bar-mode nil)                               ;; スクロールバーは利用しない
- '(tool-bar-mode nil)                                 ;; ツールバーは利用しない
- '(vc-follow-symlinks t))                             ;; 常にシンボリックリンクをたどる
-
-(global-set-key (kbd "C-]") 'hs-toggle-hiding)
-(add-hook 'prog-mode-hook
-          #'(lambda () (hs-minor-mode 1)))
+(use-package emacs
+  :ensure nil
+  :config
+  (fset 'yes-or-no-p 'y-or-n-p)                                     ;; プロンプトでyes/noを短縮する
+  (add-to-list 'default-frame-alist '(alpha . (85 . 50)))           ;; ウインドウを透過する
+  (add-to-list 'default-frame-alist '(font . "UDEV Gothic NF 14"))  ;; フォントはUDEV Gothic
+  :custom
+  (auto-save-default nil)                             ;; 自動保存を行わない
+  (column-number-mode t)                              ;; モードラインに列番号も表示する
+  (create-lockfiles nil)                              ;; ロックファイルを作成しない
+  (cua-mode t)                                        ;; 矩形編集のためにcua-modeを有効にする
+  (cua-enable-cua-keys nil)                           ;; cuaのデフォルトキーバインドは利用しない
+  (indent-tabs-mode nil)                              ;; タブインデントは利用しない
+  (inhibit-startup-screen t)                          ;; 起動画面を表示しない
+  (initial-scratch-message nil)                       ;; Scratchバッファにメッセージは表示しない
+  (kill-whole-line t)                                 ;; C-kで行末の改行コードごと削除する
+  (make-backup-files nil)                             ;; バックアップファイルを作成しない
+  (menu-bar-mode nil)                                 ;; メニューバーは利用しない
+  (native-comp-async-report-warnings-errors 'silent)  ;; サブプロセスのネイティブコンパイル警告は *Warnings* に出す
+  (next-line-add-newlines nil)                        ;; バッファの末尾で新しい行を追加しない
+  (package-install-upgrade-built-in t)                ;; ビルトインパッケージも更新対象にする
+  (package-native-compile t)                          ;; インストール時にネイティブコンパイルする
+  (require-final-newline t)                           ;; ファイルの末尾は改行を必須にする
+  (ring-bell-function 'ignore)                        ;; ビープ音を無効化
+  (scroll-bar-mode nil)                               ;; スクロールバーは利用しない
+  (tool-bar-mode nil)                                 ;; ツールバーは利用しない
+  (vc-follow-symlinks t))                             ;; 常にシンボリックリンクをたどる
 
 ;;
 ;; パッケージ設定
@@ -268,6 +266,12 @@
   :config (eglot-booster-mode)
   :vc (:fetcher github :repo "jdtsmith/eglot-booster"))
 
+;; コードブロックの折り畳みキーバインド
+(use-package hideshow
+  :bind ("C-]" . hs-toggle-hiding)
+  :ensure nil
+  :hook (prog-mode . hs-minor-mode))
+
 ;; バッファをタブで管理する
 (use-package centaur-tabs
   :config (centaur-tabs-mode t)
@@ -284,14 +288,14 @@
 (use-package copilot
   :bind
   (:map copilot-mode-map
-        ("C-c" . copilot-complete)             ;; 補完候補を表示する
+        ("C-c c" . copilot-complete)           ;; 補完候補を表示する
         ("M-i" . copilot-accept-completion))   ;; 補完を受け入れる
   :custom
   ((copilot-idle-delay nil)                    ;; 自動補完を無効にする
    (copilot-indent-offset-warning-disable t))  ;; インデント警告を無効化する
   :hook
-  (prog-mode . copilot-mode)
-  (text-mode . copilot-mode))
+  ((prog-mode . copilot-mode)
+   (text-mode . copilot-mode)))
 
 ;; dirvishでdiredを拡張する
 (use-package dirvish
