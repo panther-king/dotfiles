@@ -187,7 +187,9 @@
 ;; corfuでもnerd-iconsを利用する
 (use-package nerd-icons-corfu
   :after corfu nerd-icons
-  :config (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
+  :config
+  (defvar corfu-margin-formatters)
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
   :vc (:fetcher github :repo LuigiPiucco/nerd-icons-corfu))
 
 ;; verticoでもnerd-iconsを利用する
