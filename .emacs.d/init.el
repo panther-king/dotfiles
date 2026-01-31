@@ -291,19 +291,20 @@
   :bind ("C-c d" . dirvish-side)
   :config (dirvish-side-follow-mode)
   :custom
-  (dirvish-attributes '(vc-state                ;; フリンジにgitの状態を表示する
-                        subtree-state           ;; ディレクトリの階層有無を表示する
-                        nerd-icons              ;; アイコンを表示する
-                        collapse                ;; 詳細を折りたたんで表示する
-                        file-modes              ;; パーミッションを表示する
-                        file-size               ;; ファイルサイズを表示する
-                        file-time               ;; タイムスタンプを表示する
-                        git-msg))               ;; 直近のgitコミットメッセージを表示する
-  (dirvish-mode-line-height 30)                 ;; モードラインの高さはmoodyのデフォルトに合わせる
-  (dirvish-side-attributes '(vc-state           ;; フリンジにgitの状態を表示する
-                             nerd-icons         ;; アイコンを表示する
-                             collapse))         ;; 詳細を折りたたんで表示する
-  (dirvish-time-format-string "%Y-%m-%d %R")    ;; タイムスタンプは西暦4ケタで表示する
+  (dirvish-attributes '(vc-state                             ;; フリンジにgitの状態を表示する
+                        subtree-state                        ;; ディレクトリの階層有無を表示する
+                        nerd-icons                           ;; アイコンを表示する
+                        collapse                             ;; 詳細を折りたたんで表示する
+                        file-modes                           ;; パーミッションを表示する
+                        file-size                            ;; ファイルサイズを表示する
+                        file-time                            ;; タイムスタンプを表示する
+                        git-msg))                            ;; 直近のgitコミットメッセージを表示する
+  (dirvish-mode-line-height 30)                              ;; モードラインの高さはmoodyのデフォルトに合わせる
+  (dirvish-side-attributes '(vc-state                        ;; フリンジにgitの状態を表示する
+                             nerd-icons                      ;; アイコンを表示する
+                             collapse))                      ;; 詳細を折りたたんで表示する
+  (dirvish-project-root-function #'projectile-project-root)  ;; projectileのrootを認識させる
+  (dirvish-time-format-string "%Y-%m-%d %R")                 ;; タイムスタンプは西暦4ケタで表示する
   :init (dirvish-override-dired-mode t))
 
 ;; EmacsにEditorConfigを認識させる
