@@ -102,7 +102,7 @@
 (use-package uniquify
   :custom
   (uniquify-buffer-name-style 'forward)  ;; ディレクトリ名はファイル名の前に表示する
-  (uniquify-min-dir-content 1)           ;; centaur-tabs と競合するため1階層だけ表示する
+  (uniquify-min-dir-content 2)           ;; 同名ファイルを判別できるよう親階層も表示させる
   :ensure nil)
 
 ;;
@@ -272,18 +272,6 @@
   :bind ("C-]" . hs-toggle-hiding)
   :ensure nil
   :hook (prog-mode . hs-minor-mode))
-
-;; バッファをタブで管理する
-(use-package centaur-tabs
-  :config (centaur-tabs-mode t)
-  :custom
-  (centaur-tabs-gray-out-icons 'buffer)  ;; アクティブでないバッファのアイコンはグレーアウト
-  (centaur-tabs-height 28)               ;; タブの高さは標準より少し高め
-  (centaur-tabs-icon-type 'nerd-icons)   ;; アイコンはNerd Iconで統一
-  (centaur-tabs-set-bar 'left )          ;; アクティブタブの左にバーを表示
-  (centaur-tabs-set-icons t)             ;; タブにアイコンを表示する
-  (centaur-tabs-style "box")             ;; タブスタイルはシンプルなスクエア
-  :demand t)
 
 ;; EmacsでGithub Copilotを利用する
 (use-package copilot
