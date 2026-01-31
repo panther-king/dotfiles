@@ -66,10 +66,10 @@
 (use-package auto-package-update
   :config (auto-package-update-maybe)
   :custom
-  ((auto-package-update-delete-old-versions t)                           ;; 旧バージョンのパッケージは削除
-   (auto-package-update-excluded-packages '(drill-instructor smartchr))  ;; ELPAからインストールしていないパッケージは対象外
-   (auto-package-update-prompt-before-update t)                          ;; アップデート実行前に確認
-   (auto-package-update-show-preview t)))                                ;; アップデート対象パッケージを事前に表示する
+  (auto-package-update-delete-old-versions t)                           ;; 旧バージョンのパッケージは削除
+  (auto-package-update-excluded-packages '(drill-instructor smartchr))  ;; ELPAからインストールしていないパッケージは対象外
+  (auto-package-update-prompt-before-update t)                          ;; アップデート実行前に確認
+  (auto-package-update-show-preview t))                                 ;; アップデート対象パッケージを事前に表示する
 
 ;;
 ;; テーマ設定
@@ -77,8 +77,8 @@
 
 (use-package catppuccin-theme
   :custom
-  ((catppuccin-highlight-matches t)  ;; 検索キーワードをハイライトする
-   (catppuccin-italic-comments t))   ;; コメントは斜体にする
+  (catppuccin-highlight-matches t)  ;; 検索キーワードをハイライトする
+  (catppuccin-italic-comments t)    ;; コメントは斜体にする
   :init (load-theme 'catppuccin :no-confirm))
 
 ;;
@@ -89,21 +89,20 @@
 (use-package minions
   :config (minions-mode 1)
   :custom
-  ((minions-mode-line-lighter "[+]")           ;; minor-modeを展開するUIを変更する
-   (minions-prominent-mode '(flymake-mode))))  ;; エラー情報を可視化するため、flymakeは常に表示する
+  (minions-mode-line-lighter "[+]")           ;; minor-modeを展開するUIを変更する
+  (minions-prominent-mode '(flymake-mode)))   ;; エラー情報を可視化するため、flymakeは常に表示する
 
 ;; モードラインの表示を分かりやすくする
 (use-package moody
   :config
-  (progn
-    (moody-replace-mode-line-buffer-identification)
-    (moody-replace-vc-mode)))
+  (moody-replace-mode-line-buffer-identification)
+  (moody-replace-vc-mode))
 
 ;; モードラインのファイル名にディレクトリ名も表示する
 (use-package uniquify
   :custom
-  ((uniquify-buffer-name-style 'forward)  ;; ディレクトリ名はファイル名の前に表示する
-   (uniquify-min-dir-content 1))          ;; centaur-tabs と競合するため1階層だけ表示する
+  (uniquify-buffer-name-style 'forward)  ;; ディレクトリ名はファイル名の前に表示する
+  (uniquify-min-dir-content 1)           ;; centaur-tabs と競合するため1階層だけ表示する
   :ensure nil)
 
 ;;
@@ -129,9 +128,9 @@
    `(highlight-indent-guides-character-face
      ((t (:foreground ,(cdr (assoc 'surface0 catppuccin-mocha-colors)))))))
   :custom
-  ((highlight-indent-guides-auto-enabled nil)  ;; カラーはカスタム定義する
-   (highlight-indent-guides-method 'bitmap)    ;; インデントガイドをbitmapで表示する
-   (highlight-indent-guides-responsive 'top))  ;; 現在のインデントガイドを強調する
+  (highlight-indent-guides-auto-enabled nil)  ;; カラーはカスタム定義する
+  (highlight-indent-guides-method 'bitmap)    ;; インデントガイドをbitmapで表示する
+  (highlight-indent-guides-responsive 'top)   ;; 現在のインデントガイドを強調する
   :hook prog-mode)
 
 ;; 現在行をハイライトする
@@ -147,13 +146,13 @@
 (use-package whitespace
   :config (global-whitespace-mode t)
   :custom
-  ((whitespace-action '(auto-cleanup))          ;; 保存時に余計な空白・タブを削除
-   (whitespace-global-modes '(not dired-mode))  ;; diredモードは除外する
-   (whitespace-style '(face                     ;; 可視化の有効化
-                       empty                    ;; バッファ前後の空行を可視化
-                       tab-mark                 ;; タブを専用マークで表示
-                       tabs                     ;; タブを可視化
-                       trailing)))              ;; 行末の空白を可視化
+  (whitespace-action '(auto-cleanup))          ;; 保存時に余計な空白・タブを削除
+  (whitespace-global-modes '(not dired-mode))  ;; diredモードは除外する
+  (whitespace-style '(face                     ;; 可視化の有効化
+                      empty                    ;; バッファ前後の空行を可視化
+                      tab-mark                 ;; タブを専用マークで表示
+                      tabs                     ;; タブを可視化
+                      trailing))               ;; 行末の空白を可視化
   :ensure nil)
 
 ;;
@@ -164,9 +163,9 @@
 (use-package paren
   :config (show-paren-mode t)
   :custom
-  ((show-paren-style 'mixed)                ;; 対応カッコが画面外なら式全体をハイライトする
-   (show-paren-when-point-in-periphery t)   ;; 論理的に最も近いカッコをハイライトする
-   (show-paren-when-point-inside-paren t))  ;; カーソルがカッコの内側にあってもハイライトする
+  (show-paren-style 'mixed)                ;; 対応カッコが画面外なら式全体をハイライトする
+  (show-paren-when-point-in-periphery t)   ;; 論理的に最も近いカッコをハイライトする
+  (show-paren-when-point-inside-paren t)   ;; カーソルがカッコの内側にあってもハイライトする
   :ensure nil)
 
 ;; カッコの対応を色づけする
@@ -216,9 +215,9 @@
 (use-package recentf
   :config (recentf-mode 1)
   :custom
-  ((recentf-max-saved-items 2000)     ;; 保存アイテム数
-   (recentf-filename-handlers nil)
-   (recentf-exclude '(".recentf"))))  ;; .recentfファイルは対象としない
+  (recentf-max-saved-items 2000)     ;; 保存アイテム数
+  (recentf-filename-handlers nil)
+  (recentf-exclude '(".recentf")))   ;; .recentfファイルは対象としない
 
 ;; 検索にripgrepを利用する
 (use-package rg
@@ -276,23 +275,23 @@
 (use-package centaur-tabs
   :config (centaur-tabs-mode t)
   :custom
-  ((centaur-tabs-gray-out-icons 'buffer)  ;; アクティブでないバッファのアイコンはグレーアウト
-   (centaur-tabs-height 28)               ;; タブの高さは標準より少し高め
-   (centaur-tabs-icon-type 'nerd-icons)   ;; アイコンはNerd Iconで統一
-   (centaur-tabs-set-bar 'left )          ;; アクティブタブの左にバーを表示
-   (centaur-tabs-set-icons t)             ;; タブにアイコンを表示する
-   (centaur-tabs-style "box"))            ;; タブスタイルはシンプルなスクエア
+  (centaur-tabs-gray-out-icons 'buffer)  ;; アクティブでないバッファのアイコンはグレーアウト
+  (centaur-tabs-height 28)               ;; タブの高さは標準より少し高め
+  (centaur-tabs-icon-type 'nerd-icons)   ;; アイコンはNerd Iconで統一
+  (centaur-tabs-set-bar 'left )          ;; アクティブタブの左にバーを表示
+  (centaur-tabs-set-icons t)             ;; タブにアイコンを表示する
+  (centaur-tabs-style "box")             ;; タブスタイルはシンプルなスクエア
   :demand t)
 
 ;; EmacsでGithub Copilotを利用する
 (use-package copilot
   :bind
   (:map copilot-mode-map
-        ("C-c c" . copilot-complete)           ;; 補完候補を表示する
-        ("M-i" . copilot-accept-completion))   ;; 補完を受け入れる
+        ("C-c c" . copilot-complete)          ;; 補完候補を表示する
+        ("M-i" . copilot-accept-completion))  ;; 補完を受け入れる
   :custom
-  ((copilot-idle-delay nil)                    ;; 自動補完を無効にする
-   (copilot-indent-offset-warning-disable t))  ;; インデント警告を無効化する
+  (copilot-idle-delay nil)                    ;; 自動補完を無効にする
+  (copilot-indent-offset-warning-disable t)   ;; インデント警告を無効化する
   :hook
   ((prog-mode . copilot-mode)
    (text-mode . copilot-mode)))
@@ -300,24 +299,22 @@
 ;; dirvishでdiredを拡張する
 (use-package dirvish
   :bind ("C-c d" . dirvish-side)
-  :config
-  (dirvish-side-follow-mode)
+  :config (dirvish-side-follow-mode)
   :custom
-  ((dirvish-attributes '(vc-state                ;; フリンジにgitの状態を表示する
-                         subtree-state           ;; ディレクトリの階層有無を表示する
-                         nerd-icons              ;; アイコンを表示する
-                         collapse                ;; 詳細を折りたたんで表示する
-                         file-modes              ;; パーミッションを表示する
-                         file-size               ;; ファイルサイズを表示する
-                         file-time               ;; タイムスタンプを表示する
-                         git-msg))               ;; 直近のgitコミットメッセージを表示する
-   (dirvish-mode-line-height 30)                 ;; モードラインの高さはmoodyのデフォルトに合わせる
-   (dirvish-side-attributes '(vc-state           ;; フリンジにgitの状態を表示する
-                              nerd-icons         ;; アイコンを表示する
-                              collapse))         ;; 詳細を折りたたんで表示する
-   (dirvish-time-format-string "%Y-%m-%d %R"))   ;; タイムスタンプは西暦4ケタで表示する
-  :init
-  (dirvish-override-dired-mode t))
+  (dirvish-attributes '(vc-state                ;; フリンジにgitの状態を表示する
+                        subtree-state           ;; ディレクトリの階層有無を表示する
+                        nerd-icons              ;; アイコンを表示する
+                        collapse                ;; 詳細を折りたたんで表示する
+                        file-modes              ;; パーミッションを表示する
+                        file-size               ;; ファイルサイズを表示する
+                        file-time               ;; タイムスタンプを表示する
+                        git-msg))               ;; 直近のgitコミットメッセージを表示する
+  (dirvish-mode-line-height 30)                 ;; モードラインの高さはmoodyのデフォルトに合わせる
+  (dirvish-side-attributes '(vc-state           ;; フリンジにgitの状態を表示する
+                             nerd-icons         ;; アイコンを表示する
+                             collapse))         ;; 詳細を折りたたんで表示する
+  (dirvish-time-format-string "%Y-%m-%d %R")    ;; タイムスタンプは西暦4ケタで表示する
+  :init (dirvish-override-dired-mode t))
 
 ;; EmacsにEditorConfigを認識させる
 (use-package editorconfig
@@ -423,20 +420,20 @@
 (use-package ddskk
   :bind ("C-x j" . skk-mode)
   :custom
-  ((skk-auto-insert-paren t)                                                       ;; 全角のカッコを自動補完する
-   (skk-use-jisx0201-input-method t)                                               ;; 半角カナモードを利用する
-   (skk-cursor-hiragana-color (cdr (assoc 'green catppuccin-mocha-colors)))        ;; ひらがなモード
-   (skk-cursor-jisx0208-latin-color (cdr (assoc 'mauve catppuccin-mocha-colors)))  ;; 全角英数モード
-   (skk-cursor-katakana-color (cdr (assoc 'red catppuccin-mocha-colors)))          ;; カタカナモード
-   (skk-cursor-jisx0201-color (cdr (assoc 'yellow catppuccin-mocha-colors)))       ;; 半角カナモード
-   (skk-egg-like-newline t)                                                        ;; Enterキーでも入力を確定する
-   (skk-hiragana-mode-string "[あ]")                                               ;; ひらがなモードのモードライン表示
-   (skk-jisx0208-latin-mode-string "[Ａ]")                                         ;; 全角英数モードのモードライン表示
-   (skk-katakana-mode-string "[ア]")                                               ;; カタカナモードのモードライン表示
-   (skk-jisx0201-mode-sring "[ｱ]")                                                 ;; 半角カナモードのモードライン表示
-   (skk-latin-mode-string "[_A]")                                                  ;; ASCIIモードのモードライン表示
-   (skk-show-annotation t)                                                         ;; 変換候補に注釈を表示する
-   (skk-use-color-cursor t)))                                                      ;; カーソルカラーでモードが判別できるようにする
+  (skk-auto-insert-paren t)                                                       ;; 全角のカッコを自動補完する
+  (skk-use-jisx0201-input-method t)                                               ;; 半角カナモードを利用する
+  (skk-cursor-hiragana-color (cdr (assoc 'green catppuccin-mocha-colors)))        ;; ひらがなモード
+  (skk-cursor-jisx0208-latin-color (cdr (assoc 'mauve catppuccin-mocha-colors)))  ;; 全角英数モード
+  (skk-cursor-katakana-color (cdr (assoc 'red catppuccin-mocha-colors)))          ;; カタカナモード
+  (skk-cursor-jisx0201-color (cdr (assoc 'yellow catppuccin-mocha-colors)))       ;; 半角カナモード
+  (skk-egg-like-newline t)                                                        ;; Enterキーでも入力を確定する
+  (skk-hiragana-mode-string "[あ]")                                               ;; ひらがなモードのモードライン表示
+  (skk-jisx0208-latin-mode-string "[Ａ]")                                         ;; 全角英数モードのモードライン表示
+  (skk-katakana-mode-string "[ア]")                                               ;; カタカナモードのモードライン表示
+  (skk-jisx0201-mode-sring "[ｱ]")                                                 ;; 半角カナモードのモードライン表示
+  (skk-latin-mode-string "[_A]")                                                  ;; ASCIIモードのモードライン表示
+  (skk-show-annotation t)                                                         ;; 変換候補に注釈を表示する
+  (skk-use-color-cursor t))                                                       ;; カーソルカラーでモードが判別できるようにする
 
 ;;
 ;; git設定
@@ -446,9 +443,9 @@
 (use-package git-gutter
   :config (global-git-gutter-mode t)
   :custom
-  ((git-gutter:modified-sign "~")   ;; 変更
-   (git-gutter:added-sign "+")      ;; 追加
-   (git-gutter:deleted-sign "!")))  ;; 削除
+  (git-gutter:modified-sign "~")   ;; 変更
+  (git-gutter:added-sign "+")      ;; 追加
+  (git-gutter:deleted-sign "!"))   ;; 削除
 
 ;; gitの設定ファイルメジャーモード
 (use-package git-modes)
@@ -464,8 +461,9 @@
 ;; magitのdiff表示にdeltaを利用する
 (use-package magit-delta
   :after magit
-  :custom ((magit-delta-default-dark-theme "Catppuccin Mocha")  ;; bat --list-themes
-           (magit-delta-hide-plus-minus-markers nil))           ;; diffの行頭に+/-を表示する
+  :custom
+  (magit-delta-default-dark-theme "Catppuccin Mocha")  ;; bat --list-themes
+  (magit-delta-hide-plus-minus-markers nil)            ;; diffの行頭に+/-を表示する
   :hook magit-mode)
 
 ;;
@@ -548,7 +546,7 @@
 ;; Shell script
 (use-package sh-mode
   :ensure nil
-  :mode "\\.z?sh\\'" "\\.env\\'" "\\.sample\\'" "rc\\'")
+  :mode ("\\.z?sh\\'" "\\.env\\'" "\\.sample\\'" "rc\\'"))
 
 ;; Rust
 (use-package rust-mode)
@@ -560,8 +558,9 @@
 (use-package typescript-ts-mode
   :custom (typescript-ts-mode-indent-level 2)  ;; TypeScriptのインデントは2スペース
   :ensure nil
-  :mode (("\\.ts\\'" . typescript-ts-mode)
-        ("\\.tsx\\'" . typescript-ts-mode)))
+  :mode
+  (("\\.ts\\'" . typescript-ts-mode)
+   ("\\.tsx\\'" . typescript-ts-mode)))
 
 ;;
 ;; 構造化言語設定
@@ -587,9 +586,9 @@
 (use-package plantuml-mode
   :if (file-exists-p "/usr/share/java/plantuml/plantuml.jar")
   :custom
-  ((plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")  ;; pacmanで入るPlantUMLを利用する
-   (plantuml-default-exec-mode 'jar)                            ;; jarを利用してレンダリングする
-   (plantuml-indent-level 4))                                   ;; 4スペースインデント
+  (plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")  ;; pacmanで入るPlantUMLを利用する
+  (plantuml-default-exec-mode 'jar)                            ;; jarを利用してレンダリングする
+  (plantuml-indent-level 4)                                    ;; 4スペースインデント
   :mode "\\.p?uml\\'")
 
 ;; Terraform
@@ -603,11 +602,11 @@
 ;; HTML
 (use-package web-mode
   :custom
-  ((web-mode-code-indent-offset 2)    ;; JavaScriptは2スペースインデント
-   (web-mode-css-indent-offset 2)     ;; CSSは2スペースインデント
-   (web-mode-markup-indent-offset 2)  ;; HTMLは2スペースインデント
-   (web-mode-script-padding 2)
-   (web-mode-style-padding 2))
+  (web-mode-code-indent-offset 2)    ;; JavaScriptは2スペースインデント
+  (web-mode-css-indent-offset 2)     ;; CSSは2スペースインデント
+  (web-mode-markup-indent-offset 2)  ;; HTMLは2スペースインデント
+  (web-mode-script-padding 2)
+  (web-mode-style-padding 2)
   :mode ("\\.html\\'" "\\.css\\'" "\\.blade\\.php\\'"))
 
 ;; YAML
@@ -638,8 +637,8 @@
         ("C-n" . corfu-next)
         ("C-p" . corfu-previous))
   :custom
-  ((corfu-cycle t)
-   (corfu-auto t))
+  (corfu-cycle t)
+  (corfu-auto t)
   :hook prog-mode
   :init (global-corfu-mode))
 
@@ -673,9 +672,9 @@
         ("C-v" . vertico-scroll-up)
         ("M-v" . vertico-scroll-down))
   :custom
-  ((vertico-count 20)                            ;; 候補表示は20個まで
-   (vertico-cycle t)                             ;; 候補の先頭・末尾を移動できるようにする
-   (vertico-sort-function 'vertico-sort-alpha))  ;; 候補はアルファベット順で表示する
+  (vertico-count 20)                            ;; 候補表示は20個まで
+  (vertico-cycle t)                             ;; 候補の先頭・末尾を移動できるようにする
+  (vertico-sort-function 'vertico-sort-alpha)   ;; 候補はアルファベット順で表示する
   :init (vertico-mode))
 
 (use-package vertico-directory
