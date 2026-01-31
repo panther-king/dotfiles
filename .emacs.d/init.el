@@ -73,8 +73,6 @@
    (auto-package-update-prompt-before-update t)                          ;; アップデート実行前に確認
    (auto-package-update-show-preview t)))                                ;; アップデート対象パッケージを事前に表示する
 
-
-
 ;;
 ;; テーマ設定
 ;;
@@ -263,6 +261,12 @@
    (typescript-ts-mode . eglot-ensure)
    (eglot-managed-mode . (lambda ()
                            (add-hook 'before-save-hook 'eglot-format-buffer -10 t)))))
+;; eglotのlspを高速化する
+;; cargo install emacs-lsp-booster
+(use-package eglot-booster
+  :after eglot
+  :config (eglot-booster-mode)
+  :vc (:fetcher github :repo "jdtsmith/eglot-booster"))
 
 ;; バッファをタブで管理する
 (use-package centaur-tabs
@@ -314,13 +318,6 @@
 ;; EmacsにEditorConfigを認識させる
 (use-package editorconfig
   :config (editorconfig-mode 1))
-
-;; eglotのlspを高速化する
-;; cargo install emacs-lsp-booster
-(use-package eglot-booster
-  :after eglot
-  :config (eglot-booster-mode)
-  :vc (:fetcher github :repo jdtsmith/eglot-booster))
 
 ;; Emacsでmiseを利用する
 (use-package mise
@@ -408,7 +405,7 @@
    (php-mode . my/php-smartchr-init)
    (python-mode . my/python-smartchr-init)
    (rust-mode . my/rust-smartchr-init))
-  :vc (:fetcher github :repo imakado/emacs-smartchr))
+  :vc (:fetcher github :repo "imakado/emacs-smartchr"))
 
 ;; prefixキーの次の操作をナビゲーションする
 (use-package which-key
