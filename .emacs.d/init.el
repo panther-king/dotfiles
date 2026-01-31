@@ -486,6 +486,15 @@
 
 ;; tree-sitterでハイライトをより正確にする
 (use-package treesit
+  :config
+  (dolist (element treesit-language-source-alist)
+    (let* ((lang (car element)))
+      (if (treesit-language-available-p lang)
+          (message "treesit: %s is already installed" lang)
+        (message "treesit: %s is not installed" lang)
+        (treesit-install-language-grammar lang))))
+  :custom (treesit-font-lock-level 4)
+  :ensure nil
   :init
   (setq treesit-language-source-alist
         '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
@@ -504,16 +513,7 @@
           (toml . ("https://github.com/ikatyang/tree-sitter-toml/"))
           (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))
           (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))
-          (yaml . ("https://github.com/ikatyang/tree-sitter-yaml"))))
-  :config
-  (dolist (element treesit-language-source-alist)
-    (let* ((lang (car element)))
-      (if (treesit-language-available-p lang)
-          (message "treesit: %s is already installed" lang)
-        (message "treesit: %s is not installed" lang)
-        (treesit-install-language-grammar lang))))
-  :custom (treesit-font-lock-level 4)
-  :ensure nil)
+          (yaml . ("https://github.com/ikatyang/tree-sitter-yaml")))))
 
 ;;
 ;; プログラミング言語設定
