@@ -259,6 +259,12 @@
   (add-to-list 'eglot-server-programs
                ;; paru -S nodejs-intelephense
                '(php-mode . ("intelephense" "--stdio")))
+  (add-to-list 'eglot-server-programs
+               ;; paru -S taplo-cli
+               '(toml-ts-mode . ("taplo" "lsp" "stdio")))
+  (add-to-list 'eglot-server-programs
+               ;; paru -S typescript-language-server
+               '(typescript-ts-mode . ("typescript-language-server" "--stdio")))
   :hook
   ((css-ts-mode . eglot-ensure)
    (dockerfile-ts-mode . eglot-ensure)
@@ -266,12 +272,13 @@
    (fsharp-mode . eglot-ensure)
    (haskell-mode . eglot-ensure)
    (html-ts-mode . eglot-ensure)
-   (js2-mode . eglot-ensure)
+   (js-ts-mode . eglot-ensure)
    (json-ts-mode . eglot-ensure)
    (php-mode . eglot-ensure)
    (python-mode . eglot-ensure)
    (rust-mode . eglot-ensure)
    (terraform-mode . eglot-ensure)
+   (toml-ts-mode . eglot-ensure)
    (typescript-ts-mode . eglot-ensure)
    (eglot-managed-mode . (lambda ()
                            (add-hook 'before-save-hook 'eglot-format-buffer -10 t)))))
@@ -533,8 +540,10 @@
   (setq major-mode-remap-alist
         '((css-mode . css-ts-mode)
           (dockerfile-mode . dockerfile-ts-mode)
+          (js-mode . js-ts-mode)
           (json-mode . json-ts-mode)
-          )))
+          (toml-mode . toml-ts-mode)
+          (typescript-mode . typescript-ts-mode)))
 
 ;;
 ;; プログラミング言語設定
@@ -551,13 +560,7 @@
 ;; Haskell
 (use-package haskell-mode)
 
-;; JavaScript
-(use-package js2-mode
-  :custom (js-indent-level 2)
-  :mode "\\.js\\'")
-
 ;; PHP
-;; paru -S nodejs-intelephense
 (use-package php-mode
   :custom (php-mode-coding-style 'psr2)
   :mode "\\.php\\'")
@@ -590,7 +593,8 @@
 
 ;; JSON
 (use-package json-ts-mode
-  :custom (json-ts-mode-indent-offset 2))  ;; JSONのインデントは2スペース
+  :custom (json-ts-mode-indent-offset 2)  ;; JSONのインデントは2スペース
+  :ensure nil)
 
 ;; Markdown
 (use-package markdown-mode
@@ -613,8 +617,11 @@
   :custom (terraform-command "tofu"))
 
 ;; TOML
-(use-package toml-mode
-  :mode ("\\.toml\\'" "^Pipfile\\'"))
+(use-package toml-ts-mode
+  :ensure nil
+  :mode
+  (("\\.toml\\'" . toml-ts-mode)
+   ("^Pipfile\\'" . toml-ts-mode)))
 
 ;; HTML
 (use-package html-ts-mode
@@ -641,8 +648,7 @@
   :mode "\\.blade\\.php\\'")
 
 ;; YAML
-(use-package yaml-mode
-  :mode "\\.ya?ml\\'")
+(use-package yaml-mode)
 (use-package yaml-pro
   :hook (yaml-mode . yaml-pro-mode))
 
