@@ -248,14 +248,26 @@
   :ensure nil
   :config
   (add-to-list 'eglot-server-programs
+               ;; paru -S vscode-langservers-extracted
+               '(css-ts-mode . ("vscode-css-language-server" "--stdio")))
+  (add-to-list 'eglot-server-programs
+               ;; paru -S dockerfile-language-server
+               '(dockerfile-ts-mode . ("docker-langserver" "--stdio")))
+  (add-to-list 'eglot-server-programs
+               ;; paru -S vscode-langservers-extracted
+               '(json-ts-mode . ("vscode-json-language-server" "--stdio")))
+  (add-to-list 'eglot-server-programs
                ;; paru -S nodejs-intelephense
                '(php-mode . ("intelephense" "--stdio")))
   :hook
-  ((elm-mode . eglot-ensure)
+  ((css-ts-mode . eglot-ensure)
+   (dockerfile-ts-mode . eglot-ensure)
+   (elm-mode . eglot-ensure)
    (fsharp-mode . eglot-ensure)
    (haskell-mode . eglot-ensure)
    (html-ts-mode . eglot-ensure)
    (js2-mode . eglot-ensure)
+   (json-ts-mode . eglot-ensure)
    (php-mode . eglot-ensure)
    (python-mode . eglot-ensure)
    (rust-mode . eglot-ensure)
@@ -479,15 +491,6 @@
 ;; tree-sitterでハイライトをより正確にする
 (use-package treesit
   :config
-  (dolist (element treesit-language-source-alist)
-    (let* ((lang (car element)))
-      (if (treesit-language-available-p lang)
-          (message "treesit: %s is already installed" lang)
-        (message "treesit: %s is not installed" lang)
-        (treesit-install-language-grammar lang))))
-  :custom (treesit-font-lock-level 4)
-  :ensure nil
-  :init
   (setq treesit-language-source-alist
         '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
           (css . ("https://github.com/tree-sitter/tree-sitter-css"))
@@ -503,7 +506,35 @@
           (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
           (toml . ("https://github.com/ikatyang/tree-sitter-toml/"))
           (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))
-          (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")))))
+          (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))))
+  (defun my/treesit-install-all ()
+    "install all treesit language sources"
+    (interactive)
+    (let ((count 0)
+          (errors 0))
+      (dolist (source treesit-language-source-alist)
+        (let ((lang (car source)))
+          (cond
+           ((treesit-language-available-p lang)
+            (message "Skipping %s (already installed)" lang))
+           (t
+            (message "Installing %s..." lang)
+            (condition-case err
+                (progn
+                  (treesit-install-language-grammar lang)
+                  (setq count (1+ count)))
+              (error
+               (setq errors (1+ errors))
+               (message "❌ Failed to install %s: %s" lang err)))))))
+          (message "✅ Tree-sitter setup completed! (Installed: %d, Errors: %d)" count errors)))
+  :custom (treesit-font-lock-level 4)  ;; 最大限ハイライトする
+  :ensure nil
+  :init
+  (setq major-mode-remap-alist
+        '((css-mode . css-ts-mode)
+          (dockerfile-mode . dockerfile-ts-mode)
+          (json-mode . json-ts-mode)
+          )))
 
 ;;
 ;; プログラミング言語設定
@@ -557,14 +588,9 @@
 ;; 構造化言語設定
 ;;
 
-;; Dockerfile
-(use-package dockerfile-mode
-  :mode "Dockerfile\\'")
-
 ;; JSON
-(use-package json-mode
-  :mode "\\.json\\'"
-  :custom (js-indent-level 2))
+(use-package json-ts-mode
+  :custom (json-ts-mode-indent-offset 2))  ;; JSONのインデントは2スペース
 
 ;; Markdown
 (use-package markdown-mode
@@ -612,7 +638,7 @@
   (web-mode-markup-indent-offset 2)  ;; HTMLは2スペースインデント
   (web-mode-script-padding 2)
   (web-mode-style-padding 2)
-  :mode ("\\.css\\'" "\\.blade\\.php\\'"))
+  :mode "\\.blade\\.php\\'")
 
 ;; YAML
 (use-package yaml-mode
