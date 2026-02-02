@@ -131,7 +131,9 @@
   (highlight-indent-guides-auto-enabled nil)  ;; カラーはカスタム定義する
   (highlight-indent-guides-method 'bitmap)    ;; インデントガイドをbitmapで表示する
   (highlight-indent-guides-responsive 'top)   ;; 現在のインデントガイドを強調する
-  :hook prog-mode)
+  :hook
+  ((prog-mode . highlight-indent-guides-mode)
+   (html-ts-mode . highlight-indent-guides-mode)))
 
 ;; 現在行をハイライトする
 (use-package hl-line
@@ -252,6 +254,7 @@
   ((elm-mode . eglot-ensure)
    (fsharp-mode . eglot-ensure)
    (haskell-mode . eglot-ensure)
+   (html-ts-mode . eglot-ensure)
    (js2-mode . eglot-ensure)
    (php-mode . eglot-ensure)
    (python-mode . eglot-ensure)
@@ -494,15 +497,13 @@
           (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))
           (jsdoc . ("https://github.com/tree-sitter/tree-sitter-jsdoc"))
           (json . ("https://github.com/tree-sitter/tree-sitter-json"))
-          (markdown . ("https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
           (php . ("https://github.com/tree-sitter/tree-sitter-php" "master" "php/src"))
           (phpdoc . ("https://github.com/claytonrcarter/tree-sitter-phpdoc"))
           (python . ("https://github.com/tree-sitter/tree-sitter-python"))
           (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
           (toml . ("https://github.com/ikatyang/tree-sitter-toml/"))
-          (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))
           (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))
-          (yaml . ("https://github.com/ikatyang/tree-sitter-yaml")))))
+          (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")))))
 
 ;;
 ;; プログラミング言語設定
@@ -590,6 +591,20 @@
   :mode ("\\.toml\\'" "^Pipfile\\'"))
 
 ;; HTML
+(use-package html-ts-mode
+  :ensure nil
+  :mode "\\.html\\'")
+(use-package emmet-mode
+  :bind
+  (:map emmet-mode-keymap
+        ("C-c e" . emmet-expand-line))  ;; div.container>ul>li*3 の記法を展開する
+  :hook (html-ts-mode . emmet-mode))
+(use-package rainbow-mode
+  :hook (html-ts-mode . rainbow-mode))
+(use-package auto-rename-tag
+  :hook (html-ts-mode . auto-rename-tag-mode)  ;; タグ名を変更すると閉じタグも追随させる
+  :vc (:fetcher github :repo "jcs-elpa/auto-rename-tag"))
+
 (use-package web-mode
   :custom
   (web-mode-code-indent-offset 2)    ;; JavaScriptは2スペースインデント
@@ -597,7 +612,7 @@
   (web-mode-markup-indent-offset 2)  ;; HTMLは2スペースインデント
   (web-mode-script-padding 2)
   (web-mode-style-padding 2)
-  :mode ("\\.html\\'" "\\.css\\'" "\\.blade\\.php\\'"))
+  :mode ("\\.css\\'" "\\.blade\\.php\\'"))
 
 ;; YAML
 (use-package yaml-mode
