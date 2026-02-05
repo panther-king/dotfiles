@@ -276,7 +276,9 @@
    (json-ts-mode . eglot-ensure)
    (php-mode . eglot-ensure)
    (python-mode . eglot-ensure)
+   (python-ts-mode . eglot-ensure)
    (rust-mode . eglot-ensure)
+   (rust-ts-mode . eglot-ensure)
    (terraform-mode . eglot-ensure)
    (toml-ts-mode . eglot-ensure)
    (typescript-ts-mode . eglot-ensure)
@@ -417,8 +419,9 @@
    (fsharp-mode . my/fsharp-smartchr-init)
    (js2-mode . my/js2-smartchr-init)
    (php-mode . my/php-smartchr-init)
-   (python-mode . my/python-smartchr-init)
-   (rust-mode . my/rust-smartchr-init))
+   (python-ts-mode . my/python-smartchr-init)
+   (rust-ts-mode . my/rust-smartchr-init)
+   (typescript-ts-mode . my/js2/smartchr-init))
   :vc (:fetcher github :repo "imakado/emacs-smartchr"))
 
 ;; prefixキーの次の操作をナビゲーションする
@@ -542,8 +545,9 @@
           (dockerfile-mode . dockerfile-ts-mode)
           (js-mode . js-ts-mode)
           (json-mode . json-ts-mode)
+          (python-mode . python-ts-mode)
           (toml-mode . toml-ts-mode)
-          (typescript-mode . typescript-ts-mode)))
+          (typescript-mode . typescript-ts-mode))))
 
 ;;
 ;; プログラミング言語設定
@@ -565,19 +569,15 @@
   :custom (php-mode-coding-style 'psr2)
   :mode "\\.php\\'")
 
-;; Python
-(use-package python-mode
-  :mode "\\.py\\'")
-
 ;; Shell script
 (use-package sh-mode
   :ensure nil
   :mode ("\\.z?sh\\'" "\\.env\\'" "\\.sample\\'" "rc\\'"))
 
 ;; Rust
-(use-package rust-mode)
-(use-package cargo
-  :hook (rust-mode . cargo-minor-mode))
+(use-package rust-ts-mode
+  :ensure nil
+  :mode ("\\.rs\\'" . rust-ts-mode))
 
 ;; Typescript
 (use-package typescript-ts-mode
