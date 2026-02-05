@@ -630,7 +630,8 @@
 (use-package emmet-mode
   :bind
   (:map emmet-mode-keymap
-        ("C-c e" . emmet-expand-line))  ;; div.container>ul>li*3 の記法を展開する
+        ("C-c e" . emmet-expand-line)  ;; div.container>ul>li*3 の記法を展開する
+        ("C-j" . nil))
   :hook (html-ts-mode . emmet-mode))
 (use-package rainbow-mode
   :hook (html-ts-mode . rainbow-mode))
