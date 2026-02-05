@@ -260,6 +260,9 @@
                ;; paru -S nodejs-intelephense
                '(php-mode . ("intelephense" "--stdio")))
   (add-to-list 'eglot-server-programs
+               ;; paru -S pyright
+               '(python-ts-mode . ("pyright-langserver" "--stdio")))
+  (add-to-list 'eglot-server-programs
                ;; paru -S taplo-cli
                '(toml-ts-mode . ("taplo" "lsp" "stdio")))
   (add-to-list 'eglot-server-programs
@@ -636,8 +639,7 @@
 (use-package rainbow-mode
   :hook (html-ts-mode . rainbow-mode))
 (use-package auto-rename-tag
-  :hook (html-ts-mode . auto-rename-tag-mode)  ;; タグ名を変更すると閉じタグも追随させる
-  :vc (:fetcher github :repo "jcs-elpa/auto-rename-tag"))
+  :hook (html-ts-mode . auto-rename-tag-mode))  ;; タグ名を変更すると閉じタグも追随させる
 
 (use-package web-mode
   :custom
