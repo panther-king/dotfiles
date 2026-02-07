@@ -1,3 +1,4 @@
+# shellcheck disable=SC2034
 # 変数の重複を除去
 typeset -U path PATH fpath FPATH
 
