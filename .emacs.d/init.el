@@ -36,6 +36,8 @@
   (create-lockfiles nil)                              ;; ロックファイルを作成しない
   (cua-mode t)                                        ;; 矩形編集のためにcua-modeを有効にする
   (cua-enable-cua-keys nil)                           ;; cuaのデフォルトキーバインドは利用しない
+  (eol-mnemonic-dos "(CRLF)")
+  (eol-mnemonic-unix "(LF)")
   (indent-tabs-mode nil)                              ;; タブインデントは利用しない
   (inhibit-startup-screen t)                          ;; 起動画面を表示しない
   (initial-scratch-message nil)                       ;; Scratchバッファにメッセージは表示しない
