@@ -106,8 +106,8 @@ export SKIM_DEFAULT_OPTIONS="$SKIM_DEFAULT_OPTIONS \
 --color=fg:#cdd6f4,matched:#313244,matched_bg:#f2cdcd,current:#cdd6f4,current_bg:#45475a,current_match:#1e1e2e,current_match_bg:#f5e0dc,spinner:#a6e3a1,info:#cba6f7,prompt:#89b4fa,cursor:#f38ba8,selected:#eba0ac,header:#94e2d5,border:#6c7086"
 
 # sk(skim)でコマンド履歴を検索
-function sk-history () {
-    BUFFER=`history -n 1 | sk`
+sk-history () {
+    BUFFER=$(history -n 1 | sk)
     CURSOR=$#BUFFER
     zle reset-prompt
 }
@@ -115,9 +115,10 @@ zle -N sk-history
 bindkey '^R' sk-history
 
 # ghq + sk でリポジトリ移動
-function sk-ghq () {
-    local selected_dir=$(ghq list -p | sk --prompt="ghq > " --query "$LBUFFER")
-    if [ -n "$selected_dir" ]; then
+sk-ghq () {
+    local selected_dir
+    selected_dir=$(ghq list -p | sk --prompt="ghq > " --query "$LBUFFER")
+    if [ -n "${selected_dir}" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line
     fi
@@ -127,9 +128,10 @@ zle -N sk-ghq
 bindkey '^]' sk-ghq
 
 # cdr + sk でディレクトリ移動
-function sk-cdr () {
-    local selected_dir=$(cdr -l | sed 's/^[0-9]\+ \+//' | sk --prompt="cdr > " --query "$LBUFFER")
-    if [ -n "$selected_dir" ]; then
+sk-cdr () {
+    local selected_dir
+    selected_dir=$(cdr -l | sed 's/^[0-9]\+ \+//' | sk --prompt="cdr > " --query "$LBUFFER")
+    if [ -n "${selected_dir}" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line
     fi
