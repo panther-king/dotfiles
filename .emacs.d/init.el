@@ -349,6 +349,12 @@
   :bind ("C-c p" . projectile-command-map)
   :custom (projectile-mode +1))
 
+;; Emacs でターミナルを利用する
+(use-package vterm
+  :bind (("C-c t" . vterm))
+  :custom
+  (vterm-max-scrollback 10000))  ;; スクローロバックを増やす
+
 ;;
 ;; キーバインド拡張設定
 ;;

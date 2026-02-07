@@ -139,7 +139,10 @@ zle -N sk-cdr
 bindkey '^[' sk-cdr
 
 # zellij
-eval "$(zellij setup --generate-auto-start zsh)"
+# startx 前と emacs の vterm 経由では起動しない
+if [[ -z "${INSIDE_EMACS}" ]] && [[ -n "${DISPLAY}" ]]; then
+    eval "$(zellij setup --generate-auto-start zsh)"
+fi
 
 # mise
 eval "$(/usr/bin/mise activate zsh)"
