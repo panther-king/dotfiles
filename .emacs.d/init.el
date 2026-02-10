@@ -637,6 +637,7 @@
 ;; HTML
 (use-package html-ts-mode
   :ensure nil
+  :hook (html-ts-mode . electric-pair-local-mode)
   :mode "\\.html\\'")
 (use-package emmet-mode
   :bind
