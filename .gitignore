@@ -1,9 +1,7 @@
-/.emacs.d/*
-!/.emacs.d/init.el
-
 /.config/*
 !/.config/alacritty/
 !/.config/dunst/
+!/.config/emacs/
 !/.config/i3/
 !/.config/paru/
 !/.config/picom/
