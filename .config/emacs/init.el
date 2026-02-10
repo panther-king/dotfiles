@@ -43,15 +43,12 @@
   (initial-scratch-message nil)                       ;; Scratchバッファにメッセージは表示しない
   (kill-whole-line t)                                 ;; C-kで行末の改行コードごと削除する
   (make-backup-files nil)                             ;; バックアップファイルを作成しない
-  (menu-bar-mode nil)                                 ;; メニューバーは利用しない
   (native-comp-async-report-warnings-errors 'silent)  ;; サブプロセスのネイティブコンパイル警告は *Warnings* に出す
   (next-line-add-newlines nil)                        ;; バッファの末尾で新しい行を追加しない
   (package-install-upgrade-built-in t)                ;; ビルトインパッケージも更新対象にする
   (package-native-compile t)                          ;; インストール時にネイティブコンパイルする
   (require-final-newline t)                           ;; ファイルの末尾は改行を必須にする
   (ring-bell-function 'ignore)                        ;; ビープ音を無効化
-  (scroll-bar-mode nil)                               ;; スクロールバーは利用しない
-  (tool-bar-mode nil)                                 ;; ツールバーは利用しない
   (vc-follow-symlinks t))                             ;; 常にシンボリックリンクをたどる
 
 ;;
@@ -729,6 +726,11 @@
   (:map vertico-map
         ("C-l" . vertico-directory-up))  ;; C-lでディレクトリ階層を上がれるようにする
   :ensure nil)
+
+;; early-init.elで無効化したGC設定を戻す(100MB)
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 1024 1024 100))))
 
 (provide 'init)
 
