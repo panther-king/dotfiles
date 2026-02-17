@@ -69,6 +69,12 @@ zinit ice as"program" from"gh-r" \
   cp"yazi_dir/completions/_yazi -> _yazi"
 zinit light sxyazi/yazi
 
+# zellij
+zinit ice as"program" from"gh-r" \
+  atclone"./zellij setup --generate-completion zsh > _zellij" \
+  atpull"%atclone"
+zinit light zellij-org/zellij
+
 # 補完強化
 zinit light zsh-users/zsh-completions
 
