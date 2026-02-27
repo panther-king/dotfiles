@@ -146,10 +146,10 @@ alias -s {bmp,gif,jpg,jpeg,png,tiff,BMP,GIF,JPG,JPEG,PNG,TIFF}=viewnior
 alias -s pdf=mupdf
 
 # aider
-if [ -f ~/.local/bin/aider ]; then
-    path+=("$HOME/.local/bin")
-    alias ai-gemini="aider --model gemini/gemini-2.5-flash"
-    alias ai-claude="aider --model anthropic/claude-3-5-sonnet"
+if [[ -f ~/.local/bin/aider ]]; then
+  path+=("$HOME/.local/bin")
+  alias ai-gemini="aider --model gemini/gemini-2.5-flash"
+  alias ai-claude="aider --model anthropic/claude-3-5-sonnet"
 fi
 
 # lessをカラー表示
@@ -164,22 +164,22 @@ export SKIM_DEFAULT_OPTIONS="$SKIM_DEFAULT_OPTIONS \
 
 # sk(skim)でコマンド履歴を検索
 sk-history () {
-    BUFFER=$(history -n 1 | sk)
-    CURSOR=$#BUFFER
-    zle reset-prompt
+  BUFFER=$(history -n 1 | sk)
+  CURSOR=$#BUFFER
+  zle reset-prompt
 }
 zle -N sk-history
 bindkey '^R' sk-history
 
 # ghq + sk でリポジトリ移動
 sk-ghq () {
-    local selected_dir
-    selected_dir=$(ghq list -p | sk --prompt="ghq > " --query "$LBUFFER")
-    if [ -n "${selected_dir}" ]; then
-        BUFFER="cd ${selected_dir}"
-        zle accept-line
-    fi
-    zle clear-screen
+  local selected_dir
+  selected_dir=$(ghq list -p | sk --prompt="ghq > " --query "$LBUFFER")
+  if [[ -n ${selected_dir} ]]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
 }
 zle -N sk-ghq
 bindkey '^]' sk-ghq
@@ -196,13 +196,13 @@ zstyle ':completion:*' recent-dirs-insert always
 
 # cdr + sk でディレクトリ移動
 sk-cdr () {
-    local selected_dir
-    selected_dir=$(cdr -l | sed 's/^[0-9]\+ \+//' | sk --prompt="cdr > " --query "$LBUFFER")
-    if [ -n "${selected_dir}" ]; then
-        BUFFER="cd ${selected_dir}"
-        zle accept-line
-    fi
-    zle clear-screen
+  local selected_dir
+  selected_dir=$(cdr -l | sed 's/^[0-9]\+ \+//' | sk --prompt="cdr > " --query "$LBUFFER")
+  if [[ -n "${selected_dir}" ]]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
 }
 zle -N sk-cdr
 bindkey '^[' sk-cdr
@@ -218,7 +218,7 @@ setopt interactive_comments  # CLIでも'#'以降をコメントとみなす
 
 # zellij
 # startx 前と emacs の vterm 経由では起動しない
-if [[ -z "${INSIDE_EMACS}" ]] && [[ -n "${DISPLAY}" ]]; then
+if [[ -z ${INSIDE_EMACS} ]] && [[ -n ${DISPLAY} ]]; then
   if command -v zellij >/dev/null 2>&1; then
     eval "$(zellij setup --generate-auto-start zsh)"
   fi
