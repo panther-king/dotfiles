@@ -148,7 +148,7 @@ alias -s pdf=mupdf
 # aider
 if [ -f ~/.local/bin/aider ]; then
     path+=("$HOME/.local/bin")
-    alias ai-gemini="aider --model gemini/gemini-1.5-flash"
+    alias ai-gemini="aider --model gemini/gemini-2.5-flash"
     alias ai-claude="aider --model anthropic/claude-3-5-sonnet"
 fi
 
