@@ -49,18 +49,16 @@ zinit light dandavison/delta
 zinit ice as"command" from"gh-r" mv"fzf* -> fzf" pick"fzf"
 zinit light junegunn/fzf
 
+# pure
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
+
 # ripgrep
 zinit ice as"program" from"gh-r" \
   mv"ripgrep* -> rg" \
   pick"rg/rg" \
   cp"rg/complete/_rg -> _rg"
 zinit light BurntSushi/ripgrep
-
-# starship
-zinit ice as"command" from"gh-r" \
-  atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-  atpull"%atclone" src"init.zsh"
-zinit light starship/starship
 
 # yazi
 zinit ice as"program" from"gh-r" \
