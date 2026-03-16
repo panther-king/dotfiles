@@ -124,8 +124,8 @@ if command -v rustc >/dev/null 2>&1; then
   export LD_LIBRARY_PATH
 fi
 
-# docker-rootless
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+# podman
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 
 # direnv
 if command -v direnv >/dev/null 2>&1; then
