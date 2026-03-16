@@ -28,6 +28,10 @@ bindsym $mod+Shift+Return exec i3lock -c 2E3340
 default_border none
 for_window [class="^.*"] border pixel 0
 
+# Firefox download dialog
+for_window [class="(?i)firefox" window_type="dialog"] floating enable, move position center
+for_window [class="(?i)firefox" window_role="GtkFileChooserDialog"] floating enable, move position center
+
 # rofi
 bindsym $mod+d exec rofi -show run
 bindsym $mod+Shift+d exec rofi -show window
