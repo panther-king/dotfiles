@@ -661,6 +661,10 @@
 (use-package yaml-pro
   :hook (yaml-mode . yaml-pro-mode))
 
+;; dotenv
+(use-package dotenv-mode
+  :mode "\\.env\\..*\\'")
+
 ;;
 ;; 絞り込み・補完設定
 ;;
