@@ -598,7 +598,7 @@
 ;; Shell script
 (use-package sh-mode
   :ensure nil
-  :mode ("\\.z?sh\\'" "\\.env\\'" "\\.sample\\'" "rc\\'"))
+  :mode ("\\.z?sh\\'" "\\.sample\\'" "rc\\'"))
 
 ;; Rust
 (use-package rust-ts-mode
@@ -681,7 +681,7 @@
 
 ;; dotenv
 (use-package dotenv-mode
-  :mode "\\.env\\..*\\'")
+  :mode "\\.env\\(?:\\.[^/]*\\)?\\'")
 
 ;;
 ;; 絞り込み・補完設定
