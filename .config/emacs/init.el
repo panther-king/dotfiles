@@ -299,37 +299,6 @@
   :ensure nil
   :hook (prog-mode . hs-minor-mode))
 
-;; EmacsでGithub Copilotを利用する
-(use-package copilot
-  :bind
-  (:map copilot-mode-map
-        ("C-c c" . copilot-complete)          ;; 補完候補を表示する
-        ("M-i" . copilot-accept-completion))  ;; 補完を受け入れる
-  :custom
-  (copilot-idle-delay nil)                    ;; 自動補完を無効にする
-  (copilot-indent-offset-warning-disable t)   ;; インデント警告を無効化する
-  :hook
-  ((prog-mode . copilot-mode)
-   (text-mode . copilot-mode)))
-
-;; Emacsで各種LLMとチャットする
-(use-package gptel
-  :config
-  (setq gptel-backend
-        (gptel-make-gemini "Gemini"
-          :key (getenv "GEMINI_API_KEY")
-          :models '(gemini-2.5-flash
-                    gemini-2.5-pro
-                    gemini-3.1-flash-lite)
-          :stream t))
-  (gptel-make-anthropic "Claude"
-    :header '(("anthropic-beta" . "prompt-caching-2024-07-31"))
-    :key (getenv "ANTHROPIC_API_KEY")
-    :models '(claude-3-5-sonnet-20241022
-              claude-4-5-opus)
-    :stream t)
-  :custom (gptel-model 'gemini-2.0-flash))
-
 ;; dirvishでdiredを拡張する
 (use-package dirvish
   :bind ("C-c d" . dirvish-side)
