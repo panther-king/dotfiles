@@ -132,7 +132,8 @@
   (highlight-indent-guides-responsive 'top)   ;; 現在のインデントガイドを強調する
   :hook
   ((prog-mode . highlight-indent-guides-mode)
-   (html-ts-mode . highlight-indent-guides-mode)))
+   (html-ts-mode . highlight-indent-guides-mode)
+   (yaml-mode . highlight-indent-guides-mode)))
 
 ;; 現在行をハイライトする
 (use-package hl-line
