@@ -1,5 +1,6 @@
 /.config/*
 !/.config/alacritty/
+!/.config/compton.conf
 !/.config/dunst/
 !/.config/emacs/
 !/.config/i3/
@@ -7,8 +8,8 @@
 !/.config/picom/
 !/.config/polybar/
 !/.config/rofi/
-!/.config/xremap/
-!/.config/compton.conf
 !/.config/starship.toml
+!/.config/tmux/
+!/.config/xremap/
 !/.config/yazi/
 !/.config/zellij/

@@ -653,6 +653,9 @@
 (use-package dotenv-mode
   :mode "\\.env\\(?:\\.[^/]*\\)?\\'")
 
+;; tmux
+(use-package tmux-mode)
+
 ;;
 ;; 絞り込み・補完設定
 ;;

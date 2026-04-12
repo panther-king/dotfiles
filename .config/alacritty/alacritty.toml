@@ -519,17 +519,22 @@ chars = """
 """
 key = "NumpadEnter"
 
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
+
 [general]
 live_config_reload = true
 working_directory = "None"
 
 # @refs https://github.com/catppuccin/alacritty
 import = [
-  # uncomment the flavour you want below:
-  # "~/src/github.com/catppuccin/alacritty/catppuccin-latte.toml"
-  # "~/src/github.com/catppuccin/alacritty/catppuccin-frappe.toml"
-  # "~/src/github.com/catppuccin/alacritty/catppuccin-macchiato.toml"
-  "~/src/github.com/catppuccin/alacritty/catppuccin-mocha.toml"
+        # uncomment the flavour you want below:
+        # "~/src/github.com/catppuccin/alacritty/catppuccin-latte.toml"
+        # "~/src/github.com/catppuccin/alacritty/catppuccin-frappe.toml"
+        # "~/src/github.com/catppuccin/alacritty/catppuccin-macchiato.toml"
+        "~/src/github.com/catppuccin/alacritty/catppuccin-mocha.toml",
 ]
 
 [[mouse.bindings]]
@@ -554,11 +559,9 @@ persistent_logging = false
 print_events = false
 render_timer = false
 
-[env]
-TERM = "xterm-256color"
-
 [font]
 size = 7.0
+builtin_box_drawing = false
 
 [font.bold]
 family = "UDEV Gothic NF"
@@ -591,6 +594,10 @@ multiplier = 3
 save_to_clipboard = true
 semantic_escape_chars = ''',│`|:"' ()[]{}<>'''
 
+[terminal.shell]
+program = "/usr/bin/tmux"
+args = ["new-session", "-A", "-s", "main"]
+
 [window]
 decorations = "none"
 dynamic_padding = false
@@ -605,8 +612,3 @@ lines = 0
 [window.padding]
 x = 8
 y = 8
-
-[[keyboard.bindings]]
-key = "Return"
-mods = "Shift"
-chars = "\u001B\r"
