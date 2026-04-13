@@ -9,7 +9,7 @@
 !/.config/polybar/
 !/.config/rofi/
 !/.config/starship.toml
-!/.config/tmux/
+!/.config/tmux/tmux.conf
 !/.config/xremap/
 !/.config/yazi/
 !/.config/zellij/
