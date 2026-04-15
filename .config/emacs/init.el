@@ -331,7 +331,8 @@
 
 ;; Emacsでプロジェクト管理を行う
 (use-package projectile
-  :bind ("C-c p" . projectile-command-map)
+  :bind (("C-c p" . projectile-command-map)
+         ("C-]" . projectile-switch-project))
   :custom (projectile-mode +1))
 
 ;; Emacs でターミナルを利用する
