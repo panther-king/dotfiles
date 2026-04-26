@@ -1,9 +1,6 @@
 # 公式インストーラー経由の cargo
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
-# 公式インストーラー経由の ghcup
-[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env"
-
 # docker ではなく podman を利用
 export DOCKER_HOST="unix://${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/podman/podman.sock"
 
