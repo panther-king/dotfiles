@@ -110,16 +110,12 @@ fi
 
 # Rust用環境変数
 if command -v rustc >/dev/null 2>&1; then
-  source $HOME/.cargo/env
   typeset -T LD_LIBRARY_PATH ld_library_path
   ld_library_path+=("$(rustc --print sysroot)/lib")
   typeset -U ld_library_path
   ld_library_path=(${ld_library_path:#})
   export LD_LIBRARY_PATH
 fi
-
-# podman
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 
 # direnv
 if command -v direnv >/dev/null 2>&1; then
@@ -136,23 +132,6 @@ alias vi="vim"
 # shellcheck disable=SC2139
 alias -s {bmp,gif,jpg,jpeg,png,tiff,BMP,GIF,JPG,JPEG,PNG,TIFF}=viewnior
 alias -s pdf=mupdf
-
-# aider
-if [[ -f ~/.local/bin/aider ]]; then
-  path+=("$HOME/.local/bin")
-  alias ai-gemini="aider --model gemini/gemini-2.5-flash"
-  alias ai-claude="aider --model anthropic/claude-3-5-sonnet"
-fi
-
-# lessをカラー表示
-if [[ -x /usr/bin/source-highlight-esc.sh ]];then
-  export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
-  export LESS='-R '
-fi
-
-# @refs https://github.com/catppuccin/skim
-export SKIM_DEFAULT_OPTIONS="$SKIM_DEFAULT_OPTIONS \
---color=fg:#cdd6f4,matched:#313244,matched_bg:#f2cdcd,current:#cdd6f4,current_bg:#45475a,current_match:#1e1e2e,current_match_bg:#f5e0dc,spinner:#a6e3a1,info:#cba6f7,prompt:#89b4fa,cursor:#f38ba8,selected:#eba0ac,header:#94e2d5,border:#6c7086"
 
 # sk(skim)でコマンド履歴を検索
 sk-history () {
