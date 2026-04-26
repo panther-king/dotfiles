@@ -608,6 +608,9 @@
   (plantuml-indent-level 4)                                    ;; 4スペースインデント
   :mode "\\.p?uml\\'")
 
+;; Slint
+(use-package slint-mode)
+
 ;; Terraform
 (use-package terraform-mode
   :custom (terraform-command "tofu"))
