@@ -10,6 +10,8 @@
 !/.config/rofi/
 !/.config/starship.toml
 !/.config/tmux/tmux.conf
+!/.config/xmobar/
+!/.config/xmonad/
 !/.config/xremap/
 !/.config/yazi/
 !/.config/zellij/

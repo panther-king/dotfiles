@@ -1,0 +1,15 @@
+Config
+  { alignSep = "}{",
+    bgColor = "#1e1e2e",
+    commands =
+      [ Run XMonadLog,
+        Run Cpu ["-t", "CPU: <total>%"] 10,
+        Run Memory ["-t", "RAM: <usedratio>%"] 50,
+        Run Date "%Y/%m/%d(%a) %H:%M:%S" "date" 10
+      ],
+    fgColor = "#cdd6f4",
+    font = "UDEV Gothic NF 13",
+    position = TopH 32,
+    sepChar = "%",
+    template = "%XMonadLog% }{ %cpu% | %memory% | %date%"
+  }
