@@ -14,11 +14,13 @@ main =
   xmonad . docks . ewmhFullscreen . ewmh $
     def
       { borderWidth = 2,
+        focusedBorderColor = "#b4befe", -- Catppucchin Mocha, Lavender
         -- ウインドウのフルスクリーントグルを可能にしておく
         layoutHook = avoidStruts $ mkToggle (single FULL) $ spacingWithEdge 4 $ layoutHook def,
         -- 新しいウインドウはスタックの末尾に追加する
         manageHook = insertPosition Below Newer <+> manageHook def,
         modMask = mod4Mask,
+        normalBorderColor = "#1e1e2e", -- Catppucchin Mocha, Base
         startupHook = myStartupHook,
         terminal = "alacritty"
       }
@@ -26,8 +28,7 @@ main =
 
 myAdditionalKeysP :: [(String, X ())]
 myAdditionalKeysP =
-  [
-    ("M-<Return>", spawn "alacritty"),
+  [ ("M-<Return>", spawn "alacritty"),
     ("M-S-<Return>", spawn "i3lock -i $HOME/Pictures/wallpaper-catppuccin.png"),
     -- xmonad の終了時は rofi のダイアログで確認する
     ("M-S-q", spawn "echo -e 'yes\\nno' | rofi -dmenu -p 'quit xmonad?' | grep -q 'yes' && pkill -x xmonad-x86_64-linux"),
