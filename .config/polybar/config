@@ -7,7 +7,7 @@ enable-ipc = true
 font-0 = "UDEV Gothic NF:pixelsize=14;3"
 locale = ja_JP.UTF-8
 monitor = ${env:monitor}
-wm-restack = i3
+wm-restack = generic
 
 width = ${env:width}
 height = 24
@@ -15,7 +15,7 @@ offset-x = ${env:offsetx}
 
 background = ${colors.base}
 
-modules-left = i3
+modules-left = xworkspaces
 modules-center = cpu memory filesystem
 modules-right = wireless-network wired-network battery-left battery battery-right date
 
@@ -182,3 +182,7 @@ label-connected = " %essid%: %local_ip% "
 label-connected-foreground = ${colors.base}
 label-disconnected = " %ifname% "
 label-disconnected-foreground = ${colors.subtext0}
+
+[module/xworkspaces]
+type = internal/xworkspaces
+pin-workspaces = false

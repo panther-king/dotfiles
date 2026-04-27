@@ -1,7 +1,5 @@
 import XMonad
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.Spacing
@@ -11,11 +9,11 @@ import XMonad.Util.SpawnOnce (spawnOnce)
 
 main :: IO ()
 main =
-  xmonad . ewmhFullscreen . ewmh . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey $
+  xmonad . docks . ewmhFullscreen . ewmh $
     def
       { borderWidth = 2,
         -- ウインドウのフルスクリーントグルを可能にしておく
-        layoutHook = mkToggle (single FULL) $ spacingWithEdge 4 $ layoutHook def,
+        layoutHook = avoidStruts $ mkToggle (single FULL) $ spacingWithEdge 4 $ layoutHook def,
         modMask = mod4Mask,
         startupHook = myStartupHook,
         terminal = "alacritty"
@@ -52,15 +50,8 @@ myStartupHook :: X ()
 myStartupHook = do
   spawnOnce "feh --no-fehbg --bg-scale $HOME/Pictures/wallpaper-catppuccin.png"
   spawnOnce "picom --config $HOME/.config/picom/picom.conf"
+  spawnOnce "$HOME/.config/polybar/launch.sh"
   spawnOnce "nm-applet"
   spawnOnce "fcitx5"
   spawnOnce "dunst"
   spawnOnce "parcellite"
-
-myXmobarPP :: PP
-myXmobarPP =
-  xmobarPP
-    { ppCurrent = xmobarColor "#181825" "#74c7ec" . wrap " " " ",
-      ppHidden = xmobarColor "#585b70" "" . wrap " " " ",
-      ppUrgent = xmobarColor "#f38ba8" "" . wrap " " " "
-    }
