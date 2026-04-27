@@ -29,6 +29,8 @@ myAdditionalKeysP =
   [
     ("M-<Return>", spawn "alacritty"),
     ("M-S-<Return>", spawn "i3lock -i $HOME/Pictures/wallpaper-catppuccin.png"),
+    -- xmonad の終了時は rofi のダイアログで確認する
+    ("M-S-q", spawn "echo -e 'yes\\nno' | rofi -dmenu -p 'quit xmonad?' | grep -q 'yes' && pkill -x xmonad-x86_64-linux"),
     -- ウインドウ間の移動
     ("M-n", windows W.focusDown),
     ("M-p", windows W.focusUp),
