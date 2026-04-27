@@ -1,5 +1,7 @@
 import XMonad
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.InsertPosition
+import XMonad.Hooks.ManageDocks
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.Spacing
@@ -14,6 +16,8 @@ main =
       { borderWidth = 2,
         -- ウインドウのフルスクリーントグルを可能にしておく
         layoutHook = avoidStruts $ mkToggle (single FULL) $ spacingWithEdge 4 $ layoutHook def,
+        -- 新しいウインドウはスタックの末尾に追加する
+        manageHook = insertPosition Below Newer <+> manageHook def,
         modMask = mod4Mask,
         startupHook = myStartupHook,
         terminal = "alacritty"
