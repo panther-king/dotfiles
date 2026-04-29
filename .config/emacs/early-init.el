@@ -17,6 +17,10 @@
 (push '(background-color . "#1e1e2e") default-frame-alist)
 (push '(foreground-color . "#cdd6f4") default-frame-alist)
 
+;; タイリング WM では WM がフレームサイズを管理するため、暗黙のリサイズを抑制する
+(setq frame-inhibit-implied-resize t)
+(setq frame-resize-pixelwise t)
+
 ;; 起動時に package.el を有効化しない
 (setq package-enable-at-startup nil)
 
