@@ -62,3 +62,5 @@ myStartupHook = do
   spawnOnce "fcitx5"
   spawnOnce "dunst"
   spawnOnce "parcellite"
+  spawnOnce "xsettingsd"
+  spawnOnce "xsetroot -cursor_name X_cursor"
