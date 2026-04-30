@@ -34,7 +34,11 @@ if [ -f $HOME/.config/xremap/config.yml ]; then
     xremap $HOME/.config/xremap/config.yml &
 fi
 
-setxkbmap us
+# rofi のようなポップアップアプリでは、
+# xremap の判定がうまく行かないことがある
+# emacs キーバインドを徹底するために X11 レイヤーでも
+# Cpas/Ctrl swap を行っておく
+setxkbmap us -option ctrl:nocaps
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
