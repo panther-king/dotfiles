@@ -580,7 +580,7 @@ family = "UDEV Gothic NF"
 style = "Regular"
 
 [font.offset]
-x = 1
+x = 0
 y = 0
 
 [mouse]
