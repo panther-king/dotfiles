@@ -1,0 +1,19 @@
+[[mgr.prepend_keymap]]
+on   = "<C-n>"
+run  = "arrow 1"
+desc = "カーソルを下へ移動"
+
+[[mgr.prepend_keymap]]
+on   = "<C-p>"
+run  = "arrow -1"
+desc = "カーソルを上へ移動"
+
+[[mgr.prepend_keymap]]
+on   = "<C-f>"
+run  = "enter"
+desc = "ディレクトリに入る / ファイルを開く"
+
+[[mgr.prepend_keymap]]
+on   = "<C-b>"
+run  = "leave"
+desc = "親ディレクトリへ移動"
