@@ -30,14 +30,16 @@
   (fset 'yes-or-no-p 'y-or-n-p)                                     ;; プロンプトでyes/noを短縮する
   (add-to-list 'default-frame-alist '(alpha . (85 . 50)))           ;; ウインドウを透過する
   (add-to-list 'default-frame-alist '(font . "UDEV Gothic NF 14"))  ;; フォントはUDEV Gothic
+  (prefer-coding-system 'utf-8-unix)                                ;; utf-8 を優先する
+  (set-language-environment "utf-8")                                ;; utf-8 がデフォルト
   :custom
   (auto-save-default nil)                             ;; 自動保存を行わない
   (column-number-mode t)                              ;; モードラインに列番号も表示する
   (create-lockfiles nil)                              ;; ロックファイルを作成しない
   (cua-mode t)                                        ;; 矩形編集のためにcua-modeを有効にする
   (cua-enable-cua-keys nil)                           ;; cuaのデフォルトキーバインドは利用しない
-  (eol-mnemonic-dos "(CRLF)")
-  (eol-mnemonic-unix "(LF)")
+  (eol-mnemonic-dos "(CRLF)")                         ;; CRLF を視認しやすくする
+  (eol-mnemonic-unix "(LF)")                          ;; LF を視認しやすくする
   (indent-tabs-mode nil)                              ;; タブインデントは利用しない
   (inhibit-startup-screen t)                          ;; 起動画面を表示しない
   (initial-scratch-message nil)                       ;; Scratchバッファにメッセージは表示しない
