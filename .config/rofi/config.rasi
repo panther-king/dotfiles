@@ -2,6 +2,20 @@ configuration {
   font: "UDEV Gothic NF 12";
   show-icons: true;
   icon-theme: "Papirus";
+
+  /* xremap が Ctrl を保持したまま Down/Up/Left/Right を送るため、
+   * Ctrl+Down/Up/Left/Right も同じ動作にバインドする
+   */
+  kb-entry-history-down: "";
+  kb-entry-history-up: "";
+  kb-move-char-back: "Left,Control+b,Control+Left";
+  kb-move-char-forward: "Right,Control+f,Control+Right";
+  kb-move-word-back: "Alt+b";
+  kb-move-word-forward: "Alt+f";
+  kb-remove-char-back: "BackSpace,Shift+BackSpace,Control+h,Control+BackSpace";
+  kb-remove-word-back: "Control+Alt+h";
+  kb-row-down: "Down,Control+n,Control+Down";
+  kb-row-up: "Up,Control+p,Control+Up";
 }
 
 /* @refs https://github.com/catppuccin/rofi */
