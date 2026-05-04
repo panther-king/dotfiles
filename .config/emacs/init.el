@@ -297,7 +297,7 @@
    (php-mode . eglot-ensure)
    (python-mode . eglot-ensure)
    (python-ts-mode . eglot-ensure)
-   (rust-mode . eglot-ensure)
+   (rust-ts-mode . eglot-ensure)
    (terraform-mode . eglot-ensure)
    (toml-ts-mode . eglot-ensure)
    (typescript-ts-mode . eglot-ensure)
@@ -433,7 +433,7 @@
    (js2-mode . my/js2-smartchr-init)
    (php-mode . my/php-smartchr-init)
    (python-ts-mode . my/python-smartchr-init)
-   (rust-mode . my/rust-smartchr-init)
+   (rust-ts-mode . my/rust-smartchr-init)
    (typescript-ts-mode . my/js2-smartchr-init))
   :vc (:fetcher github :repo "imakado/emacs-smartchr"))
 
@@ -613,9 +613,9 @@
   :mode ("\\.z?sh\\'" "\\.sample\\'" "rc\\'"))
 
 ;; Rust
-(use-package rust-mode
+(use-package rust-ts-mode
   :ensure nil
-  :mode ("\\.rs\\'" . rust-mode))
+  :mode ("\\.rs\\'" . rust-ts-mode))
 
 ;; Typescript
 (use-package typescript-ts-mode
