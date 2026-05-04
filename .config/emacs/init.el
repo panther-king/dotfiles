@@ -434,7 +434,7 @@
    (php-mode . my/php-smartchr-init)
    (python-ts-mode . my/python-smartchr-init)
    (rust-mode . my/rust-smartchr-init)
-   (typescript-ts-mode . my/js2/smartchr-init))
+   (typescript-ts-mode . my/js2-smartchr-init))
   :vc (:fetcher github :repo "imakado/emacs-smartchr"))
 
 ;; prefixキーの次の操作をナビゲーションする
