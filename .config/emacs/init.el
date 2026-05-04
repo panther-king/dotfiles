@@ -279,6 +279,12 @@
                   (proc (jsonrpc--process server)))
         (set-process-coding-system proc 'utf-8-unix 'utf-8-unix))))
   (advice-add 'eglot-format-buffer :before #'my/fix-eglot-process-coding)
+  ;; フォーマットに対応している LSP でのみ
+  ;; 保存時のフォーマットを実行させる
+  (defun my/eglot-format-buffer-safe ()
+    (when (and (eglot-current-server)
+               (eglot-server-capable :documentFormattingProvider))
+      (eglot-format-buffer)))
   :hook
   ((css-ts-mode . eglot-ensure)
    (dockerfile-ts-mode . eglot-ensure)
@@ -296,7 +302,7 @@
    (toml-ts-mode . eglot-ensure)
    (typescript-ts-mode . eglot-ensure)
    (eglot-managed-mode . (lambda ()
-                           (add-hook 'before-save-hook 'eglot-format-buffer -10 t)))))
+                           (add-hook 'before-save-hook 'my/eglot-format-buffer-safe -10 t)))))
 ;; eglotのlspを高速化する
 ;; cargo install emacs-lsp-booster
 (use-package eglot-booster
