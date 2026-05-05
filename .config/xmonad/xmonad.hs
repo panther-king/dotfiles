@@ -2,6 +2,8 @@ import XMonad
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers (isDialog)
+import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Layout.Spacing
@@ -18,7 +20,8 @@ main =
         -- ウインドウのフルスクリーントグルを可能にしておく
         layoutHook = avoidStruts $ mkToggle (single FULL) $ spacingWithEdge 4 $ layoutHook def,
         -- 新しいウインドウはスタックの末尾に追加する
-        manageHook = insertPosition Below Newer <+> manageHook def,
+        -- ダイアログはフロートさせる
+        manageHook = isDialog --> doFloat <+> insertPosition Below Newer <+> manageHook def,
         modMask = mod4Mask,
         normalBorderColor = "#1e1e2e", -- Catppucchin Mocha, Base
         startupHook = myStartupHook,
@@ -55,6 +58,10 @@ myAdditionalKeysP =
 
 myStartupHook :: X ()
 myStartupHook = do
+  -- Java GUI アプリケーションでウインドウが期待どおり制御されないため、
+  -- Window 名を偽装しておく
+  -- @refs https://wiki.archlinux.jp/index.php/Xmonad
+  setWMName "LG3D"
   spawnOnce "feh --no-fehbg --bg-scale $HOME/Pictures/wallpaper-catppuccin.png"
   spawnOnce "picom --config $HOME/.config/picom/picom.conf"
   spawnOnce "$HOME/.config/polybar/launch.sh"
