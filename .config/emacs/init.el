@@ -60,10 +60,6 @@
 (use-package use-package
   :custom (use-package-always-ensure t))  ;; ensureを省略しても自動的にインストールする
 
-(unless (package-installed-p 'vc-use-package)
-  (package-vc-install "https://github.com/slotThe/vc-use-package"))
-(require 'vc-use-package)
-
 (use-package auto-package-update
   :config (auto-package-update-maybe)
   :custom
@@ -194,7 +190,7 @@
   :config
   (defvar corfu-margin-formatters)
   (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
-  :vc (:fetcher github :repo "LuigiPiucco/nerd-icons-corfu"))
+  :vc (:url "https://github.com/LuigiPiucco/nerd-icons-corfu"))
 
 ;; verticoでもnerd-iconsを利用する
 (use-package nerd-icons-completion
@@ -308,7 +304,7 @@
 (use-package eglot-booster
   :after eglot
   :config (eglot-booster-mode)
-  :vc (:fetcher github :repo "jdtsmith/eglot-booster"))
+  :vc (:url "https://github.com/jdtsmith/eglot-booster"))
 
 ;; コードブロックの折り畳みキーバインド
 (use-package hideshow
@@ -370,7 +366,7 @@
 ;; Emacsキーバインドを強制する
 (use-package drill-instructor
   :config (setq drill-instructor-global t)  ;; 常にEmacsキーバインドを強制する
-  :vc (:fetcher github :repo "k1LoW/emacs-drill-instructor"))
+  :vc (:url "https://github.com/k1LoW/emacs-drill-instructor"))
 
 ;; 同一キーの入力で入力内容を切り替える
 (use-package smartchr
@@ -435,7 +431,7 @@
    (python-ts-mode . my/python-smartchr-init)
    (rust-ts-mode . my/rust-smartchr-init)
    (typescript-ts-mode . my/js2-smartchr-init))
-  :vc (:fetcher github :repo "imakado/emacs-smartchr"))
+  :vc (:url "https://github.com/imakado/emacs-smartchr"))
 
 ;; prefixキーの次の操作をナビゲーションする
 (use-package which-key
