@@ -246,25 +246,28 @@
   :ensure nil
   :config
   (add-to-list 'eglot-server-programs
-               ;; paru -S vscode-langservers-extracted
+               ;; CSS: paru -S vscode-langservers-extracted
                '(css-ts-mode . ("vscode-css-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs
-               ;; paru -S dockerfile-language-server
+               ;; Dockerfile: paru -S dockerfile-language-server
                '(dockerfile-ts-mode . ("docker-langserver" "--stdio")))
   (add-to-list 'eglot-server-programs
-               ;; paru -S vscode-langservers-extracted
+               ;; JSON: paru -S vscode-langservers-extracted
                '(json-ts-mode . ("vscode-json-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs
-               ;; paru -S nodejs-intelephense
+               ;; OpenTofu: paru -S tofu-ls-bin
+               '(terraform-mode . ("tofu-ls" "serve")))
+  (add-to-list 'eglot-server-programs
+               ;; PHP: paru -S nodejs-intelephense
                '(php-mode . ("intelephense" "--stdio")))
   (add-to-list 'eglot-server-programs
-               ;; paru -S pyright
+               ;; Python: paru -S pyright
                '(python-ts-mode . ("pyright-langserver" "--stdio")))
   (add-to-list 'eglot-server-programs
-               ;; paru -S taplo-cli
+               ;; TOML: paru -S taplo-cli
                '(toml-ts-mode . ("taplo" "lsp" "stdio")))
   (add-to-list 'eglot-server-programs
-               ;; paru -S typescript-language-server
+               ;; TypeScript: paru -S typescript-language-server
                '(typescript-ts-mode . ("typescript-language-server" "--stdio")))
   ;; F# で日本語を含むファイルがバイナリ扱いになってしまい、
   ;; 正しくフォーマットできない問題を回避するため、
