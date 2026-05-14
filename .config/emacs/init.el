@@ -320,20 +320,23 @@
   :bind ("C-c d" . dirvish-side)
   :config (dirvish-side-follow-mode)
   :custom
-  (dirvish-attributes '(vc-state                             ;; フリンジにgitの状態を表示する
-                        subtree-state                        ;; ディレクトリの階層有無を表示する
-                        nerd-icons                           ;; アイコンを表示する
-                        collapse                             ;; 詳細を折りたたんで表示する
-                        file-modes                           ;; パーミッションを表示する
-                        file-size                            ;; ファイルサイズを表示する
-                        file-time                            ;; タイムスタンプを表示する
-                        git-msg))                            ;; 直近のgitコミットメッセージを表示する
-  (dirvish-mode-line-height 30)                              ;; モードラインの高さはmoodyのデフォルトに合わせる
-  (dirvish-side-attributes '(vc-state                        ;; フリンジにgitの状態を表示する
-                             nerd-icons                      ;; アイコンを表示する
-                             collapse))                      ;; 詳細を折りたたんで表示する
-  (dirvish-project-root-function #'projectile-project-root)  ;; projectileのrootを認識させる
-  (dirvish-time-format-string "%Y-%m-%d %R")                 ;; タイムスタンプは西暦4ケタで表示する
+  (dirvish-attributes '(vc-state              ;; フリンジにgitの状態を表示する
+                        subtree-state         ;; ディレクトリの階層有無を表示する
+                        nerd-icons            ;; アイコンを表示する
+                        collapse              ;; 詳細を折りたたんで表示する
+                        file-modes            ;; パーミッションを表示する
+                        file-size             ;; ファイルサイズを表示する
+                        file-time             ;; タイムスタンプを表示する
+                        git-msg))             ;; 直近のgitコミットメッセージを表示する
+  (dirvish-mode-line-height 30)               ;; モードラインの高さはmoodyのデフォルトに合わせる
+  (dirvish-side-attributes '(vc-state         ;; フリンジにgitの状態を表示する
+                             nerd-icons       ;; アイコンを表示する
+                             collapse))       ;; 詳細を折りたたんで表示する
+  (dirvish-project-root-function              ;; projectileのrootを認識させる
+   (lambda ()
+     (when-let (proj (project-current))
+       (project-root proj))))
+  (dirvish-time-format-string "%Y-%m-%d %R")  ;; タイムスタンプは西暦4ケタで表示する
   :init (dirvish-override-dired-mode t))
 
 ;; EmacsにEditorConfigを認識させる
@@ -345,10 +348,22 @@
   :hook (after-init . global-mise-mode))
 
 ;; Emacsでプロジェクト管理を行う
-(use-package projectile
-  :bind (("C-c p" . projectile-command-map)
-         ("C-c ]" . projectile-switch-project))
-  :custom (projectile-mode +1))
+(use-package project
+  :bind
+  (("C-c ]" . project-switch-project)
+   ("C-c p b" . project-switch-to-buffer)
+   ("C-c p d" . project-dired)
+   ("C-c p f" . project-find-file)
+   ("C-c p k" . project-kill-buffers)
+   ("C-c p r" . consult-ripgrep))
+  :custom
+  (project-switch-commands
+   '((project-find-file "Find file" "f")
+     (consult-ripgrep "Ripgrep" "r")
+     (project-dired "Dired" "d")
+     (project-switch-to-buffer "Switch buffer" "b")
+     (project-kill-buffers "Kill buffers" "k")))
+  :ensure nil)
 
 ;; Emacs でターミナルを利用する
 (use-package vterm
