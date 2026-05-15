@@ -49,6 +49,7 @@
   (next-line-add-newlines nil)                        ;; バッファの末尾で新しい行を追加しない
   (package-install-upgrade-built-in t)                ;; ビルトインパッケージも更新対象にする
   (package-native-compile t)                          ;; インストール時にネイティブコンパイルする
+  (read-process-output-max (* 1024 1024))             ;; 外部プロセスから読み取るデータの最大サイズを変更する
   (require-final-newline t)                           ;; ファイルの末尾は改行を必須にする
   (ring-bell-function 'ignore)                        ;; ビープ音を無効化
   (vc-follow-symlinks t))                             ;; 常にシンボリックリンクをたどる
@@ -205,6 +206,10 @@
 (use-package autorevert
   :custom (global-auto-revert-mode t))  ;; 常に自動更新する
 
+;; 表示範囲の目的地へ素早く移動
+(use-package avy
+  :bind ("C-M-;" . avy-goto-char))
+
 ;; シェルの環境変数を引き継ぐ
 (use-package exec-path-from-shell
   :config (exec-path-from-shell-initialize))  ;; すべての環境変数を引き継ぐ
@@ -221,14 +226,29 @@
   (recentf-filename-handlers nil)
   (recentf-exclude '(".recentf")))   ;; .recentfファイルは対象としない
 
-;; 検索にripgrepを利用する
-(use-package rg
-  :config (rg-enable-default-bindings))  ;; magit同様のデフォルトキーバインドを利用する
+;; 特定コマンドの連続実行でプレフィックスキーを最初の一度だけにする
+(use-package repeat
+  :config (repeat-mode)
+  :ensure nil)
 
 ;; ミニバッファの履歴を保存する
 (use-package savehist
   :config (savehist-mode t)
   :ensure nil)
+
+;; 前回のカーソル位置を復元する
+(use-package saveplace
+  :ensure nil
+  :init (save-place-mode))
+
+;; 長い行を含むファイルオープン時のパフォーマンスを改善する
+(use-package so-long
+  :init (global-so-long-mode))
+
+;; camelCase/snake_caseをサブワード単位で移動できるようにする
+(use-package subword
+  :ensure nil
+  :init (global-subword-mode))
 
 ;; Emacsからroot権限でファイルを編集できるようにする
 (use-package sudo-edit)
@@ -241,6 +261,10 @@
 ;;
 ;; IDE設定
 ;;
+
+;; バッファの先頭にパンくずを表示する
+(use-package breadcrumb
+  :config (breadcrumb-mode))
 
 (use-package eglot
   :ensure nil
@@ -530,8 +554,11 @@
   :bind
   (("<f12>" . flymake-goto-next-error)
    ("<f11>" . flymake-goto-prev-error))
+  :custom
+  (flymake-indicator-type nil)
+  (flymake-show-diagnostics-at-end-of-line t)
   :ensure nil
-  :hook prog-mode)
+  :hook ((prog-mode conf-mode) . flymake-mode))
 
 ;;
 ;; 構文ハイライト設定
@@ -591,6 +618,10 @@
 ;;
 ;; プログラミング言語設定
 ;;
+
+;; Elisp
+(use-package elisp-autofmt
+  :hook (emacs-lisp-mode .elisp-autofmt-mode))
 
 ;; Elm
 (use-package elm-mode)
@@ -654,6 +685,11 @@
   :custom (markdown-command "pandoc")
   :hook (markdown-mode . (lambda () (setq-local whitespace-action nil))))  ;; Markdown編集時に行末の空白を削除しない
 (use-package markdown-preview-mode)
+
+;; Mermaid
+(use-package mermaid-mode
+  :custom
+  (mermaid-flags "--scale 2"))
 
 ;; PlantUML
 (use-package plantuml-mode
