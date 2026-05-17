@@ -41,6 +41,7 @@
   (eol-mnemonic-dos "(CRLF)")                         ;; CRLF を視認しやすくする
   (eol-mnemonic-unix "(LF)")                          ;; LF を視認しやすくする
   (indent-tabs-mode nil)                              ;; タブインデントは利用しない
+  (tab-width 4)                                       ;; eglotがLSPへ送るtabSizeの基準値(デフォルト8は大きすぎる)
   (inhibit-startup-screen t)                          ;; 起動画面を表示しない
   (initial-scratch-message nil)                       ;; Scratchバッファにメッセージは表示しない
   (kill-whole-line t)                                 ;; C-kで行末の改行コードごと削除する
