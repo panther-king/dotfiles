@@ -356,7 +356,7 @@
   (dirvish-side-attributes '(vc-state         ;; フリンジにgitの状態を表示する
                              nerd-icons       ;; アイコンを表示する
                              collapse))       ;; 詳細を折りたたんで表示する
-  (dirvish-project-root-function              ;; projectileのrootを認識させる
+  (dirvish-project-root-function              ;; projectのrootを認識させる
    (lambda ()
      (when-let (proj (project-current))
        (project-root proj))))
