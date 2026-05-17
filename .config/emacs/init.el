@@ -358,7 +358,7 @@
                              collapse))       ;; 詳細を折りたたんで表示する
   (dirvish-project-root-function              ;; projectのrootを認識させる
    (lambda ()
-     (when-let (proj (project-current))
+     (when-let* ((proj (project-current)))
        (project-root proj))))
   (dirvish-time-format-string "%Y-%m-%d %R")  ;; タイムスタンプは西暦4ケタで表示する
   :init (dirvish-override-dired-mode t))
@@ -387,6 +387,10 @@
      (project-dired "Dired" "d")
      (project-switch-to-buffer "Switch buffer" "b")
      (project-kill-buffers "Kill buffers" "k")))
+  :hook
+  (find-file . (lambda ()
+                 (when-let* ((proj (project-current)))
+                   (project-remember-project proj))))
   :ensure nil)
 
 ;; Emacs でターミナルを利用する
