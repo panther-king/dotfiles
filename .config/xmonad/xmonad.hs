@@ -2,7 +2,7 @@ import XMonad
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.InsertPosition
 import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers (isDialog)
+import XMonad.Hooks.ManageHelpers (doCenterFloat, isDialog)
 import XMonad.Hooks.SetWMName (setWMName)
 import XMonad.Layout.MultiToggle
 import XMonad.Layout.MultiToggle.Instances
@@ -20,8 +20,8 @@ main =
         -- ウインドウのフルスクリーントグルを可能にしておく
         layoutHook = avoidStruts $ mkToggle (single FULL) $ spacingWithEdge 4 $ layoutHook def,
         -- 新しいウインドウはスタックの末尾に追加する
-        -- ダイアログはフロートさせる
-        manageHook = isDialog --> doFloat <+> insertPosition Below Newer <+> manageHook def,
+        -- ダイアログはフロートして画面中央に表示させる
+        manageHook = (isDialog --> doCenterFloat) <+> insertPosition Below Newer <+> manageHook def,
         modMask = mod4Mask,
         normalBorderColor = "#1e1e2e", -- Catppucchin Mocha, Base
         startupHook = myStartupHook,
