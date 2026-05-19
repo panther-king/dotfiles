@@ -380,6 +380,7 @@
    ("C-c p d" . project-dired)
    ("C-c p f" . project-find-file)
    ("C-c p k" . project-kill-buffers)
+   ("C-c p p" . project-switch-project)
    ("C-c p r" . consult-ripgrep))
   :custom
   (project-switch-commands
