@@ -525,12 +525,14 @@
 ;;
 
 ;; ファイルの編集状況をフリンジに表示する
-(use-package git-gutter
-  :config (global-git-gutter-mode t)
+(use-package diff-hl
+  :bind
+  (("<f9>" . diff-hl-previous-hunk)
+   ("<f10>" . diff-hl-next-hunk))
+  :config
+  (global-diff-hl-mode)
   :custom
-  (git-gutter:modified-sign "~")   ;; 変更
-  (git-gutter:added-sign "+")      ;; 追加
-  (git-gutter:deleted-sign "!"))   ;; 削除
+  (diff-hl-update-async t))
 
 ;; gitの設定ファイルメジャーモード
 (use-package git-modes)
