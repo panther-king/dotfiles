@@ -529,10 +529,9 @@
   :bind
   (("<f9>" . diff-hl-previous-hunk)
    ("<f10>" . diff-hl-next-hunk))
-  :config
-  (global-diff-hl-mode)
-  :custom
-  (diff-hl-update-async t))
+  :config (global-diff-hl-mode)
+  :custom (diff-hl-update-async t)
+  :hook (magit-post-refresh . diff-hl-magit-post-refresh))
 
 ;; gitの設定ファイルメジャーモード
 (use-package git-modes)
