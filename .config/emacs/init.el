@@ -646,8 +646,6 @@
   (require 'fsharp-ts-eglot)
   (require 'fsharp-ts-lens)
   (require 'fsharp-ts-info)
-  (add-hook 'fsharp-ts-mode-hook #'fsharp-ts-lens-mode)
-  (add-hook 'fsharp-ts-mode-hook #'fsharp-ts-info-mode)
   (advice-add 'fsharp-ts-eglot--server-contact :around
               (lambda (orig-fun &rest _args)
                 (funcall orig-fun)))
