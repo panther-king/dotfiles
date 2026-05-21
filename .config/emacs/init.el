@@ -298,7 +298,7 @@
   ;; 正しくフォーマットできない問題を回避するため、
   ;; 強制的に utf-8 で扱う
   (defun my/fix-eglot-process-coding (&rest _)
-    (when (derived-mode-p 'fsharp-ts-mode)
+    (when (derived-mode-p 'fsharp-mode)
       (when-let* ((server (eglot-current-server))
                   (proc (jsonrpc--process server)))
         (set-process-coding-system proc 'utf-8-unix 'utf-8-unix))))
@@ -313,7 +313,7 @@
   ((css-ts-mode . eglot-ensure)
    (dockerfile-ts-mode . eglot-ensure)
    (elm-mode . eglot-ensure)
-   (fsharp-ts-mode . eglot-ensure)
+   (fsharp-mode . eglot-ensure)
    (haskell-mode . eglot-ensure)
    (html-ts-mode . eglot-ensure)
    (js-ts-mode . eglot-ensure)
@@ -473,7 +473,7 @@
     (local-set-key (kbd "|") (smartchr "|" "|`!!'|" " || " " | ")))
   :hook
   ((elm-mode . my/elm-smartchr-init)
-   (fsharp-ts-mode . my/fsharp-smartchr-init)
+   (fsharp-mode . my/fsharp-smartchr-init)
    (js2-mode . my/js2-smartchr-init)
    (php-mode . my/php-smartchr-init)
    (python-ts-mode . my/python-smartchr-init)
@@ -641,20 +641,9 @@
 (use-package elm-mode)
 
 ;; F#
-(use-package fsharp-ts-mode
-  :config
-  (require 'fsharp-ts-eglot)
-  (require 'fsharp-ts-lens)
-  (require 'fsharp-ts-info)
-  (advice-add 'fsharp-ts-eglot--server-contact :around
-              (lambda (orig-fun &rest _args)
-                (funcall orig-fun)))
-  :custom
-  (fsharp-ts-guess-indent-offset t)
-  :hook
-  ((fsharp-ts-mode . fsharp-ts-repl-minor-mode)
-   (fsharp-ts-mode . fsharp-ts-dotnet-mode)
-   (fsharp-ts-mode . prettify-symbols-mode)))
+(use-package fsharp-mode)
+(use-package eglot-fsharp
+  :after fsharp-mode)
 
 ;; Haskell
 (use-package haskell-mode)
