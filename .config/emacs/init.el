@@ -119,21 +119,20 @@
    (text-mode . display-line-numbers-mode)))  ;; テキストモードでも行番号を表示する
 
 ;; インデントを可視化する
-(use-package highlight-indent-guides
-  :config
-  (custom-set-faces
-   `(highlight-indent-guides-top-character-face
-     ((t (:foreground ,(cdr (assoc 'overlay0 catppuccin-mocha-colors))))))
-   `(highlight-indent-guides-character-face
-     ((t (:foreground ,(cdr (assoc 'surface0 catppuccin-mocha-colors)))))))
+(use-package indent-bars
   :custom
-  (highlight-indent-guides-auto-enabled nil)  ;; カラーはカスタム定義する
-  (highlight-indent-guides-method 'bitmap)    ;; インデントガイドをbitmapで表示する
-  (highlight-indent-guides-responsive 'top)   ;; 現在のインデントガイドを強調する
-  :hook
-  ((prog-mode . highlight-indent-guides-mode)
-   (html-ts-mode . highlight-indent-guides-mode)
-   (yaml-mode . highlight-indent-guides-mode)))
+  (indent-bars-color '(highlight :face-bg t :blend 0.15))
+  (indent-bars-color-by-depth '(:regexp "outline-\\([0-9]+\\)" :blend 1))
+  (indent-bars-display-on-blank-lines t)
+  (indent-bars-highlight-current-depth '(:blend 0.5))
+  (indent-bars-no-descend-lists 'skip)
+  (indent-bars-pad-frac 0.1)
+  (indent-bars-pattern ".")
+  (indent-bars-treesit-ignore-blank-line-types '("module"))
+  (indent-bars-treesit-support t)
+  (indent-bars-width-frac 0.1)
+  (indent-bars-zigzag nil)
+  :hook ((prog-mode html-ts-mode yaml-mode) . indent-bars-mode))
 
 ;; 現在行をハイライトする
 (use-package hl-line
