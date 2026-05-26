@@ -483,7 +483,8 @@
 
 ;; prefixキーの次の操作をナビゲーションする
 (use-package which-key
-  :config (which-key-mode 1))
+  :config (which-key-mode 1)
+  :ensure nil)
 
 ;;
 ;; 日本語入力設定
