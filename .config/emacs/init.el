@@ -797,11 +797,6 @@
 (use-package orderless
   :custom (completion-styles '(orderless basic)))
 
-;; 補完候補にアイコンを利用する
-(use-package kind-icon
-  :after corfu
-  :config (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
-
 ;; 補完方法をカスタマイズする
 (use-package cape)
 
