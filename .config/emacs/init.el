@@ -674,8 +674,10 @@
   :custom (typescript-ts-mode-indent-level 2)  ;; TypeScriptのインデントは2スペース
   :ensure nil
   :mode
-  (("\\.ts\\'" . typescript-ts-mode)
-   ("\\.tsx\\'" . typescript-ts-mode)))
+  ("\\.ts\\'" . typescript-ts-mode))
+(use-package tsx-tx-mode
+  :ensure nil
+  :mode ("\\.tsx\\'" . tsx-tx-mode))
 
 ;;
 ;; 構造化言語設定
