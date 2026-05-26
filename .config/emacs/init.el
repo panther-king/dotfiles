@@ -176,6 +176,18 @@
 
 ;; カッコを自動的に補完する
 (use-package smartparens
+  :bind
+  (:map smartparens-mode-map
+        ("C-M-f" . sp-forward-sexp)
+        ("C-M-b" . sp-backward-sexp)
+        ("C-M-u" . sp-up-sexp)
+        ("C-M-d" . sp-down-sexp)
+        ("C-)" . sp-forward-slurp-sexp)
+        ("C-}" . sp-forward-barf-sexp)
+        ("C-(" . sp-backward-slurp-sexp)
+        ("C-}" . sp-backward-barf-sexp)
+        ("M-(" . sp-wrap-round)
+        ("M-{" . sp-unwrap-sexp))
   :config (require 'smartparens-config)
   :hook prog-mode)
 
