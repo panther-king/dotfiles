@@ -53,6 +53,7 @@
   (read-process-output-max (* 1024 1024))             ;; 外部プロセスから読み取るデータの最大サイズを変更する
   (require-final-newline t)                           ;; ファイルの末尾は改行を必須にする
   (ring-bell-function 'ignore)                        ;; ビープ音を無効化
+  (scroll-conservatively 1)                           ;; 画面のスクロール単位を1行にする
   (vc-follow-symlinks t))                             ;; 常にシンボリックリンクをたどる
 
 ;;
