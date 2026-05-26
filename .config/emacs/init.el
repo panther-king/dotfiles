@@ -538,15 +538,17 @@
 ;;
 
 ;; ファイルの編集状況をフリンジに表示する
-(use-package git-gutter
+(use-package diff-hl
   :bind
-  (("<f9>" . git-gutter:previous-hunk)
-   ("<f10>" . git-gutter:next-hunk))
-  :config (global-git-gutter-mode t)
-  :custom
-  (git-gutter:modified-sign "~")   ;; 変更
-  (git-gutter:added-sign "+")      ;; 追加
-  (git-gutter:deleted-sign "!"))   ;; 削除
+  (("<f9>" . diff-hl-previous-hunk)
+   ("<f10>" . diff-hl-next-hunk))
+  :config
+  (global-diff-hl-mode)
+  (diff-hl-flydiff-mode)
+  :demand t  ;; フックによるパッケージロードの遅延で :config が実行されない問題の対策
+  :hook
+  ((magit-pre-refresh . diff-hl-magit-pre-refresh)
+   (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 ;; gitの設定ファイルメジャーモード
 (use-package git-modes)
