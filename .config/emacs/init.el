@@ -271,6 +271,11 @@
   :bind ("C-x u" . vundo)
   :custom (vundo-glyph-alist vundo-unicode-symbols))  ;; 差分ツリーはユニコードも利用する
 
+;; フォーカス中のウインドウ最大化をトグルする
+(use-package zoom-window
+  :bind ("C-x z" . zoom-window-zoom)
+  :custom (zoom-window-mode-line-color (face-background 'mode-line)))  ;; 最大化時にモードラインのカラーは変化させない
+
 ;;
 ;; IDE設定
 ;;
