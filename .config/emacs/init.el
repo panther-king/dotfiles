@@ -66,10 +66,10 @@
 (use-package auto-package-update
   :config (auto-package-update-maybe)
   :custom
-  (auto-package-update-delete-old-versions t)          ;; 旧バージョンのパッケージは削除
-  (auto-package-update-excluded-packages '(smartchr))  ;; ELPAからインストールしていないパッケージは対象外
-  (auto-package-update-prompt-before-update t)         ;; アップデート実行前に確認
-  (auto-package-update-show-preview t))                ;; アップデート対象パッケージを事前に表示する
+  (auto-package-update-delete-old-versions t)                        ;; 旧バージョンのパッケージは削除
+  (auto-package-update-excluded-packages '(eglot-booster smartchr))  ;; ELPAからインストールしていないパッケージは対象外
+  (auto-package-update-prompt-before-update t)                       ;; アップデート実行前に確認
+  (auto-package-update-show-preview t))                              ;; アップデート対象パッケージを事前に表示する
 
 ;;
 ;; テーマ設定
