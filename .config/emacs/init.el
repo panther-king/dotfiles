@@ -66,10 +66,10 @@
 (use-package auto-package-update
   :config (auto-package-update-maybe)
   :custom
-  (auto-package-update-delete-old-versions t)                           ;; 旧バージョンのパッケージは削除
-  (auto-package-update-excluded-packages '(drill-instructor smartchr))  ;; ELPAからインストールしていないパッケージは対象外
-  (auto-package-update-prompt-before-update t)                          ;; アップデート実行前に確認
-  (auto-package-update-show-preview t))                                 ;; アップデート対象パッケージを事前に表示する
+  (auto-package-update-delete-old-versions t)          ;; 旧バージョンのパッケージは削除
+  (auto-package-update-excluded-packages '(smartchr))  ;; ELPAからインストールしていないパッケージは対象外
+  (auto-package-update-prompt-before-update t)         ;; アップデート実行前に確認
+  (auto-package-update-show-preview t))                ;; アップデート対象パッケージを事前に表示する
 
 ;;
 ;; テーマ設定
@@ -427,11 +427,6 @@
   :bind
   (("C-h" . delete-backward-char)  ;; 1文字前を削除
    ("C-'" . set-mark-command)))    ;; リージョン選択
-
-;; Emacsキーバインドを強制する
-(use-package drill-instructor
-  :config (setq drill-instructor-global t)  ;; 常にEmacsキーバインドを強制する
-  :vc (:url "https://github.com/k1LoW/emacs-drill-instructor"))
 
 ;; 同一キーの入力で入力内容を切り替える
 (use-package smartchr
