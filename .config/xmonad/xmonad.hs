@@ -21,7 +21,7 @@ main =
         layoutHook = avoidStruts $ mkToggle (single FULL) $ spacingWithEdge 4 $ layoutHook def,
         -- 新しいウインドウはスタックの末尾に追加する
         -- ダイアログはフロートして画面中央に表示させる
-        manageHook = (isDialog --> doCenterFloat) <+> insertPosition Below Newer <+> manageHook def,
+        manageHook = (isDialog --> doCenterFloat) <+> (fmap not isDialog --> insertPosition Below Newer) <+> manageHook def,
         modMask = mod4Mask,
         normalBorderColor = "#1e1e2e", -- Catppucchin Mocha, Base
         startupHook = myStartupHook,
