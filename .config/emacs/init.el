@@ -754,6 +754,12 @@
 (use-package auto-rename-tag
   :hook (html-ts-mode . auto-rename-tag-mode))  ;; タグ名を変更すると閉じタグも追随させる
 
+;; CSS
+(use-package css-ts-mode
+  :custom (css-indent-offset 2)
+  :ensure nil
+  :mode "\\.css\\'")
+
 (use-package web-mode
   :custom
   (web-mode-code-indent-offset 2)    ;; JavaScriptは2スペースインデント
