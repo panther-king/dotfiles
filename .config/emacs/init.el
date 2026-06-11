@@ -33,6 +33,7 @@
   (prefer-coding-system 'utf-8-unix)                                ;; utf-8 を優先する
   (set-language-environment "utf-8")                                ;; utf-8 がデフォルト
   :custom
+  (auth-sources '("~/.authinfo.gpg"))                 ;; forge で利用する認証情報
   (auto-save-default nil)                             ;; 自動保存を行わない
   (column-number-mode t)                              ;; モードラインに列番号も表示する
   (create-lockfiles nil)                              ;; ロックファイルを作成しない
@@ -569,6 +570,10 @@
   (magit-delta-default-dark-theme "Catppuccin Mocha")  ;; bat --list-themes
   (magit-delta-hide-plus-minus-markers nil)            ;; diffの行頭に+/-を表示する
   :hook magit-mode)
+
+;; magitからGitHubを操作する
+(use-package forge
+  :after magit)
 
 ;;
 ;; 構文チェック設定
