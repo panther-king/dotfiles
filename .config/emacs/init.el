@@ -847,6 +847,22 @@
         ("C-l" . vertico-directory-up))  ;; C-lでディレクトリ階層を上がれるようにする
   :ensure nil)
 
+;; org-mode
+(use-package org
+  :config
+  (global-set-key (kbd "C-c c") 'org-capture)
+  (global-set-key (kbd "C-c a") 'org-agenda)
+  :custom
+  (org-agenda-files "~/org/todo.org")
+  (org-directory "~/org")
+  (org-capture-templates
+   '(("n" "Note" entry (file (concat org-directory "/notes.org"))
+      "* %?\n%U\n")
+     ("t" "Todo" entry (file (concat org-directory "/todo.org"))
+      "* TODO %?\n%U\n")))
+  (org-todo-keywords '((sequence "TODO" "DOING" "|" "DONE" "CANCELLED")))
+  :ensure nil)
+
 ;; early-init.elで無効化したGC設定を戻す(100MB)
 (add-hook 'emacs-startup-hook
           (lambda ()
