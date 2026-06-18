@@ -12,6 +12,7 @@
 (push '(menu-bar-lines . 0) default-frame-alist)
 (push '(tool-bar-lines . 0) default-frame-alist)
 (push '(vertical-scroll-bars . nil) default-frame-alist)
+(push '(undecorated . t) default-frame-alist)
 
 ;; 起動時の画面のチラつきを抑制
 (push '(background-color . "#1e1e2e") default-frame-alist)
