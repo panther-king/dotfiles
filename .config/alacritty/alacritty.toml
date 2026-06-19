@@ -86,7 +86,6 @@ args = ["new-session"]
 decorations = "none"
 dynamic_padding = false
 dynamic_title = true
-opacity = 0.85
 startup_mode = "Windowed"
 
 [window.dimensions]

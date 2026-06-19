@@ -28,7 +28,6 @@
   :ensure nil
   :config
   (fset 'yes-or-no-p 'y-or-n-p)                                     ;; プロンプトでyes/noを短縮する
-  (add-to-list 'default-frame-alist '(alpha . (85 . 50)))           ;; ウインドウを透過する
   (add-to-list 'default-frame-alist '(font . "UDEV Gothic NF 14"))  ;; フォントはUDEV Gothic
   (prefer-coding-system 'utf-8-unix)                                ;; utf-8 を優先する
   (set-language-environment "utf-8")                                ;; utf-8 がデフォルト
