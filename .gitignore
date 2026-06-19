@@ -1,6 +1,7 @@
 /.config/*
 !/.config/alacritty/
 !/.config/emacs/
+!/.config/fuzzel/
 !/.config/mako/
 !/.config/niri/
 !/.config/paru/
