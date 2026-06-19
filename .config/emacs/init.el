@@ -703,6 +703,9 @@
 ;; 構造化言語設定
 ;;
 
+;; KDL
+(use-package kdl-mode)
+
 ;; JSON
 (use-package json-ts-mode
   :custom (json-ts-mode-indent-offset 2)  ;; JSONのインデントは2スペース
