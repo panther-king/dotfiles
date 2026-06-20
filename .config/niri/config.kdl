@@ -48,6 +48,8 @@ layout {
     struts {}
 }
 
+spawn-at-startup "nm-applet"
+
 spawn-sh-at-startup "fcitx5 -d"
 spawn-sh-at-startup "systemctl --user start xremap"
 
