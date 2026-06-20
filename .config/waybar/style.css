@@ -15,7 +15,7 @@ window#waybar {
 #workspaces button {
   color: @overlay0;
   background: transparent;
-  padding: 0 2px;
+  padding: 0;
 }
 
 #workspaces button.active {
