@@ -1,9 +1,9 @@
 {
-    "height": 32,
-    "spacing": 4,
+    "height": 36,
+    "spacing": 24,
     "modules-left": [
-        "niri/workspaces",
-        "clock"
+        "clock",
+        "niri/workspaces"
     ],
     "modules-right": [
         "cpu",

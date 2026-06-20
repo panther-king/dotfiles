@@ -13,14 +13,14 @@ window#waybar {
 }
 
 #workspaces button {
-  padding: 0 6px;
   color: @overlay0;
   background: transparent;
+  padding: 0 2px;
 }
 
 #workspaces button.active {
-  color: @base;
   background-color: @maroon;
+  color: @base;
 }
 
 #workspaces button.urgent {
@@ -35,8 +35,8 @@ window#waybar {
 #network,
 #battery,
 #tray {
-  padding: 0 10px;
   color: @overlay0;
+  padding: 0 10px;
 }
 
 #battery.warning {
