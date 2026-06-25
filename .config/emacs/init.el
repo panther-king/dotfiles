@@ -297,6 +297,9 @@
                ;; JSON: paru -S vscode-langservers-extracted
                '(json-ts-mode . ("vscode-json-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs
+               ;; Nix: paru -S nixd
+               '(nix-ts-mode . ("nixd")))
+  (add-to-list 'eglot-server-programs
                ;; OpenTofu: paru -S tofu-ls-bin
                '(terraform-mode . ("tofu-ls" "serve")))
   (add-to-list 'eglot-server-programs
@@ -335,6 +338,7 @@
    (html-ts-mode . eglot-ensure)
    (js-ts-mode . eglot-ensure)
    (json-ts-mode . eglot-ensure)
+   (nix-ts-mode . eglot-ensure)
    (php-mode . eglot-ensure)
    (python-mode . eglot-ensure)
    (python-ts-mode . eglot-ensure)
@@ -605,6 +609,7 @@
           (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))
           (jsdoc . ("https://github.com/tree-sitter/tree-sitter-jsdoc"))
           (json . ("https://github.com/tree-sitter/tree-sitter-json"))
+          (nix . ("https://github.com/nix-community/tree-sitter-nix"))
           (php . ("https://github.com/tree-sitter/tree-sitter-php" "master" "php/src"))
           (phpdoc . ("https://github.com/claytonrcarter/tree-sitter-phpdoc"))
           (python . ("https://github.com/tree-sitter/tree-sitter-python"))
@@ -721,6 +726,10 @@
 (use-package mermaid-mode
   :custom
   (mermaid-flags "--scale 2"))
+
+;; nix
+(use-package nix-ts-mode
+  :mode ("\\.nix\\'"))
 
 ;; PlantUML
 (use-package plantuml-mode
