@@ -68,4 +68,8 @@
   # emacs
   xdg.configFile."emacs/early-init.el".source = ./xdg-config/emacs/early-init.el;
   xdg.configFile."emacs/init.el".source = ./xdg-config/emacs/init.el;
+
+  # tmux
+  xdg.configFile."tmux/tmux.conf".source = ./xdg-config/tmux/tmux.conf;
+  xdg.configFile."tmux/plugins/catppuccin/tmux/catppuccin.tmux".source = pkgs.catppuccin-tmux;
 }
