@@ -23,4 +23,9 @@ final: prev: {
     hash = "sha256-puMFl8zIKOiYhE6wzqnffXOHn/VnKmpVDzrMJMk+3Rc=";
     url = "https://raw.githubusercontent.com/catppuccin/waybar/ee8ed32b4f63e9c417249c109818dcc05a2e25da/themes/mocha.css";
   };
+
+  catppuccin-yazi-blue = prev.fetchurl {
+    hash = "sha256-e8VbMQNhHQboFLtHmXDufc1Fvq3sODdgwRkeEccn7Iw=";
+    url = "https://raw.githubusercontent.com/catppuccin/yazi/baaf5d1c9427b836fbefd126aa855f9eab7a9d0d/themes/mocha/catppuccin-mocha-blue.toml";
+  };
 }

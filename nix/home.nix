@@ -74,6 +74,7 @@
   xdg.configFile."tmux/plugins/catppuccin/tmux/catppuccin.tmux".source = pkgs.catppuccin-tmux;
 
   # yazi
-  # @TODO yazi のテーマ管理
   xdg.configFile."yazi/keymap.toml".source = ./xdg-config/yazi/keymap.toml;
+  xdg.configFile."yazi/theme.toml".source = pkgs.catppuccin-yazi-blue;
+  xdg.configFile."yazi/Catppuccin-mocha.tmTheme".source = pkgs.catppuccin-bat;
 }
