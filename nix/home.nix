@@ -72,4 +72,8 @@
   # tmux
   xdg.configFile."tmux/tmux.conf".source = ./xdg-config/tmux/tmux.conf;
   xdg.configFile."tmux/plugins/catppuccin/tmux/catppuccin.tmux".source = pkgs.catppuccin-tmux;
+
+  # yazi
+  # @TODO yazi のテーマ管理
+  xdg.configFile."yazi/keymap.toml".source = ./xdg-config/yazi/keymap.toml;
 }
