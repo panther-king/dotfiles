@@ -64,4 +64,8 @@
   # bat
   xdg.configFile."bat/config".source = ./xdg-config/bat/config;
   xdg.configFile."bat/themes/Catppuccin Mocha.tmTheme".source = pkgs.catppuccin-bat;
+
+  # emacs
+  xdg.configFile."emacs/early-init.el".source = ./xdg-config/emacs/early-init.el;
+  xdg.configFile."emacs/init.el".source = ./xdg-config/emacs/init.el;
 }
