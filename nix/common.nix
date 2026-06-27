@@ -26,6 +26,9 @@
   # フリーではないパッケージも利用する
   nixpkgs.config.allowUnfree = true;
 
+  # シェルは zsh
+  programs.zsh.enable = true;
+
   # 日本以外では利用しない
   time.timeZone = "Asia/Tokyo";
 }
