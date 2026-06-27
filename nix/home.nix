@@ -60,4 +60,8 @@
   # Alacritty
   xdg.configFile."alacritty/config.toml".source = ./xdg-config/alacritty/alacritty.toml;
   xdg.configFile."alacritty/catppuccin-mocha.toml".source = pkgs.catppuccin-alacritty;
+
+  # bat
+  xdg.configFile."bat/config".source = ./xdg-config/bat/config;
+  xdg.configFile."bat/themes/Catppuccin Mocha.tmTheme".source = pkgs.catppuccin-bat;
 }
