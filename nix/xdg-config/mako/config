@@ -1,0 +1,12 @@
+background-color=#89b4fa
+border-color=#89b4fa
+default-timeout=10000
+font=BIZ UDPGothic 10
+padding=8
+progress-color=over #313244
+text-color=#1e1e2e
+
+[urgency=high]
+background-color=#fab387
+border-color=#fab387
+text-color=#1e1e2e
