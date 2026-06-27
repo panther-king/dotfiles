@@ -7,16 +7,16 @@
     fcitx5-gtk
     fcitx5-skk
     firefox
-    fuzzel  # アプリケーションランチャー
+    fuzzel # アプリケーションランチャー
     iw
     libreoffice-fresh
     libsForQt5.fcitx5-qt
     libsForQt5.qt5ct
-    mako  # デスクトップ通知
+    mako # デスクトップ通知
     meld
     networkmanagerapplet
     niri
-    nwg-look  # GTK ルック & フィール設定
+    nwg-look # GTK ルック & フィール設定
     podman-compose
     qt6Packages.fcitx5-qt
     skkDictionaries.assoc
@@ -34,8 +34,8 @@
     skkDictionaries.station
     skkDictionaries.zipcode
     skktools
-    swaybg  # 壁紙管理
-    swaylock  # スクリーンロック
+    swaybg # 壁紙管理
+    swaylock # スクリーンロック
     vivaldi
     vlc
     xdg-desktop-portal
@@ -43,8 +43,8 @@
     xremap
     xwayland-satellite
     waybar
-    waynaptics  # overlay
-    zola  # ブログ用
+    waynaptics # overlay
+    zola # ブログ用
   ];
 
   # xremap は systemd のユーザーサービスで起動する

@@ -61,8 +61,8 @@
 
   users.users.i = {
     extraGroups = [
-      "input"  # xremap
-      "networkmanager"  # nmcli/nm-applet
+      "input" # xremap
+      "networkmanager" # nmcli/nm-applet
       "wheel"
     ];
     isNormalUser = true;
