@@ -23,8 +23,12 @@
     "nix-command"
   ];
 
-  # フリーではないパッケージも利用する
+  # フリーではないパッケージや自前の overlay も利用する
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (import ./overlays/morisawa-biz-ud-gothic-fonts.nix)
+    (import ./overlays/udev-gothic.nix)
+  ];
 
   # シェルは zsh
   programs.zsh.enable = true;

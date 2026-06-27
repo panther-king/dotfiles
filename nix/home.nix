@@ -26,6 +26,7 @@
     killall
     man-pages
     man-pages-posix
+    morisawa-biz-ud-gothic-fonts  # overlay
     nkf
     nmap
     noto-fonts-cjk-sans
@@ -45,6 +46,7 @@
     tokei
     traceroute
     tree
+    udev-gothic  # overlay
     unzip
     vim
     vscode-langservers-extracted
