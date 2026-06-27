@@ -43,6 +43,7 @@
     xremap
     xwayland-satellite
     waybar
+    waynaptics  # overlay
     zola  # ブログ用
   ];
 

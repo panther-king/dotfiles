@@ -38,6 +38,37 @@
     };
   };
 
+  # waynaptics がスリープ復帰時に正しく復旧できない問題を回避
+  systemd.services.waynaptics-resume = {
+    after = [
+      "hibernate.target"
+      "hybrid-sleep.target"
+      "suspend.target"
+      "suspend-then-hibernate.target"
+    ];
+    description = "Restart Waynaptics after suspend";
+    serviceConfig = {
+      ExecStart = "${pkgs.systemd}/bin/systemctl restart waynaptics.service";
+      Type = "oneshot";
+    };
+    wantedBy = [
+      "hibernate.target"
+      "hybrid-sleep.target"
+      "suspend.target"
+      "suspend-then-hibernate.target"
+    ];
+  };
+
+  users.users.i = {
+    extraGroups = [
+      "input"  # xremap
+      "networkmanager"  # nmcli/nm-applet
+      "wheel"
+    ];
+    isNormalUser = true;
+    shell = pkgs.zsh;
+  };
+
   # docker ではなく podman を利用する
   virtualisation.podman = {
     # docker コマンドを podman にエイリアス

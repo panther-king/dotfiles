@@ -28,6 +28,7 @@
   nixpkgs.overlays = [
     (import ./overlays/morisawa-biz-ud-gothic-fonts.nix)
     (import ./overlays/udev-gothic.nix)
+    (import ./overlays/waynaptics.nix)
   ];
 
   # シェルは zsh
