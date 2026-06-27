@@ -26,6 +26,7 @@
   # フリーではないパッケージや自前の overlay も利用する
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
+    (import ./overlays/catppuccin.nix)
     (import ./overlays/morisawa-biz-ud-gothic-fonts.nix)
     (import ./overlays/udev-gothic.nix)
     (import ./overlays/waynaptics.nix)

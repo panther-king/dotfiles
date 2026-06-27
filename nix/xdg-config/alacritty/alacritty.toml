@@ -1,0 +1,91 @@
+[[keyboard.bindings]]
+action = "Paste"
+key = "Y"
+mods = "Control"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
+
+[general]
+live_config_reload = true
+working_directory = "None"
+
+# @refs https://github.com/catppuccin/alacritty
+import = ["~/src/github.com/catppuccin/alacritty/catppuccin-mocha.toml"]
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+[bell]
+animation = "EaseOutExpo"
+color = "0xffffff"
+duration = 0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[debug]
+log_level = "Warn"
+persistent_logging = false
+print_events = false
+render_timer = false
+
+[font]
+size = 14.0
+builtin_box_drawing = false
+
+[font.bold]
+family = "UDEV Gothic NF"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "UDEV Gothic NF"
+style = "Italic"
+
+[font.normal]
+family = "UDEV Gothic NF"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[mouse]
+hide_when_typing = false
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ''',`|:"' ()[]{}<>'''
+
+[terminal.shell]
+program = "/usr/bin/tmux"
+args = ["new-session"]
+
+[window]
+decorations = "none"
+dynamic_padding = false
+dynamic_title = true
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 0
+lines = 0
+
+[window.padding]
+x = 8
+y = 8
