@@ -77,4 +77,9 @@
 
   # niri
   xdg.configFile."niri/config.kdl".source = ./xdg-config/niri/config.kdl;
+
+  # waybar
+  xdg.configFile."waybar/config.jsonc".source = ./xdg-config/waybar/config.jsonc;
+  xdg.configFile."waybar/style.css".source = ./xdg-config/waybar/style.css;
+  xdg.configFile."waybar/mocha.css".source = pkgs.catppuccin-waybar;
 }

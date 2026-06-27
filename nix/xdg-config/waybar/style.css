@@ -1,0 +1,52 @@
+@import "mocha.css";
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "UDEV Gothic NF";
+  font-size: 18px;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: @base;
+}
+
+#workspaces button {
+  color: @overlay0;
+  background: transparent;
+  padding: 0;
+}
+
+#workspaces button.active {
+  background-color: @maroon;
+  color: @base;
+}
+
+#workspaces button.urgent {
+  background-color: @yellow;
+  color: @base;
+}
+
+#clock,
+#cpu,
+#memory,
+#disk,
+#network,
+#battery,
+#tray {
+  color: @overlay0;
+  padding: 0 10px;
+}
+
+#battery.warning {
+  color: @yellow;
+}
+
+#battery.critical:not(.charging) {
+  color: @red;
+}
+
+#network.disconnected {
+  color: @yellow;
+}

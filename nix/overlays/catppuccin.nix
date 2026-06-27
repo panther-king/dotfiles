@@ -18,4 +18,9 @@ final: prev: {
     hash = "sha256-yAWiPOJEHpXF2/7QvwiSzlVjhZpI32hnVT6dLrJO9A8=";
     url = "https://raw.githubusercontent.com/catppuccin/tmux/d2d25bd3393fe43f19eb4fff6cdd2bdf5578e622/catppuccin.tmux";
   };
+
+  catppuccin-waybar = prev.fetchurl {
+    hash = "sha256-puMFl8zIKOiYhE6wzqnffXOHn/VnKmpVDzrMJMk+3Rc=";
+    url = "https://raw.githubusercontent.com/catppuccin/waybar/ee8ed32b4f63e9c417249c109818dcc05a2e25da/themes/mocha.css";
+  };
 }
