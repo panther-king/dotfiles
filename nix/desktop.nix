@@ -74,4 +74,7 @@
 
   # mako
   xdg.configFile."mako/config".source = ./xdg-config/mako/config;
+
+  # niri
+  xdg.configFile."niri/config.kdl".source = ./xdg-config/niri/config.kdl;
 }
