@@ -67,4 +67,8 @@
       Description = "xremap";
     };
   };
+
+  # fuzzel
+  xdg.configFile."fuzzel/fuzzel.ini".source = ./xdg-config/fuzzel/fuzzel.ini;
+  xdg.configFile."fuzzel/cappuccin-mocha.ini".source = pkgs.catppuccin-fuzzel;
 }
