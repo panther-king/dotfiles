@@ -3,21 +3,15 @@
   home.packages = with pkgs; [
     brightnessctl
     dbeaver-bin
-    fcitx5
-    fcitx5-gtk
-    fcitx5-skk
     firefox
     fuzzel # アプリケーションランチャー
     iw
     libreoffice-fresh
-    libsForQt5.fcitx5-qt
-    libsForQt5.qt5ct
     mako # デスクトップ通知
     meld
     networkmanagerapplet
     nwg-look # GTK ルック & フィール設定
     podman-compose
-    qt6Packages.fcitx5-qt
     skkDictionaries.assoc
     skkDictionaries.emoji
     skkDictionaries.fullname
