@@ -7,6 +7,8 @@
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.systemd-boot.enable = true;
 
+  environment.etc."waynaptics.conf".source = ../../waynaptics/waynaptics.conf;
+
   # GRUB ではなく UEFI でブートする
   environment.systemPackages = with pkgs; [
     efibootmgr
@@ -49,6 +51,25 @@
         vt = 1;
       };
     };
+  };
+
+  # waynaptics は overlay で自前ビルドのため
+  # systemd のユニットファイルも自前定義が必要
+  systemd.services.waynaptics = {
+    after = [
+      "local-fs.target"
+    ];
+    description = "Waynaptics - Synaptics touchpad to PS/2 mouse emulator";
+    serviceConfig = {
+      ExecStart = "${pkgs.waynaptics}/bin/waynaptics --config /etc/waynaptics.conf --socket /var/run/waynaptics.sock";
+      Nice = -20;
+      Restart = "on-failure";
+      RestartSec = 3;
+      Type = "simple";
+    };
+    wantedBy = [
+      "multi-user.target"
+    ];
   };
 
   # waynaptics がスリープ復帰時に正しく復旧できない問題を回避
