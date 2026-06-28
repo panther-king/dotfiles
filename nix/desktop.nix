@@ -33,7 +33,6 @@
     vlc
     xdg-desktop-portal
     xfsprogs
-    xremap
     xwayland-satellite
     waybar
     waynaptics # overlay
@@ -41,6 +40,12 @@
   ];
 
   home.file."Pictures/wallpaper-catppuccin.png".source = ./wallpaper-catppuccin.png;
+
+  services.xremap = {
+    enable = true;
+    withNiri = true;
+    yamlConfig = builtins.readFile ./xdg-config/xremap/config.yml;
+  };
 
   # swaybg は systemd のユーザーサービスで管理する
   systemd.user.services.swaybg = {
@@ -52,27 +57,6 @@
       After = [ "graphical-session.target" ];
       PartOf = [ "graphical-session.target" ];
       Requisuite = [ "graphical-session.target" ];
-    };
-  };
-
-  # xremap は systemd のユーザーサービスで管理する
-  systemd.user.services.xremap = {
-    Install = {
-      WantedBy = [
-        "graphical-session.target"
-      ];
-    };
-    Service = {
-      ExecStart = "${pkgs.xremap}/bin/xremap %h/.config/xremap/config.yml";
-      ExecStop = "${pkgs.killall}/bin/killall xremap";
-      KillMode = "process";
-      Restart = "always";
-    };
-    Unit = {
-      After = [
-        "graphical-session.target"
-      ];
-      Description = "xremap";
     };
   };
 
@@ -90,7 +74,4 @@
   xdg.configFile."waybar/config.jsonc".source = ./xdg-config/waybar/config.jsonc;
   xdg.configFile."waybar/style.css".source = ./xdg-config/waybar/style.css;
   xdg.configFile."waybar/mocha.css".source = pkgs.catppuccin-waybar;
-
-  # xremap
-  xdg.configFile."xremap/config.yml".source = ./xdg-config/xremap/config.yml;
 }

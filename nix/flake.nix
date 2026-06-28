@@ -7,12 +7,17 @@
       url = "github:nix-community/home-manager";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    xremap-flake = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:xremap/nix-flake";
+    };
   };
 
   outputs =
     {
       nixpkgs,
       home-manager,
+      xremap-flake,
       ...
     }:
     let
@@ -32,6 +37,7 @@
                 imports = [
                   ./desktop.nix
                   ./home.nix
+                  xremap-flake.homeManagerModules.default
                 ];
               };
             }
