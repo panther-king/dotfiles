@@ -47,7 +47,22 @@
     zola # ブログ用
   ];
 
-  # xremap は systemd のユーザーサービスで起動する
+  home.file."Pictures/wallpaper-catppuccin.png".source = ./wallpaper-catppuccin.png;
+
+  # swaybg は systemd のユーザーサービスで管理する
+  systemd.user.services.swaybg = {
+    Service = {
+      ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i \"%h/Pictures/wallpaper-catppuccin.png\"";
+      Restart = "on-failure";
+    };
+    Unit = {
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+      Requisuite = [ "graphical-session.target" ];
+    };
+  };
+
+  # xremap は systemd のユーザーサービスで管理する
   systemd.user.services.xremap = {
     Install = {
       WantedBy = [
