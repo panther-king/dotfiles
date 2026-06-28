@@ -65,6 +65,7 @@
   # 環境変数
   home.sessionVariables = {
     DOCKER_HOST = "unix://\${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/podman/podman.sock";
+    LANG = "ja_JP.UTF-8";
     LESS = "-R ";
     LESSOPEN = "| ${pkgs.sourceHighlight}/bin/source-highlight-esc.sh %s";
     PATH = "$HOME/.cargo/bin:$PATH";
