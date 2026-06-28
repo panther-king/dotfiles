@@ -70,7 +70,7 @@
 
   # fuzzel
   xdg.configFile."fuzzel/fuzzel.ini".source = ./xdg-config/fuzzel/fuzzel.ini;
-  xdg.configFile."fuzzel/cappuccin-mocha.ini".source = pkgs.catppuccin-fuzzel;
+  xdg.configFile."fuzzel/cappuccin-mocha.ini".source = pkgs.catppuccin-fuzzel-blue;
 
   # mako
   xdg.configFile."mako/config".source = ./xdg-config/mako/config;
