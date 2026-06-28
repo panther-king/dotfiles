@@ -5,6 +5,7 @@
     dbeaver-bin
     firefox
     fuzzel # アプリケーションランチャー
+    imv # 画像ビューワー
     iw
     libreoffice-fresh
     mako # デスクトップ通知
