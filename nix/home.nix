@@ -69,22 +69,24 @@
     LESS = "-R ";
     LESSOPEN = "| ${pkgs.sourceHighlight}/bin/source-highlight-esc.sh %s";
     PATH = "$HOME/.cargo/bin:$PATH";
-    SKIM_DEFAULT_OPTIONS = "--color=" + builtins.concatStringsSep "," [
-      "border:#6c7086"
-      "current:#cdd6f4"
-      "current_bg:#45475a"
-      "current_match:#1e1e2e"
-      "current_match_bg:#f5e0dc"
-      "cursor:#f38ba8"
-      "fg:#cdd6f4"
-      "header:#94e2d5"
-      "info:#cba6f7"
-      "matched:#313244"
-      "matched_bg:#f2cdcd"
-      "prompt:#89b4fa"
-      "selected:#eba0ac"
-      "spinner:#a6e3a1"
-    ];
+    SKIM_DEFAULT_OPTIONS =
+      "--color="
+      + builtins.concatStringsSep "," [
+        "border:#6c7086"
+        "current:#cdd6f4"
+        "current_bg:#45475a"
+        "current_match:#1e1e2e"
+        "current_match_bg:#f5e0dc"
+        "cursor:#f38ba8"
+        "fg:#cdd6f4"
+        "header:#94e2d5"
+        "info:#cba6f7"
+        "matched:#313244"
+        "matched_bg:#f2cdcd"
+        "prompt:#89b4fa"
+        "selected:#eba0ac"
+        "spinner:#a6e3a1"
+      ];
   };
 
   programs.direnv.enable = true;
