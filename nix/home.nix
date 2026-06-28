@@ -13,10 +13,10 @@
     devcontainer
     diff-so-fancy
     difftastic
-    direnv
     dockerfile-language-server
     dos2unix
     emacs-lsp-booster
+    fzf
     gh
     ghq
     git
@@ -35,11 +35,11 @@
     opentofu
     pandoc
     peco
+    ripgrep
     shellcheck
     skim
     socat # Claude Code サンドボックス用
     sourceHighlight
-    starship
     tig
     tmux
     tofu-ls
@@ -54,8 +54,40 @@
     whois
     yaml-language-server
     yazi
+    zinit
     zip
   ];
+
+  # dotfiles
+  home.file.".vimrc".source = ./vim/vimrc;
+  home.file.".zshrc".source = ./zsh/zshrc;
+
+  # 環境変数
+  home.sessionVariables = {
+    DOCKER_HOST = "unix://\${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/podman/podman.sock";
+    LESS = "-R ";
+    LESSOPEN = "| ${pkgs.sourceHighlight}/bin/source-highlight-esc.sh %s";
+    PATH = "$HOME/.cargo/bin:$PATH";
+    SKIM_DEFAULT_OPTIONS = "--color=" + builtins.concatStringsSep "," [
+      "border:#6c7086"
+      "current:#cdd6f4"
+      "current_bg:#45475a"
+      "current_match:#1e1e2e"
+      "current_match_bg:#f5e0dc"
+      "cursor:#f38ba8"
+      "fg:#cdd6f4"
+      "header:#94e2d5"
+      "info:#cba6f7"
+      "matched:#313244"
+      "matched_bg:#f2cdcd"
+      "prompt:#89b4fa"
+      "selected:#eba0ac"
+      "spinner:#a6e3a1"
+    ];
+  };
+
+  programs.direnv.enable = true;
+  programs.mise.enable = true;
 
   # Alacritty
   xdg.configFile."alacritty/config.toml".source = ./xdg-config/alacritty/alacritty.toml;
