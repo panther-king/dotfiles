@@ -17,7 +17,7 @@ in
     buildInputs = with prev; [
       glib
       libevdev
-      xorg.libX11
+      libX11
     ];
     cmakeFlags = [
       "-DBUILD_CONFIG_TOOL=OFF"

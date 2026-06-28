@@ -27,7 +27,6 @@
           system = "x86_64-linux";
           modules = commonModules ++ [
             ./hosts/letsnote
-            home-manager.nixosModules.home-manager
             {
               home-manager.users.i = {
                 imports = [

@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
+  system.stateVersion = "26.05";
 
   # systemd でブートする
   boot.loader.efi.canTouchEfiVariables = true;
