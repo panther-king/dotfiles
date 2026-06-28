@@ -15,7 +15,6 @@
     mako # デスクトップ通知
     meld
     networkmanagerapplet
-    niri
     nwg-look # GTK ルック & フィール設定
     podman-compose
     qt6Packages.fcitx5-qt

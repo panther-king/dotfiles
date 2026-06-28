@@ -16,6 +16,7 @@
   networking.networkmanager.enable = true;
 
   programs.dconf.enable = true;
+  programs.niri.enable = true;
 
   # ALSA でオーディオを管理する
   security.rtkit.enable = true;
