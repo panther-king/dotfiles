@@ -89,8 +89,45 @@
       ];
   };
 
-  programs.direnv.enable = true;
-  programs.mise.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    mise.enable = true;
+  };
+
+  programs.git = {
+    enable = true;
+    settings = {
+      credential."https://github.com".helper = [
+        ""
+        "${pkgs.gh}/bin/gh auth git-credential"
+      ];
+      credential."https://gist.github.com".helper = [
+        ""
+        "${pkgs.gh}/bin/gh auth git-credential"
+      ];
+      core = {
+        pager = "delta";
+        quotepath = false;
+      };
+      delta = {
+        features = "catppuccin-mocha";
+        navigate = true;
+      };
+      diff = {
+        algorithm = "histogram";
+        colorMoved = "dimmed-zebra";
+      };
+      ghq.root = "~/ghq";
+      github.user = "panther-king";
+      include.path = "${pkgs.catppuccin-delta}";
+    };
+  };
+
+  programs.mise = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   # Alacritty
   xdg.configFile."alacritty/config.toml".source = ./xdg-config/alacritty/alacritty.toml;

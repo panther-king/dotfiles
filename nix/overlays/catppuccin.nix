@@ -9,6 +9,11 @@ final: prev: {
     url = "https://raw.githubusercontent.com/catppuccin/bat/6810349b28055dce54076712fc05fc68da4b8ec0/themes/Catppuccin%20Mocha.tmTheme";
   };
 
+  catppuccin-delta = prev.fetchurl {
+    hash = "sha256-8FgK2mseN2e3GLJRFqKrq+wxRHShLRp5bJF++T1jtFU=";
+    url = "https://raw.githubusercontent.com/catppuccin/delta/011516f5d14f66b771b3e716f29c77231e008c74/catppuccin.gitconfig";
+  };
+
   catppuccin-fuzzel-blue = prev.fetchurl {
     hash = "sha256-40t+WW7UMnjhvtWJS21gtbiNEEhTtDSEMoU8Wb5lPmM=";
     url = "https://raw.githubusercontent.com/catppuccin/fuzzel/879879da8a7dc58f173b4cd7987723fd19bef6d5/themes/catppuccin-mocha/blue.ini";
