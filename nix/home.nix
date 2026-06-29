@@ -15,6 +15,7 @@
     difftastic
     dockerfile-language-server
     dos2unix
+    emacs31-pgtk
     emacs-lsp-booster
     fzf
     gh
