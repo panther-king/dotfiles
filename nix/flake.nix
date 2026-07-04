@@ -37,7 +37,7 @@
           system = "x86_64-linux";
           modules = commonModules ++ [
             disko.nixosModules.disko
-            ./hosts/letsnote
+            ./hosts/letsnote/configuration.nix
             ./hosts/letsnote/disko-config.nix
             {
               home-manager.users.i = {
