@@ -2,6 +2,10 @@
   description = "NixOS cconfiguration";
 
   inputs = {
+    disko = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/disko/latest";
+    };
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager";
@@ -16,6 +20,7 @@
   outputs =
     {
       nixpkgs,
+      disko,
       home-manager,
       xremap-flake,
       ...
@@ -31,7 +36,9 @@
         letsnote = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = commonModules ++ [
+            disko.nixosModules.disko
             ./hosts/letsnote
+            ./hosts/letsnote/disko-config.nix
             {
               home-manager.users.i = {
                 imports = [
