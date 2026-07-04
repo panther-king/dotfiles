@@ -61,6 +61,24 @@
     };
   };
 
+  # waybar は systemd のユーザーサービスで管理する
+  systemd.user.services.waybar = {
+    Install = {
+      WantedBy = [
+        "graphical-session.target"
+      ];
+    };
+    Service = {
+      ExecStart = "${pkgs.waybar}/bin/waybar";
+      Restart = "on-failure";
+    };
+    Unit = {
+      After = [
+        "graphical-session.target"
+      ];
+    };
+  };
+
   # fuzzel
   xdg.configFile."fuzzel/fuzzel.ini".source = ./xdg-config/fuzzel/fuzzel.ini;
   xdg.configFile."fuzzel/cappuccin-mocha.ini".source = pkgs.catppuccin-fuzzel-blue;
