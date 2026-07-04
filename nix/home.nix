@@ -35,6 +35,7 @@
     noto-fonts-color-emoji
     opentofu
     pandoc
+    pure-prompt # zsh prompt
     peco
     ripgrep
     shellcheck
@@ -55,8 +56,11 @@
     whois
     yaml-language-server
     yazi
-    zinit
     zip
+    zsh-autosuggestions
+    zsh-completions
+    zsh-fast-syntax-highlighting
+    zsh-fzf-tab
   ];
 
   # dotfiles

@@ -1,4 +1,11 @@
-{ ... }: {
+{ pkgs, ... }: {
+  # zinit のプラグインを .zshrc でロードできるようにしておく
+  environment.variables = {
+    ZSH_AUTOSUGGESTIONS = "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh";
+    ZSH_FAST_SYNTAX_HIGHLIGHTING = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh";
+    ZSH_FZF_TAB = "${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh";
+  };
+
   # home-manager を効率的に利用する
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;

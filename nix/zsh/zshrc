@@ -14,42 +14,16 @@ setopt hist_save_no_dups        # 同じコマンドの保存は古い方を削�
 setopt extended_history         # 実行時のタイムスタンプを記録
 setopt hist_expire_dups_first   # HISTFILEのサイズがHISTSIZEを超えたら、まず重複を除去
 
-# Zinit の補完
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-# Zinit の主要拡張
-zinit light-mode for \
-  zdharma-continuum/zinit-annex-as-monitor \
-  zdharma-continuum/zinit-annex-bin-gem-node \
-  zdharma-continuum/zinit-annex-patch-dl \
-  zdharma-continuum/zinit-annex-rust
-
-# pure
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
-
-# 補完強化
-zinit light zsh-users/zsh-completions
-
-# シンタックスハイライト
-zinit ice wait"0" lucid atinit"zpcompinit; zpcdreplay"
-zinit light zdharma-continuum/fast-syntax-highlighting
-
-# オートサジェスト
-zinit ice wait"0" lucid atload"_zsh_autosuggest_start"
-zinit light zsh-users/zsh-autosuggestions
-
-# 補完メニューを fzf で選択
-zinit ice wait"0" lucid
-zinit light Aloxaf/fzf-tab
-
 # fzf-tab に Catppuccin Mocha テーマを適用
 # @refs https://github.com/catppuccin/fzf
 zstyle ':fzf-tab:*' fzf-flags \
     --color=bg+:#313244,bg:-1,spinner:#f5e0dc,hl:#f38ba8 \
     --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
     --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
+
+autoload -Uz promptinit
+promptinit
+prompt pure
 
 # 補完システムの初期化
 autoload -Uz compinit
@@ -59,6 +33,10 @@ if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh-24) ]]; then
 else
   compinit
 fi
+
+source "$ZSH_FZF_TAB"
+source "$ZSH_FAST_SYNTAX_HIGHLIGHTING"
+source "$ZSH_AUTOSUGGESTIONS"
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'    # 補完はignore case
 zstyle ':completion:*:default' menu select=2           # 候補をTabで選択可能に
