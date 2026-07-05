@@ -27,6 +27,7 @@
     killall
     man-pages
     man-pages-posix
+    mise
     morisawa-biz-ud-gothic-fonts # overlay
     nkf
     nmap
@@ -128,11 +129,6 @@
       github.user = "panther-king";
       include.path = "${pkgs.catppuccin-delta}";
     };
-  };
-
-  programs.mise = {
-    enable = true;
-    enableZshIntegration = true;
   };
 
   programs.zsh = {
