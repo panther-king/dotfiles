@@ -288,31 +288,23 @@
   :ensure nil
   :config
   (add-to-list 'eglot-server-programs
-               ;; CSS: paru -S vscode-langservers-extracted
                '(css-ts-mode . ("vscode-css-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs
-               ;; Dockerfile: paru -S dockerfile-language-server
                '(dockerfile-ts-mode . ("docker-langserver" "--stdio")))
   (add-to-list 'eglot-server-programs
-               ;; JSON: paru -S vscode-langservers-extracted
                '(json-ts-mode . ("vscode-json-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs
-               ;; Nix: paru -S nixd
                '(nix-ts-mode . ("nixd")))
   (add-to-list 'eglot-server-programs
-               ;; OpenTofu: paru -S tofu-ls-bin
                '(terraform-mode . ("tofu-ls" "serve")))
   (add-to-list 'eglot-server-programs
-               ;; PHP: paru -S nodejs-intelephense
                '(php-mode . ("intelephense" "--stdio")))
   (add-to-list 'eglot-server-programs
                ;; Python: paru -S pyright
                '(python-ts-mode . ("pyright-langserver" "--stdio")))
   (add-to-list 'eglot-server-programs
-               ;; TOML: paru -S taplo-cli
                '(toml-ts-mode . ("taplo" "lsp" "stdio")))
   (add-to-list 'eglot-server-programs
-               ;; TypeScript: paru -S typescript-language-server
                '(typescript-ts-mode . ("typescript-language-server" "--stdio")))
   ;; F# で日本語を含むファイルがバイナリ扱いになってしまい、
   ;; 正しくフォーマットできない問題を回避するため、

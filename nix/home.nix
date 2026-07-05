@@ -22,6 +22,7 @@
     ghq
     git
     imagemagick
+    intelephense # PHP LSP
     jq
     jless
     killall
@@ -29,6 +30,7 @@
     man-pages-posix
     mise
     morisawa-biz-ud-gothic-fonts # overlay
+    nixd # nix LSP
     nkf
     nmap
     noto-fonts-cjk-sans
@@ -43,12 +45,14 @@
     skim
     socat # Claude Code サンドボックス用
     sourceHighlight
+    taplo # TOML LSP
     tig
     tmux
     tofu-ls
     tokei
     traceroute
     tree
+    typescript-language-server
     udev-gothic-nf
     unzip
     vim
