@@ -115,3 +115,6 @@ setopt magic_equal_subst     # ロングオプションの引数も補完可能�
 setopt auto_cd               # ディレクトリ名のみでcd
 setopt correct               # スペルミス補正
 setopt interactive_comments  # CLIでも'#'以降をコメントとみなす
+
+# nixpkgs で有効化した mise を activate
+eval "$(mise activate zsh)"
