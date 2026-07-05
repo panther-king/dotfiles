@@ -14,6 +14,9 @@
     efibootmgr
   ];
 
+  # xremap で /dev/uinput へのアクセスが必要
+  hardware.uinput.enable = true;
+
   i18n.inputMethod = {
     enable = true;
     fcitx5.addons = with pkgs; [
@@ -97,6 +100,7 @@
     extraGroups = [
       "input" # xremap
       "networkmanager" # nmcli/nm-applet
+      "uinput" # xremap
       "wheel"
     ];
     isNormalUser = true;
