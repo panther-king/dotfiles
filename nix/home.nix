@@ -48,7 +48,7 @@
     tokei
     traceroute
     tree
-    udev-gothic # overlay
+    udev-gothic-nf
     unzip
     vim
     vscode-langservers-extracted
