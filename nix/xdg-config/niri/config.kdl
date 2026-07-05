@@ -49,8 +49,6 @@ layout {
 }
 
 spawn-at-startup "nm-applet"
-spawn-at-startup "systemctl" "--user" "restart" "xremap.service"
-
 spawn-sh-at-startup "fcitx5 -d"
 
 prefer-no-csd
