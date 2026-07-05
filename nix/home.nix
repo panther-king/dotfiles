@@ -149,6 +149,7 @@
   # tmux
   xdg.configFile."tmux/tmux.conf".source = ./xdg-config/tmux/tmux.conf;
   xdg.configFile."tmux/plugins/catppuccin/tmux/catppuccin.tmux".source = pkgs.catppuccin-tmux;
+  xdg.configFile."tmux/plugins/catppuccin/tmux".source = pkgs.catppuccin-tmux;
 
   # yazi
   xdg.configFile."yazi/keymap.toml".source = ./xdg-config/yazi/keymap.toml;

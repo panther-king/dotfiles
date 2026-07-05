@@ -19,9 +19,11 @@ final: prev: {
     url = "https://raw.githubusercontent.com/catppuccin/fuzzel/879879da8a7dc58f173b4cd7987723fd19bef6d5/themes/catppuccin-mocha/blue.ini";
   };
 
-  catppuccin-tmux = prev.fetchurl {
-    hash = "sha256-yAWiPOJEHpXF2/7QvwiSzlVjhZpI32hnVT6dLrJO9A8=";
-    url = "https://raw.githubusercontent.com/catppuccin/tmux/d2d25bd3393fe43f19eb4fff6cdd2bdf5578e622/catppuccin.tmux";
+  catppuccin-tmux = prev.fetchFromGitHub {
+    hash = "sha256-3CJRQCgS8NAN7vOLBjNGiHbGXTIrIyY/FLmfZrXcEYc=";
+    owner = "catppuccin";
+    repo = "tmux";
+    rev = "d2d25bd3393fe43f19eb4fff6cdd2bdf5578e622";
   };
 
   catppuccin-waybar = prev.fetchurl {
