@@ -10,6 +10,7 @@
     libreoffice-fresh
     mako # デスクトップ通知
     meld
+    nemo
     networkmanagerapplet
     nwg-look # GTK ルック & フィール設定
     podman-compose
