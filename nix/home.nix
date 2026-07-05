@@ -1,4 +1,25 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  treesitGrammars = pkgs.emacs31-pgtk.pkgs.treesit-grammars.with-grammars (grammars: with grammars; [
+    tree-sitter-bash
+    tree-sitter-css
+    tree-sitter-dockerfile
+    tree-sitter-haskell
+    tree-sitter-html
+    tree-sitter-javascript
+    tree-sitter-jsdoc
+    tree-sitter-json
+    tree-sitter-nix
+    tree-sitter-php
+    tree-sitter-phpdoc
+    tree-sitter-python
+    tree-sitter-rust
+    tree-sitter-toml
+    tree-sitter-tsx
+    tree-sitter-typescript
+  ]);
+in
+{
   home.homeDirectory = "/home/i";
   home.username = "i";
   home.stateVersion = "26.05";
@@ -153,6 +174,7 @@
   # emacs
   xdg.configFile."emacs/early-init.el".source = ./xdg-config/emacs/early-init.el;
   xdg.configFile."emacs/init.el".source = ./xdg-config/emacs/init.el;
+  xdg.configFile."emacs/treesit-grammars".source = "${treesitGrammars}/lib";
 
   # tmux
   xdg.configFile."tmux/tmux.conf".source = ./xdg-config/tmux/tmux.conf;

@@ -609,6 +609,8 @@
           (toml . ("https://github.com/ikatyang/tree-sitter-toml/"))
           (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))
           (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))))
+  (setq treesit-extra-load-path
+        (list (expand-file-name "treesit-grammars" user-emacs-directory)))
   (defun my/treesit-install-all ()
     "install all treesit language sources"
     (interactive)
