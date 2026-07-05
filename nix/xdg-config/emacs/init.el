@@ -592,45 +592,8 @@
 ;; tree-sitterでハイライトをより正確にする
 (use-package treesit
   :config
-  (setq treesit-language-source-alist
-        '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
-          (css . ("https://github.com/tree-sitter/tree-sitter-css"))
-          (dockerfile . ("https://github.com/camdencheek/tree-sitter-dockerfile"))
-          (haskell . ("https://github.com/tree-sitter/tree-sitter-haskell"))
-          (html . ("https://github.com/tree-sitter/tree-sitter-html"))
-          (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))
-          (jsdoc . ("https://github.com/tree-sitter/tree-sitter-jsdoc"))
-          (json . ("https://github.com/tree-sitter/tree-sitter-json"))
-          (nix . ("https://github.com/nix-community/tree-sitter-nix"))
-          (php . ("https://github.com/tree-sitter/tree-sitter-php" "master" "php/src"))
-          (phpdoc . ("https://github.com/claytonrcarter/tree-sitter-phpdoc"))
-          (python . ("https://github.com/tree-sitter/tree-sitter-python"))
-          (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
-          (toml . ("https://github.com/ikatyang/tree-sitter-toml/"))
-          (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))
-          (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src"))))
   (setq treesit-extra-load-path
         (list (expand-file-name "treesit-grammars" user-emacs-directory)))
-  (defun my/treesit-install-all ()
-    "install all treesit language sources"
-    (interactive)
-    (let ((count 0)
-          (errors 0))
-      (dolist (source treesit-language-source-alist)
-        (let ((lang (car source)))
-          (cond
-           ((treesit-language-available-p lang)
-            (message "Skipping %s (already installed)" lang))
-           (t
-            (message "Installing %s..." lang)
-            (condition-case err
-                (progn
-                  (treesit-install-language-grammar lang)
-                  (setq count (1+ count)))
-              (error
-               (setq errors (1+ errors))
-               (message "❌ Failed to install %s: %s" lang err)))))))
-          (message "✅ Tree-sitter setup completed! (Installed: %d, Errors: %d)" count errors)))
   :custom (treesit-font-lock-level 4)  ;; 最大限ハイライトする
   :ensure nil
   :init
