@@ -1,4 +1,12 @@
 { pkgs, ... }: {
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+  };
+
   # デスクトップ環境のみで利用するパッケージ
   home.packages = with pkgs; [
     brightnessctl
