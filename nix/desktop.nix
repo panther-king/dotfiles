@@ -51,6 +51,11 @@
 
   # swaybg は systemd のユーザーサービスで管理する
   systemd.user.services.swaybg = {
+    Install = {
+      WantedBy = [
+        "graphical-session.target"
+      ];
+    };
     Service = {
       ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i \"%h/Pictures/wallpaper-catppuccin.png\"";
       Restart = "on-failure";
@@ -58,7 +63,7 @@
     Unit = {
       After = [ "graphical-session.target" ];
       PartOf = [ "graphical-session.target" ];
-      Requisuite = [ "graphical-session.target" ];
+      Requisite = [ "graphical-session.target" ];
     };
   };
 
