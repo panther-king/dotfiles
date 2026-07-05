@@ -9,6 +9,7 @@ let
     tree-sitter-javascript
     tree-sitter-jsdoc
     tree-sitter-json
+    tree-sitter-kdl
     tree-sitter-nix
     tree-sitter-php
     tree-sitter-phpdoc

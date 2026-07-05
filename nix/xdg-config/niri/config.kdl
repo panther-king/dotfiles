@@ -81,7 +81,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="Emacs" is-focused=true
+    match app-id="emacs" is-focused=true
     opacity 0.85
 }
 
