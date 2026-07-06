@@ -19,12 +19,15 @@
 
   i18n.inputMethod = {
     enable = true;
-    fcitx5.addons = with pkgs; [
-      fcitx5-gtk
-      fcitx5-skk
-      libsForQt5.fcitx5-qt
-      qt6Packages.fcitx5-qt
-    ];
+    fcitx5 = {
+      addons = with pkgs; [
+        fcitx5-gtk
+        fcitx5-skk
+        libsForQt5.fcitx5-qt
+        qt6Packages.fcitx5-qt
+      ];
+      waylandFrontend = true;
+    };
     type = "fcitx5";
   };
 
