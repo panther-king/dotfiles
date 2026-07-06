@@ -18,6 +18,10 @@
 (push '(background-color . "#1e1e2e") default-frame-alist)
 (push '(foreground-color . "#cdd6f4") default-frame-alist)
 
+;; Wayland/niri 環境で fcitx5 の干渉を抑制
+;; フレーム作成前の評価が必要なので early-init.el で定義
+(setq pgtk-use-im-context-on-new-connection nil)
+
 ;; タイリング WM では WM がフレームサイズを管理するため、暗黙のリサイズを抑制する
 (setq frame-inhibit-implied-resize t)
 (setq frame-resize-pixelwise t)
