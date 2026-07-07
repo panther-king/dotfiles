@@ -22,20 +22,6 @@
     networkmanagerapplet
     nwg-look # GTK ルック & フィール設定
     podman-compose
-    skkDictionaries.assoc
-    skkDictionaries.emoji
-    skkDictionaries.fullname
-    skkDictionaries.geo
-    skkDictionaries.itaiji
-    skkDictionaries.itaiji_jis3_4
-    skkDictionaries.jinmei
-    skkDictionaries.jis2
-    skkDictionaries.jis2004
-    skkDictionaries.l
-    skkDictionaries.law
-    skkDictionaries.mazegaki
-    skkDictionaries.station
-    skkDictionaries.zipcode
     skktools
     swaybg # 壁紙管理
     swaylock # スクリーンロック

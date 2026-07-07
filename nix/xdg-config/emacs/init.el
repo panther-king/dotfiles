@@ -509,22 +509,29 @@
   (skk-cursor-katakana-color (cdr (assoc 'red catppuccin-mocha-colors)))          ;; カタカナモード
   (skk-cursor-jisx0201-color (cdr (assoc 'yellow catppuccin-mocha-colors)))       ;; 半角カナモード
   (skk-egg-like-newline t)                                                        ;; Enterキーでも入力を確定する
-  ;; (skk-extra-jisyo-file-list                                                      ;; 拡張辞書リスト
-  ;;  '("/usr/share/skk/SKK-JISYO.fullname"
-  ;;    "/usr/share/skk/SKK-JISYO.geo"
-  ;;    "/usr/share/skk/SKK-JISYO.itaiji"
-  ;;    "/usr/share/skk/SKK-JISYO.itaiji.JIS3_4"
-  ;;    "/usr/share/skk/SKK-JISYO.jinmei"
-  ;;    "/usr/share/skk/SKK-JISYO.lisp"
-  ;;    "/usr/share/skk/SKK-JISYO.mazegaki"
-  ;;    "/usr/share/skk/SKK-JISYO.station"))
+  (skk-extra-jisyo-file-list                                                      ;; 拡張辞書リスト
+   '("~/.local/share/skk/dictionaries/SKK-JISYO.JIS2.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.JIS2004.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.assoc.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.emoji.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.fullname.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.geo.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.itaiji.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.itaiji.JIS3_4.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.jinmei.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.law.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.lisp.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.mazegaki.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.office.zipcode.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.station.utf8"
+     "~/.local/share/skk/dictionaries/SKK-JISYO.zipcode.utf8"))
   (skk-hiragana-mode-string "[あ]")                                               ;; ひらがなモードのモードライン表示
   (skk-jisx0201-mode-sring "[ｱ]")                                                 ;; 半角カナモードのモードライン表示
   (skk-jisx0208-latin-mode-string "[Ａ]")                                         ;; 全角英数モードのモードライン表示
   (skk-jisyo "~/.local/share/fcitx5/skk/user.dict")                               ;; fcitx5-skk と同じ辞書を利用する
   (skk-jisyo-code 'euc-jp)                                                        ;; 辞書はすべて EUC-JP
   (skk-katakana-mode-string "[ア]")                                               ;; カタカナモードのモードライン表示
-  ;; (skk-large-jisyo "/usr/share/skk/SKK-JISYO.L")                                  ;; ユーザー辞書の次に参照する辞書
+  (skk-large-jisyo "~/.local/share/skk/dictionaries/SKK-JISYO.L.utf8")            ;; ユーザー辞書の次に参照する辞書
   (skk-latin-mode-string "[_A]")                                                  ;; ASCIIモードのモードライン表示
   (skk-show-annotation t)                                                         ;; 変換候補に注釈を表示する
   (skk-use-color-cursor t))                                                       ;; カーソルカラーでモードが判別できるようにする

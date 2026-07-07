@@ -19,6 +19,29 @@ let
     tree-sitter-tsx
     tree-sitter-typescript
   ]);
+  skkDictionaries = pkgs.symlinkJoin {
+    # SKK 辞書は ddskk/fcitx5 で同じものを参照する
+    # nixpkgs が UTF-8 化をサポートしているため利用する
+    name = "skk-dictionaries";
+    paths = map
+      (d: d.override { useUtf8 = true; })
+      (with pkgs.skkDictionaries; [
+        assoc
+        emoji
+        fullname
+        geo
+        itaiji
+        itaiji_jis3_4
+        jinmei
+        jis2
+        jis2004
+        l
+        law
+        mazegaki
+        station
+        zipcode
+      ]);
+  };
 in
 {
   home.homeDirectory = "/home/i";
@@ -179,6 +202,7 @@ in
   xdg.configFile."emacs/early-init.el".source = ./xdg-config/emacs/early-init.el;
   xdg.configFile."emacs/init.el".source = ./xdg-config/emacs/init.el;
   xdg.configFile."emacs/treesit-grammars".source = "${treesitGrammars}/lib";
+  xdg.dataFile."skk/dictionaries".source = "${skkDictionaries}/share/skk";
 
   # tmux
   xdg.configFile."tmux/tmux.conf".source = ./xdg-config/tmux/tmux.conf;
