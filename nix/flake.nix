@@ -1,5 +1,5 @@
 {
-  description = "NixOS cconfiguration";
+  description = "NixOS configuration";
 
   inputs = {
     disko = {
