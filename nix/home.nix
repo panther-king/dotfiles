@@ -1,31 +1,33 @@
 { pkgs, ... }:
 let
-  treesitGrammars = pkgs.emacs31-pgtk.pkgs.treesit-grammars.with-grammars (grammars: with grammars; [
-    tree-sitter-bash
-    tree-sitter-css
-    tree-sitter-dockerfile
-    tree-sitter-haskell
-    tree-sitter-html
-    tree-sitter-javascript
-    tree-sitter-jsdoc
-    tree-sitter-json
-    tree-sitter-kdl
-    tree-sitter-nix
-    tree-sitter-php
-    tree-sitter-phpdoc
-    tree-sitter-python
-    tree-sitter-rust
-    tree-sitter-toml
-    tree-sitter-tsx
-    tree-sitter-typescript
-  ]);
+  treesitGrammars = pkgs.emacs31-pgtk.pkgs.treesit-grammars.with-grammars (
+    grammars: with grammars; [
+      tree-sitter-bash
+      tree-sitter-css
+      tree-sitter-dockerfile
+      tree-sitter-haskell
+      tree-sitter-html
+      tree-sitter-javascript
+      tree-sitter-jsdoc
+      tree-sitter-json
+      tree-sitter-kdl
+      tree-sitter-nix
+      tree-sitter-php
+      tree-sitter-phpdoc
+      tree-sitter-python
+      tree-sitter-rust
+      tree-sitter-toml
+      tree-sitter-tsx
+      tree-sitter-typescript
+    ]
+  );
   skkDictionaries = pkgs.symlinkJoin {
     # SKK 辞書は ddskk/fcitx5 で同じものを参照する
     # nixpkgs が UTF-8 化をサポートしているため利用する
     name = "skk-dictionaries";
-    paths = map
-      (d: d.override { useUtf8 = true; })
-      (with pkgs.skkDictionaries; [
+    paths = map (d: d.override { useUtf8 = true; }) (
+      with pkgs.skkDictionaries;
+      [
         assoc
         emoji
         fullname
@@ -40,7 +42,8 @@ let
         mazegaki
         station
         zipcode
-      ]);
+      ]
+    );
   };
 in
 {
