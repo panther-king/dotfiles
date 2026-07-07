@@ -53,6 +53,7 @@ in
     alacritty
     bash-language-server
     bat
+    claude-code
     curl
     delta
     devcontainer
@@ -77,6 +78,7 @@ in
     mise
     morisawa-biz-ud-gothic-fonts # overlay
     nixd # nix LSP
+    nixfmt
     nkf
     nmap
     noto-fonts-cjk-sans
