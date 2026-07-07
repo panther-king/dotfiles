@@ -62,6 +62,7 @@ in
     dos2unix
     emacs31-pgtk
     emacs-lsp-booster
+    fsautocomplete
     fzf
     gh
     ghq
