@@ -90,6 +90,7 @@
       After = [
         "graphical-session.target"
       ];
+      PartOf = [ "graphical-session.target" ];
     };
   };
 

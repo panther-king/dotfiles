@@ -93,6 +93,10 @@ in
   # dotfiles
   home.file.".vimrc".source = ./vim/vimrc;
 
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+  ];
+
   # 環境変数
   home.sessionVariables = {
     DOCKER_HOST = "unix://\${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/podman/podman.sock";
@@ -101,7 +105,6 @@ in
     LC_COLLATE = "C";
     LESS = "-R ";
     LESSOPEN = "| ${pkgs.sourceHighlight}/bin/source-highlight-esc.sh %s";
-    PATH = "$HOME/.cargo/bin:$PATH";
     SKIM_DEFAULT_OPTIONS =
       "--color="
       + builtins.concatStringsSep "," [
@@ -179,7 +182,6 @@ in
 
   # tmux
   xdg.configFile."tmux/tmux.conf".source = ./xdg-config/tmux/tmux.conf;
-  xdg.configFile."tmux/plugins/catppuccin/tmux/catppuccin.tmux".source = pkgs.catppuccin-tmux;
   xdg.configFile."tmux/plugins/catppuccin/tmux".source = pkgs.catppuccin-tmux;
 
   # yazi
