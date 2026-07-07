@@ -520,7 +520,6 @@
      "~/.local/share/skk/dictionaries/SKK-JISYO.itaiji.JIS3_4.utf8"
      "~/.local/share/skk/dictionaries/SKK-JISYO.jinmei.utf8"
      "~/.local/share/skk/dictionaries/SKK-JISYO.law.utf8"
-     "~/.local/share/skk/dictionaries/SKK-JISYO.lisp.utf8"
      "~/.local/share/skk/dictionaries/SKK-JISYO.mazegaki.utf8"
      "~/.local/share/skk/dictionaries/SKK-JISYO.office.zipcode.utf8"
      "~/.local/share/skk/dictionaries/SKK-JISYO.station.utf8"
