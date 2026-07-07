@@ -37,6 +37,10 @@
   programs.dconf.enable = true;
   programs.niri.enable = true;
 
+  # mise でインストールしたソフトウェア用が
+  # リンカや共有ライブラリを参照できるようにする
+  programs.nix-ld.enable = true;
+
   # ALSA でオーディオを管理する
   security.rtkit.enable = true;
   services.pipewire = {
