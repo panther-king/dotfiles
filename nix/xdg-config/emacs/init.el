@@ -757,6 +757,11 @@
 (use-package dotenv-mode
   :mode "\\.env\\(?:\\.[^/]*\\)?\\'")
 
+;; direnv
+(use-package envrc
+  ;; 他のフックより先に
+  :hook (after-init . envrc-global-mode))
+
 ;; tmux
 (use-package tmux-mode)
 
