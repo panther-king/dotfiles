@@ -67,13 +67,11 @@ in
     dos2unix
     emacs31-pgtk
     emacs-lsp-booster
-    fsautocomplete
     fzf
     gh
     ghq
     git
     imagemagick
-    intelephense # PHP LSP
     jq
     jless
     killall
@@ -88,7 +86,6 @@ in
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
-    opentofu
     pandoc
     pure-prompt # zsh prompt
     peco
@@ -100,7 +97,6 @@ in
     taplo # TOML LSP
     tig
     tmux
-    tofu-ls
     tokei
     traceroute
     tree
