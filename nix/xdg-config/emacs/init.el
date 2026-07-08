@@ -528,7 +528,7 @@
   (skk-jisx0201-mode-sring "[ｱ]")                                                 ;; 半角カナモードのモードライン表示
   (skk-jisx0208-latin-mode-string "[Ａ]")                                         ;; 全角英数モードのモードライン表示
   (skk-jisyo "~/.local/share/fcitx5/skk/user.dict")                               ;; fcitx5-skk と同じ辞書を利用する
-  (skk-jisyo-code 'euc-jp)                                                        ;; 辞書はすべて EUC-JP
+  (skk-jisyo-code 'utf-8)                                                         ;; nixpkgs で utf-8 に変換した辞書を使う
   (skk-katakana-mode-string "[ア]")                                               ;; カタカナモードのモードライン表示
   (skk-large-jisyo "~/.local/share/skk/dictionaries/SKK-JISYO.L.utf8")            ;; ユーザー辞書の次に参照する辞書
   (skk-latin-mode-string "[_A]")                                                  ;; ASCIIモードのモードライン表示
