@@ -1,7 +1,16 @@
 { pkgs, ... }:
 let
+  fsharpSignatureGrammar = pkgs.tree-sitter.buildGrammar {
+    # fsharp-ts-mode が要求する .fsi 用の tree-sitter が nixpkgs に無いため、
+    # tree-sitter-fsharp のソース内にある別ディレクトリを流用する
+    language = "fsharp-signature";
+    inherit (pkgs.tree-sitter-grammars.tree-sitter-fsharp) version src;
+    location = "fsharp_signature";
+  };
   treesitGrammars = pkgs.emacs31-pgtk.pkgs.treesit-grammars.with-grammars (
-    grammars: with grammars; [
+    grammars:
+    with grammars;
+    [
       tree-sitter-bash
       tree-sitter-css
       tree-sitter-dockerfile
@@ -20,6 +29,9 @@ let
       tree-sitter-toml
       tree-sitter-tsx
       tree-sitter-typescript
+    ]
+    ++ [
+      fsharpSignatureGrammar
     ]
   );
   skkDictionaries = pkgs.symlinkJoin {
