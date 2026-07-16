@@ -95,6 +95,7 @@ in
     mermaid-cli
     mise
     morisawa-biz-ud-gothic-fonts # overlay
+    nh # nix cli helper
     nixd # nix LSP
     nixfmt
     nkf
