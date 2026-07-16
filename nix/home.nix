@@ -21,6 +21,7 @@ let
       tree-sitter-jsdoc
       tree-sitter-json
       tree-sitter-kdl
+      tree-sitter-mermaid
       tree-sitter-nix
       tree-sitter-php
       tree-sitter-phpdoc
@@ -71,6 +72,7 @@ in
     bat
     claude-code
     curl
+    d2
     delta
     devcontainer
     diff-so-fancy
@@ -83,12 +85,14 @@ in
     gh
     ghq
     git
+    graphviz
     imagemagick
     jq
     jless
     killall
     man-pages
     man-pages-posix
+    mermaid-cli
     mise
     morisawa-biz-ud-gothic-fonts # overlay
     nixd # nix LSP
@@ -101,6 +105,7 @@ in
     pandoc
     pure-prompt # zsh prompt
     peco
+    plantuml
     ripgrep
     shellcheck
     skim

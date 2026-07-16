@@ -685,38 +685,6 @@
   :hook (markdown-mode . (lambda () (setq-local whitespace-action nil))))  ;; Markdown編集時に行末の空白を削除しない
 (use-package markdown-preview-mode)
 
-;; Mermaid
-(use-package mermaid-mode
-  :custom
-  (mermaid-flags "--scale 2"))
-
-;; nix
-(use-package nix-ts-mode
-  :mode ("\\.nix\\'"))
-
-;; PlantUML
-(use-package plantuml-mode
-  :if (file-exists-p "/usr/share/java/plantuml/plantuml.jar")
-  :custom
-  (plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")  ;; pacmanで入るPlantUMLを利用する
-  (plantuml-default-exec-mode 'jar)                            ;; jarを利用してレンダリングする
-  (plantuml-indent-level 4)                                    ;; 4スペースインデント
-  :mode "\\.p?uml\\'")
-
-;; Slint
-(use-package slint-mode)
-
-;; Terraform
-(use-package terraform-mode
-  :custom (terraform-command "tofu"))
-
-;; TOML
-(use-package toml-ts-mode
-  :ensure nil
-  :mode
-  (("\\.toml\\'" . toml-ts-mode)
-   ("^Pipfile\\'" . toml-ts-mode)))
-
 ;; HTML
 (use-package html-ts-mode
   :ensure nil
@@ -748,10 +716,55 @@
   (web-mode-style-padding 2)
   :mode "\\.blade\\.php\\'")
 
+;; TOML
+(use-package toml-ts-mode
+  :ensure nil
+  :mode
+  (("\\.toml\\'" . toml-ts-mode)
+   ("^Pipfile\\'" . toml-ts-mode)))
+
 ;; YAML
 (use-package yaml-mode)
 (use-package yaml-pro
   :hook (yaml-mode . yaml-pro-mode))
+
+;;
+;; ダイアグラム
+;;
+
+;; D2
+(use-package d2-mode
+  :mode "\\.d2\\'")
+
+;; Graphviz
+(use-package graphviz-dot-mode
+  :custom (graphviz-dot-indent-width 4))
+
+;; Mermaid
+(use-package mermaid-ts-mode
+  :custom
+  (mermaid-flags "--scale 2"))
+
+;; PlantUML
+(use-package plantuml-mode
+  :custom
+  (plantuml-indent-level 4)  ;; 4スペースインデント
+  :mode "\\.p?uml\\'")
+
+;;
+;; その他
+;;
+
+;; nix
+(use-package nix-ts-mode
+  :mode ("\\.nix\\'"))
+
+;; Slint
+(use-package slint-mode)
+
+;; Terraform
+(use-package terraform-mode
+  :custom (terraform-command "tofu"))
 
 ;; dotenv
 (use-package dotenv-mode
