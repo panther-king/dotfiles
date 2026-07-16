@@ -16,7 +16,6 @@
     imv # 画像ビューワー
     iw
     libreoffice-fresh
-    mako # デスクトップ通知
     meld
     nemo
     networkmanagerapplet
@@ -36,6 +35,25 @@
   ];
 
   home.file."Pictures/wallpaper-catppuccin.png".source = ./wallpaper-catppuccin.png;
+
+  # デスクトップ通知
+  services.mako = {
+    enable = true;
+    settings = {
+      background-color = "#89b4fa";
+      border-color = "#89b4fa";
+      default-timeout = 10000;
+      font = "BIZ UDPGothic 10";
+      padding = 8;
+      progress-color = "over #313244";
+      text-color = "#1e1e2e";
+      "urgency=high" = {
+        background-color = "#fab387";
+        border-color = "#fab387";
+        text-color = "#1e1e2e";
+      };
+    };
+  };
 
   services.xremap = {
     enable = true;
@@ -83,9 +101,6 @@
   # fuzzel
   xdg.configFile."fuzzel/fuzzel.ini".source = ./xdg-config/fuzzel/fuzzel.ini;
   xdg.configFile."fuzzel/catppuccin-mocha.ini".source = pkgs.catppuccin-fuzzel-blue;
-
-  # mako
-  xdg.configFile."mako/config".source = ./xdg-config/mako/config;
 
   # niri
   xdg.configFile."niri/config.kdl".source = ./xdg-config/niri/config.kdl;
