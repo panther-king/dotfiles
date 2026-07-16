@@ -200,7 +200,10 @@ in
       };
       ghq.root = "~/ghq";
       github.user = "panther-king";
-      include.path = "${pkgs.catppuccin-delta}";
+      include.path = [
+        "~/.config/git/local"
+        "${pkgs.catppuccin-delta}"
+      ];
     };
   };
 
