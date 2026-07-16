@@ -163,6 +163,12 @@ in
       ];
   };
 
+  programs.bat = {
+    config.theme = "Catppuccin Mocha";
+    enable = true;
+    themes."Catppuccin Mocha".src = pkgs.catppuccin-bat;
+  };
+
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
@@ -208,10 +214,6 @@ in
   # Alacritty
   xdg.configFile."alacritty/alacritty.toml".source = ./xdg-config/alacritty/alacritty.toml;
   xdg.configFile."alacritty/catppuccin-mocha.toml".source = pkgs.catppuccin-alacritty;
-
-  # bat
-  xdg.configFile."bat/config".source = ./xdg-config/bat/config;
-  xdg.configFile."bat/themes/Catppuccin Mocha.tmTheme".source = pkgs.catppuccin-bat;
 
   # emacs
   xdg.configFile."emacs/early-init.el".source = ./xdg-config/emacs/early-init.el;
