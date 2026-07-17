@@ -662,7 +662,7 @@
   :ensure nil
   :mode
   ("\\.ts\\'" . typescript-ts-mode))
-(use-package tsx-tx-mode
+(use-package tsx-ts-mode
   :ensure nil
   :mode ("\\.tsx\\'" . tsx-tx-mode))
 
