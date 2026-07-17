@@ -10,6 +10,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager";
     };
+    nixos-wsl = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/NixOS-WSL/main";
+    };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     xremap-flake = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,9 +23,10 @@
 
   outputs =
     {
-      nixpkgs,
       disko,
       home-manager,
+      nixos-wsl,
+      nixpkgs,
       xremap-flake,
       ...
     }:
@@ -47,6 +52,22 @@
                   xremap-flake.homeManagerModules.default
                 ];
               };
+            }
+          ];
+        };
+        wsl2 = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = commonModules ++ [
+            nixos-wsl.nixosModules.default
+            ./hosts/wsl2/configuration.nix
+            {
+              home-manager.users.i = {
+                imports = [
+                  ./home.nix
+                ];
+              };
+              wsl.defaultUser = "i";
+              wsl.enable = true;
             }
           ];
         };

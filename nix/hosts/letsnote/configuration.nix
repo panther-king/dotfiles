@@ -34,6 +34,11 @@
   networking.hostName = "stfuawsc";
   networking.networkmanager.enable = true;
 
+  # waynatpics は nixpkg に存在しないため自前ビルド
+  nixpkgs.overlays = [
+    (import ../../overlays/waynaptics.nix)
+  ];
+
   programs.dconf.enable = true;
   programs.niri.enable = true;
 
