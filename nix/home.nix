@@ -179,6 +179,7 @@ in
     enable = true;
     enableZshIntegration = true;
     mise.enable = true;
+    nix-direnv.enable = true;
   };
 
   programs.git = {
