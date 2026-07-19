@@ -664,7 +664,7 @@
   ("\\.ts\\'" . typescript-ts-mode))
 (use-package tsx-ts-mode
   :ensure nil
-  :mode ("\\.tsx\\'" . tsx-tx-mode))
+  :mode ("\\.tsx\\'" . tsx-ts-mode))
 
 ;;
 ;; 構造化言語設定
