@@ -647,9 +647,13 @@
   :mode "\\.php\\'")
 
 ;; Shell script
+(use-package bash-ts-mode
+  :ensure nil
+  :mode ("\\.sh\\'" "\\.bashrc\\'" "\\.envrc\\'" "\\.sample\\'"))
 (use-package sh-mode
   :ensure nil
-  :mode ("\\.z?sh\\'" "\\.sample\\'" "rc\\'"))
+  ;; zsh 特有の構文・記法がエラーにならないよう bash-ts-mode は使わない
+  :mode ("\\.zsh\\'" "\\.zshrc\\'" "\\.zshenv\\'" "\\.z\\(?:login\\|logout\\|profile\\)\\'"))
 
 ;; Rust
 (use-package rust-ts-mode
