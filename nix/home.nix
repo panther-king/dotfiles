@@ -85,6 +85,7 @@ in
     gh
     ghq
     git
+    gnumake
     graphviz
     imagemagick
     jq
