@@ -306,21 +306,6 @@
                '(toml-ts-mode . ("taplo" "lsp" "stdio")))
   (add-to-list 'eglot-server-programs
                '(typescript-ts-mode . ("typescript-language-server" "--stdio")))
-  ;; F# で日本語を含むファイルがバイナリ扱いになってしまい、
-  ;; 正しくフォーマットできない問題を回避するため、
-  ;; 強制的に utf-8 で扱う
-  (defun my/fix-eglot-process-coding (&rest _)
-    (when (derived-mode-p 'fsharp-ts-mode)
-      (when-let* ((server (eglot-current-server))
-                  (proc (jsonrpc--process server)))
-        (set-process-coding-system proc 'utf-8-unix 'utf-8-unix))))
-  (advice-add 'eglot-format-buffer :before #'my/fix-eglot-process-coding)
-  ;; フォーマットに対応している LSP でのみ
-  ;; 保存時のフォーマットを実行させる
-  (defun my/eglot-format-buffer-safe ()
-    (when (and (eglot-current-server)
-               (eglot-server-capable :documentFormattingProvider))
-      (eglot-format-buffer)))
   :hook
   ((css-ts-mode . eglot-ensure)
    (dockerfile-ts-mode . eglot-ensure)
@@ -330,16 +315,15 @@
    (html-ts-mode . eglot-ensure)
    (js-ts-mode . eglot-ensure)
    (json-ts-mode . eglot-ensure)
-   ;(nix-ts-mode . eglot-ensure)
+   (nix-ts-mode . eglot-ensure)
    (php-mode . eglot-ensure)
    (python-mode . eglot-ensure)
    (python-ts-mode . eglot-ensure)
    (rust-ts-mode . eglot-ensure)
    (terraform-mode . eglot-ensure)
    (toml-ts-mode . eglot-ensure)
-   (typescript-ts-mode . eglot-ensure)
-   (eglot-managed-mode . (lambda ()
-                           (add-hook 'before-save-hook 'my/eglot-format-buffer-safe -10 t)))))
+   (typescript-ts-mode . eglot-ensure)))
+
 ;; eglotのlspを高速化する
 ;; cargo install emacs-lsp-booster
 (use-package eglot-booster
@@ -611,6 +595,21 @@
           (python-mode . python-ts-mode)
           (toml-mode . toml-ts-mode)
           (typescript-mode . typescript-ts-mode))))
+
+;;
+;; フォーマッタ
+;;
+(use-package apheleia
+  :config
+  (apheleia-global-mode +1)
+  ;; カスタムフォーマッタ
+  (add-to-list 'apheleia-formatters '(d2fmt . ("d2" "fmt" inplace)))
+  (add-to-list 'apheleia-formatters '(fantomas . ("dotnet" "fantomas" inplace)))
+  ;; モードとフォーマッタの対応
+  (add-to-list 'apheleia-mode-alist '(d2-mode . d2fmt))
+  (add-to-list 'apheleia-mode-alist '(fsharp-ts-mode . fantomas))
+  ;; elisp は elisp-autofmt でフォーマットするため除外
+  (setf (alist-get 'emacs-lisp-mode apheleia-mode-alist nil 'remove) nil))
 
 ;;
 ;; プログラミング言語設定
