@@ -125,4 +125,8 @@
     dockerCompat = true;
     enable = true;
   };
+  # podman compose 時の警告を無効化
+  virtualisation.containers.containersConf.settings = {
+    engine.compose_warning_logs = false;
+  };
 }
