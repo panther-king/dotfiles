@@ -68,6 +68,7 @@ in
   # ホストを問わず利用するパッケージ
   home.packages = with pkgs; [
     alacritty
+    awscli2
     bash-language-server
     bat
     claude-code
