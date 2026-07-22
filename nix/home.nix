@@ -145,7 +145,6 @@ in
 
   # 環境変数
   home.sessionVariables = {
-    DOCKER_HOST = "unix://\${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/podman/podman.sock";
     LANG = "ja_JP.UTF-8";
     # 照合順序は常にバイト単位
     LC_COLLATE = "C";

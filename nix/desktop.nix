@@ -36,6 +36,11 @@
 
   home.file."Pictures/wallpaper-catppuccin.png".source = ./wallpaper-catppuccin.png;
 
+  home.sessionVariables = {
+    # podman 経由で docker を使う
+    DOCKER_HOST = "unix://\${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/podman/podman.sock";
+  };
+
   # デスクトップ通知
   services.mako = {
     enable = true;
