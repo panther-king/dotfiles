@@ -591,6 +591,7 @@
         '((css-mode . css-ts-mode)
           (dockerfile-mode . dockerfile-ts-mode)
           (js-mode . js-ts-mode)
+          (js-json-mode . json-ts-mode)
           (json-mode . json-ts-mode)
           (python-mode . python-ts-mode)
           (toml-mode . toml-ts-mode)
