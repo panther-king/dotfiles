@@ -33,7 +33,7 @@
     let
       commonModules = [
         home-manager.nixosModules.home-manager
-        ./common.nix
+        ./system/common.nix
       ];
     in
     {
@@ -42,13 +42,13 @@
           system = "x86_64-linux";
           modules = commonModules ++ [
             disko.nixosModules.disko
-            ./hosts/letsnote/configuration.nix
-            ./hosts/letsnote/disko-config.nix
+            ./system/hosts/letsnote/configuration.nix
+            ./system/hosts/letsnote/disko-config.nix
             {
               home-manager.users.i = {
                 imports = [
-                  ./desktop.nix
-                  ./home.nix
+                  ./home/common.nix
+                  ./home/hosts/letsnote.nix
                   xremap-flake.homeManagerModules.default
                 ];
               };
@@ -59,11 +59,11 @@
           system = "x86_64-linux";
           modules = commonModules ++ [
             nixos-wsl.nixosModules.default
-            ./hosts/wsl2/configuration.nix
+            ./system/hosts/wsl2/configuration.nix
             {
               home-manager.users.i = {
                 imports = [
-                  ./home.nix
+                  ./home/common.nix
                 ];
               };
               wsl.defaultUser = "i";

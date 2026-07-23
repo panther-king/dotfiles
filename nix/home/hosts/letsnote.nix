@@ -34,12 +34,15 @@
     zola # ブログ用
   ];
 
-  home.file."Pictures/wallpaper-catppuccin.png".source = ./wallpaper-catppuccin.png;
+  home.file."Pictures/wallpaper-catppuccin.png".source = ../config/wallpaper-catppuccin.png;
 
   home.sessionVariables = {
     # podman 経由で docker を使う
     DOCKER_HOST = "unix://\${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/podman/podman.sock";
   };
+
+  # Wayland 用の Emacs を利用する
+  my.emacs.package = pkgs.emacs31-pgtk;
 
   # デスクトップ通知
   services.mako = {
@@ -63,7 +66,7 @@
   services.xremap = {
     enable = true;
     withNiri = true;
-    yamlConfig = builtins.readFile ./xdg-config/xremap/config.yml;
+    yamlConfig = builtins.readFile ../config/xremap/config.yml;
   };
 
   # swaybg は systemd のユーザーサービスで管理する
@@ -104,14 +107,14 @@
   };
 
   # fuzzel
-  xdg.configFile."fuzzel/fuzzel.ini".source = ./xdg-config/fuzzel/fuzzel.ini;
+  xdg.configFile."fuzzel/fuzzel.ini".source = ../config/fuzzel/fuzzel.ini;
   xdg.configFile."fuzzel/catppuccin-mocha.ini".source = pkgs.catppuccin-fuzzel-blue;
 
   # niri
-  xdg.configFile."niri/config.kdl".source = ./xdg-config/niri/config.kdl;
+  xdg.configFile."niri/config.kdl".source = ../config/niri/config.kdl;
 
   # waybar
-  xdg.configFile."waybar/config.jsonc".source = ./xdg-config/waybar/config.jsonc;
-  xdg.configFile."waybar/style.css".source = ./xdg-config/waybar/style.css;
+  xdg.configFile."waybar/config.jsonc".source = ../config/waybar/config.jsonc;
+  xdg.configFile."waybar/style.css".source = ../config/waybar/style.css;
   xdg.configFile."waybar/mocha.css".source = pkgs.catppuccin-waybar;
 }

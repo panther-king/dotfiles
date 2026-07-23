@@ -7,7 +7,7 @@
   boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.systemd-boot.enable = true;
 
-  environment.etc."waynaptics.conf".source = ../../waynaptics/waynaptics.conf;
+  environment.etc."waynaptics.conf".source = ./waynaptics.conf;
 
   # GRUB ではなく UEFI でブートする
   environment.systemPackages = with pkgs; [
