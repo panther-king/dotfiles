@@ -124,6 +124,7 @@ in
         pure-prompt # zsh prompt
         peco
         plantuml
+        podman-compose
         ripgrep
         shellcheck
         skim

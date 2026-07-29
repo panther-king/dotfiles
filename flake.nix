@@ -75,7 +75,6 @@
                 ];
               };
               wsl.defaultUser = "i";
-              wsl.docker-desktop.enable = true;
               wsl.enable = true;
             }
           ];

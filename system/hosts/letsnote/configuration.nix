@@ -127,15 +127,4 @@
     isNormalUser = true;
     shell = pkgs.zsh;
   };
-
-  # docker ではなく podman を利用する
-  virtualisation.podman = {
-    # docker コマンドを podman にエイリアス
-    dockerCompat = true;
-    enable = true;
-  };
-  # podman compose 時の警告を無効化
-  virtualisation.containers.containersConf.settings = {
-    engine.compose_warning_logs = false;
-  };
 }

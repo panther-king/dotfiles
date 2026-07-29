@@ -20,7 +20,6 @@
     nemo
     networkmanagerapplet
     nwg-look # GTK ルック & フィール設定
-    podman-compose
     skktools
     swaybg # 壁紙管理
     swaylock # スクリーンロック
@@ -35,11 +34,6 @@
   ];
 
   home.file."Pictures/wallpaper-catppuccin.png".source = ../config/wallpaper-catppuccin.png;
-
-  home.sessionVariables = {
-    # podman 経由で docker を使う
-    DOCKER_HOST = "unix://\${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/podman/podman.sock";
-  };
 
   # Wayland 用の Emacs を利用する
   my.emacs.package = pkgs.emacs31-pgtk;
