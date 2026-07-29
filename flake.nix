@@ -8,13 +8,19 @@
     };
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/master";
+    };
+    niri-flake = {
+      # 何を追うかは任せるため follows は定義しない
+      url = "github:sodiboo/niri-flake";
     };
     nixos-wsl = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/NixOS-WSL/main";
     };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
     xremap-flake = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:xremap/nix-flake";
@@ -25,6 +31,7 @@
     {
       disko,
       home-manager,
+      niri-flake,
       nixos-wsl,
       nixpkgs,
       xremap-flake,
@@ -40,6 +47,7 @@
       nixosConfigurations = {
         letsnote = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit niri-flake; };
           modules = commonModules ++ [
             disko.nixosModules.disko
             ./system/hosts/letsnote/configuration.nix

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ niri-flake, pkgs, ... }: {
   imports = [ ./hardware-configuration.nix ];
   system.stateVersion = "26.05";
 
@@ -34,13 +34,22 @@
   networking.hostName = "stfuawsc";
   networking.networkmanager.enable = true;
 
+  # niri-flake のビルドで cachix を利用する
+  nix.settings = {
+    substituters = [ "https://niri.cachix.org" ];
+    trusted-public-keys = [ "hydra.nixos.org-1:CNHJZBh9K4tP3EKF6FkkgeVYsS3ohTl+oS0Qa8bezVs=" ];
+  };
+
   # waynatpics は nixpkg に存在しないため自前ビルド
   nixpkgs.overlays = [
     (import ../../overlays/waynaptics.nix)
   ];
 
   programs.dconf.enable = true;
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    package = niri-flake.packages.x86_64-linux.niri-stable;
+  };
 
   # mise でインストールしたソフトウェア用が
   # リンカや共有ライブラリを参照できるようにする
