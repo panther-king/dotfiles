@@ -95,9 +95,11 @@ in
         devcontainer
         diff-so-fancy
         difftastic
+        dig
         dockerfile-language-server
         dos2unix
         emacs-lsp-booster
+        file
         fzf
         gh
         ghq
