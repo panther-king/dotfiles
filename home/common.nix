@@ -234,7 +234,7 @@ in
 
     programs.zsh = {
       enable = true;
-      # 保管設定は .zshrc 内の定義に任せる
+      # 補完設定は .zshrc 内の定義に任せる
       enableCompletion = false;
       initContent = builtins.readFile ./config/zsh/zshrc;
     };
