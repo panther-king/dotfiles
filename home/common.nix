@@ -6,6 +6,7 @@
 }:
 let
   cfg = config.my.emacs;
+  dotfilesDir = "${config.home.homeDirectory}/ghq/github.com/panther-king/dotfiles/home";
   fsharpSignatureGrammar = pkgs.tree-sitter.buildGrammar {
     # fsharp-ts-mode が要求する .fsi 用の tree-sitter が nixpkgs に無いため、
     # tree-sitter-fsharp のソース内にある別ディレクトリを流用する
@@ -244,8 +245,10 @@ in
     xdg.configFile."alacritty/catppuccin-mocha.toml".source = pkgs.catppuccin-alacritty;
 
     # emacs
-    xdg.configFile."emacs/early-init.el".source = ./config/emacs/early-init.el;
-    xdg.configFile."emacs/init.el".source = ./config/emacs/init.el;
+    xdg.configFile."emacs/early-init.el".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/emacs/early-init.el";
+    xdg.configFile."emacs/init.el".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/emacs/init.el";
     xdg.configFile."emacs/treesit-grammars".source = "${treesitGrammars}/lib";
     xdg.dataFile."skk/dictionaries".source = "${skkDictionaries}/share/skk";
 
