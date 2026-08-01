@@ -7,6 +7,17 @@
     };
   };
 
+  home.file."Pictures/wallpaper-catppuccin.png".source = ../config/wallpaper-catppuccin.png;
+
+  home.pointerCursor = {
+    enable = true;
+    gtk.enable = true;
+    name = "XCursor-Pro-Dark";
+    package = pkgs.xcursor-pro;
+    size = 24;
+    x11.enable = true;
+  };
+
   # デスクトップ環境のみで利用するパッケージ
   home.packages = with pkgs; [
     brightnessctl
@@ -32,8 +43,6 @@
     waynaptics # overlay
     zola # ブログ用
   ];
-
-  home.file."Pictures/wallpaper-catppuccin.png".source = ../config/wallpaper-catppuccin.png;
 
   # Wayland 用の Emacs を利用する
   my.emacs.package = pkgs.emacs31-pgtk;
