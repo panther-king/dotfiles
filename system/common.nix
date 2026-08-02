@@ -53,4 +53,10 @@
   virtualisation.containers.containersConf.settings = {
     engine.compose_warning_logs = false;
   };
+  # ホスト未指定のイメージは docker.io を見に行く
+  virtualisation.containers.registries.settings = {
+    unqualified-search-registries = [
+      "docker.io"
+    ];
+  };
 }
