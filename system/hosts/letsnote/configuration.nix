@@ -51,10 +51,6 @@
     package = niri-flake.packages.x86_64-linux.niri-stable;
   };
 
-  # mise でインストールしたソフトウェア用が
-  # リンカや共有ライブラリを参照できるようにする
-  programs.nix-ld.enable = true;
-
   # ALSA でオーディオを管理する
   security.rtkit.enable = true;
   services.pipewire = {

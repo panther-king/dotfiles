@@ -37,6 +37,27 @@
     (import ./overlays/morisawa-biz-ud-gothic-fonts.nix)
   ];
 
+  # mise でインストールしたソフトウェア用が
+  # リンカや共有ライブラリを参照できるようにする
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      fontconfig
+      freetype
+      glib
+      icu
+      openssl
+      libx11
+      libice
+      libsm
+      libxi
+      libxcursor
+      libxrender
+      libxrandr
+      libxext
+    ];
+  };
+
   # シェルは zsh
   programs.zsh.enable = true;
 
