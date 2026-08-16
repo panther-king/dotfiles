@@ -605,7 +605,6 @@
   (apheleia-global-mode +1)
   ;; カスタムフォーマッタ
   (add-to-list 'apheleia-formatters '(d2fmt . ("d2" "fmt" inplace)))
-  (add-to-list 'apheleia-formatters '(fantomas . ("dotnet" "fantomas" inplace)))
   ;; モードとフォーマッタの対応
   (add-to-list 'apheleia-mode-alist '(d2-mode . d2fmt))
   (add-to-list 'apheleia-mode-alist '(fsharp-ts-mode . fantomas))
@@ -634,6 +633,7 @@
                 (funcall orig-fun)))
   :custom
   (fsharp-ts-guess-indent-offset t)
+  (fsharp-ts-eglot-server-install-dir nil)
   :hook
   ((fsharp-ts-mode . fsharp-ts-repl-minor-mode)
    (fsharp-ts-mode . fsharp-ts-dotnet-mode)))
