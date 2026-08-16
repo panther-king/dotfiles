@@ -98,6 +98,7 @@ in
         dig
         dockerfile-language-server
         dos2unix
+        duckdb
         emacs-lsp-booster
         file
         fzf
@@ -128,6 +129,8 @@ in
         peco
         plantuml
         podman-compose
+        python314
+        python314Packages.bpython
         ripgrep
         shellcheck
         skim
