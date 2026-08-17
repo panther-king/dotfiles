@@ -294,6 +294,8 @@
   (add-to-list 'eglot-server-programs
                '(json-ts-mode . ("vscode-json-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs
+               '(just-ts-mode . ("just-lsp")))
+  (add-to-list 'eglot-server-programs
                '(nix-ts-mode . ("nixd")))
   (add-to-list 'eglot-server-programs
                '(terraform-mode . ("tofu-ls" "serve")))
@@ -314,6 +316,7 @@
    (html-ts-mode . eglot-ensure)
    (js-ts-mode . eglot-ensure)
    (json-ts-mode . eglot-ensure)
+   (just-ts-mode . eglot-ensure)
    (nix-ts-mode . eglot-ensure)
    (php-mode . eglot-ensure)
    (python-mode . eglot-ensure)
@@ -680,6 +683,9 @@
 (use-package json-ts-mode
   :custom (json-ts-mode-indent-offset 2)  ;; JSONのインデントは2スペース
   :ensure nil)
+
+;; Just
+(use-package just-ts-mode)
 
 ;; Markdown
 (use-package markdown-mode

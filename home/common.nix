@@ -27,6 +27,7 @@ let
       tree-sitter-javascript
       tree-sitter-jsdoc
       tree-sitter-json
+      tree-sitter-just
       tree-sitter-kdl
       tree-sitter-mermaid
       tree-sitter-nix
@@ -110,6 +111,8 @@ in
         imagemagick
         jq
         jless
+        just
+        just-lsp
         killall
         man-pages
         man-pages-posix
