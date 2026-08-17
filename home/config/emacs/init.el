@@ -300,7 +300,6 @@
   (add-to-list 'eglot-server-programs
                '(php-mode . ("intelephense" "--stdio")))
   (add-to-list 'eglot-server-programs
-               ;; Python: paru -S pyright
                '(python-ts-mode . ("pyright-langserver" "--stdio")))
   (add-to-list 'eglot-server-programs
                '(toml-ts-mode . ("taplo" "lsp" "stdio")))

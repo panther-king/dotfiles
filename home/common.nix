@@ -129,6 +129,7 @@ in
         peco
         plantuml
         podman-compose
+        pyright
         python314
         python314Packages.bpython
         ripgrep
