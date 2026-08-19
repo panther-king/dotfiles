@@ -89,7 +89,9 @@ in
         awscli2
         bash-language-server
         bat
+        cargo
         claude-code
+        clippy
         curl
         d2
         delta
@@ -137,6 +139,9 @@ in
         python314
         python314Packages.bpython
         ripgrep
+        rust-analyzer
+        rustc
+        rustfmt
         shellcheck
         skim
         socat # Claude Code サンドボックス用
@@ -166,10 +171,6 @@ in
 
     # dotfiles
     home.file.".vimrc".source = ./config/vim/vimrc;
-
-    home.sessionPath = [
-      "$HOME/.cargo/bin"
-    ];
 
     # 環境変数
     home.sessionVariables = {
