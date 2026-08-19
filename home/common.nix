@@ -103,6 +103,7 @@ in
         emacs-lsp-booster
         file
         fzf
+        gcc
         gh
         ghq
         git
