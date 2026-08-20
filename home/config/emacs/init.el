@@ -288,6 +288,8 @@
   :ensure nil
   :config
   (add-to-list 'eglot-server-programs
+               '(csharp-ts-mode . ("csharp-ls")))
+  (add-to-list 'eglot-server-programs
                '(css-ts-mode . ("vscode-css-language-server" "--stdio")))
   (add-to-list 'eglot-server-programs
                '(dockerfile-ts-mode . ("docker-langserver" "--stdio")))
@@ -308,7 +310,8 @@
   (add-to-list 'eglot-server-programs
                '(typescript-ts-mode . ("typescript-language-server" "--stdio")))
   :hook
-  ((css-ts-mode . eglot-ensure)
+  ((csharp-ts-mode . eglot-ensure)
+   (css-ts-mode . eglot-ensure)
    (dockerfile-ts-mode . eglot-ensure)
    (elm-mode . eglot-ensure)
    (fsharp-ts-mode . eglot-ensure)
@@ -414,6 +417,13 @@
 (use-package smartchr
   :config
   (declare-function smartchr "smartchr" (&rest strings))  ;; 古い関数でautoloadコメントが無いため、ここで伝えておく
+  ;; C#
+  (defun my/csharp-smartchr-init ()
+    (local-set-key (kbd "=") (smartchr "=" " = " " == "))
+    (local-set-key (kbd "+") (smartchr "+" " + " " += "))
+    (local-set-key (kbd "-") (smartchr "-" " - " " -= "))
+    (local-set-key (kbd ">") (smartchr ">" " > " " => " " >= "))
+    (local-set-key (kbd "<") (smartchr "<" "<`!!'>" " < " " <= ")))
   ;; Elm
   (defun my/elm-smartchr-init ()
     (local-set-key (kbd "=") (smartchr "=" " = " " == "))
@@ -466,7 +476,8 @@
     (local-set-key (kbd "!") (smartchr "!" " != "))
     (local-set-key (kbd "|") (smartchr "|" "|`!!'|" " || " " | ")))
   :hook
-  ((elm-mode . my/elm-smartchr-init)
+  ((csharp-mode . my/csharp-smartchr-init)
+   (elm-mode . my/elm-smartchr-init)
    (fsharp-ts-mode . my/fsharp-smartchr-init)
    (js2-mode . my/js2-smartchr-init)
    (php-mode . my/php-smartchr-init)
@@ -616,6 +627,11 @@
 ;;
 ;; プログラミング言語設定
 ;;
+
+;; C#
+(use-package csharp-mode
+  :ensure nil
+  :mode ("\\.cs\\'" . csharp-ts-mode))
 
 ;; Elisp
 (use-package elisp-autofmt

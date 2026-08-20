@@ -19,6 +19,7 @@ let
     with grammars;
     [
       tree-sitter-bash
+      tree-sitter-c-sharp
       tree-sitter-css
       tree-sitter-dockerfile
       tree-sitter-fsharp
@@ -92,6 +93,7 @@ in
         cargo
         claude-code
         clippy
+        csharp-ls
         curl
         d2
         delta
