@@ -101,6 +101,7 @@ in
         dig
         dockerfile-language-server
         dos2unix
+        dotnet-sdk_10
         duckdb
         emacs-lsp-booster
         file
@@ -112,6 +113,7 @@ in
         gnumake
         graphviz
         imagemagick
+        intelephense
         jq
         jless
         just
@@ -127,12 +129,14 @@ in
         nixfmt
         nkf
         nmap
+        nodejs_26
         noto-fonts-cjk-sans
         noto-fonts-cjk-serif
         noto-fonts-color-emoji
         pandoc
         pure-prompt # zsh prompt
         peco
+        php85
         plantuml
         podman-compose
         pyright
