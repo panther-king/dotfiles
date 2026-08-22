@@ -329,13 +329,6 @@
    (toml-ts-mode . eglot-ensure)
    (typescript-ts-mode . eglot-ensure)))
 
-;; eglotのlspを高速化する
-;; cargo install emacs-lsp-booster
-(use-package eglot-booster
-  :after eglot
-  :config (eglot-booster-mode)
-  :vc (:url "https://github.com/jdtsmith/eglot-booster"))
-
 ;; コードブロックの折り畳みキーバインド
 (use-package hideshow
   :bind ("C-]" . hs-toggle-hiding)
