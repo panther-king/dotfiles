@@ -48,6 +48,7 @@ layout {
     struts {}
 }
 
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
 spawn-at-startup "nm-applet"
 spawn-sh-at-startup "fcitx5 -d"
 
@@ -193,6 +194,9 @@ binds {
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     Mod+W { toggle-column-tabbed-display; }
+
+    Mod+Y { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
+    Mod+Shift+Y { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist delete"; }
 
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }

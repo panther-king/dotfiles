@@ -21,6 +21,7 @@
   # デスクトップ環境のみで利用するパッケージ
   home.packages = with pkgs; [
     brightnessctl
+    cliphist
     dbeaver-bin
     firefox
     fuzzel # アプリケーションランチャー
@@ -41,6 +42,7 @@
     xwayland-satellite
     waybar
     waynaptics # overlay
+    wl-clipboard
     zola # ブログ用
   ];
 
