@@ -18,7 +18,8 @@
                        ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
   (package-initialize))
 
-(setq custom-file (locate-user-emacs-file "custom.el"))  ; カスタマイズ保存ファイルを指定するがロードはしない
+(setq custom-file (locate-user-emacs-file "custom.el"))  ; カスタマイズは init.el に保存しない
+(load custom-file 'noerror)                              ; 永続化されたカスタマイズのロード
 
 ;;
 ;; ベース設定
