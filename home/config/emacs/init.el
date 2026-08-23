@@ -18,7 +18,7 @@
                        ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
   (package-initialize))
 
-(setq custom-file (locate-user-emacs-file "custom.el"))  ;; カスタマイズ保存ファイルを指定するがロードはしない
+(setq custom-file (locate-user-emacs-file "custom.el"))  ; カスタマイズ保存ファイルを指定するがロードはしない
 
 ;;
 ;; ベース設定
@@ -27,49 +27,49 @@
 (use-package emacs
   :ensure nil
   :config
-  (fset 'yes-or-no-p 'y-or-n-p)                                     ;; プロンプトでyes/noを短縮する
-  (add-to-list 'default-frame-alist '(font . "UDEV Gothic NF 14"))  ;; フォントはUDEV Gothic
-  (prefer-coding-system 'utf-8-unix)                                ;; utf-8 を優先する
-  (set-language-environment "utf-8")                                ;; utf-8 がデフォルト
+  (fset 'yes-or-no-p 'y-or-n-p)                                     ; プロンプトでyes/noを短縮する
+  (add-to-list 'default-frame-alist '(font . "UDEV Gothic NF 14"))  ; フォントはUDEV Gothic
+  (prefer-coding-system 'utf-8-unix)                                ; utf-8 を優先する
+  (set-language-environment "utf-8")                                ; utf-8 がデフォルト
   :custom
-  (auth-sources '("~/.authinfo.gpg"))                 ;; forge で利用する認証情報
-  (auto-save-default nil)                             ;; 自動保存を行わない
-  (column-number-mode t)                              ;; モードラインに列番号も表示する
-  (create-lockfiles nil)                              ;; ロックファイルを作成しない
-  (cua-mode t)                                        ;; 矩形編集のためにcua-modeを有効にする
-  (cua-enable-cua-keys nil)                           ;; cuaのデフォルトキーバインドは利用しない
-  (eol-mnemonic-dos "(CRLF)")                         ;; CRLF を視認しやすくする
-  (eol-mnemonic-unix "(LF)")                          ;; LF を視認しやすくする
-  (indent-tabs-mode nil)                              ;; タブインデントは利用しない
-  (tab-width 4)                                       ;; eglotがLSPへ送るtabSizeの基準値(デフォルト8は大きすぎる)
-  (inhibit-startup-screen t)                          ;; 起動画面を表示しない
-  (initial-scratch-message nil)                       ;; Scratchバッファにメッセージは表示しない
-  (kill-whole-line t)                                 ;; C-kで行末の改行コードごと削除する
-  (make-backup-files nil)                             ;; バックアップファイルを作成しない
-  (native-comp-async-report-warnings-errors 'silent)  ;; サブプロセスのネイティブコンパイル警告は *Warnings* に出す
-  (next-line-add-newlines nil)                        ;; バッファの末尾で新しい行を追加しない
-  (package-install-upgrade-built-in t)                ;; ビルトインパッケージも更新対象にする
-  (package-native-compile t)                          ;; インストール時にネイティブコンパイルする
-  (read-process-output-max (* 1024 1024))             ;; 外部プロセスから読み取るデータの最大サイズを変更する
-  (require-final-newline t)                           ;; ファイルの末尾は改行を必須にする
-  (ring-bell-function 'ignore)                        ;; ビープ音を無効化
-  (scroll-conservatively 1)                           ;; 画面のスクロール単位を1行にする
-  (vc-follow-symlinks t))                             ;; 常にシンボリックリンクをたどる
+  (auth-sources '("~/.authinfo.gpg"))                 ; forge で利用する認証情報
+  (auto-save-default nil)                             ; 自動保存を行わない
+  (column-number-mode t)                              ; モードラインに列番号も表示する
+  (create-lockfiles nil)                              ; ロックファイルを作成しない
+  (cua-mode t)                                        ; 矩形編集のためにcua-modeを有効にする
+  (cua-enable-cua-keys nil)                           ; cuaのデフォルトキーバインドは利用しない
+  (eol-mnemonic-dos "(CRLF)")                         ; CRLF を視認しやすくする
+  (eol-mnemonic-unix "(LF)")                          ; LF を視認しやすくする
+  (indent-tabs-mode nil)                              ; タブインデントは利用しない
+  (tab-width 4)                                       ; eglotがLSPへ送るtabSizeの基準値(デフォルト8は大きすぎる)
+  (inhibit-startup-screen t)                          ; 起動画面を表示しない
+  (initial-scratch-message nil)                       ; Scratchバッファにメッセージは表示しない
+  (kill-whole-line t)                                 ; C-kで行末の改行コードごと削除する
+  (make-backup-files nil)                             ; バックアップファイルを作成しない
+  (native-comp-async-report-warnings-errors 'silent)  ; サブプロセスのネイティブコンパイル警告は *Warnings* に出す
+  (next-line-add-newlines nil)                        ; バッファの末尾で新しい行を追加しない
+  (package-install-upgrade-built-in t)                ; ビルトインパッケージも更新対象にする
+  (package-native-compile t)                          ; インストール時にネイティブコンパイルする
+  (read-process-output-max (* 1024 1024))             ; 外部プロセスから読み取るデータの最大サイズを変更する
+  (require-final-newline t)                           ; ファイルの末尾は改行を必須にする
+  (ring-bell-function 'ignore)                        ; ビープ音を無効化
+  (scroll-conservatively 1)                           ; 画面のスクロール単位を1行にする
+  (vc-follow-symlinks t))                             ; 常にシンボリックリンクをたどる
 
 ;;
 ;; パッケージ設定
 ;;
 
 (use-package use-package
-  :custom (use-package-always-ensure t))  ;; ensureを省略しても自動的にインストールする
+  :custom (use-package-always-ensure t))  ; ensureを省略しても自動的にインストールする
 
 (use-package auto-package-update
   :config (auto-package-update-maybe)
   :custom
-  (auto-package-update-delete-old-versions t)                        ;; 旧バージョンのパッケージは削除
-  (auto-package-update-excluded-packages '(eglot-booster smartchr))  ;; ELPAからインストールしていないパッケージは対象外
-  (auto-package-update-prompt-before-update t)                       ;; アップデート実行前に確認
-  (auto-package-update-show-preview t))                              ;; アップデート対象パッケージを事前に表示する
+  (auto-package-update-delete-old-versions t)                        ; 旧バージョンのパッケージは削除
+  (auto-package-update-excluded-packages '(eglot-booster smartchr))  ; ELPAからインストールしていないパッケージは対象外
+  (auto-package-update-prompt-before-update t)                       ; アップデート実行前に確認
+  (auto-package-update-show-preview t))                              ; アップデート対象パッケージを事前に表示する
 
 ;;
 ;; テーマ設定
@@ -77,8 +77,8 @@
 
 (use-package catppuccin-theme
   :custom
-  (catppuccin-highlight-matches t)  ;; 検索キーワードをハイライトする
-  (catppuccin-italic-comments t)    ;; コメントは斜体にする
+  (catppuccin-highlight-matches t)  ; 検索キーワードをハイライトする
+  (catppuccin-italic-comments t)    ; コメントは斜体にする
   :init (load-theme 'catppuccin :no-confirm))
 
 ;;
@@ -89,8 +89,8 @@
 (use-package minions
   :config (minions-mode 1)
   :custom
-  (minions-mode-line-lighter "[+]")           ;; minor-modeを展開するUIを変更する
-  (minions-prominent-mode '(flymake-mode)))   ;; エラー情報を可視化するため、flymakeは常に表示する
+  (minions-mode-line-lighter "[+]")           ; minor-modeを展開するUIを変更する
+  (minions-prominent-mode '(flymake-mode)))   ; エラー情報を可視化するため、flymakeは常に表示する
 
 ;; モードラインの表示を分かりやすくする
 (use-package moody
@@ -101,8 +101,8 @@
 ;; モードラインのファイル名にディレクトリ名も表示する
 (use-package uniquify
   :custom
-  (uniquify-buffer-name-style 'forward)  ;; ディレクトリ名はファイル名の前に表示する
-  (uniquify-min-dir-content 2)           ;; 同名ファイルを判別できるよう親階層も表示させる
+  (uniquify-buffer-name-style 'forward)  ; ディレクトリ名はファイル名の前に表示する
+  (uniquify-min-dir-content 2)           ; 同名ファイルを判別できるよう親階層も表示させる
   :ensure nil)
 
 ;;
@@ -112,12 +112,12 @@
 ;; 行番号を表示させる
 (use-package display-line-numbers
   :custom
-  (display-line-numbers-width-start t)        ;; 行番号の幅を最大行に合わせる
+  (display-line-numbers-width-start t)        ; 行番号の幅を最大行に合わせる
   :ensure nil
   :hook
-  ((prog-mode . display-line-numbers-mode)    ;; プログラミングモードで行番号を表示する
-   (conf-mode . display-line-numbers-mode)    ;; 設定ファイルモードでも行番号を表示する
-   (text-mode . display-line-numbers-mode)))  ;; テキストモードでも行番号を表示する
+  ((prog-mode . display-line-numbers-mode)    ; プログラミングモードで行番号を表示する
+   (conf-mode . display-line-numbers-mode)    ; 設定ファイルモードでも行番号を表示する
+   (text-mode . display-line-numbers-mode)))  ; テキストモードでも行番号を表示する
 
 ;; インデントを可視化する
 (use-package indent-bars
@@ -137,24 +137,24 @@
 
 ;; 現在行をハイライトする
 (use-package hl-line
-  :custom (global-hl-line-mode t)  ;; 常にハイライトさせる
+  :custom (global-hl-line-mode t)  ; 常にハイライトさせる
   :ensure nil)
 
 ;; 特定操作の実行をハイライトする
 (use-package volatile-highlights
-  :hook (after-init . volatile-highlights-mode))  ;; 全バッファで有効にする
+  :hook (after-init . volatile-highlights-mode))  ; 全バッファで有効にする
 
 ;; スペース・タブを可視化する
 (use-package whitespace
   :config (global-whitespace-mode t)
   :custom
-  (whitespace-action '(auto-cleanup))          ;; 保存時に余計な空白・タブを削除
-  (whitespace-global-modes '(not dired-mode magit-log-mode))  ;; diredモードは除外する
-  (whitespace-style '(face                     ;; 可視化の有効化
-                      empty                    ;; バッファ前後の空行を可視化
-                      tab-mark                 ;; タブを専用マークで表示
-                      tabs                     ;; タブを可視化
-                      trailing))               ;; 行末の空白を可視化
+  (whitespace-action '(auto-cleanup))                         ; 保存時に余計な空白・タブを削除
+  (whitespace-global-modes '(not dired-mode magit-log-mode))  ; diredモードは除外する
+  (whitespace-style '(face                                    ; 可視化の有効化
+                      empty                                   ; バッファ前後の空行を可視化
+                      tab-mark                                ; タブを専用マークで表示
+                      tabs                                    ; タブを可視化
+                      trailing))                              ; 行末の空白を可視化
   :ensure nil)
 
 ;;
@@ -165,9 +165,9 @@
 (use-package paren
   :config (show-paren-mode t)
   :custom
-  (show-paren-style 'mixed)                ;; 対応カッコが画面外なら式全体をハイライトする
-  (show-paren-when-point-in-periphery t)   ;; 論理的に最も近いカッコをハイライトする
-  (show-paren-when-point-inside-paren t)   ;; カーソルがカッコの内側にあってもハイライトする
+  (show-paren-style 'mixed)                ; 対応カッコが画面外なら式全体をハイライトする
+  (show-paren-when-point-in-periphery t)   ; 論理的に最も近いカッコをハイライトする
+  (show-paren-when-point-inside-paren t)   ; カーソルがカッコの内側にあってもハイライトする
   :ensure nil)
 
 ;; カッコの対応を色づけする
@@ -217,7 +217,7 @@
 
 ;; Emacs外でファイルが変更されたら自動的に読み込み直す
 (use-package autorevert
-  :custom (global-auto-revert-mode t))  ;; 常に自動更新する
+  :custom (global-auto-revert-mode t))  ; 常に自動更新する
 
 ;; 表示範囲の目的地へ素早く移動
 (use-package avy
@@ -225,19 +225,19 @@
 
 ;; シェルの環境変数を引き継ぐ
 (use-package exec-path-from-shell
-  :config (exec-path-from-shell-initialize))  ;; すべての環境変数を引き継ぐ
+  :config (exec-path-from-shell-initialize))  ; すべての環境変数を引き継ぐ
 
 ;; 一時ファイルを作成する
 (use-package open-junk-file
-  :custom (open-junk-file-format "/tmp/junk/%Y%m%d-%H%M%S."))  ;; 一時ファイルは/tmpに保存する
+  :custom (open-junk-file-format "/tmp/junk/%Y%m%d-%H%M%S."))  ; 一時ファイルは/tmpに保存する
 
 ;; 最近開いたファイルを保存する
 (use-package recentf
   :config (recentf-mode 1)
   :custom
-  (recentf-max-saved-items 2000)     ;; 保存アイテム数
+  (recentf-max-saved-items 2000)     ; 保存アイテム数
   (recentf-filename-handlers nil)
-  (recentf-exclude '(".recentf")))   ;; .recentfファイルは対象としない
+  (recentf-exclude '(".recentf")))   ; .recentfファイルは対象としない
 
 ;; 特定コマンドの連続実行でプレフィックスキーを最初の一度だけにする
 (use-package repeat
@@ -269,12 +269,12 @@
 ;; undo履歴をツリー形式で可視化する
 (use-package vundo
   :bind ("C-x u" . vundo)
-  :custom (vundo-glyph-alist vundo-unicode-symbols))  ;; 差分ツリーはユニコードも利用する
+  :custom (vundo-glyph-alist vundo-unicode-symbols))  ; 差分ツリーはユニコードも利用する
 
 ;; フォーカス中のウインドウ最大化をトグルする
 (use-package zoom-window
   :bind ("C-x z" . zoom-window-zoom)
-  :custom (zoom-window-mode-line-color (face-background 'mode-line)))  ;; 最大化時にモードラインのカラーは変化させない
+  :custom (zoom-window-mode-line-color (face-background 'mode-line)))  ; 最大化時にモードラインのカラーは変化させない
 
 ;;
 ;; IDE設定
@@ -340,19 +340,19 @@
   :bind ("C-c d" . dirvish-side)
   :config (dirvish-side-follow-mode)
   :custom
-  (dirvish-attributes '(vc-state              ;; フリンジにgitの状態を表示する
-                        subtree-state         ;; ディレクトリの階層有無を表示する
-                        nerd-icons            ;; アイコンを表示する
-                        collapse              ;; 詳細を折りたたんで表示する
-                        file-modes            ;; パーミッションを表示する
-                        file-size             ;; ファイルサイズを表示する
-                        file-time             ;; タイムスタンプを表示する
-                        git-msg))             ;; 直近のgitコミットメッセージを表示する
-  (dirvish-mode-line-height 30)               ;; モードラインの高さはmoodyのデフォルトに合わせる
-  (dirvish-side-attributes '(vc-state         ;; フリンジにgitの状態を表示する
-                             nerd-icons       ;; アイコンを表示する
-                             collapse))       ;; 詳細を折りたたんで表示する
-  (dirvish-project-root-function              ;; projectのrootを認識させる
+  (dirvish-attributes '(vc-state              ; フリンジにgitの状態を表示する
+                        subtree-state         ; ディレクトリの階層有無を表示する
+                        nerd-icons            ; アイコンを表示する
+                        collapse              ; 詳細を折りたたんで表示する
+                        file-modes            ; パーミッションを表示する
+                        file-size             ; ファイルサイズを表示する
+                        file-time             ; タイムスタンプを表示する
+                        git-msg))             ; 直近のgitコミットメッセージを表示する
+  (dirvish-mode-line-height 30)               ; モードラインの高さはmoodyのデフォルトに合わせる
+  (dirvish-side-attributes '(vc-state         ; フリンジにgitの状態を表示する
+                             nerd-icons       ; アイコンを表示する
+                             collapse))       ; 詳細を折りたたんで表示する
+  (dirvish-project-root-function              ; projectのrootを認識させる
    (lambda ()
      (when-let* ((proj (project-current)))
        (project-root proj))))
@@ -394,7 +394,7 @@
 (use-package vterm
   :bind (("C-c t" . vterm))
   :custom
-  (vterm-max-scrollback 10000))  ;; スクローロバックを増やす
+  (vterm-max-scrollback 10000))  ; スクローロバックを増やす
 
 ;;
 ;; キーバインド拡張設定
@@ -403,13 +403,13 @@
 ;; よく利用する機能を特定のキーバインドにマッピングする
 (use-package bind-key
   :bind
-  (("C-h" . delete-backward-char)  ;; 1文字前を削除
-   ("C-'" . set-mark-command)))    ;; リージョン選択
+  (("C-h" . delete-backward-char)  ; 1文字前を削除
+   ("C-'" . set-mark-command)))    ; リージョン選択
 
 ;; 同一キーの入力で入力内容を切り替える
 (use-package smartchr
   :config
-  (declare-function smartchr "smartchr" (&rest strings))  ;; 古い関数でautoloadコメントが無いため、ここで伝えておく
+  (declare-function smartchr "smartchr" (&rest strings))  ; 古い関数でautoloadコメントが無いため、ここで伝えておく
   ;; C#
   (defun my/csharp-smartchr-init ()
     (local-set-key (kbd "=") (smartchr "=" " = " " == "))
@@ -492,14 +492,14 @@
 (use-package ddskk
   :bind ("C-x j" . skk-mode)
   :custom
-  (skk-auto-insert-paren t)                                                       ;; 全角のカッコを自動補完する
-  (skk-use-jisx0201-input-method t)                                               ;; 半角カナモードを利用する
-  (skk-cursor-hiragana-color (cdr (assoc 'green catppuccin-mocha-colors)))        ;; ひらがなモード
-  (skk-cursor-jisx0208-latin-color (cdr (assoc 'mauve catppuccin-mocha-colors)))  ;; 全角英数モード
-  (skk-cursor-katakana-color (cdr (assoc 'red catppuccin-mocha-colors)))          ;; カタカナモード
-  (skk-cursor-jisx0201-color (cdr (assoc 'yellow catppuccin-mocha-colors)))       ;; 半角カナモード
-  (skk-egg-like-newline t)                                                        ;; Enterキーでも入力を確定する
-  (skk-extra-jisyo-file-list                                                      ;; 拡張辞書リスト
+  (skk-auto-insert-paren t)                                                       ; 全角のカッコを自動補完する
+  (skk-use-jisx0201-input-method t)                                               ; 半角カナモードを利用する
+  (skk-cursor-hiragana-color (cdr (assoc 'green catppuccin-mocha-colors)))        ; ひらがなモード
+  (skk-cursor-jisx0208-latin-color (cdr (assoc 'mauve catppuccin-mocha-colors)))  ; 全角英数モード
+  (skk-cursor-katakana-color (cdr (assoc 'red catppuccin-mocha-colors)))          ; カタカナモード
+  (skk-cursor-jisx0201-color (cdr (assoc 'yellow catppuccin-mocha-colors)))       ; 半角カナモード
+  (skk-egg-like-newline t)                                                        ; Enterキーでも入力を確定する
+  (skk-extra-jisyo-file-list                                                      ; 拡張辞書リスト
    '("~/.local/share/skk/dictionaries/SKK-JISYO.JIS2.utf8"
      "~/.local/share/skk/dictionaries/SKK-JISYO.JIS2004.utf8"
      "~/.local/share/skk/dictionaries/SKK-JISYO.assoc.utf8"
@@ -514,16 +514,16 @@
      "~/.local/share/skk/dictionaries/SKK-JISYO.office.zipcode.utf8"
      "~/.local/share/skk/dictionaries/SKK-JISYO.station.utf8"
      "~/.local/share/skk/dictionaries/SKK-JISYO.zipcode.utf8"))
-  (skk-hiragana-mode-string "[あ]")                                               ;; ひらがなモードのモードライン表示
-  (skk-jisx0201-mode-sring "[ｱ]")                                                 ;; 半角カナモードのモードライン表示
-  (skk-jisx0208-latin-mode-string "[Ａ]")                                         ;; 全角英数モードのモードライン表示
-  (skk-jisyo "~/.local/share/fcitx5/skk/user.dict")                               ;; fcitx5-skk と同じ辞書を利用する
-  (skk-jisyo-code 'utf-8)                                                         ;; nixpkgs で utf-8 に変換した辞書を使う
-  (skk-katakana-mode-string "[ア]")                                               ;; カタカナモードのモードライン表示
-  (skk-large-jisyo "~/.local/share/skk/dictionaries/SKK-JISYO.L.utf8")            ;; ユーザー辞書の次に参照する辞書
-  (skk-latin-mode-string "[_A]")                                                  ;; ASCIIモードのモードライン表示
-  (skk-show-annotation t)                                                         ;; 変換候補に注釈を表示する
-  (skk-use-color-cursor t))                                                       ;; カーソルカラーでモードが判別できるようにする
+  (skk-hiragana-mode-string "[あ]")                                               ; ひらがなモードのモードライン表示
+  (skk-jisx0201-mode-sring "[ｱ]")                                                 ; 半角カナモードのモードライン表示
+  (skk-jisx0208-latin-mode-string "[Ａ]")                                         ; 全角英数モードのモードライン表示
+  (skk-jisyo "~/.local/share/fcitx5/skk/user.dict")                               ; fcitx5-skk と同じ辞書を利用する
+  (skk-jisyo-code 'utf-8)                                                         ; nixpkgs で utf-8 に変換した辞書を使う
+  (skk-katakana-mode-string "[ア]")                                               ; カタカナモードのモードライン表示
+  (skk-large-jisyo "~/.local/share/skk/dictionaries/SKK-JISYO.L.utf8")            ; ユーザー辞書の次に参照する辞書
+  (skk-latin-mode-string "[_A]")                                                  ; ASCIIモードのモードライン表示
+  (skk-show-annotation t)                                                         ; 変換候補に注釈を表示する
+  (skk-use-color-cursor t))                                                       ; カーソルカラーでモードが判別できるようにする
 
 ;;
 ;; git設定
@@ -537,7 +537,7 @@
   :config
   (global-diff-hl-mode)
   (diff-hl-flydiff-mode)
-  :demand t  ;; フックによるパッケージロードの遅延で :config が実行されない問題の対策
+  :demand t  ; フックによるパッケージロードの遅延で :config が実行されない問題の対策
   :hook
   ((magit-pre-refresh . diff-hl-magit-pre-refresh)
    (magit-post-refresh . diff-hl-magit-post-refresh)))
@@ -551,15 +551,15 @@
   (("C-x g" . magit-status)
    ("C-c g" . magit-dispatch)
    ("C-c f" . magit-file-dispatch))
-  :custom (auto-revert-check-vc-info t)  ;; magitのブランチ変更を自動的に検知する
+  :custom (auto-revert-check-vc-info t)  ; magitのブランチ変更を自動的に検知する
   :hook (magit-status-mode . visual-line-mode))
 
 ;; magitのdiff表示にdeltaを利用する
 (use-package magit-delta
   :after magit
   :custom
-  (magit-delta-default-dark-theme "Catppuccin Mocha")  ;; bat --list-themes
-  (magit-delta-hide-plus-minus-markers nil)            ;; diffの行頭に+/-を表示する
+  (magit-delta-default-dark-theme "Catppuccin Mocha")  ; bat --list-themes
+  (magit-delta-hide-plus-minus-markers nil)            ; diffの行頭に+/-を表示する
   :hook magit-mode)
 
 ;; magitからGitHubを操作する
@@ -590,7 +590,7 @@
   :config
   (setq treesit-extra-load-path
         (list (expand-file-name "treesit-grammars" user-emacs-directory)))
-  :custom (treesit-font-lock-level 4)  ;; 最大限ハイライトする
+  :custom (treesit-font-lock-level 4)  ; 最大限ハイライトする
   :ensure nil
   :init
   (setq major-mode-remap-alist
@@ -673,7 +673,7 @@
 
 ;; Typescript
 (use-package typescript-ts-mode
-  :custom (typescript-ts-mode-indent-level 2)  ;; TypeScriptのインデントは2スペース
+  :custom (typescript-ts-mode-indent-level 2)  ; TypeScriptのインデントは2スペース
   :ensure nil
   :mode
   ("\\.ts\\'" . typescript-ts-mode))
@@ -690,7 +690,7 @@
 
 ;; JSON
 (use-package json-ts-mode
-  :custom (json-ts-mode-indent-offset 2)  ;; JSONのインデントは2スペース
+  :custom (json-ts-mode-indent-offset 2)  ; JSONのインデントは2スペース
   :ensure nil)
 
 ;; Just
@@ -700,7 +700,7 @@
 (use-package markdown-mode
   :mode ("\\.mdc?\\'" . gfm-mode)
   :custom (markdown-command "pandoc")
-  :hook (markdown-mode . (lambda () (setq-local whitespace-action nil))))  ;; Markdown編集時に行末の空白を削除しない
+  :hook (markdown-mode . (lambda () (setq-local whitespace-action nil))))  ; Markdown編集時に行末の空白を削除しない
 (use-package markdown-preview-mode)
 
 ;; HTML
@@ -711,13 +711,13 @@
 (use-package emmet-mode
   :bind
   (:map emmet-mode-keymap
-        ("C-c e" . emmet-expand-line)  ;; div.container>ul>li*3 の記法を展開する
+        ("C-c e" . emmet-expand-line)  ; div.container>ul>li*3 の記法を展開する
         ("C-j" . nil))
   :hook (html-ts-mode . emmet-mode))
 (use-package rainbow-mode
   :hook (html-ts-mode . rainbow-mode))
 (use-package auto-rename-tag
-  :hook (html-ts-mode . auto-rename-tag-mode))  ;; タグ名を変更すると閉じタグも追随させる
+  :hook (html-ts-mode . auto-rename-tag-mode))  ; タグ名を変更すると閉じタグも追随させる
 
 ;; CSS
 (use-package css-ts-mode
@@ -727,9 +727,9 @@
 
 (use-package web-mode
   :custom
-  (web-mode-code-indent-offset 2)    ;; JavaScriptは2スペースインデント
-  (web-mode-css-indent-offset 2)     ;; CSSは2スペースインデント
-  (web-mode-markup-indent-offset 2)  ;; HTMLは2スペースインデント
+  (web-mode-code-indent-offset 2)    ; JavaScriptは2スペースインデント
+  (web-mode-css-indent-offset 2)     ; CSSは2スペースインデント
+  (web-mode-markup-indent-offset 2)  ; HTMLは2スペースインデント
   (web-mode-script-padding 2)
   (web-mode-style-padding 2)
   :mode "\\.blade\\.php\\'")
@@ -766,7 +766,7 @@
 ;; PlantUML
 (use-package plantuml-mode
   :custom
-  (plantuml-indent-level 4)  ;; 4スペースインデント
+  (plantuml-indent-level 4)  ; 4スペースインデント
   :mode "\\.p?uml\\'")
 
 ;;
@@ -845,16 +845,16 @@
         ("C-v" . vertico-scroll-up)
         ("M-v" . vertico-scroll-down))
   :custom
-  (vertico-count 20)                            ;; 候補表示は20個まで
-  (vertico-cycle t)                             ;; 候補の先頭・末尾を移動できるようにする
-  (vertico-sort-function 'vertico-sort-alpha)   ;; 候補はアルファベット順で表示する
+  (vertico-count 20)                            ; 候補表示は20個まで
+  (vertico-cycle t)                             ; 候補の先頭・末尾を移動できるようにする
+  (vertico-sort-function 'vertico-sort-alpha)   ; 候補はアルファベット順で表示する
   :init (vertico-mode))
 
 (use-package vertico-directory
   :after vertico
   :bind
   (:map vertico-map
-        ("C-l" . vertico-directory-up))  ;; C-lでディレクトリ階層を上がれるようにする
+        ("C-l" . vertico-directory-up))  ; C-lでディレクトリ階層を上がれるようにする
   :ensure nil)
 
 ;; org-mode
