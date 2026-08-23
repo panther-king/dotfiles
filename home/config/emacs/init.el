@@ -149,7 +149,7 @@
   :config (global-whitespace-mode t)
   :custom
   (whitespace-action '(auto-cleanup))          ;; 保存時に余計な空白・タブを削除
-  (whitespace-global-modes '(not dired-mode))  ;; diredモードは除外する
+  (whitespace-global-modes '(not dired-mode magit-log-mode))  ;; diredモードは除外する
   (whitespace-style '(face                     ;; 可視化の有効化
                       empty                    ;; バッファ前後の空行を可視化
                       tab-mark                 ;; タブを専用マークで表示
