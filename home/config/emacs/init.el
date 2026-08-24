@@ -228,6 +228,20 @@
 (use-package exec-path-from-shell
   :config (exec-path-from-shell-initialize))  ; すべての環境変数を引き継ぐ
 
+;; ローマ字で日本語検索できるようにする
+(use-package migemo
+  :config
+  (migemo-init)
+  ;; C-s/C-r は consult-line を優先したいので、
+  ;; isearch-forward-regexp/isearch-backward-regexp の
+  ;; キーバインドを潰す
+  (global-set-key (kbd "C-M-s") #'isearch-forward)
+  (global-set-key (kbd "C-M-r") #'isearch-backward)
+  :custom
+  (migemo-command "cmigemo")
+  (migemo-options '("-q" "--emacs"))
+  (migemo-dictionary (expand-file-name "~/.local/share/migemo/migemo-dict")))
+
 ;; 一時ファイルを作成する
 (use-package open-junk-file
   :custom (open-junk-file-format "/tmp/junk/%Y%m%d-%H%M%S."))  ; 一時ファイルは/tmpに保存する

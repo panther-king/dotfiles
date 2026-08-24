@@ -93,6 +93,7 @@ in
         cargo
         claude-code
         clippy
+        cmigemo
         csharp-ls
         curl
         d2
@@ -267,6 +268,7 @@ in
     xdg.configFile."emacs/init.el".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/emacs/init.el";
     xdg.configFile."emacs/treesit-grammars".source = "${treesitGrammars}/lib";
+    xdg.dataFile."migemo".source = "${pkgs.cmigemo}/share/migemo/utf-8";
     xdg.dataFile."skk/dictionaries".source = "${skkDictionaries}/share/skk";
 
     # tmux
