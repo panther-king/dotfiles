@@ -126,16 +126,12 @@ in
         man-pages-posix
         mermaid-cli
         mise
-        morisawa-biz-ud-gothic-fonts # overlay
         nh # nix cli helper
         nixd # nix LSP
         nixfmt
         nkf
         nmap
         nodejs_26
-        noto-fonts-cjk-sans
-        noto-fonts-cjk-serif
-        noto-fonts-color-emoji
         pandoc
         pure-prompt # zsh prompt
         peco

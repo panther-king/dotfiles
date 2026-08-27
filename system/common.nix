@@ -6,6 +6,14 @@
     ZSH_FZF_TAB = "${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh";
   };
 
+  # 日本語フォントはすべてのホストで利用する
+  fonts.packages = with pkgs; [
+    morisawa-biz-ud-gothic-fonts # overlay
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-color-emoji
+  ];
+
   # home-manager を効率的に利用する
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;

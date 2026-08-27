@@ -14,6 +14,21 @@
     efibootmgr
   ];
 
+  # 意図せず JP 以外のフォントが使われないよう
+  # デフォルトを定義しておく
+  fonts.fontconfig.defaultFonts = {
+    monospace = [
+      "BIZ UDGothic"
+    ];
+    sansSerif = [
+      "BIZ UDPGothic"
+      "Noto Sans CJK JP"
+    ];
+    serif = [
+      "Noto Serif CJK JP"
+    ];
+  };
+
   # xremap で /dev/uinput へのアクセスが必要
   hardware.uinput.enable = true;
 
