@@ -12,6 +12,7 @@
   # GRUB ではなく UEFI でブートする
   environment.systemPackages = with pkgs; [
     efibootmgr
+    ntfs3g # NTFS の読み書き用
   ];
 
   # 意図せず JP 以外のフォントが使われないよう
@@ -87,6 +88,8 @@
       };
     };
   };
+
+  services.udisks2.enable = true;
 
   # waynaptics は overlay で自前ビルドのため
   # systemd のユニットファイルも自前定義が必要
