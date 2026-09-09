@@ -609,7 +609,10 @@
   :ensure nil
   :init
   (setq major-mode-remap-alist
-        '((css-mode . css-ts-mode)
+        '((c-mode . c-ts-mode)
+          (c++-mode . c++-ts-mode)
+          (c-or-c++-mode . c-or-c++-ts-mode)
+          (css-mode . css-ts-mode)
           (dockerfile-mode . dockerfile-ts-mode)
           (js-mode . js-ts-mode)
           (js-json-mode . json-ts-mode)
@@ -630,12 +633,23 @@
   ;; モードとフォーマッタの対応
   (add-to-list 'apheleia-mode-alist '(d2-mode . d2fmt))
   (add-to-list 'apheleia-mode-alist '(fsharp-ts-mode . fantomas))
+  (add-to-list 'apheleia-mode-alist '(c-ts-mode . clang-format))
+  (add-to-list 'apheleia-mode-alist '(c++-ts-mode . clang-format))
   ;; elisp は elisp-autofmt でフォーマットするため除外
   (setf (alist-get 'emacs-lisp-mode apheleia-mode-alist nil 'remove) nil))
 
 ;;
 ;; プログラミング言語設定
 ;;
+
+;; C/C++
+(use-package c-ts-mode
+  :custom
+  (c-ts-mode-indent-offset 2)
+  :ensure nil
+  :hook
+  ((c-ts-mode . eglot-ensure)
+   (c++-ts-mode . eglot-ensure)))
 
 ;; C#
 (use-package csharp-mode

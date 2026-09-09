@@ -91,6 +91,7 @@ in
         bash-language-server
         bat
         cargo
+        clang-tools
         claude-code
         clippy
         cmigemo
