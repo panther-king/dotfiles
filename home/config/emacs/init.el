@@ -378,10 +378,6 @@
 (use-package editorconfig
   :config (editorconfig-mode 1))
 
-;; Emacsでmiseを利用する
-(use-package mise
-  :hook (after-init . global-mise-mode))
-
 ;; Emacsでプロジェクト管理を行う
 (use-package project
   :bind
