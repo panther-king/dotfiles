@@ -627,10 +627,12 @@
   ;; カスタムフォーマッタ
   (add-to-list 'apheleia-formatters '(d2fmt . ("d2" "fmt" inplace)))
   ;; モードとフォーマッタの対応
-  (add-to-list 'apheleia-mode-alist '(d2-mode . d2fmt))
-  (add-to-list 'apheleia-mode-alist '(fsharp-ts-mode . fantomas))
   (add-to-list 'apheleia-mode-alist '(c-ts-mode . clang-format))
   (add-to-list 'apheleia-mode-alist '(c++-ts-mode . clang-format))
+  (add-to-list 'apheleia-mode-alist '(d2-mode . d2fmt))
+  (add-to-list 'apheleia-mode-alist '(fsharp-ts-mode . fantomas))
+  ;; Python はデフォルトの black ではなく Rust 製の ruff を利用する
+  (setf (alist-get 'python-ts-mode apheleia-mode-alist) '(ruff-isort ruff))
   ;; elisp は elisp-autofmt でフォーマットするため除外
   (setf (alist-get 'emacs-lisp-mode apheleia-mode-alist nil 'remove) nil))
 

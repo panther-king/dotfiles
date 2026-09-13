@@ -142,6 +142,7 @@ in
         pyright
         python314
         python314Packages.bpython
+        python314Packages.ruff
         ripgrep
         rust-analyzer
         rustc
