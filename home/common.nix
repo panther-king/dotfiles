@@ -20,6 +20,7 @@ let
     [
       tree-sitter-bash
       tree-sitter-c-sharp
+      tree-sitter-cpp
       tree-sitter-css
       tree-sitter-dockerfile
       tree-sitter-fsharp
@@ -94,6 +95,7 @@ in
         clang-tools
         claude-code
         clippy
+        cmake
         cmigemo
         csharp-ls
         curl
