@@ -35,6 +35,7 @@
     skktools
     swaybg # 壁紙管理
     swaylock # スクリーンロック
+    tabularis # DB クライアントツール
     vivaldi
     vlc
     xdg-desktop-portal
