@@ -2,6 +2,9 @@
   imports = [ ./hardware-configuration.nix ];
   system.stateVersion = "26.05";
 
+  # 最新のカーネルを利用する
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # systemd でブートする
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 5;
