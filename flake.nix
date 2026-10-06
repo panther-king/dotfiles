@@ -66,6 +66,7 @@
               home-manager.users.i = {
                 imports = [
                   ./home/common.nix
+                  ./home/hosts/wsl2.nix
                 ];
               };
               wsl.defaultUser = "i";
