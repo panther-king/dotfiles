@@ -135,6 +135,7 @@ in
         nkf
         nmap
         nodejs_26
+        openssl
         pandoc
         pure-prompt # zsh prompt
         peco
