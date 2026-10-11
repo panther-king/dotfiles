@@ -123,4 +123,7 @@
   xdg.configFile."waybar/config.jsonc".source = ../config/waybar/config.jsonc;
   xdg.configFile."waybar/style.css".source = ../config/waybar/style.css;
   xdg.configFile."waybar/mocha.css".source = pkgs.catppuccin-waybar;
+
+  # 日本語のディレクトリは利用しない
+  xdg.userDirs.enable = true;
 }
