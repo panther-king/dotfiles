@@ -19,6 +19,7 @@ let
     with grammars;
     [
       tree-sitter-bash
+      tree-sitter-c
       tree-sitter-c-sharp
       tree-sitter-cpp
       tree-sitter-css

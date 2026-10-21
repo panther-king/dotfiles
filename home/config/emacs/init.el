@@ -423,6 +423,13 @@
 (use-package smartchr
   :config
   (declare-function smartchr "smartchr" (&rest strings))  ; 古い関数でautoloadコメントが無いため、ここで伝えておく
+  ;; C/C++
+  (defun my/c-c++-smartchr-init ()
+    (local-set-key (kbd "=") (smartchr "=" " = " " == "))
+    (local-set-key (kbd "+") (smartchr "+" " + " " += "))
+    (local-set-key (kbd "-") (smartchr "-" " - " " -= "))
+    (local-set-key (kbd ">") (smartchr ">" " > " "->" " >= "))
+    (local-set-key (kbd "<") (smartchr "<" "<`!!'>" " < " " <= " " << ")))
   ;; C#
   (defun my/csharp-smartchr-init ()
     (local-set-key (kbd "=") (smartchr "=" " = " " == "))
@@ -482,7 +489,8 @@
     (local-set-key (kbd "!") (smartchr "!" " != "))
     (local-set-key (kbd "|") (smartchr "|" "|`!!'|" " || " " | ")))
   :hook
-  ((csharp-mode . my/csharp-smartchr-init)
+  ((c-ts-mode . my/c-c++-smartchr-init)
+   (csharp-mode . my/csharp-smartchr-init)
    (elm-mode . my/elm-smartchr-init)
    (fsharp-ts-mode . my/fsharp-smartchr-init)
    (js2-mode . my/js2-smartchr-init)
