@@ -55,6 +55,7 @@
   (require-final-newline t)                           ; ファイルの末尾は改行を必須にする
   (ring-bell-function 'ignore)                        ; ビープ音を無効化
   (scroll-conservatively 1)                           ; 画面のスクロール単位を1行にする
+  (trusted-content '("~/ghq/"))                       ; クローンしたリポジトリは常に信頼する
   (vc-follow-symlinks t))                             ; 常にシンボリックリンクをたどる
 
 ;;
@@ -324,6 +325,7 @@
                '(toml-ts-mode . ("taplo" "lsp" "stdio")))
   (add-to-list 'eglot-server-programs
                '(typescript-ts-mode . ("typescript-language-server" "--stdio")))
+  (put 'eglot-flymake-backend 'flymake-always-safe t)  ; trusted-contet の外でも LSP の診断は表示する
   :hook
   ((csharp-ts-mode . eglot-ensure)
    (css-ts-mode . eglot-ensure)
