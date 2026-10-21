@@ -141,6 +141,7 @@ in
         pure-prompt # zsh prompt
         peco
         php85
+        php85Packages.php-codesniffer
         plantuml
         podman-compose
         pyright

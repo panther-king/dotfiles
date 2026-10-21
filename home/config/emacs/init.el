@@ -318,7 +318,7 @@
   (add-to-list 'eglot-server-programs
                '(terraform-mode . ("tofu-ls" "serve")))
   (add-to-list 'eglot-server-programs
-               '(php-mode . ("intelephense" "--stdio")))
+               '(php-ts-mode . ("intelephense" "--stdio")))
   (add-to-list 'eglot-server-programs
                '(python-ts-mode . ("pyright-langserver" "--stdio")))
   (add-to-list 'eglot-server-programs
@@ -338,7 +338,7 @@
    (json-ts-mode . eglot-ensure)
    (just-ts-mode . eglot-ensure)
    (nix-ts-mode . eglot-ensure)
-   (php-mode . eglot-ensure)
+   (php-ts-mode . eglot-ensure)
    (python-mode . eglot-ensure)
    (python-ts-mode . eglot-ensure)
    (rust-ts-mode . eglot-ensure)
@@ -494,7 +494,7 @@
    (elm-mode . my/elm-smartchr-init)
    (fsharp-ts-mode . my/fsharp-smartchr-init)
    (js2-mode . my/js2-smartchr-init)
-   (php-mode . my/php-smartchr-init)
+   (php-ts-mode . my/php-smartchr-init)
    (python-ts-mode . my/python-smartchr-init)
    (rust-ts-mode . my/rust-smartchr-init)
    (typescript-ts-mode . my/js2-smartchr-init))
@@ -623,6 +623,7 @@
           (js-mode . js-ts-mode)
           (js-json-mode . json-ts-mode)
           (json-mode . json-ts-mode)
+          (php-mode . php-ts-mode)
           (python-mode . python-ts-mode)
           (toml-mode . toml-ts-mode)
           (typescript-mode . typescript-ts-mode))))
@@ -691,8 +692,8 @@
 (use-package haskell-mode)
 
 ;; PHP
-(use-package php-mode
-  :custom (php-mode-coding-style 'psr2)
+(use-package php-ts-mode
+  :ensure nil
   :mode "\\.php\\'")
 
 ;; Shell script
