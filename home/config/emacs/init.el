@@ -187,7 +187,7 @@
         ("C-)" . sp-forward-slurp-sexp)
         ("C-}" . sp-forward-barf-sexp)
         ("C-(" . sp-backward-slurp-sexp)
-        ("C-}" . sp-backward-barf-sexp)
+        ("C-{" . sp-backward-barf-sexp)
         ("M-(" . sp-wrap-round)
         ("M-{" . sp-unwrap-sexp))
   :config (require 'smartparens-config)
