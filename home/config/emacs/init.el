@@ -302,6 +302,16 @@
 
 (use-package eglot
   :ensure nil
+  :bind
+  (:map eglot-mode-map
+        ("M-RET" . eglot-code-actions)
+        ("C-c l d" . consult-flymake)
+        ("C-c l i" . eglot-find-implementation)
+        ("C-c l o" . eglot-code-action-organize-imports)
+        ("C-c l q" . eglot-code-action-quickfix)
+        ("C-c l r" . eglot-rename)
+        ("C-c l t" . eglot-find-typeDefinition)
+        ("C-c l R" . eglot-reconnect))
   :config
   (add-to-list 'eglot-server-programs
                '(csharp-ts-mode . ("csharp-ls")))
@@ -326,6 +336,7 @@
   (add-to-list 'eglot-server-programs
                '(typescript-ts-mode . ("typescript-language-server" "--stdio")))
   (put 'eglot-flymake-backend 'flymake-always-safe t)  ; trusted-contet の外でも LSP の診断は表示する
+  (which-key-add-key-based-replacements "C-c l" "LSP")
   :hook
   ((csharp-ts-mode . eglot-ensure)
    (css-ts-mode . eglot-ensure)
@@ -846,7 +857,10 @@
    ("C-o" . consult-outline)
    ("C-s" . consult-line)
    ("C-r" . consult-line)
-   ([remap goto-line] . consult-goto-line)))
+   ([remap goto-line] . consult-goto-line))
+  :custom
+  (xref-show-xrefs-function #'consult-xref)
+  (xref-show-definitions-function #'consult-xref))
 
 ;; コードの補完候補をポップアップする
 (use-package corfu
