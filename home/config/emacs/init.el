@@ -401,6 +401,8 @@
    ("C-c p k" . project-kill-buffers)
    ("C-c p p" . project-switch-project)
    ("C-c p r" . consult-ripgrep))
+  :config
+  (which-key-add-key-based-replacements "C-c p" "project")
   :custom
   (project-switch-commands
    '((project-find-file "Find file" "f")
