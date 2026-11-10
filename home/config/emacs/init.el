@@ -357,6 +357,17 @@
    (toml-ts-mode . eglot-ensure)
    (typescript-ts-mode . eglot-ensure)))
 
+;; eldoc の内容をポップアップ表示させる
+(use-package eldoc-box
+  :after eglot
+  :bind (:map eglot-mode-map
+              ("C-c l h" . eldoc-box-help-at-point)  ; 明示的な指定時のみポップアップ
+              ("C-c l n" . eldoc-box-scroll-up)      ; ポップアップ内のスクロールアップ
+              ("C-c l p" . eldoc-box-scroll-down)    ; ポップアップ内のスクロールダウン
+              :repeat-map my/eldoc-box-scroll-repeat-map
+              ("n" . eldoc-box-scroll-up)
+              ("p" . eldoc-box-scroll-down)))
+
 ;; コードブロックの折り畳みキーバインド
 (use-package hideshow
   :bind ("C-]" . hs-toggle-hiding)
