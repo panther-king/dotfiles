@@ -21,6 +21,7 @@ let
       tree-sitter-bash
       tree-sitter-c
       tree-sitter-c-sharp
+      tree-sitter-cmake
       tree-sitter-cpp
       tree-sitter-css
       tree-sitter-dockerfile
@@ -97,6 +98,7 @@ in
         claude-code
         clippy
         cmake
+        cmake-language-server
         cmigemo
         csharp-ls
         curl

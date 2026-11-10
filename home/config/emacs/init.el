@@ -300,6 +300,7 @@
 (use-package breadcrumb
   :config (breadcrumb-mode))
 
+;; LSP
 (use-package eglot
   :ensure nil
   :bind
@@ -338,7 +339,10 @@
   (put 'eglot-flymake-backend 'flymake-always-safe t)  ; trusted-contet の外でも LSP の診断は表示する
   (which-key-add-key-based-replacements "C-c l" "LSP")
   :hook
-  ((csharp-ts-mode . eglot-ensure)
+  ((c-ts-mode . eglot-ensure)
+   (c++-ts-mode . eglot-ensure)
+   (cmake-ts-mode . eglot-ensure)
+   (csharp-ts-mode . eglot-ensure)
    (css-ts-mode . eglot-ensure)
    (dockerfile-ts-mode . eglot-ensure)
    (elm-mode . eglot-ensure)
@@ -680,10 +684,12 @@
 (use-package c-ts-mode
   :custom
   (c-ts-mode-indent-offset 2)
+  :ensure nil)
+
+;; CMake
+(use-package cmake-ts-mode
   :ensure nil
-  :hook
-  ((c-ts-mode . eglot-ensure)
-   (c++-ts-mode . eglot-ensure)))
+  :mode ("CMakeLists\\.txt\\'" "\\.cmake\\'"))
 
 ;; C#
 (use-package csharp-mode
